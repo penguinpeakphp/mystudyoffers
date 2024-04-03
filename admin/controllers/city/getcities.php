@@ -12,31 +12,34 @@
             goto end;
         }
 
-        //Declare states array for storing the data of different states
-        $response["states"] = [];
+        //Declare states array for storing the data of different cities
+        $response["cities"] = [];
 
-        //Query the database for selecting all the states data from the state table
-        $select = $db->query("SELECT stateid , statename , statestatus , countryname , s.countryid AS countryid FROM state s INNER JOIN country c ON s.countryid = c.countryid");
+        //Query the database for selecting all the cities data from the city table
+        $select = $db->query("SELECT cityid , cityname , citystatus , c.stateid , c.countryid , statename , countryname FROM city c INNER JOIN state s ON c.stateid = s.stateid INNER JOIN country cnt ON c.countryid = cnt.countryid");
         if($select == false)
         {
-            failure($response , "Error while fetching state list");
+            failure($response , "Error while fetching city list");
             goto end;
         }
 
         //Loop through all the rows and push the state data into the array one by one
         while($row = $select->fetch_assoc())
         {
-            array_push($response["states"] , $row);
+            array_push($response["cities"] , $row);
         }
 
         //Declare countries for storing the country list
         $response["countries"] = [];
 
+        //Declare states for storing the state list
+        $response["states"] = [];
+
         //Get the countries into the array with the help of reference
-        if(getcountries($response , $response["countries"]) == false)
-        {
-            goto end;
-        }
+        getcountries($response , $response["countries"]);
+
+        //Get the states into the array with the help of reference
+        getstates($response , $response["states"]);
 
         end:;
     }

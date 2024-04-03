@@ -54,4 +54,21 @@
 
         return true;
     }
+
+    function getstates(&$response , &$states)
+    {
+        global $db;
+        $result = $db->query("SELECT * FROM state");
+        if($result == false)
+        {
+            failure($response , "Error while fetching states");
+            return false;
+        }
+        while($row = $result->fetch_assoc())
+        {
+            array_push($states , $row);
+        }
+
+        return true;
+    }
 ?>

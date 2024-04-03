@@ -31,7 +31,23 @@ create table state
     foreign key (countryid) references country(countryid) on delete cascade
 );
 
-INSERT INTO state (stateid, countryid, statename) VALUES
-(6, 1, 'New York'),
-(7, 2, 'London'),
-(8, 3, 'Ontario');
+INSERT INTO state (countryid, statename) VALUES
+(1, 'New York'),
+(5, 'London'),
+(7, 'Ontario');
+
+drop table if exists city;
+create table city
+(
+	cityid int not null primary key auto_increment,
+    cityname varchar(100) not null,
+    citystatus boolean not null default true,
+    stateid int not null,
+    countryid int not null,
+    foreign key (stateid) references state(stateid),
+    foreign key (countryid) references country(countryid)
+);
+
+INSERT INTO city (stateid, countryid, cityname) VALUES
+(1, 6, 'London'),
+(2, 3, 'New York');

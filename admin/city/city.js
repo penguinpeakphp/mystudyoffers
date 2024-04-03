@@ -1,22 +1,8 @@
 $(function()
 {
-    //Open Add Modal on clicking the Add Button
-    $(".add").on("click" , function()
+    function getcitylist()
     {
-        $("#addmodal").modal("show");
-    });
-
-    $("#addform").on("submit" , function(e)
-    {
-        e.preventDefault();
-
-        //Fetch the state name , countryid and the status
-        let statename = $("#addstatename").val();
-        let statestatus = $("#addstatestatus").prop("checked") ? 1 : 0;
-        let countryid = $("#addcountry").find(":selected").val();
-
-        //Send the post request for adding the new state
-        $.post("../controllers/state/addstate.php" , {"statename":statename , "statestatus":statestatus , "countryid":countryid} , function(data)
+        $.get("../controllers/city/getcities.php" , {} , function(data)
         {
             try
             {
@@ -36,105 +22,18 @@ $(function()
                 }
                 else
                 {
-                    //Alert the success message
-                    alert("State inserted successfully");
-
-                    //Repopulate the state list
-                    getstatelist();
-
-                    //Close the modal
-                    $("#addmodal").modal("hide");
-                }
-            }
-            catch(error)
-            {
-                alert("Error occurred while trying to read server response");
-            }
-        });
-    });
-
-    $("#editform").on("submit" , function(e)
-    {
-        e.preventDefault();
-
-        //Fetch the stateid , state name, state status and countryid
-        let stateid = $("#editstateid").val();
-        let statename = $("#editstatename").val();
-        let statestatus = $("#editstatestatus").prop("checked") ? 1 : 0;
-        let countryid = $("#editcountry").find(":selected").val();
-
-        //Send the post request for updating the country
-        $.post("../controllers/state/editstate.php" , {"stateid":stateid , "statename":statename , "statestatus":statestatus , "countryid":countryid} , function(data)
-        {
-            try
-            {
-                //Parse the data received from the server
-                let response = JSON.parse(data);
-
-                //If the response is not successful, then show the error in alert
-                if(response.success == false)
-                {
-                    alert(response.error);
-
-                    //Redirect to login page if the user is required to be login again
-                    if(response.login == true)
-                    {
-                        window.location.href = "../login/login.php";
-                    }
-                }
-                else
-                {
-                    //Alert the success message
-                    alert("State updated successfully");
-
-                    //Repopulate the state list
-                    getstatelist();
-
-                    //Close the modal
-                    $("#editmodal").modal("hide");
-                }
-            }
-            catch(error)
-            {
-                alert("Error occurred while trying to read server response");
-            }
-        });
-    });
-
-    //Function for getting the list of states from the server and populating the table
-    function getstatelist()
-    {
-        $.get("../controllers/state/getstates.php" , {} , function(data)
-        {
-            try
-            {
-                //Parse the data received from the server
-                let response = JSON.parse(data);
-
-                //If the response is not successful, then show the error in alert
-                if(response.success == false)
-                {
-                    alert(response.error);
-
-                    //Redirect to login page if the user is required to be login again
-                    if(response.login == true)
-                    {
-                        window.location.href = "../login/login.php";
-                    }
-                }
-                else
-                {
-                    //Assign country list to global variable for further use on this page
+                    //Assign country and state list to global variable for further use on this page
                     countries = response.countries;
+                    states = response.cities;
 
                     //Populate the select options in add and edit select
                     populatecountries("#addcountry");
                     populatecountries("#editcountry");
 
                     //Reset the table body for repopulating the table
-                    $("#statebody").html("");
+                    $("#citybody").html("");
 
-                    //Loop through the state array and populate the table
+                    //Loop through the city array and populate the table
                     for(let i=0; i<response.states.length; i++)
                     {
                         let state = response.states[i];
@@ -234,6 +133,4 @@ $(function()
             }
         });
     }
-
-    getstatelist();
 });

@@ -26,7 +26,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="../city/city.php">
           <i class="bi bi-circle"></i><span>City</span>
         </a>
       </li>

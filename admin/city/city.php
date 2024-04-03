@@ -10,7 +10,7 @@ checksession();
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>State</title>
+    <title>City</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -43,12 +43,12 @@ checksession();
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>State</h1>
+            <h1>City</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="../dashboard/dashboard.php">Home</a></li>
                     <li class="breadcrumb-item">Masters</li>
-                    <li class="breadcrumb-item active">State</li>
+                    <li class="breadcrumb-item active">City</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -59,7 +59,7 @@ checksession();
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">State List</h5>
+                            <h5 class="card-title">City List</h5>
 
                             <button type="button" class="btn btn-primary add"><i class="bi-plus-square"></i></button>
 
@@ -68,13 +68,14 @@ checksession();
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">City Name</th>
                                         <th scope="col">State Name</th>
                                         <th scope="col">Country Name</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody id="statebody">
+                                <tbody id="citybody">
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
@@ -82,15 +83,23 @@ checksession();
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Edit State</h5>
+                                            <h5 class="modal-title">Edit City</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <form id="editform">
-                                            <input type="hidden" id="editstateid" name="editstateid">
+                                            <input type="hidden" id="editcityid" name="editcityid">
                                             <div class="modal-body">
                                                 <div class="col-12">
-                                                    <label for="editstatename" class="form-label">State Name</label>
-                                                    <input type="text" class="form-control" id="editstatename" name="editstatename">
+                                                    <label for="editcityname" class="form-label">City Name</label>
+                                                    <input type="text" class="form-control" id="editcityname" name="editcityname">
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-12">
+                                                    <label class="col-sm-2 col-form-label">State</label>
+                                                        <select class="form-select" id="editstate" aria-label="select">
+                                                            <option disabled selected value="">Select State</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <div class="col-12">
@@ -124,14 +133,22 @@ checksession();
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Add State</h5>
+                                            <h5 class="modal-title">Add City</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <form id="addform">
                                             <div class="modal-body">
                                                 <div class="col-12">
-                                                    <label for="addstatename" class="form-label">State Name</label>
-                                                    <input type="text" class="form-control" id="addstatename" name="addstatename">
+                                                    <label for="addcityname" class="form-label">City Name</label>
+                                                    <input type="text" class="form-control" id="addcityname" name="addcityname">
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-12">
+                                                    <label class="col-sm-2 col-form-label">State</label>
+                                                        <select class="form-select" id="addstate" aria-label="select">
+                                                            <option disabled selected value="">Select State</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <div class="col-12">
@@ -174,6 +191,6 @@ checksession();
 </body>
 
 <script src="../assets/js/utils.js"></script>
-<script src="state.js"></script>
+<script src="city.js"></script>
 
 </html>
