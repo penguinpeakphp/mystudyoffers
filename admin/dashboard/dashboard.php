@@ -1,3 +1,8 @@
+<?php
+    require_once "../controllers/globalfunctions.php";
+
+    checksession();
+?>
 <!DOCTYPE html>
 <html lang="en">
 

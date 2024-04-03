@@ -1,3 +1,8 @@
+<?php
+require_once "../controllers/globalfunctions.php";
+
+checksession();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,9 +57,11 @@
             <div class="row">
                 <div class="col-lg-8">
 
-                <div class="card">
+                    <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Country List</h5>
+
+                            <button type="button" class="btn btn-primary add"><i class="bi-plus-square"></i></button>
 
                             <!-- Table with stripped rows -->
                             <table class="table table-striped">
@@ -67,16 +74,75 @@
                                     </tr>
                                 </thead>
                                 <tbody id="countrybody">
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Brandon Jacob</td>
-                                        <td>Designer</td>
-                                        <td>28</td>
-                                    </tr>
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
+                            <div class="modal fade" id="editmodal" tabindex="-1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Edit Country</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <form id="editform">
+                                            <input type="hidden" id="editcountryid" name="editcountryid">
+                                            <div class="modal-body">
+                                                <div class="col-12">
+                                                    <label for="editcountryname" class="form-label">Country Name</label>
+                                                    <input type="text" class="form-control" id="editcountryname" name="editcountryname">
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-sm-10">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="editstatus" name="editstatus">
+                                                            <label class="form-check-label" for="editstatus">
+                                                                Active
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary" id="editsubmit">Edit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div><!-- End Basic Modal-->
 
+                            <div class="modal fade" id="addmodal" tabindex="-1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Add Country</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <form id="addform">
+                                            <div class="modal-body">
+                                                <div class="col-12">
+                                                    <label for="addcountryname" class="form-label">Country Name</label>
+                                                    <input type="text" class="form-control" id="addcountryname" name="addcountryname">
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-sm-10">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="addstatus" name="addstatus">
+                                                            <label class="form-check-label" for="addstatus">
+                                                                Active
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary" id="addsubmit">Add</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div><!-- End Basic Modal-->
                         </div>
                     </div>
 
