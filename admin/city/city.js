@@ -24,48 +24,51 @@ $(function()
                 {
                     //Assign country and state list to global variable for further use on this page
                     countries = response.countries;
-                    states = response.cities;
+                    states = response.states;
 
                     //Populate the select options in add and edit select
                     populatecountries("#addcountry");
                     populatecountries("#editcountry");
+                    populatestates("#addstate");
+                    populatestates("#editstate");
 
                     //Reset the table body for repopulating the table
                     $("#citybody").html("");
 
                     //Loop through the city array and populate the table
-                    for(let i=0; i<response.states.length; i++)
+                    for(let i=0; i<response.cities.length; i++)
                     {
-                        let state = response.states[i];
+                        let city = response.cities[i];
 
                         //Build the table row and its content
                         let tr = `
                         <tr>
-                            <th scope="row">${state.stateid}</th>
-                            <td>${state.statename}</td>
-                            <td>${state.countryname}</td>
+                            <th scope="row">${city.cityid}</th>
+                            <td>${city.cityname}</td>
+                            <td>${city.statename}</td>
+                            <td>${city.countryname}</td>
                         `;
     
                         //Render badge based on the status flag
-                        if(state.statestatus == 1)
+                        if(city.citystatus == 1)
                         {
                             tr += `<td><span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> Active</span></td>`;
                         }
-                        if(state.statestatus == 0)
+                        if(city.citystatus == 0)
                         {
                             tr += `<td><span class="badge bg-danger"><i class="bi bi-exclamation-octagon me-1"></i> Inactive</span></td>`;
                         }
     
-                        //Render buttons and have index in the data-index attribute to fetch the state details for editing
+                        //Render buttons and have index in the data-index attribute to fetch the city details for editing
                         tr += `<td>
-                            <button type="button" class="btn btn-warning edit" data-index="${i}" data-id="${state.stateid}"><i class="bi-pencil-square"></i></button>
-                            <button type="button" class="btn btn-danger delete" data-id="${state.stateid}"><i class="bi-trash"></i></button>
+                            <button type="button" class="btn btn-warning edit" data-index="${i}" data-id="${city.cityid}"><i class="bi-pencil-square"></i></button>
+                            <button type="button" class="btn btn-danger delete" data-id="${city.cityid}"><i class="bi-trash"></i></button>
                         </td>`;
     
                         tr += "</td>";
     
                         //Append the table row in the table body
-                        $("#statebody").append(tr);
+                        $("#citybody").append(tr);
                     }
 
                     //Event for opening the edit modal on clicking the edit button
@@ -76,10 +79,11 @@ $(function()
 
                         //Fetch and fill the details from the response that we have got with the help of the index
                         let index = $(this).attr("data-index");
-                        $("#editstateid").val(response.states[index].stateid);
-                        $("#editstatename").val(response.states[index].statename);
-                        $("#editstatestatus").prop("checked" , response.states[index].statestatus == "1" ? true : false);
-                        $(`#editcountry option[value='${response.states[index].countryid}']`).prop("selected" , true);
+                        $("#editcityid").val(response.cities[index].stateid);
+                        $("#editcityname").val(response.cities[index].cityname);
+                        $("#editcitystatus").prop("checked" , response.cities[index].citystatus == "1" ? true : false);
+                        $(`#editcountry option[value='${response.cities[index].countryid}']`).prop("selected" , true);
+                        $(`#editstate option[value='${response.cities[index].stateid}']`).prop("selected" , true);
                     });
 
                     //Event for making deleting request to the server on click
@@ -133,4 +137,6 @@ $(function()
             }
         });
     }
+
+    getcitylist();
 });

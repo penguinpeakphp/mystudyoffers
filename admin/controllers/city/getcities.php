@@ -16,7 +16,7 @@
         $response["cities"] = [];
 
         //Query the database for selecting all the cities data from the city table
-        $select = $db->query("SELECT cityid , cityname , citystatus , c.stateid , c.countryid , statename , countryname FROM city c INNER JOIN state s ON c.stateid = s.stateid INNER JOIN country cnt ON c.countryid = cnt.countryid");
+        $select = $db->query("SELECT cityid , cityname , citystatus , c.stateid AS stateid, c.countryid AS countryid , statename , countryname FROM city c INNER JOIN state s ON c.stateid = s.stateid INNER JOIN country cnt ON c.countryid = cnt.countryid");
         if($select == false)
         {
             failure($response , "Error while fetching city list");

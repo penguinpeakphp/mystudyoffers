@@ -112,8 +112,8 @@ checksession();
                                                 <div class="row mb-3">
                                                     <div class="col-sm-10">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="editstatestatus" name="editstatestatus">
-                                                            <label class="form-check-label" for="editstatestatus">
+                                                            <input class="form-check-input" type="checkbox" id="editcitystatus" name="editcitystatus">
+                                                            <label class="form-check-label" for="editcitystatus">
                                                                 Active
                                                             </label>
                                                         </div>
@@ -161,8 +161,8 @@ checksession();
                                                 <div class="row mb-3">
                                                     <div class="col-sm-10">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="addstatestatus" name="addstatestatus">
-                                                            <label class="form-check-label" for="addstatestatus">
+                                                            <input class="form-check-input" type="checkbox" id="editcitystatus" name="editcitystatus">
+                                                            <label class="form-check-label" for="editcitystatus">
                                                                 Active
                                                             </label>
                                                         </div>
