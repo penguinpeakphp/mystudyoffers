@@ -1,5 +1,20 @@
 $(function()
 {
+    //Global variable for storing the country list
+    let countries;
+
+    //Function for populating the options in a select/option menu
+    function populatecountries(elementid)
+    {
+        $(elementid).html(`<option disabled selected value="">Select Country</option>`);
+        countries.forEach(function(country)
+        {
+            $(elementid).append(`
+                <option value="${country.countryid}">${country.countryname}</option>
+            `);
+        });
+    }
+
     //Open Add Modal on clicking the Add Button
     $(".add").on("click" , function()
     {
@@ -10,12 +25,13 @@ $(function()
     {
         e.preventDefault();
 
-        //Fetch the country name and the status
-        let countryname = $("#addcountryname").val();
-        let status = $("#addstatus").prop("checked") ? 1 : 0;
+        //Fetch the state name , countryid and the status
+        let statename = $("#addstatename").val();
+        let statestatus = $("#addstatestatus").prop("checked") ? 1 : 0;
+        let countryid = $("#addcountry").find(":selected").val();
 
-        //Send the post request for adding the new country
-        $.post("../controllers/country/addcountry.php" , {"countryname":countryname , "status":status} , function(data)
+        //Send the post request for adding the new state
+        $.post("../controllers/state/addstate.php" , {"statename":statename , "statestatus":statestatus , "countryid":countryid} , function(data)
         {
             try
             {
@@ -36,10 +52,10 @@ $(function()
                 else
                 {
                     //Alert the success message
-                    alert("Country inserted successfully");
+                    alert("State inserted successfully");
 
-                    //Repopulate the country list
-                    getcountrylist();
+                    //Repopulate the state list
+                    getstatelist();
 
                     //Close the modal
                     $("#addmodal").modal("hide");
@@ -56,13 +72,14 @@ $(function()
     {
         e.preventDefault();
 
-        //Fetch the countryid , country name and the status
-        let countryid = $("#editcountryid").val();
-        let countryname = $("#editcountryname").val();
-        let status = $("#editstatus").prop("checked") ? 1 : 0;
+        //Fetch the stateid , state name, state status and countryid
+        let stateid = $("#editstateid").val();
+        let statename = $("#editstatename").val();
+        let statestatus = $("#editstatestatus").prop("checked") ? 1 : 0;
+        let countryid = $("#editcountry").find(":selected").val();
 
         //Send the post request for updating the country
-        $.post("../controllers/country/editcountry.php" , {"countryid":countryid , "countryname":countryname , "status":status} , function(data)
+        $.post("../controllers/state/editstate.php" , {"stateid":stateid , "statename":statename , "statestatus":statestatus , "countryid":countryid} , function(data)
         {
             try
             {
@@ -83,10 +100,10 @@ $(function()
                 else
                 {
                     //Alert the success message
-                    alert("Country updated successfully");
+                    alert("State updated successfully");
 
-                    //Repopulate the country list
-                    getcountrylist();
+                    //Repopulate the state list
+                    getstatelist();
 
                     //Close the modal
                     $("#editmodal").modal("hide");
@@ -99,10 +116,10 @@ $(function()
         });
     });
 
-    //Function for getting the list of countries from the server and populating the table
-    function getcountrylist()
+    //Function for getting the list of states from the server and populating the table
+    function getstatelist()
     {
-        $.get("../controllers/country/getcountries.php" , {} , function(data)
+        $.get("../controllers/state/getstates.php" , {} , function(data)
         {
             try
             {
@@ -122,41 +139,49 @@ $(function()
                 }
                 else
                 {
-                    //Reset the table body for repopulating the table
-                    $("#countrybody").html("");
+                    //Assign country list to global variable for further use on this page
+                    countries = response.countries;
 
-                    //Loop through the country array and populate the table
-                    for(let i=0; i<response.countries.length; i++)
+                    //Populate the select options in add and edit select
+                    populatecountries("#addcountry");
+                    populatecountries("#editcountry");
+
+                    //Reset the table body for repopulating the table
+                    $("#statebody").html("");
+
+                    //Loop through the state array and populate the table
+                    for(let i=0; i<response.states.length; i++)
                     {
-                        let country = response.countries[i];
+                        let state = response.states[i];
 
                         //Build the table row and its content
                         let tr = `
                         <tr>
-                            <th scope="row">${country.countryid}</th>
-                            <td>${country.countryname}</td>
+                            <th scope="row">${state.stateid}</th>
+                            <td>${state.statename}</td>
+                            <td>${state.countryname}</td>
                         `;
     
                         //Render badge based on the status flag
-                        if(country.status == 1)
+                        if(state.statestatus == 1)
                         {
                             tr += `<td><span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> Active</span></td>`;
                         }
-                        if(country.status == 0)
+                        if(state.statestatus == 0)
                         {
                             tr += `<td><span class="badge bg-danger"><i class="bi bi-exclamation-octagon me-1"></i> Inactive</span></td>`;
                         }
     
-                        //Render buttons and have index in the data-index attribute to fetch the country details for editing
+                        //Render buttons and have index in the data-index attribute to fetch the state details for editing
                         tr += `<td>
-                            <button type="button" class="btn btn-warning edit" data-index="${i}" data-id="${country.countryid}"><i class="bi-pencil-square"></i></button>
-                            <button type="button" class="btn btn-danger delete" data-id="${country.countryid}"><i class="bi-trash"></i></button>
+                            <button type="button" class="btn btn-warning edit" data-index="${i}" data-id="${state.stateid}"><i class="bi-pencil-square"></i></button>
+                            <button type="button" class="btn btn-danger delete" data-id="${state.stateid}"><i class="bi-trash"></i></button>
                         </td>`;
     
                         tr += "</td>";
     
                         //Append the table row in the table body
-                        $("#countrybody").append(tr);
+                        $("#statebody").append(tr);
                     }
 
                     //Event for opening the edit modal on clicking the edit button
@@ -167,22 +192,23 @@ $(function()
 
                         //Fetch and fill the details from the response that we have got with the help of the index
                         let index = $(this).attr("data-index");
-                        $("#editcountryid").val(response.countries[index].countryid);
-                        $("#editcountryname").val(response.countries[index].countryname);
-                        $("#editstatus").prop("checked" , response.countries[index].status == "1" ? true : false);
+                        $("#editstateid").val(response.states[index].stateid);
+                        $("#editstatename").val(response.states[index].statename);
+                        $("#editstatestatus").prop("checked" , response.states[index].statestatus == "1" ? true : false);
+                        $(`#editcountry option[value='${response.states[index].countryid}']`).prop("selected" , true);
                     });
 
                     //Event for making deleting request to the server on click
                     $(".delete").on("click" , function()
                     {
-                        //Get the confirmation from the user for deleting the country and return if user denied
-                        if(confirm("Are you sure you want to delete this country?") == false)
+                        //Get the confirmation from the user for deleting the state and return if user denied
+                        if(confirm("Are you sure you want to delete this state?") == false)
                         {
                             return;
                         }
 
-                        let countryid = $(this).attr("data-id");
-                        $.post("../controllers/country/deletecountry.php" , {"countryid":countryid} , function(data)
+                        let stateid = $(this).attr("data-id");
+                        $.post("../controllers/state/deletestate.php" , {"stateid":stateid} , function(data)
                         {
                             try
                             {
@@ -203,10 +229,10 @@ $(function()
                                 else
                                 {
                                     //Alert the success message
-                                    alert("Country deleted successfully");
+                                    alert("State deleted successfully");
 
-                                    //Repopulate the country list
-                                    getcountrylist();
+                                    //Repopulate the state list
+                                    getstatelist();
                                 }
                             }
                             catch(error)
@@ -224,6 +250,5 @@ $(function()
         });
     }
 
-    //Populate the table for the first time
-    getcountrylist();
+    getstatelist();
 });

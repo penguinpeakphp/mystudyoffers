@@ -37,4 +37,21 @@
     
         return true;
     }
+
+    function getcountries(&$response , &$countries)
+    {
+        global $db;
+        $result = $db->query("SELECT * FROM country");
+        if($result == false)
+        {
+            failure($response , "Error while fetching countries");
+            return false;
+        }
+        while($row = $result->fetch_assoc())
+        {
+            array_push($countries , $row);
+        }
+
+        return true;
+    }
 ?>

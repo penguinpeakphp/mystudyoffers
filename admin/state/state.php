@@ -10,7 +10,7 @@ checksession();
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Country</title>
+    <title>State</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -43,12 +43,12 @@ checksession();
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Country</h1>
+            <h1>State</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="../dashboard/dashboard.php">Home</a></li>
                     <li class="breadcrumb-item">Masters</li>
-                    <li class="breadcrumb-item active">Country</li>
+                    <li class="breadcrumb-item active">State</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -59,7 +59,7 @@ checksession();
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Country List</h5>
+                            <h5 class="card-title">State List</h5>
 
                             <button type="button" class="btn btn-primary add"><i class="bi-plus-square"></i></button>
 
@@ -68,12 +68,13 @@ checksession();
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Name</th>
+                                        <th scope="col">State Name</th>
+                                        <th scope="col">Country Name</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody id="countrybody">
+                                <tbody id="statebody">
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
@@ -81,23 +82,29 @@ checksession();
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Edit Country</h5>
+                                            <h5 class="modal-title">Edit State</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <form id="editform">
-                                            <input type="hidden" id="editcountryid" name="editcountryid">
+                                            <input type="hidden" id="editstateid" name="editstateid">
                                             <div class="modal-body">
+                                                <div class="col-12">
+                                                    <label for="editstatename" class="form-label">State Name</label>
+                                                    <input type="text" class="form-control" id="editstatename" name="editstatename">
+                                                </div>
                                                 <div class="row mb-3">
                                                     <div class="col-12">
-                                                        <label for="editcountryname" class="form-label">Country Name</label>
-                                                        <input type="text" class="form-control" id="editcountryname" name="editcountryname">
+                                                    <label class="col-sm-2 col-form-label">Country</label>
+                                                        <select class="form-select" id="editcountry" aria-label="select">
+                                                            <option disabled selected value="">Select Country</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <div class="col-sm-10">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="editstatus" name="editstatus">
-                                                            <label class="form-check-label" for="editstatus">
+                                                            <input class="form-check-input" type="checkbox" id="editstatestatus" name="editstatestatus">
+                                                            <label class="form-check-label" for="editstatestatus">
                                                                 Active
                                                             </label>
                                                         </div>
@@ -117,22 +124,28 @@ checksession();
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Add Country</h5>
+                                            <h5 class="modal-title">Add State</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <form id="addform">
                                             <div class="modal-body">
+                                                <div class="col-12">
+                                                    <label for="addstatename" class="form-label">State Name</label>
+                                                    <input type="text" class="form-control" id="addstatename" name="addstatename">
+                                                </div>
                                                 <div class="row mb-3">
                                                     <div class="col-12">
-                                                        <label for="addcountryname" class="form-label">Country Name</label>
-                                                        <input type="text" class="form-control" id="addcountryname" name="addcountryname">
+                                                    <label class="col-sm-2 col-form-label">Country</label>
+                                                        <select class="form-select" id="addcountry" aria-label="select">
+                                                            <option disabled selected value="">Select Country</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <div class="col-sm-10">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="addstatus" name="addstatus">
-                                                            <label class="form-check-label" for="addstatus">
+                                                            <input class="form-check-input" type="checkbox" id="addstatestatus" name="addstatestatus">
+                                                            <label class="form-check-label" for="addstatestatus">
                                                                 Active
                                                             </label>
                                                         </div>
@@ -160,6 +173,6 @@ checksession();
     ?>
 </body>
 
-<script src="country.js"></script>
+<script src="state.js"></script>
 
 </html>

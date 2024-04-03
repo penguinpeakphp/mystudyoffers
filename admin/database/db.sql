@@ -20,3 +20,18 @@ insert into country(countryname) values
 ('Other'),
 ('New Zealand'),
 ('Asia');
+
+drop table if exists state;
+create table state
+(
+	stateid int not null primary key auto_increment,
+    statename varchar(100) not null,
+    statestatus boolean not null default true,
+    countryid int not null,
+    foreign key (countryid) references country(countryid) on delete cascade
+);
+
+INSERT INTO state (stateid, countryid, statename) VALUES
+(6, 1, 'New York'),
+(7, 2, 'London'),
+(8, 3, 'Ontario');

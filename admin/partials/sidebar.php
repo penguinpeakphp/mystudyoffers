@@ -21,7 +21,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="../state/state.php">
           <i class="bi bi-circle"></i><span>State</span>
         </a>
       </li>
