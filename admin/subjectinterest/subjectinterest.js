@@ -10,14 +10,12 @@ $(function()
     {
         e.preventDefault();
 
-        //Fetch the city name , countryid , stateid and the status
-        let cityname = $("#addcityname").val();
-        let citystatus = $("#addcitystatus").prop("checked") ? 1 : 0;
-        let stateid = $("#addstate").find(":selected").val();
-        let countryid = $("#addcountry").find(":selected").val();
+        //Fetch the subject interest name and the subject interest status
+        let subjectinterestname = $("#addsubjectinterestname").val();
+        let subjectintereststatus = $("#addsubjectintereststatus").prop("checked") ? 1 : 0;
 
-        //Send the post request for adding the new state
-        $.post("../controllers/city/addcity.php" , {"cityname":cityname , "citystatus":citystatus , "stateid":stateid , "countryid":countryid} , function(data)
+        //Send the post request for adding the new subject interest
+        $.post("../controllers/subjectinterest/addsubjectinterest.php" , {"subjectinterestname":subjectinterestname , "subjectintereststatus":subjectintereststatus} , function(data)
         {
             try
             {
@@ -38,10 +36,10 @@ $(function()
                 else
                 {
                     //Alert the success message
-                    alert("City inserted successfully");
+                    alert("Subject Interest inserted successfully");
 
-                    //Repopulate the state list
-                    getcitylist();
+                    //Repopulate the subject interest list
+                    getsubjectinterestlist();
 
                     //Close the modal
                     $("#addmodal").modal("hide");
@@ -58,15 +56,13 @@ $(function()
     {
         e.preventDefault();
 
-        //Fetch the cityid , city name, city status, countryid and stateid
-        let cityid = $("#editcityid").val();
-        let cityname = $("#editcityname").val();
-        let citystatus = $("#editcitystatus").prop("checked") ? 1 : 0;
-        let countryid = $("#editcountry").find(":selected").val();
-        let stateid = $("#editstate").find(":selected").val();
+        //Fetch the subjectinterestid , subject interest name and the subject interest status
+        let subjectinterestid = $("#editsubjectinterestid").val();
+        let subjectinterestname = $("#editsubjectinterestname").val();
+        let subjectintereststatus = $("#editsubjectintereststatus").prop("checked") ? 1 : 0;
 
-        //Send the post request for updating the country
-        $.post("../controllers/city/editcity.php" , {"cityid":cityid , "cityname":cityname , "citystatus":citystatus , "countryid":countryid , "stateid":stateid} , function(data)
+        //Send the post request for updating the subject interest
+        $.post("../controllers/subjectinterest/editsubjectinterest.php" , {"subjectinterestid":subjectinterestid , "subjectinterestname":subjectinterestname , "subjectintereststatus":subjectintereststatus} , function(data)
         {
             try
             {
@@ -87,10 +83,10 @@ $(function()
                 else
                 {
                     //Alert the success message
-                    alert("City updated successfully");
+                    alert("Subject Interest updated successfully");
 
-                    //Repopulate the city list
-                    getcitylist();
+                    //Repopulate the subject interest list
+                    getsubjectinterestlist();
 
                     //Close the modal
                     $("#editmodal").modal("hide");
@@ -103,10 +99,10 @@ $(function()
         });
     });
 
-    //Function for getting the list of cities from the server and populating the table
-    function getcitylist()
+    //Function for getting the list of subject interests from the server and populating the table
+    function getsubjectinterestlist()
     {
-        $.get("../controllers/city/getcities.php" , {} , function(data)
+        $.get("../controllers/subjectinterest/getsubjectinterests.php" , {} , function(data)
         {
             try
             {
@@ -126,56 +122,44 @@ $(function()
                 }
                 else
                 {
-                    //Assign country and state list to global variable for further use on this page
-                    countries = response.countries;
-                    states = response.states;
-
-                    //Populate the select options in add and edit select
-                    populatecountries("#addcountry");
-                    populatecountries("#editcountry");
-                    populatestates("#addstate");
-                    populatestates("#editstate");
-
                     //Reset the table body for repopulating the table
-                    $("#citybody").html("");
+                    $("#subjectinterestbody").html("");
 
-                    //Loop through the city array and populate the table
-                    for(let i=0; i<response.cities.length; i++)
+                    //Loop through the subject interest array and populate the table
+                    for(let i=0; i<response.subjectinterests.length; i++)
                     {
-                        let city = response.cities[i];
+                        let subjectinterest = response.subjectinterests[i];
 
                         //Build the table row and its content
                         let tr = `
                         <tr>
-                            <th scope="row">${city.cityid}</th>
-                            <td>${city.cityname}</td>
-                            <td>${city.statename}</td>
-                            <td>${city.countryname}</td>
+                            <th scope="row">${subjectinterest.subjectinterestid}</th>
+                            <td>${subjectinterest.subjectinterestname}</td>
                         `;
     
                         //Render badge based on the status flag
-                        if(city.citystatus == 1)
+                        if(subjectinterest.subjectintereststatus == 1)
                         {
                             tr += `<td><span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> Active</span></td>`;
                         }
-                        if(city.citystatus == 0)
+                        if(subjectinterest.subjectintereststatus == 0)
                         {
                             tr += `<td><span class="badge bg-danger"><i class="bi bi-exclamation-octagon me-1"></i> Inactive</span></td>`;
                         }
     
-                        //Render buttons and have index in the data-index attribute to fetch the city details for editing
+                        //Render buttons and have index in the data-index attribute to fetch the country details for editing
                         tr += `<td>
-                            <button type="button" class="btn btn-warning edit" data-index="${i}" data-id="${city.cityid}"><i class="bi-pencil-square"></i></button>
-                            <button type="button" class="btn btn-danger delete" data-id="${city.cityid}"><i class="bi-trash"></i></button>
+                            <button type="button" class="btn btn-warning edit" data-index="${i}" data-id="${subjectinterest.subjectinterestid}"><i class="bi-pencil-square"></i></button>
+                            <button type="button" class="btn btn-danger delete" data-id="${subjectinterest.subjectinterestid}"><i class="bi-trash"></i></button>
                         </td>`;
     
                         tr += "</td>";
     
                         //Append the table row in the table body
-                        $("#citybody").append(tr);
+                        $("#subjectinterestbody").append(tr);
                     }
 
-                    //Event for opening the edit modal on clicking the edit buttonht
+                    //Event for opening the edit modal on clicking the edit button
                     $(".edit").on("click" , function()
                     {
                         //Open the modal
@@ -183,24 +167,22 @@ $(function()
 
                         //Fetch and fill the details from the response that we have got with the help of the index
                         let index = $(this).attr("data-index");
-                        $("#editcityid").val(response.cities[index].stateid);
-                        $("#editcityname").val(response.cities[index].cityname);
-                        $("#editcitystatus").prop("checked" , response.cities[index].citystatus == "1" ? true : false);
-                        $(`#editcountry option[value='${response.cities[index].countryid}']`).prop("selected" , true);
-                        $(`#editstate option[value='${response.cities[index].stateid}']`).prop("selected" , true);
+                        $("#editsubjectinterestid").val(response.subjectinterests[index].subjectinterestid);
+                        $("#editsubjectinterestname").val(response.subjectinterests[index].subjectinterestname);
+                        $("#editsubjectintereststatus").prop("checked" , response.subjectinterests[index].subjectintereststatus == "1" ? true : false);
                     });
 
                     //Event for making deleting request to the server on click
                     $(".delete").on("click" , function()
                     {
-                        //Get the confirmation from the user for deleting the city and return if user denied
-                        if(confirm("Are you sure you want to delete this city?") == false)
+                        //Get the confirmation from the user for deleting the subject interest and return if user denied
+                        if(confirm("Are you sure you want to delete this subject interest?") == false)
                         {
                             return;
                         }
 
-                        let cityid = $(this).attr("data-id");
-                        $.post("../controllers/city/deletecity.php" , {"cityid":cityid} , function(data)
+                        let subjectinterestid = $(this).attr("data-id");
+                        $.post("../controllers/subjectinterest/deletesubjectinterest.php" , {"subjectinterestid":subjectinterestid} , function(data)
                         {
                             try
                             {
@@ -221,10 +203,10 @@ $(function()
                                 else
                                 {
                                     //Alert the success message
-                                    alert("City deleted successfully");
+                                    alert("Subject Interest deleted successfully");
 
-                                    //Repopulate the city list
-                                    getcitylist();
+                                    //Repopulate the subject interest list
+                                    getsubjectinterestlist();
                                 }
                             }
                             catch(error)
@@ -242,5 +224,5 @@ $(function()
         });
     }
 
-    getcitylist();
+    getsubjectinterestlist();
 });

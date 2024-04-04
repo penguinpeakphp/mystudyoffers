@@ -51,3 +51,15 @@ create table city
 INSERT INTO city (stateid, countryid, cityname) VALUES
 (1, 6, 'London'),
 (2, 3, 'New York');
+
+drop table if exists subjectinterest;
+create table subjectinterest
+(
+	subjectinterestid int not null primary key auto_increment,
+    subjectinterestname varchar(100) not null,
+    subjectintereststatus boolean not null default true
+);
+
+INSERT INTO subjectinterest (subjectinterestname) VALUES
+('Engineering'),
+('Medical');
