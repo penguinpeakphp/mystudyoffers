@@ -128,3 +128,11 @@ INSERT INTO institutetype (institutename) VALUES
 ('College/Polytechnic'),
 ('Professional Education Institute'),
 ('Private Tuition Provider');
+
+drop table if exists businessnature;
+create table businessnature
+(
+	businessid int not null primary key auto_increment,
+    businessname varchar(200) not null,
+    businessstatus boolean not null default true
+);

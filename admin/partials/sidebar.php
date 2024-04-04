@@ -56,7 +56,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="../businessnature/businessnature.php">
           <i class="bi bi-circle"></i><span>Nature of Business</span>
         </a>
       </li>
