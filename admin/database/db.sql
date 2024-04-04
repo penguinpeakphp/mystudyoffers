@@ -63,3 +63,35 @@ create table subjectinterest
 INSERT INTO subjectinterest (subjectinterestname) VALUES
 ('Engineering'),
 ('Medical');
+
+drop table if exists levelofcourse;
+create table levelofcourse
+(
+	levelofcourseid int not null primary key auto_increment,
+    levelofcoursename varchar(100) not null,
+    levelofcoursestatus boolean not null default true
+);
+
+INSERT INTO levelofcourse (levelofcoursename) VALUES
+('School Certificates'),
+('Post Schooling Certificates'),
+('Vocational '),
+('Diploma'),
+('UG Degrees'),
+('Post Graduate Diploma'),
+('Post Graduate Degree/Masters'),
+('Doctrate'),
+('Post Doctorate');
+
+drop table if exists planningyear;
+create table planningyear
+(
+	planningyearid int not null primary key auto_increment,
+    planningyear varchar(5) not null,
+    planningyearstatus boolean not null default true
+);
+
+INSERT INTO planningyear (planningyear) VALUES
+('2023'),
+('2024'),
+('2025');

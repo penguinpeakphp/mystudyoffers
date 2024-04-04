@@ -36,7 +36,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="../levelofcourse/levelofcourse.php">
           <i class="bi bi-circle"></i><span>Level of Course</span>
         </a>
       </li>

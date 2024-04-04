@@ -10,7 +10,7 @@ checksession();
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Country</title>
+    <title>Level of Course</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -48,7 +48,7 @@ checksession();
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="../dashboard/dashboard.php">Home</a></li>
                     <li class="breadcrumb-item">Masters</li>
-                    <li class="breadcrumb-item active">Country</li>
+                    <li class="breadcrumb-item active">Level of Course</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -59,7 +59,7 @@ checksession();
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Country List</h5>
+                            <h5 class="card-title">Level of Course List</h5>
 
                             <button type="button" class="btn btn-primary add"><i class="bi-plus-square"></i></button>
 
@@ -68,12 +68,12 @@ checksession();
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Country Name</th>
+                                        <th scope="col">Level of Course Name</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody id="countrybody">
+                                <tbody id="levelofcoursebody">
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
@@ -81,23 +81,23 @@ checksession();
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Edit Country</h5>
+                                            <h5 class="modal-title">Edit Level of Course</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <form id="editform">
-                                            <input type="hidden" id="editcountryid" name="editcountryid">
+                                            <input type="hidden" id="editlevelofcourseid" name="editlevelofcourseid">
                                             <div class="modal-body">
                                                 <div class="row mb-3">
                                                     <div class="col-12">
-                                                        <label for="editcountryname" class="form-label">Country Name</label>
-                                                        <input type="text" class="form-control" id="editcountryname" name="editcountryname">
+                                                        <label for="editlevelofcoursename" class="form-label">Level of Course Name</label>
+                                                        <input type="text" class="form-control" id="editlevelofcoursename" name="editlevelofcoursename">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <div class="col-sm-10">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="editstatus" name="editstatus">
-                                                            <label class="form-check-label" for="editstatus">
+                                                            <input class="form-check-input" type="checkbox" id="editlevelofcoursestatus" name="editlevelofcoursestatus">
+                                                            <label class="form-check-label" for="editlevelofcoursestatus">
                                                                 Active
                                                             </label>
                                                         </div>
@@ -117,22 +117,22 @@ checksession();
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Add Country</h5>
+                                            <h5 class="modal-title">Add Level of Course</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <form id="addform">
                                             <div class="modal-body">
                                                 <div class="row mb-3">
                                                     <div class="col-12">
-                                                        <label for="addcountryname" class="form-label">Country Name</label>
-                                                        <input type="text" class="form-control" id="addcountryname" name="addcountryname">
+                                                        <label for="addlevelofcoursename" class="form-label">Level of Course Name</label>
+                                                        <input type="text" class="form-control" id="addlevelofcoursename" name="addlevelofcoursename">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <div class="col-sm-10">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="addstatus" name="addstatus">
-                                                            <label class="form-check-label" for="addstatus">
+                                                            <input class="form-check-input" type="checkbox" id="addlevelofcoursestatus" name="addlevelofcoursestatus">
+                                                            <label class="form-check-label" for="addlevelofcoursestatus">
                                                                 Active
                                                             </label>
                                                         </div>
@@ -160,6 +160,6 @@ checksession();
     ?>
 </body>
 
-<script src="country.js"></script>
+<script src="levelofcourse.js"></script>
 
 </html>

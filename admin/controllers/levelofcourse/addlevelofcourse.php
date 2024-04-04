@@ -13,29 +13,30 @@
         }
 
         //Check if all the fields are set and have some value
-        if(!isset($_POST["countryid"]) || !isset($_POST["countryname"]) || !isset($_POST["status"]) || $_POST["countryname"] == "" || $_POST["status"] == "" || $_POST["countryid"] == "")
+        if(!isset($_POST["levelofcoursename"]) || !isset($_POST["levelofcoursestatus"]) || $_POST["levelofcoursename"] == "" || $_POST["levelofcoursestatus"] == "")
         {
             failure($response , "Please fill all the fields");
             goto end;
         }
 
-        //Query the database to update the existing country based on the country id
-        $update = $db->prepare("UPDATE country SET countryname = ? , status = ? WHERE countryid = ?");
-        if($update == false)
+        //Query the database for inserting level of course into the database
+        $insert = $db->prepare("INSERT INTO levelofcourse(levelofcoursename , levelofcoursestatus) VALUES(? , ?)");
+        if($insert == false)
         {
-            failure($response , "Error while updating the country");
+            failure($response , "Error while adding the level of course");
             goto end;
         }
         else
         {
-            //Bind the data with the query
-            $update->bind_param("sii" , $_POST["countryname"] , $_POST["status"] , $_POST["countryid"]);
-            if($update->execute() == false)
+            //Bind the level of course name and status
+            $insert->bind_param("si" , $_POST["levelofcoursename"] , $_POST["levelofcoursestatus"]);
+            if($insert->execute() == false)
             {
-                failure($response , "Error while updating the country");
+                failure($response , "Error while adding the level of course");
                 goto end;
             }
         }
+
 
         end:;
     }

@@ -13,26 +13,26 @@
         }
 
         //Check if all the fields are set and have some value
-        if(!isset($_POST["subjectinterestid"]) || !isset($_POST["subjectinterestname"]) || !isset($_POST["subjectintereststatus"]) || $_POST["subjectinterestname"] == "" || $_POST["subjectintereststatus"] == "" || $_POST["subjectinterestid"] == "")
+        if(!isset($_POST["levelofcourseid"]) || !isset($_POST["levelofcoursename"]) || !isset($_POST["levelofcoursestatus"]) || $_POST["levelofcoursename"] == "" || $_POST["levelofcoursestatus"] == "" || $_POST["levelofcourseid"] == "")
         {
             failure($response , "Please fill all the fields");
             goto end;
         }
 
-        //Query the database to update the existing subject interest based on the subject interest id
-        $update = $db->prepare("UPDATE subjectinterest SET subjectinterestname = ? , subjectintereststatus = ? WHERE subjectinterestid = ?");
+        //Query the database to update the existing level of course based on the level of course id
+        $update = $db->prepare("UPDATE levelofcourse SET levelofcoursename = ? , levelofcoursestatus = ? WHERE levelofcourseid = ?");
         if($update == false)
         {
-            failure($response , "Error while updating the subject interest");
+            failure($response , "Error while updating the level of course");
             goto end;
         }
         else
         {
             //Bind the data with the query
-            $update->bind_param("sii" , $_POST["subjectinterestname"] , $_POST["subjectintereststatus"] , $_POST["subjectinterestid"]);
+            $update->bind_param("sii" , $_POST["levelofcoursename"] , $_POST["levelofcoursestatus"] , $_POST["levelofcourseid"]);
             if($update->execute() == false)
             {
-                failure($response , "Error while updating the subject interest");
+                failure($response , "Error while updating the level of course");
                 goto end;
             }
         }
