@@ -183,7 +183,7 @@ $(function()
 
                         //Fetch and fill the details from the response that we have got with the help of the index
                         let index = $(this).attr("data-index");
-                        $("#editcityid").val(response.cities[index].stateid);
+                        $("#editcityid").val(response.cities[index].cityid);
                         $("#editcityname").val(response.cities[index].cityname);
                         $("#editcitystatus").prop("checked" , response.cities[index].citystatus == "1" ? true : false);
                         $(`#editcountry option[value='${response.cities[index].countryid}']`).prop("selected" , true);
