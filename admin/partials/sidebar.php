@@ -46,7 +46,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="../testtype/testtype.php">
           <i class="bi bi-circle"></i><span>Type of Test</span>
         </a>
       </li>

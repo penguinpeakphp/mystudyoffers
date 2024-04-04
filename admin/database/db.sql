@@ -95,3 +95,21 @@ INSERT INTO planningyear (planningyear) VALUES
 ('2023'),
 ('2024'),
 ('2025');
+
+drop table if exists testtype;
+create table testtype
+(
+	testid int not null primary key auto_increment,
+    testname varchar(100) not null,
+    teststatus boolean not null default true
+);
+
+INSERT INTO testtype (testname) VALUES
+('IELTS'),
+('PTE'),
+('GRE'),
+('TOEFL'),
+('GMAT'),
+('DuoLingo'),
+('LanguageCert'),
+('SAT');
