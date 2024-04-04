@@ -41,7 +41,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="../planningyear/planningyear.php">
           <i class="bi bi-circle"></i><span>Year of Planning</span>
         </a>
       </li>
