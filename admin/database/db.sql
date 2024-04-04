@@ -113,3 +113,18 @@ INSERT INTO testtype (testname) VALUES
 ('DuoLingo'),
 ('LanguageCert'),
 ('SAT');
+
+drop table if exists institutetype;
+create table institutetype
+(
+	instituteid int not null primary key auto_increment,
+    institutename varchar(200) not null,
+    institutestatus boolean not null default true
+);
+
+INSERT INTO institutetype (institutename) VALUES
+('School'),
+('University'),
+('College/Polytechnic'),
+('Professional Education Institute'),
+('Private Tuition Provider');

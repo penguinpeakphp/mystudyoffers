@@ -51,18 +51,13 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="../institutetype/institutetype.php">
           <i class="bi bi-circle"></i><span>Type of Institute</span>
         </a>
       </li>
       <li>
         <a href="#">
           <i class="bi bi-circle"></i><span>Nature of Business</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="bi bi-circle"></i><span>Courses</span>
         </a>
       </li>
     </ul>
