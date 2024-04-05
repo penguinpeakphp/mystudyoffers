@@ -109,11 +109,6 @@ $(document).ready(function () {
         e.relatedTarget // previous active tab
         $(".owl-carousel").trigger('refresh.owl.carousel');
       });
-
-    $("#openregister").on("click" , function()
-    {
-        $("#exampleModal").modal("show");
-    });
 });
 
 jQuery("#carousel_topchoice").owlCarousel({

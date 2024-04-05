@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-auto">
                     <div class="logo-img">
-                        <img src="images/logo-img.png" alt="">
+                        <a href="/"><img src="images/logo-img.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-auto ms-auto">
@@ -63,7 +63,7 @@
                     </div>
 
                     <div class="header-btn">
-                        <a type="button" class="login-btn">Login</a>
+                        <a href="/login.php" type="button" class="login-btn">Login</a>
                         <a type="button" class="register-btn" id="openregister">Register</a>
                     </div>
                 </div>
