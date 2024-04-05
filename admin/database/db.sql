@@ -153,5 +153,6 @@ create table student
     surname varchar(100) not null,
     phone varchar(20) not null unique,
     email varchar(200) not null unique,
+    password varchar(500) not null,
     pincode varchar(8) not null
 );

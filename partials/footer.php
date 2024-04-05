@@ -178,7 +178,11 @@
                                     </div>
                                     <div class="form-col">
                                         <label for="email">Email</label>
-                                        <input type="text" name="email" id="email" placeholder="Enter your valid email" required>
+                                        <input type="email" name="email" id="email" placeholder="Enter your valid email" required>
+                                    </div>
+                                    <div class="form-col">
+                                        <label for="email">Password</label>
+                                        <input type="password" name="password" id="password" placeholder="Enter your password" required>
                                     </div>
                                     <div class="form-col">
                                         <label for="pincode">Pincode</label>

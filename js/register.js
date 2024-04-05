@@ -6,7 +6,6 @@ $(function()
         $("#exampleModal").modal("show");
     });
 
-
     //Make ajax call on submitting the form
     $("#studentregister").on("submit" , function(e)
     {
@@ -15,7 +14,7 @@ $(function()
         //Validate before submitting the form if the terms and conditions are checked or not
         if(!document.getElementById('chkterms').checked)
         {
-            //Display the message if terms 
+            //Display the message if terms and conditions are met
             document.getElementById('agree_chk_error').style.visibility='visible';
             return;
         }
