@@ -145,6 +145,69 @@ INSERT INTO businessnature (businessname) VALUES
 ('Govt and Privately Funded'),
 ('Govt and Not For Profit and Private');
 
+drop table if exists qualification;
+create table qualification
+(
+	qualificationid int not null primary key auto_increment,
+    qualificationname varchar(100) not null,
+    qualificationstatus boolean not null default true
+);
+
+INSERT INTO qualification (qualificationname) VALUES
+('Foundation year, Diploma, Adv Dip.'),
+('Bachelor Degree'),
+('PG Cert/Diploma'),
+('Masters Degree - Course Work'),
+('Masters Degree - Research Work'),
+('PHd'),
+('Professional Certification');
+
+drop table if exists qualificationsub;
+create table qualificationsub
+(
+	qualificationsubid int not null primary key auto_increment,
+    qualificationsubname varchar(100) not null,
+    qualificationsubstatus boolean not null default true
+);
+
+INSERT INTO qualificationsub (qualificationsubname) VALUES
+('Business, HR, Marketing, Supply Chain'),
+('Accounting, Finance, Statestics'),
+('Hotel, Hospitality, Event Mgt.'),
+('Computer, Data, Engineering & Sciences'),
+('Computer, Data, Engineering & Sciences'),
+('Mechanical Engineering'),
+('Civil and Architecture'),
+('Electronics & Electrical'),
+('Nursing'),
+('Medicine'),
+('Paramedical'),
+('Heath Sciences'),
+('Pharmacy'),
+('Pure Sciences - Chemistry, Biology, Physics, Math'),
+('Fashion Design'),
+('Creative Arts'),
+('Music, Drama, Theater'),
+('Liberal Arts, Literature'),
+('Law, International studies'),
+('Jorunalism, Mass communication'),
+('Psycology');
+
+drop table if exists workexperience;
+create table workexperience
+(
+	workexperienceid int not null primary key auto_increment,
+    workexperiencename varchar(100) not null,
+    workexperiencestatus boolean not null default true
+);
+
+INSERT INTO workexperience (workexperiencename) VALUES
+('No Work Experience'),
+('1 to 3 Years Relevant to Studies'),
+('4 Years or above Relevant to Studies'),
+('1 to 3 Years Not Relevant to Studies'),
+('4 Years or above Not Relevant to Studies');
+
 drop table if exists student;
 create table student
 (
