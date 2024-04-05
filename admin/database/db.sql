@@ -136,3 +136,11 @@ create table businessnature
     businessname varchar(200) not null,
     businessstatus boolean not null default true
 );
+
+INSERT INTO businessnature (businessname) VALUES
+('Govt Funded'),
+('Not for Profit'),
+('Govt and Not For Profit'),
+('Privately Funded'),
+('Govt and Privately Funded'),
+('Govt and Not For Profit and Private');
