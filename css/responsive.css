@@ -1,0 +1,874 @@
+@media only screen and (max-width: 1199px) {
+    .navbar-light .navbar-nav .nav-link {
+        font-size: 14px;
+    }
+
+    img.about-img2 {
+        width: 59%;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+
+
+    .main_menu .navbar-toggler {
+        padding: 0px;
+        font-size: 28px;
+        line-height: 0;
+        background-color: transparent;
+        border: 2px solid #;
+        border-radius: 0px;
+        transition: none;
+        box-shadow: none !important;
+        margin-top: 8px;
+    }
+
+    .main_menu .navbar-light .navbar-toggler-icon {
+        background-image: none !important;
+    }
+
+    .navbar-collapse {
+        position: fixed;
+        top: 0px;
+        left: 0;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 15px;
+        width: 300px;
+        height: 100%;
+        background: #41034C;
+        z-index: 999;
+    }
+
+    .navbar-collapse.collapsing {
+        left: -75%;
+        transition: height 0s ease
+    }
+
+    .navbar-collapse.show {
+        left: 0;
+        transition: left .3s ease-in-out;
+    }
+
+    .navbar-toggler.collapsed~.navbar-collapse {
+        transition: left .5s ease-in-out
+    }
+
+    .navbar-light .navbar-nav .nav-item {
+        border-bottom: #530561 1px solid;
+    }
+
+    .navbar-light .navbar-nav a.nav-link.donate-btn {
+        margin: 10px 0px;
+        text-align: center;
+    }
+
+    .navbar-light .navbar-nav .nav-item:last-child {
+        border-bottom: 0px;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+        font-size: 14px;
+        color: #fff;
+    }
+
+    .navbar-light .navbar-nav .info-text {
+        font-size: 14px;
+        color: #fff;
+        margin-top: 20px;
+    }
+
+    .container {
+        max-width: 96%;
+    }
+
+    .header-info {
+        display: none;
+    }
+
+    .header-btn {
+        display: none;
+    }
+
+    .logo-img img {
+        height: 60px;
+    }
+
+    span.save {
+        width: 130px;
+        height: 130px;
+        padding: 23px 5px;
+    }
+
+    .slider-img-sec h3 {
+        font-size: 30px;    
+    }
+
+    .slider-img-sec p {
+        font-size: 13px;
+        line-height: 18px;
+    }
+
+    .slider-cont .txt h2 {
+        font-size: 50px;
+    }
+
+    .slider-cont .txt h4 {
+        font-size: 30px;
+    }
+
+    .slider-cont .txt {
+        text-align: left;
+        margin-top: 50px;
+    }
+
+    img.about-img2 {
+        width: 56%;
+        height: 200px;
+    }
+
+    img.about-img1 {
+        margin: 40px 20px 20px 0px;
+        height: 160px;
+    }
+
+    img.about-img3 {
+        height: 120px;
+    }
+
+    .about-col .col-md-5{
+        position: relative;
+    }
+
+    span.icon {
+        height: 30px;
+        width: 30px;
+    }
+
+    span.icon svg {
+        width: 20px;
+        margin-top: 3px;
+    }
+
+    span.total h6 {
+        font-size: 15px;
+    }
+
+    span.total h6 span {
+        font-size: 14px;
+    }
+
+    span.total {
+        bottom: 150px;
+        right: 54%;
+        width: 170px;
+    }
+
+    img.raund-img {
+        top: 80px;
+        right: 85%;
+        width: 70px;
+    }
+
+    .footer-top img {
+        margin-bottom: 30px;
+    }
+
+    .footer-middile ul {
+        margin-bottom: 30px;
+    }
+
+
+    /*sidemenu student dashboard*/
+    .sidemenu {
+    max-width: 100%;
+    height: auto;
+    padding-right: 0;
+  }
+
+  .sidemenu ul {
+    display: none;
+  }
+
+  .sidemenu.active ul {
+    display: block;
+    min-width: 350px;
+  }
+  .mobile-menu-toggle{
+    font-size: 40px;
+    width: 100%;
+    background-color: #fff;
+    font-weight: 800;
+  }
+  .mobile-menu-toggle span{
+    font-size: 25px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    bottom: 10px;
+  }
+  .logo-opt{
+    width: inherit;
+  }
+  .sidemenu ul li.active {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: #fff;
+    width: 90%;
+    }
+    .sidemenu .query-section { display: none;}
+    .sub-main {     
+      gap: 0px;    
+    }
+    
+}
+
+@media only screen and (max-width: 800px) {}
+
+@media only screen and (max-width: 767px) {
+
+    #sync2 {
+        display: none;
+    }
+    .main-slider::after {
+        display: none;
+    }
+
+    .slider-cont .txt h2 {
+        font-size: 40px;
+    }
+
+    .slider-cont .txt h4 {
+        font-size: 24px;
+    }
+
+    span.save {
+        width: 100px;
+        height: 100px;
+        padding: 15px 5px;
+    }
+
+    .slider-img-sec h3 {
+        font-size: 24px;
+    }
+
+    .slider-img-sec p {
+        font-size: 11px;
+        line-height: 14px;
+    }
+
+    .topchoice-sec p, .apply_Universities p, .whatsaying-box p, .latestnews p {
+        width: 100%;
+    }
+
+    .latestnews h3 {
+        font-size: 28px;
+    }
+
+    .weprovide-col .txt {
+        display: table;
+        height: auto;
+        padding: 30px 60px;
+    }
+
+    .weprovide-col img {
+        height: auto;
+        border-radius: 0px 0px 15px 15px;
+    }
+
+    .howitworks-sec img {
+        width: 100%;
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+
+    .about-col h3 {
+        font-size: 28px;
+        width: 100%;
+    }
+
+    .about-col p {
+        width: 100%;
+    }
+
+    .about-col .txt {
+        height: auto;
+        margin-bottom: 30px;
+    }
+
+    .about-col .col-md-5{
+        position: relative;
+    }
+
+    img.raund-img {
+        top: 90px;
+        left: -30px;
+        right: auto;
+    }
+
+    span.total {
+        bottom: 30px;
+        right: auto;
+        left: -30px;
+    }
+
+    .simplified-col {
+        margin-bottom: 20px;
+    }
+
+    .news-col{
+        margin-bottom: 30px;
+    }
+
+    .footer-bottom ul {
+        display: inline-block;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .slider-cont .txt h2 {
+        font-size: 34px;
+    }
+
+    .slider-cont .txt h4 {
+        font-size: 21px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+
+    .slider-cont .txt h2 {
+        font-size: 40px;
+    }
+
+    .slider-cont .txt h4 {
+        font-size: 24px;
+    }
+    .slider-img-sec p {
+        font-size: 13px;
+        line-height: 14px;
+    }
+
+    .weprovide-col .txt h3{
+        font-size: 24px;
+    }
+
+    .border-right, .border-bottom{
+        border: 0px !important;
+    }
+
+    .howitworks-bar .txt-cont {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .howitworks-bar span.no {
+        position: absolute;
+        font-size: 50px;
+        right: 30px;
+        top: 10px;
+    }
+
+    .about-col {
+        padding: 15px;
+    }
+
+    img.raund-img {
+        top: 0px;
+        left: 20px;
+        right: auto;
+        width: 50px;
+    }
+
+    .about-col .col-md-5 {
+        position: relative;
+        padding-bottom: 30px;
+    }
+
+    span.total {
+        bottom: 0px;
+        left: 30px;
+    }
+
+    #sync1.owl-theme .owl-next {
+        right: 0px;
+        margin-right: 0px;
+    }
+
+    #sync1.owl-theme .owl-prev {
+        left: 0px;
+        margin-left: 0px;
+    }
+
+    .simplified-col .cont {
+        padding: 20px;
+    }
+
+    .simplified-col .cont h4 {
+        margin-top: 0px;
+    }
+
+    .simplified-col img {
+        height: 200px;
+    }
+
+    .faq-col {
+        padding: 20px 20px 100px;
+    }
+    .about-section .iconbox-container-bg {
+    display: contents;     
+    }
+    .about-section .iconbox-container-bg .iconbox-item-bg {margin-bottom:40px;}
+    .about-mission-and-aim .about-purpose .about-banner-image {
+    position: absolute; 
+    }
+    .wehelp-logo {padding-top:40px;}
+    .wehelp-sec {padding-top: 0px;}
+    .apply_Universities{padding-bottom: 0px;}
+}
+
+@media only screen and (max-width: 480px) {
+    .newsletter-box { 
+        padding: 15px;
+    }
+
+    .newsleter-form input {
+        width: calc(100% - 60px);
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .whatsaying-box h3 {
+        font-size: 26px;
+    }
+
+    .whatsaying-col .profile img {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    .profile h6 {
+        font-size: 16px;
+        margin-top: 5px;
+        text-align: left;
+    }
+    .profile h6 span {
+        font-size: 14px;
+    }
+    .about-section .iconbox-container-bg {
+    display: contents;
+    }
+    .about-section .iconbox-container-bg .iconbox-item-bg {margin-bottom:40px;}
+    .about-mission-and-aim .about-purpose .about-banner-image {
+    position: absolute; 
+    }
+    .wehelp-logo {padding-top:40px;}
+    .wehelp-sec {padding-top: 0px;padding-bottom: 0px;}
+    .apply_Universities{padding-bottom: 0px;padding-top: 40px;}
+     .slider-cont .txt {       
+        margin-top: 0px;
+        margin-bottom: 25px;
+    }
+    .topchoice-sec{padding-bottom: 0px;}
+    .weprovide-sec{padding-bottom: 0px;}
+    .howitworks-sec{padding-top: 40px;}
+    .mission-and-aim-inside{margin-top: 225px;}
+    .about-mission-content{padding-left: 38px!important;}
+    .section-paragraph {width:310px; }
+
+}
+
+@media only screen and (max-width: 380px) {
+
+    .navbar-collapse {
+        width: 280px;
+    }
+
+    .events-col img {
+        margin-bottom: 20px;
+        height: auto;
+    }
+
+    img.about-img2 {
+        width: 54%;
+        height: 150px;
+    }
+
+    img.about-img1 {
+        margin: 30px 20px 20px 0px;
+        height: 120px;
+    }
+
+    img.about-img3 {
+        height: 100px;
+    }
+
+    .about-col h3 {
+        font-size: 22px;
+    }
+
+    .about-section .iconbox-container-bg {
+    display: contents;      
+    }
+    .about-section .iconbox-container-bg .iconbox-item-bg {margin-bottom:40px;}
+    .about-mission-and-aim .about-purpose .about-banner-image {
+    position: absolute; 
+    }
+    .wehelp-logo {padding-top:40px;}
+    .wehelp-sec {padding-top: 0px;}
+    .apply_Universities{padding-bottom: 0px;}
+    .about-mission-and-aim .about-purpose .mission-and-aim-inside .about-mission-content {padding-top: 190px;}
+    .slider-cont .txt {       
+        margin-top: 0px;
+        margin-bottom: 25px;
+    }
+    .topchoice-sec{padding-bottom: 0px;}
+    .weprovide-sec{padding-bottom: 0px;padding-bottom: 0px;}
+    .howitworks-sec{padding-top: 0px;}
+    .mission-and-aim-inside{margin-top: 225px;}
+    .about-mission-content{padding-left: 38px!important;}
+    .section-paragraph {width:310px; }
+
+}
+
+/*dashboard*/
+@media only screen and (max-width: 1199px) {
+  .navbar-light .navbar-nav .nav-link {
+    font-size: 14px;
+  }
+
+  img.about-img2 {
+    width: 59%;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .main_menu .navbar-toggler {
+    padding: 0px;
+    font-size: 28px;
+    line-height: 0;
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 0px;
+    transition: none;
+    box-shadow: none !important;
+    margin-top: 8px;
+  }
+
+  .main_menu .navbar-light .navbar-toggler-icon {
+    background-image: none !important;
+  }
+
+  .navbar-collapse {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    width: 300px;
+    height: 100%;
+    background: #41034c;
+    z-index: 999;
+  }
+
+  .navbar-collapse.collapsing {
+    left: -75%;
+    transition: height 0s ease;
+  }
+
+  .navbar-collapse.show {
+    left: 0;
+    transition: left 0.3s ease-in-out;
+  }
+
+  .navbar-toggler.collapsed ~ .navbar-collapse {
+    transition: left 0.5s ease-in-out;
+  }
+
+  .navbar-light .navbar-nav .nav-item {
+    border-bottom: #530561 1px solid;
+  }
+
+  .navbar-light .navbar-nav a.nav-link.donate-btn {
+    margin: 10px 0px;
+    text-align: center;
+  }
+
+  .navbar-light .navbar-nav .nav-item:last-child {
+    border-bottom: 0px;
+  }
+
+  .navbar-light .navbar-nav .nav-link {
+    font-size: 14px;
+    color: #fff;
+  }
+
+  .navbar-light .navbar-nav .info-text {
+    font-size: 14px;
+    color: #fff;
+    margin-top: 20px;
+  }
+  .header-info {
+    display: none;
+  }
+
+  .header-btn {
+    display: none;
+  }
+
+  .logo-img img {
+    height: 60px;
+  }
+
+  span.save {
+    width: 130px;
+    height: 130px;
+    padding: 23px 5px;
+  }
+  .footer-top img {
+    margin-bottom: 30px;
+  }
+
+  .footer-middile ul {
+    margin-bottom: 30px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .footer-bottom ul {
+    display: inline-block;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .newsletter-box {
+    padding: 15px;
+  }
+
+  .newsleter-form input {
+    width: calc(100% - 60px);
+  }
+}
+@media only screen and (max-width: 380px) {
+  .navbar-collapse {
+    width: 280px;
+  }
+
+  .events-col img {
+    margin-bottom: 20px;
+    height: auto;
+  }
+
+  img.about-img2 {
+    width: 54%;
+    height: 150px;
+  }
+
+  img.about-img1 {
+    margin: 30px 20px 20px 0px;
+    height: 120px;
+  }
+
+  img.about-img3 {
+    height: 100px;
+  }
+
+  .about-col h3 {
+    font-size: 22px;
+  }
+}
+@media (max-width: 767px) {
+  .home-content.flex-container .flex-item-2 {
+    display: none;
+  }
+  .home-content.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .content-section {
+    flex-wrap: wrap;
+    margin: 25px 0px;
+  }
+  .person-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+  }
+
+  .sub-main {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .experience {
+    max-width: 350px;
+  }
+  .experience .experience-detail {
+    height: auto;
+  }
+  .experience .experience-detail .flex-container {
+    display: block;
+  }
+  .banner-section {
+    height: auto;
+    flex-direction: column;
+    background-image: none !important;
+  }
+  .banner-section .banner-content {
+    padding: 24px;
+  }
+  .banner-section .banner-content h2 {
+    font-size: 21px;
+    margin-bottom: 0px;
+  }
+  .banner-section .banner-content small {
+    font-size: 14px;
+  }
+  .banner-section .banner-content p {
+    font-size: 14px;
+  }
+  .banner-section .banner-content .search-option {
+    flex-wrap: wrap;
+    gap: 2;
+    gap: 25px;
+  }
+  .sidemenu {
+    height: fit-content;
+    min-width: 350px;
+  }
+  .header-section .flex-item-2 {
+    display: none;
+  }
+  .academics .education-detail {
+    height: auto;
+    max-width: 350px;
+  }
+  .subject-row {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .border {
+    display: none;
+  }
+  .progress-bar {
+    width: 215px;
+    display: table-row!important;
+  }
+  .academics .education-detail .education .subject-row .progress-bar {
+    width: 250px;
+  }
+  .academics .education-detail .education .subject-row {
+    display: table-row; 
+    align-items: center;
+    }
+  .academics .education-detail .education .subject-row .progress-bar .progress-fill {
+    margin-top: 10px;
+    width: 290px;
+    height: 50px;
+  }
+  .pboxwidth_full {
+    min-width: 300px;
+    }
+    .person-detail {
+    height: auto;
+    width: 100%;
+    }
+    .mb-5 {
+    margin-bottom: 2.5rem !important;
+    }   
+}
+
+@media (min-width: 1200px) and (max-width: 1400px) {
+  .content-section {
+    display: flex;
+    gap: 30px;
+  }
+  .sidemenu {
+    max-width: 215px;
+  }
+  .main {
+    max-width: 850px;
+  }
+  .banner-section .banner-content {
+    padding: 20px;
+  }
+  .academics {
+    max-width: 600px;
+  }
+  .experience {
+    max-width: 600px;
+  }
+  .experience .experience-detail .flex-container .flex-item-1 {
+    max-width: 300px;
+  }
+  .experience .experience-detail .flex-container .flex-item-2 {
+    max-width: 300px;
+  }
+  .header-section {max-width: 1140px!important;}
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .content-section {
+    display: flex;
+    gap: 30px;
+  }
+  .main {
+    max-width: 650px;
+  }
+  .banner-section .banner-content {
+    padding: 22px;
+  }
+  .banner-section {
+    background-image: none;
+  }
+  .sub-main {
+    flex-wrap: wrap;
+  }
+  .academics {
+    max-width: 650px;
+  }
+  .experience {
+    max-width: 650px;
+  }
+  .experience .experience-detail .flex-container .flex-item-1 {
+    max-width: 300px;
+  }
+  .experience .experience-detail .flex-container .flex-item-2 {
+    max-width: 300px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .content-section {
+    flex-wrap: wrap;
+  }
+  .sidemenu {
+    width: 100% !important;
+    max-width: 634px;
+  }
+  .query-section {
+    display: none;
+  }
+  .main {
+    max-width: 650px;
+  }
+  .banner-section {
+    background-image: none;
+  }
+ 
+  .academics {
+    max-width: 400px;
+}
+.academics .education-detail .education .subject-row {flex-wrap: wrap;}
+.academics .education-detail {height: auto;}
+.experience {
+  max-width: 400px;
+}
+.experience .experience-detail .flex-container {
+  flex-wrap: wrap;
+}
+.experience .experience-detail {
+  height: auto;
+}
+}
