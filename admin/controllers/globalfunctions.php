@@ -38,15 +38,21 @@
         return true;
     }
 
+    //Function for fetching the list of countries into the variable
     function getcountries(&$response , &$countries)
     {
+        //Access the global variable
         global $db;
+
+        //Query the database for fetching all the countries
         $result = $db->query("SELECT * FROM country");
         if($result == false)
         {
             failure($response , "Error while fetching countries");
             return false;
         }
+
+        //Push data into the array variable
         while($row = $result->fetch_assoc())
         {
             array_push($countries , $row);
@@ -55,15 +61,21 @@
         return true;
     }
 
+    //Function for fetching the list of states into the variable
     function getstates(&$response , &$states)
     {
+        //Access the global variable
         global $db;
+
+        //Query the database for fetching all the states
         $result = $db->query("SELECT * FROM state");
         if($result == false)
         {
             failure($response , "Error while fetching states");
             return false;
         }
+
+        //Push data into the array variable
         while($row = $result->fetch_assoc())
         {
             array_push($states , $row);

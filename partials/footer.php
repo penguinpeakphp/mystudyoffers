@@ -163,14 +163,14 @@
 
                                 <h3>Register Now</h3>
                                 <p>Enter your Details to get connected with Expert Mentors.</p>
-                                <form method="post" id="studentregister">
+                                <form id="studentregister">
                                     <div class="form-col">
                                         <label for="name">Name</label>
                                         <input type="text" name="name" id="name" placeholder="Enter your name" required>
                                     </div>
                                     <div class="form-col">
                                         <label for="surname">Surname</label>
-                                        <input type="text" name="surname" id="surname" placeholder="Enter your Surname">
+                                        <input type="text" name="surname" id="surname" placeholder="Enter your Surname" required>
                                     </div>
                                     <div class="form-col">
                                         <label for="phone">Phone</label>

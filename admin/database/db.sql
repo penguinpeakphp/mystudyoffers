@@ -144,3 +144,14 @@ INSERT INTO businessnature (businessname) VALUES
 ('Privately Funded'),
 ('Govt and Privately Funded'),
 ('Govt and Not For Profit and Private');
+
+drop table if exists student;
+create table student
+(
+	studentid int not null primary key auto_increment,
+	name varchar(100) not null,
+    surname varchar(100) not null,
+    phone varchar(20) not null unique,
+    email varchar(200) not null unique,
+    pincode varchar(8) not null
+);
