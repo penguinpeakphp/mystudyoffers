@@ -65,6 +65,11 @@
           <i class="bi bi-circle"></i><span>Qualification</span>
         </a>
       </li>
+      <li>
+        <a href="../qualificationsub/qualificationsub.php">
+          <i class="bi bi-circle"></i><span>Qualification Sub</span>
+        </a>
+      </li>
     </ul>
   </li><!-- End Masters Nav -->
 
