@@ -60,6 +60,11 @@
           <i class="bi bi-circle"></i><span>Nature of Business</span>
         </a>
       </li>
+      <li>
+        <a href="../qualification/qualification.php">
+          <i class="bi bi-circle"></i><span>Qualification</span>
+        </a>
+      </li>
     </ul>
   </li><!-- End Masters Nav -->
 
