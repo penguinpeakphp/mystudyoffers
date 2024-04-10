@@ -265,6 +265,56 @@ insert into majorsubject(majorsubjectname , academicid) values
 ('Humanities & Law', 5),
 ('Medical and Health', 5);
 
+drop table if exists awardingbody;
+create table awardingbody
+(
+	awardingbodyid int not null primary key auto_increment,
+    awardingbodyname varchar(100) not null,
+    awardingbodystatus boolean not null default true,
+    academicid int,
+    foreign key (academicid) references academic(academicid)
+);
+
+insert into awardingbody(awardingbodyname , academicid) values
+('CBSE', 1),
+('ICSE', 1),
+('IB or Cambridge', 1),
+('Open Board - Eg. NIOS', 1),
+('Other', 1),
+('Polytechnics, Technical Institutes', 2),
+('State University', 2),
+('Private University (Including deemed)', 2),
+('National University', 2),
+('Open University (Including distance learning)', 2),
+('Public Institutes', 2),
+('Professional Body', 2),
+('Private Institute/Academy', 2),
+('Online/Blended Programs with Overseas bodies', 2),
+('Polytechnics, Technical Institutes', 3),
+('State University', 3),
+('Private University (Including deemed)', 3),
+('National University', 3),
+('Open University (Including distance learning)', 3),
+('Public Institutes', 3),
+('Professional Body', 3),
+('Private Institute/Academy', 3),
+('Online/Blended Programs with Overseas bodies', 3),
+('Polytechnics, Technical Institutes', 4),
+('State University', 4),
+('Private University (Including deemed)', 4),
+('National University', 4),
+('Open University (Including distance learning)', 4),
+('Public Institutes', 4),
+('Professional Body', 4),
+('Private Institute/Academy', 4),
+('Online/Blended Programs with Overseas bodies', 4),
+('State University', 5),
+('Private University (Including deemed)', 5),
+('National University', 5),
+('Open University (Including distance learning)', 5),
+('Public Institutes', 5),
+('Online/Blended Programs with Overseas bodies', 5);
+
 drop table if exists student;
 create table student
 (

@@ -85,6 +85,11 @@
           <i class="bi bi-circle"></i><span>Major Subjects</span>
         </a>
       </li>
+      <li>
+        <a href="../awardingbody/awardingbody.php">
+          <i class="bi bi-circle"></i><span>Awarding Body</span>
+        </a>
+      </li>
     </ul>
   </li><!-- End Masters Nav -->
 

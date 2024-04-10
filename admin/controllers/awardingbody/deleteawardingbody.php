@@ -12,27 +12,27 @@
             goto end;
         }
 
-        //Check if the majorsubjectid has been received
-        if(!isset($_POST["majorsubjectid"]))
+        //Check if the awardingbodyid has been received
+        if(!isset($_POST["awardingbodyid"]))
         {
-            failure($response , "Not enough data for deleting major subject");
+            failure($response , "Not enough data for deleting awarding body");
             goto end;
         }
 
-        //Query the database for deleting the major subject with the help of majorsubjectid
-        $delete = $db->prepare("DELETE FROM majorsubject WHERE majorsubjectid = ?");
+        //Query the database for deleting the awardingbody with the help of awardingbodyid
+        $delete = $db->prepare("DELETE FROM awardingbody WHERE awardingbodyid = ?");
         if($delete == false)
         {
-            failure($response , "Error while deleting the major subject");
+            failure($response , "Error while deleting the awarding body");
             goto end;
         }
         else
         {
             //Bind the parameters
-            $delete->bind_param("i" , $_POST["majorsubjectid"]);
+            $delete->bind_param("i" , $_POST["awardingbodyid"]);
             if($delete->execute() == false)
             {
-                failure($response , "Error while deleting the major subject");
+                failure($response , "Error wihle deleting the awarding body");
                 goto end;
             }
         }
