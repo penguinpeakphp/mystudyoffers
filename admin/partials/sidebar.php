@@ -70,6 +70,11 @@
           <i class="bi bi-circle"></i><span>Qualification Sub</span>
         </a>
       </li>
+      <li>
+        <a href="../workexperience/workexperience.php">
+          <i class="bi bi-circle"></i><span>Work Experience</span>
+        </a>
+      </li>
     </ul>
   </li><!-- End Masters Nav -->
 
