@@ -83,4 +83,27 @@
 
         return true;
     }
+
+    //Function for fetching the list of academics into the variable
+    function getacademics(&$response , &$academics)
+    {
+        //Access the global variable
+        global $db;
+
+        //Query the database for fetching all the academics
+        $result = $db->query("SELECT * FROM academic");
+        if($result == false)
+        {
+            failure($response , "Error while fetching academic qualifications");
+            return false;
+        }
+
+        //Push data into the array variable
+        while($row = $result->fetch_assoc())
+        {
+            array_push($academics , $row);
+        }
+
+        return true;
+    }
 ?>

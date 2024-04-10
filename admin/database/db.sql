@@ -223,6 +223,48 @@ INSERT INTO academic (academicname) VALUES
 ('Masters Degree'),
 ('PHd');
 
+drop table if exists majorsubject;
+create table majorsubject
+(
+	majorsubjectid int not null primary key auto_increment,
+    majorsubjectname varchar(200) not null,
+    majorsubjectstatus boolean not null default true,
+    academicid int not null,
+    foreign key (academicid) references academic(academicid) 
+);
+
+insert into majorsubject(majorsubjectname , academicid) values
+('PCM', 1),
+('PCB', 1),
+('PCBM', 1),
+('Commerce/Business', 1),
+('Humanities or Arts', 1),
+('Vocational', 1),
+('Sciences', 2),
+('Engineering & CS', 2),
+('Business & Commerce', 2),
+('Art & Design', 2),
+('Humanities & Law', 2),
+('Medical, Health, Nursing', 2),
+('Medical, Health, Nursing', 3),
+('Engineering & CS', 3),
+('Business & Commerce', 3),
+('Art & Design', 3),
+('Humanities & Law', 3),
+('Medical and Health', 3),
+('Sciences', 4),
+('Engineering & CS', 4),
+('Business & Commerce', 4),
+('Art & Design', 4),
+('Humanities & Law', 4),
+('Medical and Health', 4),
+('Sciences', 5),
+('Engineering & CS', 5),
+('Business & Commerce', 5),
+('Art & Design', 5),
+('Humanities & Law', 5),
+('Medical and Health', 5);
+
 drop table if exists student;
 create table student
 (

@@ -80,6 +80,11 @@
           <i class="bi bi-circle"></i><span>Academic Qualification</span>
         </a>
       </li>
+      <li>
+        <a href="../majorsubject/majorsubject.php">
+          <i class="bi bi-circle"></i><span>Major Subjects</span>
+        </a>
+      </li>
     </ul>
   </li><!-- End Masters Nav -->
 
