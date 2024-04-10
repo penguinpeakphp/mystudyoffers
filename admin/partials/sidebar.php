@@ -75,6 +75,11 @@
           <i class="bi bi-circle"></i><span>Work Experience</span>
         </a>
       </li>
+      <li>
+        <a href="../academic/academic.php">
+          <i class="bi bi-circle"></i><span>Academic Qualification</span>
+        </a>
+      </li>
     </ul>
   </li><!-- End Masters Nav -->
 

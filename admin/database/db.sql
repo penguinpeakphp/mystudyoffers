@@ -208,6 +208,21 @@ INSERT INTO workexperience (workexperiencename) VALUES
 ('1 to 3 Years Not Relevant to Studies'),
 ('4 Years or above Not Relevant to Studies');
 
+drop table if exists academic;
+create table academic
+(
+	academicid int not null primary key auto_increment,
+    academicname varchar(100) not null,
+    academicstatus boolean not null default true
+);
+
+INSERT INTO academic (academicname) VALUES
+('Higher Schooling'),
+('Diploma'),
+('Bachelor Degree'),
+('Masters Degree'),
+('PHd');
+
 drop table if exists student;
 create table student
 (
