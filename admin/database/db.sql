@@ -315,6 +315,22 @@ insert into awardingbody(awardingbodyname , academicid) values
 ('Public Institutes', 5),
 ('Online/Blended Programs with Overseas bodies', 5);
 
+drop table if exists passingyear;
+create table passingyear
+(
+	passingyearid int not null primary key auto_increment,
+    passingyear varchar(50) not null,
+    passingyearstatus boolean not null default true
+);
+
+insert into passingyear(passingyear) values
+('2009 or before'),
+('2020'),
+('2021'),
+('2022'),
+('2023'),
+('2024');
+
 drop table if exists student;
 create table student
 (
