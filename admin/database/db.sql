@@ -331,6 +331,23 @@ insert into passingyear(passingyear) values
 ('2023'),
 ('2024');
 
+drop table if exists result;
+create table result
+(
+	resultid int not null primary key auto_increment,
+    resultname varchar(50) not null,
+    resultstatus boolean not null default true
+);
+
+insert into result(resultname) values
+('49% or below'),
+('50% to 59%'),
+('60% to 69%'),
+('70% to 79%'),
+('80% to 89%'),
+('90% to 94%'),
+('95% to 100%');
+
 drop table if exists student;
 create table student
 (

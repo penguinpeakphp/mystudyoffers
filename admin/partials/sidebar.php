@@ -95,6 +95,11 @@
           <i class="bi bi-circle"></i><span>Passing Year</span>
         </a>
       </li>
+      <li>
+        <a href="../result/result.php">
+          <i class="bi bi-circle"></i><span>Result</span>
+        </a>
+      </li>
     </ul>
   </li><!-- End Masters Nav -->
 
