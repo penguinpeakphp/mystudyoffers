@@ -47,6 +47,8 @@ $(function()
                     else
                     {
                         alert("Your account has been registered");
+                        
+                        //Reset the form
                         $("#studentregister")[0].reset();
                         window.location.href = "registrationsuccess.php?id="+response.id+"&email="+response.email+"&name="+response.name;
                     }

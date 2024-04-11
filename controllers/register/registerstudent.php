@@ -50,8 +50,10 @@
             }
         }
 
+        //Get the last auto incremented ID in the table
         $id = $db->insert_id;
 
+        //Send the activation email to the user
         if(sendactivationmail($_POST["email"] , "Verify your email - MyStudyOffers.com" , $activationtoken , $id) == false)
         {
             failure($response , "Error while sending email for activation");
@@ -59,6 +61,7 @@
             goto end;
         }
 
+        //Send back some information that is required to be filled in the get parameter in case the email needs to be resent
         $response["id"] = $id;
         $response["email"] = $_POST["email"];
         $response["name"] = $_POST["name"];

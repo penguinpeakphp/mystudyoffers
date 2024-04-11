@@ -513,7 +513,9 @@
         require_once "partials/footer.php";
     ?>
 
+    <script src="js/owl.carousel.min.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/register.js"></script>
 </body>
 
 </html>

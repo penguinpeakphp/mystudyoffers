@@ -16,7 +16,7 @@
         }
 
         //Check if the email in the session is set
-        if (!isset($_SESSION["email"])) 
+        if (!isset($_SESSION["email"]) || !isset($_SESSION["name"])) 
         {
             //If the response variable is null, that means this
             //function is called at the page itself and we just
