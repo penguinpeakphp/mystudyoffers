@@ -357,5 +357,7 @@ create table student
     phone varchar(20) not null unique,
     email varchar(200) not null unique,
     password varchar(500) not null,
-    pincode varchar(8) not null
+    pincode varchar(8) not null,
+    activationtoken varchar(15) not null,
+    status boolean not null default false
 );

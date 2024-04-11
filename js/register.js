@@ -27,7 +27,7 @@ $(function()
 
         //Make post request for registering the student
         $.ajax({
-            url: "controllers/registerstudent.php",
+            url: "controllers/register/registerstudent.php",
             type: "POST",
             data: formdata,
             processData: false,
@@ -48,6 +48,7 @@ $(function()
                     {
                         alert("Your account has been registered");
                         $("#studentregister")[0].reset();
+                        window.location.href = "registrationsuccess.php?id="+response.id+"&email="+response.email+"&name="+response.name;
                     }
                 }
                 catch(error)
