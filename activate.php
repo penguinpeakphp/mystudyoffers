@@ -1,14 +1,19 @@
 <?php
   require_once "admin/database/db.php";
+
+  //Get the activation token from the student table
   $select = "SELECT activationtoken FROM student WHERE studentid = '{$_GET['id']}'";
   $result = $db->query($select);
   $row = mysqli_fetch_assoc($result);
+
+  //If the activation token does not match with actual one, exit the excecution
   if($row["activationtoken"] != $_GET["token"])
   {
     echo "<center>Could not activate. Please contact for support</center>";
     exit;
   }
 
+  //If the token has been matched, update the status of the student
   $update = "UPDATE student SET status = true WHERE studentid = '{$_GET['id']}'";
   $db->query($update);
 ?>

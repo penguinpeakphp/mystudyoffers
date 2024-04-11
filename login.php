@@ -58,13 +58,13 @@
                         <h2 class="login">Login</h2>
 
 
-                        <form name="login-form" method="post" action="https://demo.mystudyoffers.com/logincheck">
+                        <form id="loginform" action="https://demo.mystudyoffers.com/logincheck">
 
-                            <input type="email" name="txtemail" placeholder="E-mail" required="required">
+                            <input type="email" name="email" placeholder="E-mail" required="required">
 
-                            <input type="password" name="txtpass" placeholder="Password" required="required">
+                            <input type="password" name="password" placeholder="Password" required="required">
 
-                            <button type="submit" value="btnsubmit" class="readon btn">login</button>
+                            <button type="submit" class="readon btn">Login</button>
 
                             <div class="last-password">
 
@@ -87,6 +87,7 @@
     <?php
     require_once "partials/footer.php";
     ?>
+    <script src="js/login.js"></script>
 
 </body>
 

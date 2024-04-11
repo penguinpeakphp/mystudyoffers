@@ -85,11 +85,13 @@
     <script>
     $("#resend").on("click" , function()
     {
+        //Fetch the paramterts from the url
         let url = new URL(window.location.href);
         let id = url.searchParams.get('id');
         let email = url.searchParams.get('email');
         let name = url.searchParams.get('name');
 
+        //Make a post request for resending the email and provide information required to display in the mail
         $.post("controllers/register/resendmail.php" , {"id":id , "email":email , "name":name} , function(data)
         {
             try
