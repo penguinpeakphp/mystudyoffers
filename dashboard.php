@@ -1,7 +1,7 @@
 <?php
-    require_once "controllers/functions/globalfunctions.php";
+require_once "controllers/functions/globalfunctions.php";
 
-    checksession();
+checksession();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +36,7 @@
 
 <body>
     <?php
-        require_once "partials/header.php";
+    require_once "partials/header.php";
     ?>
 
     <div class="container">
@@ -397,9 +397,10 @@
     </section>
 
     <?php
-        require_once "partials/footer.php";
+    require_once "partials/footer.php";
     ?>
     <script src="js/custom.js"></script>
+    <script src="js/dashboard.js"></script>
 
 </body>
 

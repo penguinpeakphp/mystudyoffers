@@ -40,7 +40,7 @@ function sendactivationmail($to, $subject, $activationtoken, $id)
         global $siteurl;
 
         //Replace the content inside the email content
-        $emailContent = file_get_contents('../activationemail.html');
+        $emailContent = file_get_contents('activationemail.html');
         $emailContent = str_replace('[name]', $_POST["name"], $emailContent);
         $emailContent = str_replace('[subject]', $subject, $emailContent);
 

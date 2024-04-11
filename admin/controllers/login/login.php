@@ -31,7 +31,7 @@
         }
 
         //Set the session variables
-        $_SESSION["email"] = $_POST["email"];
+        $_SESSION["adminemail"] = $_POST["email"];
 
         end:;
     }
