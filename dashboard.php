@@ -65,7 +65,7 @@ checksession();
 
                         <a href="#"><img src="images/user.png" alt /></a>
                         <div class="d-flex flex-column">
-                            <h6 class="user-detail mb-0">Nilesh</h6>
+                            <h6 class="user-detail mb-0 name">Nilesh</h6>
                             <!--<span class="user-detail-info">1234</span>-->
                         </div>
                     </div>
@@ -74,7 +74,7 @@ checksession();
                 <section class="banner-section mb-4">
                     <div class="banner-content ">
                         <small>11-Apr-2424</small>
-                        <h2>Welcome back, Nilesh!</h2>
+                        <h2>Welcome back, <span class="name"></span>!</h2>
                         <p>Always stay updated in your student portal</p>
 
                         <div class="search-option">
@@ -322,8 +322,8 @@ checksession();
                         <h4 class="mb-3">My Information:</h4>
                         <div class="user-info">
                             <div>
-                                <p><b>Email:</b><br>Nileshsoni@gmail.com</p>
-                                <p><b>Phone:</b><br>11122233344</p>
+                                <p><b>Email:</b><br><span class="email">Nileshsoni@gmail.com</span></p>
+                                <p><b>Phone:</b><br><span class="phone">11122233344</span></p>
                             </div>
                         </div>
                         <div class="study-detail">

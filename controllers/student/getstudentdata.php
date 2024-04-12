@@ -12,7 +12,10 @@
             goto end;
         }
 
-        $response["studentdata"];
+        //Declare array for storing student data
+        $response["studentdata"] = [];
+
+        //Query the database for fetching the basic student details
         $select = $db->prepare("SELECT * FROM student WHERE studentid = ?");
         if($select == false)
         {
@@ -29,6 +32,8 @@
             }
             $result = $select->get_result();
             $row = $result->fetch_assoc();
+
+            //Put the data in the response
             $response["studentdata"] = $row;
         }
 
@@ -36,6 +41,8 @@
     }
     catch(Exception $e)
     {
-
+        failure($response , "Error Occurred while fetching student data - " . $e->getCode());
     }
+
+    echo json_encode($response);
 ?>

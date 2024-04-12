@@ -386,15 +386,15 @@ drop table if exists studentacademics;
 create table studentacademics
 (
 	studentid int not null,
-    academicid int not null,
-    majorsubjectid int not null,
-    passingyearid int not null,
-    awardingbodyid int not null,
-    resultid int not null,
-    foreign key (studentid) references student(studentid),
-    foreign key (academicid) references academic(academicid),
-    foreign key (majorsubjectid) references majorsubject(majorsubjectid),
-    foreign key (passingyearid) references passingyear(passingyearid),
-    foreign key (awardingbodyid) references awardingbody(awardingbodyid),
-    foreign key (resultid) references result(resultid)
+    academicid int,
+    majorsubjectid int,
+    passingyearid int,
+    awardingbodyid int,
+    resultid int,
+    foreign key (studentid) references student(studentid) on delete cascade,
+    foreign key (academicid) references academic(academicid) on delete set null,
+    foreign key (majorsubjectid) references majorsubject(majorsubjectid) on delete set null,
+    foreign key (passingyearid) references passingyear(passingyearid) on delete set null,
+    foreign key (awardingbodyid) references awardingbody(awardingbodyid) on delete set null,
+    foreign key (resultid) references result(resultid) on delete set null
 );
