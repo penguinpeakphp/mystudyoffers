@@ -58,6 +58,7 @@
             }
 
             //Set the session with the variables
+            $_SESSION["studentid"] = $row["studentid"];
             $_SESSION["name"] = $row["name"];
             $_SESSION["email"] = $row["email"];
         }
