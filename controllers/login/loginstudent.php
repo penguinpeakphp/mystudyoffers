@@ -50,6 +50,13 @@
                 goto end;
             }
 
+            //Check if the user is active or not
+            if($row["status"] == false)
+            {
+                failure($response , "You have not activated your account");
+                goto end;
+            }
+
             //Set the session with the variables
             $_SESSION["name"] = $row["name"];
             $_SESSION["email"] = $row["email"];

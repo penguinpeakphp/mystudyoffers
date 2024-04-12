@@ -378,3 +378,20 @@ create table student
     activationtoken varchar(15) not null,
     status boolean not null default false
 );
+
+drop table if exists studentacademics;
+create table studentacademics
+(
+	studentid int not null,
+    academicid int not null,
+    majorsubjectid int not null,
+    passingyearid int not null,
+    awardingbodyid int not null,
+    resultid int not null,
+    foreign key (studentid) references student(studentid),
+    foreign key (academicid) references academic(academicid),
+    foreign key (majorsubjectid) references majorsubject(majorsubjectid),
+    foreign key (passingyearid) references passingyear(passingyearid),
+    foreign key (awardingbodyid) references awardingbody(awardingbodyid),
+    foreign key (resultid) references result(resultid)
+);
