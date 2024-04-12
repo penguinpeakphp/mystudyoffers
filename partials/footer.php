@@ -163,6 +163,7 @@
 
                                 <h3>Register Now</h3>
                                 <p>Enter your Details to get connected with Expert Mentors.</p>
+                                <p class="error-msg"></p>
                                 <form id="studentregister">
                                     <div class="form-col">
                                         <label for="name">Name</label>

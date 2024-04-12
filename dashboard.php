@@ -59,13 +59,14 @@ checksession();
                             </ol>
                         </nav>
                     </div>
+                    <p class="error-msg"></p>
                     <div class="flex-item flex-item-2">
                         <a href="#" class="notification_content"><img src="images/notifications-1.png" class="notifiction-img" />
                             <span>0</span></a>
 
                         <a href="#"><img src="images/user.png" alt /></a>
                         <div class="d-flex flex-column">
-                            <h6 class="user-detail mb-0 name">Nilesh</h6>
+                            <h6 class="user-detail mb-0 name"></h6>
                             <!--<span class="user-detail-info">1234</span>-->
                         </div>
                     </div>
@@ -322,8 +323,8 @@ checksession();
                         <h4 class="mb-3">My Information:</h4>
                         <div class="user-info">
                             <div>
-                                <p><b>Email:</b><br><span class="email">Nileshsoni@gmail.com</span></p>
-                                <p><b>Phone:</b><br><span class="phone">11122233344</span></p>
+                                <p><b>Email:</b><br><span class="email"></span></p>
+                                <p><b>Phone:</b><br><span class="phone"></span></p>
                             </div>
                         </div>
                         <div class="study-detail">

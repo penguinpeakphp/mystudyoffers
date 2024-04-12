@@ -10,7 +10,7 @@ $(function()
             //If the response is not successful, then show the error in alert
             if(response.success == false)
             {
-                alert(response.error);
+                $(".error-msg").text(response.error)
             }
             else
             {

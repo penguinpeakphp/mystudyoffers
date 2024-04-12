@@ -57,6 +57,9 @@
 
                         <h2 class="login">Login</h2>
 
+                        <div class="error-msg">
+                        </div>
+
 
                         <form id="loginform" action="https://demo.mystudyoffers.com/logincheck">
 

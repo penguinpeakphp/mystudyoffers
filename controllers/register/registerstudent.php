@@ -76,7 +76,14 @@
     }
     catch(Exception $e)
     {
-        failure($response , "Some Error Occurred - " . $e->getCode() . " - " . $e->getMessage());
+        if($e->getCode() == 1062)
+        {
+            failure($response , "Account with same details already exists");
+        }
+        else
+        {
+            failure($response , "Some Error Occurred - " . $e->getCode() . " - " . $e->getMessage());
+        }
     }
 
     echo json_encode($response);
