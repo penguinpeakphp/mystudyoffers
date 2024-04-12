@@ -114,6 +114,23 @@ INSERT INTO testtype (testname) VALUES
 ('LanguageCert'),
 ('SAT');
 
+drop table if exists testscore;
+create table testscore
+(
+	testscoreid int not null primary key auto_increment,
+    testscore varchar(50) not null,
+    testscorestatus boolean not null default true
+);
+
+insert into testscore(testscore) values
+('Preparing to Appear'),
+('8.0 overall or above'),
+('7.5 overall'),
+('7.0 overall'),
+('6.5 overall'),
+('6.0 overall'),
+('5.5 overall or below');
+
 drop table if exists institutetype;
 create table institutetype
 (

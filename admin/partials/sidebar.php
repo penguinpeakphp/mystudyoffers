@@ -51,6 +51,11 @@
         </a>
       </li>
       <li>
+        <a href="../testscore/testscore.php">
+          <i class="bi bi-circle"></i><span>Test Score</span>
+        </a>
+      </li>
+      <li>
         <a href="../institutetype/institutetype.php">
           <i class="bi bi-circle"></i><span>Type of Institute</span>
         </a>
