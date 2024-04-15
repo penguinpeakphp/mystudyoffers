@@ -49,48 +49,6 @@ checksession();
                 <form id="academicform3">
 
                     <div class="styled-form maxwidth-100">
-                        <h4 class="title mb-10 mt-30">Higher Schooling > Commerce/Business</h4>
-                        <div class="sec-title mt-30">
-                            <h5 class="title mb-10">Passing Year</h5>
-                            <p>If pursuing tap predicted</p>
-                        </div>
-                        <div class="row clearfix">
-                            <!-- Form Group -->
-                            <div class="formrow col-lg-3">
-                                <input class="checkbox" type="radio" id="passyear79" name="passyear9" value="7">
-                                <label class="checklabel" for="passyear79" data-content="2025 or later">2025 or later</label>
-                            </div>
-                            <!-- Form Group -->
-                            <div class="formrow col-lg-3">
-                                <input class="checkbox" type="radio" id="passyear69" name="passyear9" value="6" checked>
-                                <label class="checklabel" for="passyear69" data-content="2024">2024</label>
-                            </div>
-                            <!-- Form Group -->
-                            <div class="formrow col-lg-3">
-                                <input class="checkbox" type="radio" id="passyear59" name="passyear9" value="5">
-                                <label class="checklabel" for="passyear59" data-content="2023">2023</label>
-                            </div>
-                            <!-- Form Group -->
-                            <div class="formrow col-lg-3">
-                                <input class="checkbox" type="radio" id="passyear49" name="passyear9" value="4">
-                                <label class="checklabel" for="passyear49" data-content="2022">2022</label>
-                            </div>
-                            <!-- Form Group -->
-                            <div class="formrow col-lg-3">
-                                <input class="checkbox" type="radio" id="passyear39" name="passyear9" value="3">
-                                <label class="checklabel" for="passyear39" data-content="2021">2021</label>
-                            </div>
-                            <!-- Form Group -->
-                            <div class="formrow col-lg-3">
-                                <input class="checkbox" type="radio" id="passyear29" name="passyear9" value="2">
-                                <label class="checklabel" for="passyear29" data-content="2020">2020</label>
-                            </div>
-                            <!-- Form Group -->
-                            <div class="formrow col-lg-3">
-                                <input class="checkbox" type="radio" id="passyear19" name="passyear9" value="1">
-                                <label class="checklabel" for="passyear19" data-content="2009 or before">2009 or before</label>
-                            </div>
-                        </div>
 
                         <div class="styled-form maxwidth-100 pt-30" id="submitbtns">
 

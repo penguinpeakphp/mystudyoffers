@@ -13,7 +13,7 @@
         }
 
         //Declare passing year array for storing the passing years
-        $response["passingyear"] = [];
+        $response["passingyears"] = [];
 
         //Query the database to fetch all the passing year from the database that are active
         $select = $db->prepare("SELECT * FROM passingyear WHERE passingyearstatus = 1");
@@ -37,7 +37,7 @@
             //Push the passing year values into the array
             while($row = $result->fetch_assoc())
             {
-                array_push($response["passingyear"] , $row);
+                array_push($response["passingyears"] , $row);
             }
         }
 
@@ -89,6 +89,28 @@
             while($row = $result->fetch_assoc())
             {
                 array_push($response["awardingbodies"] , $row);
+            }
+        }
+
+        $select = $db->prepare("SELECT sa.academicid , academicname , majorsubjectname , ms.majorsubjectid FROM studentacademics sa INNER JOIN academic a ON sa.academicid = a.academicid INNER JOIN majorsubject ms ON ms.majorsubjectid = sa.majorsubjectid WHERE studentid = ?");
+        if($select == false)
+        {
+            failure($response , "Error while fetching selected academics and major subjects");
+            goto end;
+        }
+        else
+        {
+            $select->bind_param("i" , $_SESSION["studentid"]);
+            if($select->execute() == false)
+            {
+                failure($response , "Error while fetching selected academics and major subjects");
+                goto end;
+            }
+            $response["academicsubject"] = [];
+            $result = $select->get_result();
+            while($row = $result->fetch_assoc())
+            {
+                array_push($response["academicsubject"] , $row);
             }
         }
 
