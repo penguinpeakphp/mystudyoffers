@@ -12,18 +12,11 @@
             goto end;
         }
 
-        //Check if the type has been supplied
-        if(!isset($_GET["type"]) || $_GET["type"] == "")
-        {
-            failure($response , "Invalid data requested");
-            goto end;
-        }
-
         //Declare array for storing the data
         $response["data"] = [];
 
-        //Query the respective table as recieved in the get query
-        $result = $db->query("SELECT * FROM {$_GET["type"]} WHERE {$_GET["type"]}status = true");
+        //Query the academic table as recieved in the get query
+        $result = $db->query("SELECT * FROM academic WHERE academicstatus = 1");
         if($result == false)
         {
             failure($response , "Error while fetching data");
@@ -40,7 +33,7 @@
     }
     catch(Exception $e)
     {
-        failure($response , "Error Occurred while updating data - " . $e->getMessage());
+        failure($response , "Error Occurred while updating data - " . $e->getCode());
     }
 
     echo json_encode($response);

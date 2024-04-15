@@ -78,7 +78,7 @@ checksession();
                         <div class="academics mb-5">
                             <div class="title mb-2">
                                 <h5>My Academics</h5>
-                                <a href="https://demo.mystudyoffers.com/stregi-step2">Edit</a>
+                                <a href="academicprofile1.php">Edit</a>
                             </div>
                             <div class="education-detail">
 

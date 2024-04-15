@@ -82,7 +82,7 @@
         }
         else
         {
-            failure($response , "Some Error Occurred - " . $e->getCode() . " - " . $e->getMessage());
+            failure($response , "Some Error Occurred - " . $e->getCode());
         }
     }
 
