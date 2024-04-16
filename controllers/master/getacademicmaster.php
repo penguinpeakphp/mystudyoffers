@@ -29,6 +29,38 @@
             array_push($response["data"] , $row);
         }
 
+        //Declare array for storing the selected academic data
+        $response["academic1"] = [];
+
+        //Query the database for selecting the selected academic data
+        $select = $db->prepare("SELECT sa.academicid FROM studentacademics sa INNER JOIN academic a WHERE studentid = ? AND a.academicstatus = 1");
+        if($select == false)
+        {
+            failure($response , "Error while fetching your existing academic data");
+            goto end;
+        }
+        else
+        {
+            //Bind the student id to the query
+            $select->bind_param("i" , $_SESSION["studentid"]);
+
+            //Execute the query
+            if($select->execute() == false)
+            {
+                failure($response , "Error while fetching your existing academic data");
+                goto end;
+            }
+
+            //Fetch the result
+            $result = $select->get_result();
+
+            //Push the data into the array
+            while($row = $result->fetch_assoc())
+            {
+                array_push($response["academic1"] , $row["academicid"]);
+            }
+        }
+
         end:;
     }
     catch(Exception $e)

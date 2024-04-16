@@ -38,45 +38,19 @@ $(function()
                             </div>
                             `);
                         }
+
+                        //Loop through all the academic ids that we selected by the student
+                        for(let i=0; i<response.academic1.length; i++)
+                        {
+                            //Check each one of them
+                            $(`#chkquali${response.academic1[i]}`).prop("checked" , true);
+                        }
                     }
                 }
                 catch(error)
                 {
                     alert("Error occurred while trying to read server response");
                 }
-            }
-        });
-
-        //Once all the options have been fetched, request the server to fetch the previously selected academics from the table
-        $.get("controllers/academic/getacademicdata.php" , {"academic1":"academic1"} , function(data)
-        {
-            try
-            {
-                //Parse the data received from the server
-                let response = JSON.parse(data);
-
-                //If the response is not successful, then show the error in alert
-                if(response.success == false)
-                {
-                    $(".error-msg").text(response.error);
-                    if(response.login == true)
-                    {
-                        window.location.href = "login.php";
-                    }
-                }
-                else
-                {
-                    //Loop through all the academic ids that we selected by the student
-                   for(let i=0; i<response.academic1.length; i++)
-                   {
-                        //Check each one of them
-                        $(`#chkquali${response.academic1[i]}`).prop("checked" , true);
-                   }
-                }
-            }
-            catch(error)
-            {
-                alert("Error occurred while trying to read server response");
             }
         });
     }

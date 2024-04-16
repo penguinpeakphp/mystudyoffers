@@ -30,7 +30,7 @@
             </a>
         </li>
         <li>
-            <a href="javascript:void(0)" id="logout">
+            <a href="javascript:void(0)" class="logout">
                 <i class="bx bxs-log-out"></i>
                 <span class="link_name">Logout</span>
             </a>

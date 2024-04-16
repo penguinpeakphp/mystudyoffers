@@ -1,7 +1,7 @@
 $(function()
 {
     //Make request to logout controller
-    $("#logout").on("click" , function()
+    $(".logout").on("click" , function()
     {
         $.get("controllers/logout/logout.php" , {} , function(data)
         {

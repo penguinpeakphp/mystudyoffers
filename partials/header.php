@@ -1,5 +1,6 @@
 <?php
     require_once "controllers/globaldata.php";
+    if(!isset($_SESSION)){session_start();}
 ?>
 <header id="header">
     <div class="container">
@@ -65,10 +66,26 @@
                         </div>
                     </div>
 
-                    <div class="header-btn">
-                        <a href="/login.php" type="button" class="login-btn">Login</a>
-                        <a type="button" class="register-btn" id="openregister">Register</a>
-                    </div>
+                    <?php
+                        if(isset($_SESSION["name"]))
+                        {
+                    ?>
+                            <div class="header-btn">
+                                <a href="/dashboard.php" type="button" class="login-btn"><?= $_SESSION["name"] ?></a>
+                                <a type="button" class="register-btn logout">Logout</a>
+                            </div>
+                    <?php   
+                        }
+                        else
+                        {
+                    ?>
+                            <div class="header-btn">
+                                <a href="/login.php" type="button" class="login-btn">Login</a>
+                                <a type="button" class="register-btn" id="openregister">Register</a>
+                            </div>
+                    <?php
+                        }        
+                    ?>
                 </div>
             </div>
         </div>
