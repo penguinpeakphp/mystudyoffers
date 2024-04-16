@@ -99,7 +99,68 @@
         //Check if it is the second part of acadmic data submission
         if(isset($_POST["academic3"]) && $_POST["academic3"] == "academic3")
         {
-            
+            //Loop through all the passing year objects
+            foreach($_POST["passingyears"] as $passingyear)
+            {
+                //Break passing year into key value pairs
+                foreach($passingyear as $key => $value)
+                {
+                    //Query the database to update the passing year for the respective academic id and studentid
+                    $update = $db->prepare("UPDATE studentacademics SET passingyearid = ? WHERE studentid = ? AND academicid = ?");
+
+                    //Bind the parameters
+                    $update->bind_param("iii" , $value , $_SESSION["studentid"] , $key);
+
+                    //Execute the query
+                    if($update->execute() == false)
+                    {
+                        failure($response , "Error while updating passing year");
+                        goto end;
+                    }
+                }
+            }
+
+            //Loop through all the result objects
+            foreach($_POST["results"] as $result)
+            {
+                //Break passing year into key value pairs
+                foreach($result as $key => $value)
+                {
+                    //Query the database to update the result for the respective academic id and studentid
+                    $update = $db->prepare("UPDATE studentacademics SET resultid = ? WHERE studentid = ? AND academicid = ?");
+
+                    //Bind the parameters
+                    $update->bind_param("iii" , $value , $_SESSION["studentid"] , $key);
+
+                    //Execute the query
+                    if($update->execute() == false)
+                    {
+                        failure($response , "Error while updating result");
+                        goto end;
+                    }
+                }
+            }
+
+            //Loop through all the awarding body objects
+            foreach($_POST["awardingbodies"] as $awardingbody)
+            {
+                //Break awarding body into key value pairs
+                foreach($awardingbody as $key => $value)
+                {
+                    //Query the database to update the awarding body for the respective academic id and studentid
+                    $update = $db->prepare("UPDATE studentacademics SET awardingbodyid = ? WHERE studentid = ? AND academicid = ?");
+
+                    //Bind the parameters
+                    $update->bind_param("iii" , $value , $_SESSION["studentid"] , $key);
+
+                    //Execute the queries
+                    if($update->execute() == false)
+                    {
+                        failure($response , "Error while updating the awardingbody");
+                        goto end;
+                    }
+                }
+            }
         }
 
         end:;
