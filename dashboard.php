@@ -222,7 +222,7 @@ checksession();
                         <div class="academics mb-5">
                             <div class="title mb-2">
                                 <h5>My Test Scores</h5>
-                                <a href="https://demo.mystudyoffers.com/stregi-step2?stepinfo=nextqualification">Edit</a>
+                                <a href="testscoreprofile.php">Edit</a>
                             </div>
                             <div class="education-detail">
 

@@ -415,7 +415,8 @@ create table studentqualification
 	studentid int not null,
     qualificationid int not null,
     foreign key(studentid) references student(studentid),
-    foreign key(qualificationid) references qualification(qualificationid)
+    foreign key(qualificationid) references qualification(qualificationid),
+    primary key(studentid , qualificationid)
 );
 
 insert into studentqualification values(1 , 3),(1 , 7);
@@ -426,7 +427,39 @@ create table studentqualificationsub
 	studentid int not null,
     qualificationsubid int not null,
     foreign key(studentid) references student(studentid),
-    foreign key(qualificationsubid) references qualificationsub(qualificationsubid)
+    foreign key(qualificationsubid) references qualificationsub(qualificationsubid),
+    primary key(studentid , qualificationsubid)
 );
 
 insert into studentqualificationsub values(1 , 15),(1 , 3),(1 , 6);
+
+drop table if exists studentworkexperience;
+create table studentworkexperience
+(
+	studentid int not null,
+    workexperienceid int not null,
+	foreign key(studentid) references student(studentid),
+    foreign key(workexperienceid) references workexperience(workexperienceid),
+    primary key (studentid , workexperienceid)
+);
+
+insert into studentworkexperience values(1 , 4);
+
+drop table if exists testtypetestscore;
+create table testtypetestscore
+(
+	studentid int not null,
+    testid int not null,
+    testscoreid int not null,
+    primary key(studentid , testid , testscoreid)
+);
+
+insert into testtypetestscore values
+(1 , 1 , 1),
+(1 , 2 , 1),
+(1 , 3 , 1),
+(1 , 4 , 1),
+(1 , 5 , 1),
+(1 , 6 , 1),
+(1 , 7 , 1),
+(1 , 8 , 1);

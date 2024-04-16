@@ -127,17 +127,21 @@ $(function()
             //Fetch the checked radio
             let $checkbox = $(this).find("input[type='radio']:checked");
 
-            //Fetch the value
-            let value = $checkbox.val();
+            //Only proceed if anything is checked
+            if($checkbox.length != 0)
+            {
+                //Fetch the value
+                let value = $checkbox.val();
 
-            //Extract the academic id from the name attribute
-            let academicid = $checkbox.attr("name").substring("passingyear".length);
+                //Extract the academic id from the name attribute
+                let academicid = $checkbox.attr("name").substring("passingyear".length);
 
-            //Create object and push into the array
-            let passingyearobj = {};
-            passingyearobj[academicid] = value;
+                //Create object and push into the array
+                let passingyearobj = {};
+                passingyearobj[academicid] = value;
 
-            passingyears.push(passingyearobj);
+                passingyears.push(passingyearobj);
+            }
         });
 
         //Loop through all the result divs
@@ -146,17 +150,21 @@ $(function()
             //Fetch the checked radio
             let $checkbox = $(this).find("input[type='radio']:checked");
 
-            //Fetch the value
-            let value = $checkbox.val();
+            //Only proceed if anything is checked
+            if($checkbox.length != 0)
+            {
+                //Fetch the value
+                let value = $checkbox.val();
 
-            //Extract the academic id from the name attribute
-            let academicid = $checkbox.attr("name").substring("result".length);
+                //Extract the academic id from the name attribute
+                let academicid = $checkbox.attr("name").substring("result".length);
 
-            //Create object and push into the array
-            let resultobj = {};
-            resultobj[academicid] = value;
+                //Create object and push into the array
+                let resultobj = {};
+                resultobj[academicid] = value;
 
-            results.push(resultobj);
+                results.push(resultobj);
+            }
         });
 
         $(".awardingbody").each(function()
@@ -164,17 +172,21 @@ $(function()
             //Fetch the checked radio
             let $checkbox = $(this).find("input[type='radio']:checked");
 
-            //Fetch the value
-            let value = $checkbox.val();
+            //Only proceed if anything is checked
+            if($checkbox.length != 0)
+            {
+                //Fetch the value
+                let value = $checkbox.val();
 
-            //Extract the academic id from the name attribute
-            let academicid = $checkbox.attr("name").substring("awardingbody".length);
+                //Extract the academic id from the name attribute
+                let academicid = $checkbox.attr("name").substring("awardingbody".length);
 
-            //Create object and push into the array
-            let awardingbodyobj = {};
-            awardingbodyobj[academicid] = value;
+                //Create object and push into the array
+                let awardingbodyobj = {};
+                awardingbodyobj[academicid] = value;
 
-            awardingbodies.push(awardingbodyobj);
+                awardingbodies.push(awardingbodyobj);
+            }
         });
 
         //Request the server for updating the major subject of the respective academic

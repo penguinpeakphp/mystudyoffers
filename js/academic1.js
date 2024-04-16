@@ -3,12 +3,10 @@ $(function()
     //Function for getting academic data
     function getacademicdata()
     {
-        //Make a synchronous ajax call for getting the list of academic qualifications from the masters table
         $.ajax({
             url: "controllers/academic/getacademicmaster.php",
             type: "GET",
             data: {},
-            async:false,
             success: function(data)
             {
                 try

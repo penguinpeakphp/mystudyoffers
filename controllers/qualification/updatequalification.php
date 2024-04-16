@@ -133,7 +133,7 @@
         }
 
         //If everything is successful, commit the transaction
-        if($response["success"] == true)
+        if($response["success"] == false)
         {
             $db->commit();
         }

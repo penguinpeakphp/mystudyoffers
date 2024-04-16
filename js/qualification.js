@@ -95,7 +95,8 @@ $(function()
                     }
                     else
                     {
-                        
+                        //Redirect to test score profile page
+                        window.location.href = "testscoreprofile.php";
                     }
                 }
                 catch(error)
