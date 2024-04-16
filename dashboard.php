@@ -155,7 +155,7 @@ checksession();
                         <div class="academics mb-5">
                             <div class="title mb-2">
                                 <h5>My Qualification</h5>
-                                <a href="https://demo.mystudyoffers.com/stregi-step2?stepinfo=myacademic_dtl">Edit</a>
+                                <a href="qualificationprofile.php">Edit</a>
                             </div>
                             <div class="education-detail">
                                 <div class="mb-3">

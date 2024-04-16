@@ -18,13 +18,13 @@
             <span class="link_name">My Account</span>
         </li>
         <li class="active">
-            <a href="https://demo.mystudyoffers.com/student-dashboard">
+            <a href="dashboard.php">
                 <i class="bx bxs-fridge active"></i>
                 <span class="link_name active">Dashboard</span>
             </a>
         </li>
         <li>
-            <a href="https://demo.mystudyoffers.com/stregi-step2">
+            <a href="academicprofile1.php">
                 <i class="bx bxs-user"></i>
                 <span class="link_name">My Profile</span>
             </a>

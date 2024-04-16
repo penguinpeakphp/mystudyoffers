@@ -200,7 +200,7 @@ $(function()
                     }
                     else
                     {
-                        
+                        window.location.href = "qualificationprofile.php";
                     }
                 }
                 catch(error)

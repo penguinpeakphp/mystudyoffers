@@ -119,7 +119,7 @@
     }
     catch(Exception $e)
     {
-        failure($response , "Error Occurred while updating data - " . $e->getCode());
+        failure($response , "Error Occurred while fetching data - " . $e->getCode());
     }
 
     echo json_encode($response);
