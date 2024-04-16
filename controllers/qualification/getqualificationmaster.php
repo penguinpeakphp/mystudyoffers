@@ -36,7 +36,7 @@
         $result = $db->query("SELECT * FROM qualificationsub WHERE qualificationsubstatus = 1");
         if($result == false)
         {
-            failure($response , "Error while getting qualification sub list");
+            failure($response , "Error while getting next qualification list");
             goto end;
         }
 
@@ -83,7 +83,7 @@
         $select = $db->prepare("SELECT qs.qualificationsubid , qualificationsubname FROM qualificationsub qs INNER JOIN studentqualificationsub sqs ON qs.qualificationsubid = sqs.qualificationsubid WHERE studentid = ?");
         if($select == false)
         {
-            failure($response , "Error while getting student qualification sub");
+            failure($response , "Error while getting student next qualification");
             goto end;
         }
         else
@@ -94,7 +94,7 @@
              //Execute the query
              if($select->execute() == false)
              {
-                 failure($response , "Error while getting student qualification sub");
+                 failure($response , "Error while getting student next qualification");
                  goto end;
              }
 

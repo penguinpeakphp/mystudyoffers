@@ -22,11 +22,15 @@
                 goto end;
             }
 
+            //Start the transaction as there are two queries need to be run for one functionality
+            $db->begin_transaction();
+
             //Delete old academic data of the student
             $delete = $db->prepare("DELETE FROM studentacademics WHERE studentid = ?");
             if($delete == false)
             {
                 failure($response , "Error while removing old academic data");
+                $db->rollback();
                 goto end;
             }
             else
@@ -36,6 +40,7 @@
                 if($delete->execute() == false)
                 {
                     failure($response , "Error while removing old academic data");
+                    $db->rollback();
                     goto end;
                 }
             }
@@ -48,6 +53,7 @@
                 if($insert == false)
                 {
                     failure($response , "Error while adding your academic data");
+                    $db->rollback();
                     goto end;
                 }
                 else
@@ -57,9 +63,16 @@
                     if($insert->execute() == false)
                     {
                         failure($response , "Error while adding your academic data");
+                        $db->rollback();
                         goto end;
                     }
                 }
+            }
+
+            //If everything is successful, then commit the database
+            if($response["success"] == true)
+            {
+                $db->commit();
             }
         }
 
