@@ -418,6 +418,8 @@ create table studentqualification
     foreign key(qualificationid) references qualification(qualificationid)
 );
 
+insert into studentqualification values(1 , 3),(1 , 4);
+
 drop table if exists studentqualificationsub;
 create table studentqualificationsub
 (
@@ -426,3 +428,5 @@ create table studentqualificationsub
     foreign key(studentid) references student(studentid),
     foreign key(qualificationsubid) references qualificationsub(qualificationsubid)
 );
+
+insert into studentqualificationsub values(1 , 15),(1 , 3);

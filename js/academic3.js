@@ -4,7 +4,7 @@ $(function()
     function getrestacademicdata()
     {
         $.ajax({
-            url: "controllers/master/getrestacademicmaster.php",
+            url: "controllers/academic/getrestacademicmaster.php",
             type: "GET",
             data: {},
             success: function(data)

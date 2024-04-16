@@ -4,7 +4,7 @@ $(function()
     function getmajorsubjectdata()
     {
         $.ajax({
-            url: "controllers/master/getmajorsubjectmaster.php",
+            url: "controllers/academic/getmajorsubjectmaster.php",
             type: "GET",
             data: {},
             success: function(data)

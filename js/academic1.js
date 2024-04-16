@@ -5,7 +5,7 @@ $(function()
     {
         //Make a synchronous ajax call for getting the list of academic qualifications from the masters table
         $.ajax({
-            url: "controllers/master/getacademicmaster.php",
+            url: "controllers/academic/getacademicmaster.php",
             type: "GET",
             data: {},
             async:false,
