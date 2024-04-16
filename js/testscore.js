@@ -121,7 +121,30 @@ $(function()
             data: {"testscores":testscores , "workexperience":$("input[name=listworkexp]:checked").val()},
             success: function(data)
             {
-                console.log(data);
+                try
+                {
+                    //Parse the data received from the server
+                    let response = JSON.parse(data);
+
+                    //If the response is not successful, then show the error in alert
+                    if(response.success == false)
+                    {
+                        $(".error-msg").text(response.error);
+                        if(response.login == true)
+                        {
+                            window.location.href = "login.php";
+                        }
+                    }
+                    else
+                    {
+                        //Redirect to country interest page
+                        window.location.href = "countryinterest.php";
+                    }
+                }
+                catch(error)
+                {
+                    alert("Error occurred while trying to read server response");
+                }
             }
         });
     });

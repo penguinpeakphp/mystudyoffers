@@ -212,6 +212,7 @@ $(function()
                     }
                     else
                     {
+                        //Redirect to edit qualification profile page
                         window.location.href = "qualificationprofile.php";
                     }
                 }
