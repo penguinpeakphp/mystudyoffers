@@ -463,3 +463,15 @@ insert into testtypetestscore values
 (1 , 6 , 1),
 (1 , 7 , 1),
 (1 , 8 , 1);
+
+drop table if exists studentcountry;
+create table studentcountry
+(
+	studentid int not null,
+	countryid int not null,
+    foreign key(studentid) references student(studentid),
+    foreign key(countryid) references country(countryid),
+    primary key(studentid , countryid)
+);
+
+insert into studentcountry values(1 , 2),(1 , 5),(1,8);

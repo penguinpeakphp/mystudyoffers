@@ -1,3 +1,8 @@
+<?php
+require_once "controllers/functions/globalfunctions.php";
+
+checksession();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +46,7 @@
 
 
                 <!-- Login Form -->
-                <form id="studentregi">
+                <form id="countryinterestform">
 
                     <!--Destimation section-->
                     <div class="styled-form maxwidth-100 pb-30">
@@ -49,39 +54,8 @@
                             <h4 class="title mb-10">My Destinations</h4>
                             <p>Select min 3 Countries</p>
                         </div>
-                        <div class="row clearfix">
-                            <div class="formrow col-lg-3">
-                                <input class="checkbox" type="checkbox" id="chkdesti15" name="chkdesti[]" value="15" checked>
-                                <label class="checklabel" for="chkdesti15" data-content="Asia">Asia</label>
-                            </div>
-                            <div class="formrow col-lg-3">
-                                <input class="checkbox" type="checkbox" id="chkdesti11" name="chkdesti[]" value="11" checked>
-                                <label class="checklabel" for="chkdesti11" data-content="Australia">Australia</label>
-                            </div>
-                            <div class="formrow col-lg-3">
-                                <input class="checkbox" type="checkbox" id="chkdesti9" name="chkdesti[]" value="9" checked>
-                                <label class="checklabel" for="chkdesti9" data-content="Canada">Canada</label>
-                            </div>
-                            <div class="formrow col-lg-3">
-                                <input class="checkbox" type="checkbox" id="chkdesti12" name="chkdesti[]" value="12" checked>
-                                <label class="checklabel" for="chkdesti12" data-content="Europe">Europe</label>
-                            </div>
-                            <div class="formrow col-lg-3">
-                                <input class="checkbox" type="checkbox" id="chkdesti14" name="chkdesti[]" value="14">
-                                <label class="checklabel" for="chkdesti14" data-content="New Zealand">New Zealand</label>
-                            </div>
-                            <div class="formrow col-lg-3">
-                                <input class="checkbox" type="checkbox" id="chkdesti13" name="chkdesti[]" value="13" checked>
-                                <label class="checklabel" for="chkdesti13" data-content="Other">Other</label>
-                            </div>
-                            <div class="formrow col-lg-3">
-                                <input class="checkbox" type="checkbox" id="chkdesti8" name="chkdesti[]" value="8" checked>
-                                <label class="checklabel" for="chkdesti8" data-content="United Kingdom">United Kingdom</label>
-                            </div>
-                            <div class="formrow col-lg-3">
-                                <input class="checkbox" type="checkbox" id="chkdesti10" name="chkdesti[]" value="10" checked>
-                                <label class="checklabel" for="chkdesti10" data-content="USA">USA</label>
-                            </div>
+                        <div class="row clearfix" id="countries">
+                            
                         </div>
                     </div>
 
