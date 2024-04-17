@@ -29,8 +29,30 @@
         //Begin transaction as there are few queries needed to be run for one functionality
         $db->begin_transaction();
 
+        //Query the database to delete old work experience
+        $delete = $db->prepare("DELETE FROM studentworkexperience WHERE studentid = ?");
+        if($delete == false)
+        {
+            failure($response , "Error while removing old work experience");
+            $db->rollback();
+            goto end;
+        }
+        else
+        {
+            //Bind the parameters
+            $delete->bind_param("i" , $_SESSION["studentid"]);
+
+            //Execute the query
+            if($delete->execute() == false)
+            {
+                failure($response , "Error wihle removing old work experience");
+                $db->rollback();
+                goto end;
+            }
+        }
+
         //Query the database for replacing the work experience value
-        $replace = $db->prepare("REPLACE INTO studentworkexperience VALUES(? , ?)");
+        $replace = $db->prepare("INSERT INTO studentworkexperience VALUES(? , ?)");
         if($replace == false)
         {
             failure($response , "Error while updating the work experience");

@@ -217,3 +217,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/register.js"></script>
     <script src="js/logout.js"></script>
+    <script>
+        let currentFilename = window.location.pathname.split('/').pop();
+        $(`.sidemenu .mb-4  a[href='${currentFilename}']`).parent().addClass("active");
+    </script>

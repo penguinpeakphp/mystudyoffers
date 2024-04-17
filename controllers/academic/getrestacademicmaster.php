@@ -92,7 +92,9 @@
             }
         }
 
-        $select = $db->prepare("SELECT sa.academicid , academicname , majorsubjectname , ms.majorsubjectid FROM studentacademics sa INNER JOIN academic a ON sa.academicid = a.academicid INNER JOIN majorsubject ms ON ms.majorsubjectid = sa.majorsubjectid WHERE studentid = ?");
+        $response["academicsubject"] = [];
+
+        $select = $db->prepare("SELECT sa.academicid , academicname , majorsubjectname , ms.majorsubjectid , (SELECT passingyear FROM passingyear WHERE passingyearid = sa.passingyearid) AS passingyear , (SELECT resultname FROM result WHERE resultid = sa.resultid) AS resultname , (SELECT awardingbodyname FROM awardingbody WHERE awardingbodyid = sa.awardingbodyid) AS awardingbodyname FROM studentacademics sa INNER JOIN academic a ON sa.academicid = a.academicid INNER JOIN majorsubject ms ON ms.majorsubjectid = sa.majorsubjectid WHERE studentid = ?");
         if($select == false)
         {
             failure($response , "Error while fetching selected academics and major subjects");
@@ -106,7 +108,6 @@
                 failure($response , "Error while fetching selected academics and major subjects");
                 goto end;
             }
-            $response["academicsubject"] = [];
             $result = $select->get_result();
             while($row = $result->fetch_assoc())
             {
@@ -119,7 +120,7 @@
     }
     catch(Exception $e)
     {
-        failure($response , "Error Occurred while fetching data - " . $e->getCode());
+        failure($response , "Error Occurred while fetching data - " . $e->getMessage());
     }
 
     echo json_encode($response);

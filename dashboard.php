@@ -80,72 +80,7 @@ checksession();
                                 <h5>My Academics</h5>
                                 <a href="academicprofile1.php">Edit</a>
                             </div>
-                            <div class="education-detail">
-
-                                <div class="mb-3">
-                                    <span class="education-title">
-                                        Higher Schooling > Humanities or Arts <!--<span class="border-line"></span>-->
-                                        <span></span>
-                                </div>
-                                <div class="education mb-3">
-                                    <div class="subject-row">
-                                        <div class="progress-bar">
-                                            <div class="progress-fill pboxwidth">Passing Year<br>2025 or later</div>
-                                            <div class="progress-fill pboxwidth">Result<br>95% to 100%</div>
-                                            <div class="progress-fill pboxwidth" title="CBSE">Awarding Body<br>CBSE...</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="mb-3">
-                                    <span class="education-title">
-                                        Bachelor Degree > Art & Design <!--<span class="border-line"></span>-->
-                                        <span></span>
-                                </div>
-                                <div class="education mb-3">
-                                    <div class="subject-row">
-                                        <div class="progress-bar">
-                                            <div class="progress-fill pboxwidth">Passing Year<br>2025 or later</div>
-                                            <div class="progress-fill pboxwidth">Result<br>80% to 89%</div>
-                                            <div class="progress-fill pboxwidth" title="Open University (Including distance learning)">Awarding Body<br>Open University (Inc...</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="mb-3">
-                                    <span class="education-title">
-                                        Masters Degree > Art & Design <!--<span class="border-line"></span>-->
-                                        <span></span>
-                                </div>
-                                <div class="education mb-3">
-                                    <div class="subject-row">
-                                        <div class="progress-bar">
-                                            <div class="progress-fill pboxwidth">Passing Year<br>2025 or later</div>
-                                            <div class="progress-fill pboxwidth">Result<br>95% to 100%</div>
-                                            <div class="progress-fill pboxwidth" title="Polytechnics, Technical Institutes">Awarding Body<br>Polytechnics, Techni...</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="mb-3">
-                                    <span class="education-title">
-                                        PHd > Sciences <!--<span class="border-line"></span>-->
-                                        <span></span>
-                                </div>
-                                <div class="education mb-3">
-                                    <div class="subject-row">
-                                        <div class="progress-bar">
-                                            <div class="progress-fill pboxwidth">Passing Year<br>2024</div>
-                                            <div class="progress-fill pboxwidth">Result<br>90% to 94%</div>
-                                            <div class="progress-fill pboxwidth" title="Private University (Including deemed)">Awarding Body<br>Private University (...</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
+                            <div class="education-detail" id="academicdetail">
                             </div>
                         </div>
 
@@ -157,7 +92,7 @@ checksession();
                                 <h5>My Qualification</h5>
                                 <a href="qualificationprofile.php">Edit</a>
                             </div>
-                            <div class="education-detail">
+                            <div class="education-detail" id="qualificationlevel">
                                 <div class="mb-3">
                                     <span class="education-title">
                                         Level of Qualification
@@ -165,51 +100,14 @@ checksession();
                                         <span></span>
                                 </div>
 
-                                <div class="education mb-3">
-                                    <div class="subject-row">
-                                        <div class="progress-bar">
-                                            <div class="progress-fill pboxwidth_full">Masters Degree - Course Work</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="education mb-3">
-                                    <div class="subject-row">
-                                        <div class="progress-bar">
-                                            <div class="progress-fill pboxwidth_full">PG Cert/Diploma</div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                             <!-- Next Qualification -->
-                            <div class="education-detail">
+                            <div class="education-detail" id="nextqualification">
                                 <div class="mb-3">
                                     <span class="education-title">
                                         Next Qualification
                                         <!--<span class="border-line"></span>-->
                                         <span></span>
-                                </div>
-
-                                <div class="education mb-3">
-                                    <div class="subject-row">
-                                        <div class="progress-bar">
-                                            <div class="progress-fill pboxwidth_full">Business, HR, Marketing, Supply Chain</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="education mb-3">
-                                    <div class="subject-row">
-                                        <div class="progress-bar">
-                                            <div class="progress-fill pboxwidth_full">Heath Sciences</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="education mb-3">
-                                    <div class="subject-row">
-                                        <div class="progress-bar">
-                                            <div class="progress-fill pboxwidth_full">Pure Sciences - Chemistry, Biology, Physics, Math</div>
-                                        </div>
-                                    </div>
                                 </div>
 
                             </div>
@@ -228,29 +126,13 @@ checksession();
 
                                 <div class="education mb-3">
                                     <div class="subject-row">
-                                        <div class="progress-bar">
-
-                                            <div class="progress-fill pboxwidth">
-                                                IELTS<br>Preparing to Appear </div>
-
-
-
-
-                                            <div class="progress-fill pboxwidth">
-                                                PTE<br>8.0 overall or above </div>
-
-
-
-
-                                            <div class="progress-fill pboxwidth">
-                                                GRE<br>7.5 overall </div>
-
+                                        <div class="progress-bar" id="testscores">
                                         </div>
                                     </div>
                                 </div>
 
 
-                                <div class="education mb-3">
+                                <!-- <div class="education mb-3">
                                     <div class="subject-row">
                                         <div class="progress-bar">
 
@@ -289,7 +171,7 @@ checksession();
 
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
 
 
@@ -310,26 +192,20 @@ checksession();
                         </div>
                         <div class="study-detail">
                             <h4 class="mb-4">Details</h4>
-                            <div class="detail mb-3">
-                                <h6 class="pb-2">Country of Interest (<a href="https://demo.mystudyoffers.com/stregi-step2?stepinfo=workexp">Edit</a>)</h6>
-                                <span># United Kingdom</span>
-                                <span># Canada</span>
-                                <span># USA</span>
-                                <span># Australia</span>
-                                <span># Europe</span>
-                                <span># Other</span>
-                                <span># Asia</span>
+                            <div class="detail mb-3" id="countrylist">
+                                <h6 class="pb-2">Country of Interest (<a href="countryinterest.php">Edit</a>)</h6>
                             </div>
 
 
                             <div class="detail mb-3">
-                                <h6 class="pb-2">My Work Experience (<a href="https://demo.mystudyoffers.com/stregi-step2?stepinfo=nextqualification">Edit</a>)</h6>
-                                <span>4 Years or above Relevant to Studies</span>
+                                <h6 class="pb-2">My Work Experience (<a href="testscoreprofile.php">Edit</a>)</h6>
+                                <span id="workexperience"></span>
                             </div>
 
 
                         </div>
                     </div>
+                </section>
         </div>
     </div>
     </section>

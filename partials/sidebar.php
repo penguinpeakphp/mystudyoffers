@@ -17,16 +17,22 @@
             <i class="bx bxs-user-circle"></i>
             <span class="link_name">My Account</span>
         </li>
-        <li class="active">
+        <li>
             <a href="dashboard.php">
-                <i class="bx bxs-fridge active"></i>
-                <span class="link_name active">Dashboard</span>
+                <i class="bx bxs-fridge"></i>
+                <span class="link_name">Dashboard</span>
             </a>
         </li>
         <li>
             <a href="academicprofile1.php">
                 <i class="bx bxs-user"></i>
                 <span class="link_name">My Profile</span>
+            </a>
+        </li>
+        <li>
+            <a href="queries.php">
+                <i class="bx bxs-user"></i>
+                <span class="link_name">Queries</span>
             </a>
         </li>
         <li>

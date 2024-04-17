@@ -30,7 +30,7 @@
         }
 
         //Query the database for fetching the work experience of the student
-        $select = $db->prepare("SELECT * FROM studentworkexperience WHERE studentid = ?");
+        $select = $db->prepare("SELECT s.workexperienceid , workexperiencename FROM studentworkexperience s INNER JOIN workexperience w ON s.workexperienceid = w.workexperienceid WHERE studentid = ?");
         if($select == false)
         {
             failure($response , "Error while fetching your work experience");
@@ -50,10 +50,13 @@
 
             //Fetch the result and fetch one row
             $result = $select->get_result();
-            $row = $result->fetch_assoc();
-
-            //Assign the value to response array
-            $response["workexperience"] = $row["workexperienceid"];
+            if(mysqli_num_rows($result) != 0)
+            {
+                $row = $result->fetch_assoc();
+                //Assign the value to response
+                $response["workexperience"] = $row["workexperienceid"];
+                $response["workexperiencename"] = $row["workexperiencename"];
+            }
         }
 
         //Declare an array to store the test types
@@ -92,7 +95,7 @@
 
         $response["testtypetestscores"] = [];
         //Query the database to fetch the test scores of each test type
-        $select = $db->prepare("SELECT testid , testscoreid FROM testtypetestscore WHERE studentid = ?");
+        $select = $db->prepare("SELECT ttts.testid , ttts.testscoreid , testname , testscore FROM testtypetestscore ttts INNER JOIN testtype tt ON ttts.testid = tt.testid INNER JOIN testscore ts ON ttts.testscoreid = ts.testscoreid WHERE studentid = ?");
         if($select == false)
         {
             failure($response , "Error while fetching test score in each test");
@@ -122,7 +125,7 @@
     }
     catch(Exception $e)
     {
-        failure($response , "Error Occurred while fetching test score data - " . $e->getCode());
+        failure($response , "Error Occurred while fetching test score data - " . $e->getMessage());
     }
 
     echo json_encode($response);

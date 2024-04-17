@@ -31,9 +31,10 @@
 
         //Declare array for storing the selected academic data
         $response["academic1"] = [];
+        $response["academic1name"] = [];
 
         //Query the database for selecting the selected academic data
-        $select = $db->prepare("SELECT sa.academicid FROM studentacademics sa INNER JOIN academic a WHERE studentid = ? AND a.academicstatus = 1");
+        $select = $db->prepare("SELECT sa.academicid , a.academicname FROM studentacademics sa INNER JOIN academic a ON sa.academicid = a.academicid WHERE studentid = ?");
         if($select == false)
         {
             failure($response , "Error while fetching your existing academic data");
@@ -58,6 +59,7 @@
             while($row = $result->fetch_assoc())
             {
                 array_push($response["academic1"] , $row["academicid"]);
+                array_push($response["academic1name"] , $row["academicname"]);
             }
         }
 

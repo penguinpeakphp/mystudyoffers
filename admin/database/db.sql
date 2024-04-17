@@ -3,6 +3,16 @@ create database mystudyoffers;
 
 use mystudyoffers;
 
+drop table if exists adminuser;
+create table adminuser
+(
+	adminid int not null,
+    email varchar(250) not null,
+    password varchar(500) not null
+);
+
+insert into adminuser values(1 , 'admin@admin.com' , 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec');
+
 drop table if exists country;
 create table country
 (
@@ -475,3 +485,31 @@ create table studentcountry
 );
 
 insert into studentcountry values(1 , 2),(1 , 5),(1,8);
+
+drop table if exists studentquery;
+create table studentquery
+(
+	queryid int not null primary key auto_increment,
+    studentid int not null,
+    querytopic text not null,
+    foreign key (studentid) references student(studentid)
+);
+
+drop table if exists queryconversation;
+create table queryconversation
+(
+	conversationid int not null primary key auto_increment,
+    queryid int not null,
+    studentid int,
+    adminid int,
+    message text,
+    messagetime datetime default current_timestamp()
+);
+
+delimiter //
+drop trigger if exists initiateconversation//
+create trigger initiateconverstation after insert on studentquery for each row
+begin
+	insert into queryconversation(queryid , studentid , message) values(new.queryid , new.studentid , new.querytopic);
+end//
+delimiter ;

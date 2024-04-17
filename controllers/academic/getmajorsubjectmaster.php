@@ -16,7 +16,7 @@
         $response["data"] = [];
 
         //Query the major subject table as recieved in the get query
-        $result = $db->query("SELECT ms.majorsubjectid , majorsubjectname , ms.academicid , academicname FROM majorsubject ms INNER JOIN studentacademics sa ON ms.academicid = sa.academicid INNER JOIN academic a ON a.academicid = sa.academicid WHERE studentid = '{$_SESSION['studentid']}' AND majorsubjectstatus = 1");
+        $result = $db->query("SELECT ms.majorsubjectid , majorsubjectname , ms.academicid , academicname FROM majorsubject ms INNER JOIN studentacademics sa ON ms.academicid = sa.academicid INNER JOIN academic a ON a.academicid = sa.academicid WHERE studentid = '{$_SESSION['studentid']}'");
         if($result == false)
         {
             failure($response , "Error while fetching data");
