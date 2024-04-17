@@ -72,6 +72,14 @@ checksession();
                     </div>
                 </section>
 
+                <section class="add-question">
+                    <div class="container">
+                        <div class="input-container mb-3">
+                            <input type="text" placeholder="Enter your question..." id="query">
+                            <button class="question-button" id="askquery">Ask Query</button>
+                        </div>
+                    </div>
+                </section>
                 <section class="query-list">
                     <table class="table table-bordered table-striped table-hover">
                         <thead>
@@ -145,6 +153,7 @@ checksession();
     <?php
     require_once "partials/footer.php";
     ?>
+    <script src="js/query.js"></script>
 
 </body>
 

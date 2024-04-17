@@ -492,7 +492,8 @@ create table studentquery
 	queryid int not null primary key auto_increment,
     studentid int not null,
     querytopic text not null,
-    foreign key (studentid) references student(studentid)
+    createdate date default(current_date),
+    foreign key (studentid) references student(studentid) on delete cascade
 );
 
 drop table if exists queryconversation;
@@ -503,7 +504,8 @@ create table queryconversation
     studentid int,
     adminid int,
     message text,
-    messagetime datetime default current_timestamp()
+    messagetime datetime default current_timestamp(),
+    foreign key (queryid) references studentquery (queryid)
 );
 
 delimiter //
