@@ -108,6 +108,13 @@
     </ul>
   </li><!-- End Masters Nav -->
 
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="../student/student.php">
+      <i class="bi-person-badge"></i>
+      <span>Students</span>
+    </a>
+  </li><!-- End Students Nav -->
+
 </ul>
 
 </aside><!-- End Sidebar-->
