@@ -25,7 +25,7 @@
         }
 
         //Query the database to fetch the respective user
-        $select = $db->prepare("SELECT email , password FROM adminuser WHERE email = ?");
+        $select = $db->prepare("SELECT adminid , email , password FROM adminuser WHERE email = ?");
         if($select == false)
         {
             failure($response , "Error checking your credentials");
@@ -65,6 +65,7 @@
 
         //Set the session variables
         $_SESSION["adminemail"] = $_POST["email"];
+        $_SESSION["adminid"] = $row["adminid"];
 
         end:;
     }

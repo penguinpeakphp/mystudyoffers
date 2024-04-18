@@ -153,7 +153,7 @@ $(function()
                             <button type="button" class="btn btn-danger delete" data-id="${country.countryid}"><i class="bi-trash"></i></button>
                         </td>`;
     
-                        tr += "</td>";
+                        tr += "</tr>";
     
                         //Append the table row in the table body
                         $("#countrybody").append(tr);

@@ -126,7 +126,7 @@ checksession();
 
                                 <div class="education mb-3">
                                     <div class="subject-row">
-                                        <div class="progress-bar" id="testscores">
+                                        <div class="progress-bar row justify-content-start h-auto rounded-0" id="testscores">
                                         </div>
                                     </div>
                                 </div>

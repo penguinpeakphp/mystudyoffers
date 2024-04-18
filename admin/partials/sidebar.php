@@ -115,6 +115,13 @@
     </a>
   </li><!-- End Students Nav -->
 
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="../query/query.php">
+      <i class="bi-person-badge"></i>
+      <span>Query</span>
+    </a>
+  </li><!-- End Queries Nav -->
+
 </ul>
 
 </aside><!-- End Sidebar-->

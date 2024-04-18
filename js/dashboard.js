@@ -158,7 +158,7 @@ $(function()
                 {
                     let testtypetestscore = response.testtypetestscores[i];
                     $("#testscores").append(`
-                        <div class="progress-fill pboxwidth">${testtypetestscore.testname}<br>${testtypetestscore.testscore} </div>
+                        <div class="progress-fill pboxwidth col-4 my-1">${testtypetestscore.testname}<br>${testtypetestscore.testscore} </div>
                     `);
                 }
                 $("#workexperience").text(response.workexperiencename);
