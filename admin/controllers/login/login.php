@@ -24,10 +24,43 @@
             goto end;
         }
 
-        if($_POST["email"] != "admin@admin.com" || $_POST["password"] != "admin")
+        //Query the database to fetch the respective user
+        $select = $db->prepare("SELECT email , password FROM adminuser WHERE email = ?");
+        if($select == false)
         {
-            failure($response , "Login Failed");
+            failure($response , "Error checking your credentials");
             goto end;
+        }
+        else
+        {
+            //Bind the parameters
+            $select->bind_param("s" , $_POST["email"]);
+            
+            //Execute the query
+            if($select->execute() == false)
+            {
+                failure($response , "Error checking your credientials");
+                goto end;
+            }
+
+            $result = $select->get_result();
+
+            //Check if the user exists or not
+            if(mysqli_num_rows($result) == 0)
+            {
+                failure($response , "Wrong email/password entered");
+                goto end;
+            }
+
+            //Fetch a row
+            $row = $result->fetch_assoc();
+
+            //Check hash passwords for authentication
+            if($row["password"] != hash("sha512" , $_POST["password"]))
+            {
+                failure($response , "Wrong email/password entered");
+                goto end;
+            }
         }
 
         //Set the session variables

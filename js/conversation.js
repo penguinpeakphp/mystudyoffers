@@ -39,14 +39,18 @@ $(function()
                                 </div>
                                 <div class="review-detail">
                         `;
+
+                        //If the admin has replied
                         if(chat.studentid == null && chat.adminid != null)
                         {
                             tr += `<h6>MSO</h6>`;
                         }
+                        //If the student has replied
                         if(chat.studentid != null && chat.adminid == null)
                         {
                             tr += `<h6>You</h6>`
                         }
+
                         tr += `<span>${chat.timestring}</span>`;
                         tr += `
                                     <p>
@@ -56,6 +60,7 @@ $(function()
                             </div>
                         </div>`;
 
+                        //If the last message is sent by the admin, render reply section
                         if(chat.adminid != null && i == 0)
                         {
                             tr += `
@@ -78,12 +83,17 @@ $(function()
                             </div>
                         </div>`;
 
+                        //Append the chat
                         $(".review-section").append(tr);
                     }
 
+
                     $("#replybtn").on("click" , function()
                     {
+                        //Fetch the message from input field
                         let reply = $("#reply").val();
+
+                        //Request the server to update the conversation with the reply
                         $.post("controllers/query/updateconversation.php" , {"queryid":queryid , "reply":reply} , function(data)
                         {
                             try
@@ -102,6 +112,7 @@ $(function()
                                 }
                                 else
                                 {
+                                    //Reload the conversation after successul reply
                                     loadconversation();
                                 }
                             }

@@ -16,7 +16,7 @@
         $response["queries"] = [];
 
         //Query the database for fetching student queries
-        $select = $db->prepare("SELECT queryid , querytopic FROM studentquery WHERE studentid = ?");
+        $select = $db->prepare("SELECT queryid qi, querytopic , (SELECT studentid FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS studentid , (SELECT adminid FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS adminid , (SELECT DATE_FORMAT(messagetime, '%m-%d-%Y') FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS lastdate FROM studentquery WHERE studentid = ?");
         if($select == false)
         {
             failure($response , "Error while fetching query list");

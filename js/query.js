@@ -55,14 +55,30 @@ $(function()
                 for(let i=0; i<response.queries.length; i++)
                 {
                     let query = response.queries[i];
-                    $("#querybody").append(`
+                    let tr = `
                         <tr>
-                            <td>${query.queryid}</td>
+                            <td>${query.qi}</td>
                             <td>${query.querytopic}</td>
-                            <td>MSO - 2024-02-21</td>
-                            <td><a href="conversation.php?queryid=${query.queryid}" class="btn btn-reply">Reply</a></td>
+                    `;
+
+                    //If the admin has replied last
+                    if(query.studentid == null && query.adminid != null)
+                    {
+                        tr += `<td>MSO - ${query.lastdate}</td>`;
+                    }
+
+                    //If the student has replied last
+                    if(query.adminid == null && query.studentid != null)
+                    {
+                        tr += `<td>Yourself - ${query.lastdate}</td>`;
+                    }
+
+                    tr += `
+                            <td><a href="conversation.php?queryid=${query.qi}" class="btn btn-reply">Reply</a></td>
                         </tr>
-                    `);
+                    `;
+
+                    $("#querybody").append(tr);
                 }
             }
         }
