@@ -33,7 +33,7 @@ $(function()
                         let chat = response.conversation[i];
                         let tr = `
                         <div class="review-list">
-                            <div class="review-box">
+                            <div class="review-box d-block">
                                 <div class="review-img">
                                     <img src="assets/images/users/c5.jpg" class="img-fluid" />
                                 </div>
@@ -56,25 +56,15 @@ $(function()
                                     <p>
                                         ${chat.message}
                                     </p>
-                                </div>
-                            </div>
-                        </div>`;
+                               `;
 
                         //If the last message is sent by the admin, render reply section
                         if(chat.adminid != null && i == 0)
                         {
                             tr += `
                                 <div class="review-content">
-                                    <a href="#" class="form-icon"><img src="assets/images/icons/send-icon.png"></a>
+                                    <a href="javscript:void(0)" class="form-icon" id="replybtn"><img src="images/icons/send-icon.png"></a>
                                     <input type="text" placeholder="More Question..?" name="" id="reply" class="form-control">
-                                    <button id="replybtn">Send</button>
-                                </div>
-                                <div class="reply-review-list">
-                                    <div class="review-box">
-                                        <div class="review-img">
-                                            <img src="assets/images/users/c1.jpg" class="img-fluid" />
-                                        </div>
-                                    </div>
                                 </div>
                             `;
                         }

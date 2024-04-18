@@ -5252,3 +5252,88 @@ justify-content: center;
   font-weight: 600;
   margin-top: 5px;
 }
+
+/* review start*/
+.review-section {
+  width: 700px;
+}
+
+.review-section .review-list {
+  border-radius: 20px;
+  background-color: #f3ecec4d;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  margin-bottom: 20px;
+}
+
+.review-section .review-box {
+  padding: 10px;
+  display: flex;
+
+}
+.review-section  .review-box .review-img {
+  flex-shrink: 0;
+  margin-right: 10px;
+  height: 47px;
+  width: 47px;
+}
+.review-section  .review-box .review-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+.review-section  .review-detail h6 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 25px;
+  margin-bottom: 5px;
+  color: #060A27;
+}
+
+.review-section  .review-detail p {
+  font-size: 16px;
+  margin-bottom: 5px;
+  line-height: 20px;
+  font-weight: 500;
+  color: #060A27;
+}
+
+.review-section .review-detail span {
+  color: #666666;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+}
+ .review-content {
+  position: relative;
+ width:75%;
+}
+.review-content a.form-icon {
+  position: absolute;
+  top: 2px;
+  right: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+.review-content .form-control {
+  height: 45px;
+  border-radius: 8px;
+  border-color: rgba(0, 0, 0, 0.06);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  color: #6b7280;
+  background: #fff;
+}
+.reply-review-list{
+  display: flex;
+  justify-content: end;
+  margin-left: 40px;
+}
+.review-section .more-chatbtn{
+  font-size: 18px;
+    font-weight: 600;
+    line-height: 22.5px;
+    color: #FFC022
+}
+/* review end*/

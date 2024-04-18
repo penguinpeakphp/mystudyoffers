@@ -31,7 +31,7 @@
         </li>
         <li>
             <a href="queries.php">
-                <i class="bx bxs-user"></i>
+                <i class="bx bxs-chat"></i>
                 <span class="link_name">Queries</span>
             </a>
         </li>

@@ -117,7 +117,7 @@
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="../query/query.php">
-      <i class="bi-person-badge"></i>
+      <i class="bi-chat-left-text"></i>
       <span>Query</span>
     </a>
   </li><!-- End Queries Nav -->

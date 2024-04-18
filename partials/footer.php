@@ -39,10 +39,10 @@
                     <div class="col-md-4 col-lg-3 col-sm-6">
                         <h5>Useful Links</h5>
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="contact.html">Contact us</a></li>
+                            <li><a href="home.php">Home</a></li>
+                            <li><a href="about.php">About Us</a></li>
+                            <li><a href="services.php">Services</a></li>
+                            <li><a href="contact.php">Contact us</a></li>
                         </ul>
                     </div>
 

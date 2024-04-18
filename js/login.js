@@ -28,7 +28,7 @@ $(function()
                     }
                     else
                     {
-                        window.location.href = "dashboard.php";
+                        window.location.href = response.url;
                     }
                 }
                 catch(error)

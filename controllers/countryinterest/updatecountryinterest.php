@@ -77,6 +77,28 @@
             }
         }
 
+        //Query the database to update the profile status
+        $update = $db->prepare("UPDATE student SET profilestatus = 'dashboard' WHERE studentid = ?");
+        if($update == false)
+        {
+            failure($response , "Error updating profile status");
+            $db->rollback();
+            goto end;
+        }
+        else
+        {
+            //Bind the parameters
+            $update->bind_param("i" , $_SESSION["studentid"]);
+
+            //Excecute the query
+            if($update->execute() == false)
+            {
+                failure($response , "Error updating profile status");
+                $db->rollback();
+                goto end;
+            }
+        }
+
         if($response["success"] == true)
         {
             $db->commit();

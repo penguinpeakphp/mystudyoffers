@@ -174,6 +174,26 @@
                     }
                 }
             }
+
+            //Query the database to update the profile status
+            $update = $db->prepare("UPDATE student SET profilestatus = 'qualification' WHERE studentid = ?");
+            if($update == false)
+            {
+                failure($response , "Error updating profile status");
+                goto end;
+            }
+            else
+            {
+                //Bind the parameters
+                $update->bind_param("i" , $_SESSION["studentid"]);
+
+                //Excecute the query
+                if($update->execute() == false)
+                {
+                    failure($response , "Error updating profile status");
+                    goto end;
+                }
+            }
         }
 
         end:;

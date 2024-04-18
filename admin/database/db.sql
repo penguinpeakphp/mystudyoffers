@@ -387,6 +387,7 @@ create table student
     password varchar(500) not null,
     pincode varchar(8) not null,
     activationtoken varchar(15) not null,
+    profilestatus varchar(50) not null default "academic",
     status boolean not null default false
 );
 

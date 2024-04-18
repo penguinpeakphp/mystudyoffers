@@ -57,6 +57,29 @@
                 goto end;
             }
 
+            //Assign the redirect url according to the profile completion status
+            if($row["profilestatus"] == "academic")
+            {
+                $response["url"] = "academicprofile1.php";
+            }
+            if($row["profilestatus"] == "qualification")
+            {
+                $response["url"] = "qualificationprofile.php";
+            }
+            if($row["profilestatus"] == "testscore")
+            {
+                $response["url"] = "testscoreprofile.php";
+            }
+            if($row["profilestatus"] == "countryinterest")
+            {
+                $response["url"] = "countryinterest.php";
+            }
+            if($row["profilestatus"] == "dashboard")
+            {
+                $response["url"] = "dashboard.php";
+            }
+            
+
             //Set the session with the variables
             $_SESSION["studentid"] = $row["studentid"];
             $_SESSION["name"] = $row["name"];
