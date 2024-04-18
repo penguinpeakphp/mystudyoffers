@@ -22,6 +22,7 @@ $(function()
                 }
                 else
                 {
+                    //Empty the input field
                     $("#query").val("");
                 }
             }
@@ -50,7 +51,19 @@ $(function()
             }
             else
             {
-                
+                //Loop through the queries and render the table rows
+                for(let i=0; i<response.queries.length; i++)
+                {
+                    let query = response.queries[i];
+                    $("#querybody").append(`
+                        <tr>
+                            <td>${query.queryid}</td>
+                            <td>${query.querytopic}</td>
+                            <td>MSO - 2024-02-21</td>
+                            <td><a href="conversation.php?queryid=${query.queryid}" class="btn btn-reply">Reply</a></td>
+                        </tr>
+                    `);
+                }
             }
         }
         catch(error)

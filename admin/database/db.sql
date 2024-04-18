@@ -515,3 +515,15 @@ begin
 	insert into queryconversation(queryid , studentid , message) values(new.queryid , new.studentid , new.querytopic);
 end//
 delimiter ;
+
+insert into studentquery(studentid , querytopic) values
+(1 , "How to learn react?"),
+(1 , "How to start doing programming?");
+
+insert into queryconversation(queryid , studentid , adminid , message) values
+(1 , NULL , 1 , "Watch online tutorials"),
+(1 , 1 , NULL , "Send the link"),
+(1 , NULL , 1 , "I will send tomorrow"),
+(2 , NULL , 1 , "Start practicing"),
+(2 , 1 , NULL , "Send the book for it"),
+(2 , NULL , 1 , "I will share the link");

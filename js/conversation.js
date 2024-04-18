@@ -1,0 +1,124 @@
+$(function()
+{
+    //Extract the queryid from the get parameters
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const queryid = urlParams.get('queryid');
+
+    //Function for loading conversation
+    function loadconversation()
+    {
+        $(".review-section").html("");
+        $.get("controllers/query/getconversation.php" , {"queryid":queryid} , function(data)
+        {
+            try
+            {
+                //Parse the data received from the server
+                let response = JSON.parse(data);
+
+                //If the response is not successful, then show the error in alert
+                if(response.success == false)
+                {
+                    $(".error-msg").text(response.error);
+                    if(response.login == true)
+                    {
+                        window.location.href = "login.php";
+                    }
+                }
+                else
+                {
+                    //Loop through the conversation
+                    for(let i=0; i<response.conversation.length; i++)
+                    {
+                        let chat = response.conversation[i];
+                        let tr = `
+                        <div class="review-list">
+                            <div class="review-box">
+                                <div class="review-img">
+                                    <img src="assets/images/users/c5.jpg" class="img-fluid" />
+                                </div>
+                                <div class="review-detail">
+                        `;
+                        if(chat.studentid == null && chat.adminid != null)
+                        {
+                            tr += `<h6>MSO</h6>`;
+                        }
+                        if(chat.studentid != null && chat.adminid == null)
+                        {
+                            tr += `<h6>You</h6>`
+                        }
+                        tr += `<span>${chat.timestring}</span>`;
+                        tr += `
+                                    <p>
+                                        ${chat.message}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>`;
+
+                        if(chat.adminid != null && i == 0)
+                        {
+                            tr += `
+                                <div class="review-content">
+                                    <a href="#" class="form-icon"><img src="assets/images/icons/send-icon.png"></a>
+                                    <input type="text" placeholder="More Question..?" name="" id="reply" class="form-control">
+                                    <button id="replybtn">Send</button>
+                                </div>
+                                <div class="reply-review-list">
+                                    <div class="review-box">
+                                        <div class="review-img">
+                                            <img src="assets/images/users/c1.jpg" class="img-fluid" />
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+
+                        tr += `</div>
+                            </div>
+                        </div>`;
+
+                        $(".review-section").append(tr);
+                    }
+
+                    $("#replybtn").on("click" , function()
+                    {
+                        let reply = $("#reply").val();
+                        $.post("controllers/query/updateconversation.php" , {"queryid":queryid , "reply":reply} , function(data)
+                        {
+                            try
+                            {
+                                //Parse the data received from the server
+                                let response = JSON.parse(data);
+
+                                //If the response is not successful, then show the error in alert
+                                if(response.success == false)
+                                {
+                                    $(".error-msg").text(response.error);
+                                    if(response.login == true)
+                                    {
+                                        window.location.href = "login.php";
+                                    }
+                                }
+                                else
+                                {
+                                    loadconversation();
+                                }
+                            }
+                            catch(error)
+                            {
+                                alert("Error occurred while trying to read server response " + error);
+                            }
+                        });
+                    });
+                }
+            }
+            catch(error)
+            {
+                alert("Error occurred while trying to read server response " + error);
+            }
+        });
+    }
+
+    loadconversation();
+});

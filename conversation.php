@@ -31,7 +31,7 @@ checksession();
 
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
 
-    <title>Queries - MyStudyOffers</title>
+    <title>Conversation - MyStudyOffers</title>
 </head>
 
 <body>
@@ -67,41 +67,13 @@ checksession();
                                     <input type="text" placeholder="Search..." name class="form-control" />
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </section>
 
-                <section class="add-question">
-                    <div class="container">
-                        <div class="input-container mb-3">
-                            <input type="text" placeholder="Enter your question..." id="query">
-                            <button class="question-button" id="askquery">Ask Query</button>
-                        </div>
+                <section>
+                    <div class="review-section">
                     </div>
-                </section>
-                <section class="query-list">
-                    <table class="table table-bordered table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">Sr.</th>
-                                <th scope="col">My Query</th>
-                                <th scope="col">Last Reply</th>
-                                <th scope="col">Reply</th>
-                            </tr>
-                        </thead>
-                        <tbody id="querybody">
-                        </tbody>
-                    </table>
-                    <!-- <nav class="float-end mt-3">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#"><i class="fadeIn animated bx bx-caret-left"></i></a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#"><i class="fadeIn animated bx bx-caret-right"></i></a></li>
-                        </ul>
-                    </nav> -->
                 </section>
         </div>
     </div>
@@ -110,7 +82,7 @@ checksession();
     <?php
     require_once "partials/footer.php";
     ?>
-    <script src="js/query.js"></script>
+    <script src="js/conversation.js"></script>
 
 </body>
 

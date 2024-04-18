@@ -56,7 +56,7 @@ checksession();
                 <section class="banner-section mb-4">
                     <div class="banner-content ">
                         <small>11-Apr-2424</small>
-                        <h2>Welcome back, <span class="name"></span>!</h2>
+                        <h2>Welcome back, <span class="name"><?= $_SESSION["name"] ?></span>!</h2>
                         <p>Always stay updated in your student portal</p>
 
                         <div class="search-option">

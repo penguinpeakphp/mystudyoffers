@@ -12,33 +12,32 @@
             goto end;
         }
 
-        //Declare an array for storing query lists
-        $response["queries"] = [];
+        //Declare array for storing conversation
+        $response["conversation"] = [];
 
-        //Query the database for fetching student queries
-        $select = $db->prepare("SELECT queryid , querytopic FROM studentquery WHERE studentid = ?");
+        //Query the database for fetching the conversation
+        $select = $db->prepare("SELECT * , DATE_FORMAT(messagetime, '%m/%d/%Y . %h:%i %p') AS timestring FROM queryconversation WHERE queryid = ? ORDER BY conversationid DESC");
         if($select == false)
         {
-            failure($response , "Error while fetching query list");
+            failure($response , "Error while fetching conversation");
             goto end;
         }
         else
         {
             //Bind the parameters
-            $select->bind_param("i" , $_SESSION["studentid"]);
+            $select->bind_param("i" , $_GET["queryid"]);
 
             //Execute the query
             if($select->execute() == false)
             {
-                failure($response , "Error while fetching query list");
+                failure($response , "Error while fetching conversation");
                 goto end;
             }
 
-            //Fetch the result and loop through the query lists
             $result = $select->get_result();
             while($row = $result->fetch_assoc())
             {
-                array_push($response["queries"] , $row);
+                array_push($response["conversation"] , $row);
             }
         }
 
@@ -46,7 +45,7 @@
     }
     catch(Exception $e)
     {
-        failure($response , "Error Occurred while fetching query list - " . $e->getCode());
+        failure($response , "Error Occurred while fetching conversation - " . $e->getCode());
     }
 
     echo json_encode($response);
