@@ -29,7 +29,7 @@ $(function()
                     //If the response is successful, then redirect to dashboard
                     else
                     {
-                        window.location.href = "../dashboard/dashboard.php";
+                        window.location.href = "../student/student.php";
                     }
                 }
                 catch(error)

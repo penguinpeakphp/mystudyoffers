@@ -25,6 +25,8 @@ $(function()
 
         let formdata = new FormData(this);
 
+        $("#register").text("REGISTERING...");
+        $("#register").prop("disabled" , true);
         //Make post request for registering the student
         $.ajax({
             url: "controllers/register/registerstudent.php",
@@ -42,7 +44,7 @@ $(function()
                     //If the response is not successful, then show the error in alert
                     if(response.success == false)
                     {
-                        $(".error-msg").text(response.error);
+                        $("#registermsg").text(response.error);
                     }
                     else
                     {
@@ -58,6 +60,10 @@ $(function()
                     alert("Error occurred while trying to read server response");
                 }
             }
-        });
+        }).done(function()
+        {
+            $("#register").text("REGISTER");
+            $("#register").prop("disabled" , false);        
+        })
     });
 });

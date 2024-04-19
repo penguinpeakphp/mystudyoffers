@@ -111,6 +111,7 @@ checksession();
     require_once "partials/footer.php";
     ?>
     <script src="js/query.js"></script>
+    <script src="js/custom.js"></script>
 
 </body>
 

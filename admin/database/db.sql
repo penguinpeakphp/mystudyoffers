@@ -388,7 +388,8 @@ create table student
     pincode varchar(8) not null,
     activationtoken varchar(15) not null,
     profilestatus varchar(50) not null default "academic",
-    status boolean not null default false
+    status boolean not null default false,
+    registeredon date not null default(current_date)
 );
 
 drop table if exists studentacademics;
@@ -416,6 +417,16 @@ create table studentacademics
 -- 	insert into studentacademics(studentid) values(new.studentid);
 -- end//
 -- delimiter ;
+
+drop table if exists studentfollowup;
+create table studentfollowup
+(
+	followupid int not null primary key auto_increment,
+    studentid int not null,
+    followup text not null,
+    followupdate datetime not null default current_timestamp(),
+    foreign key (studentid) references student(studentid)
+);
 
 insert into student(name , surname , phone , email , password , pincode , activationtoken , status)
 values("Rahil" , "Khatri" , "123" , "php@penguinpeak.com" , "33275a8aa48ea918bd53a9181aa975f15ab0d0645398f5918a006d08675c1cb27d5c645dbd084eee56e675e25ba4019f2ecea37ca9e2995b49fcb12c096a032e" , "380015" , "" , true);

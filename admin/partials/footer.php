@@ -14,3 +14,11 @@
 <script src="../assets/js/main.js"></script>
 
 <script src="../assets/js/jquery.js"></script>
+<script src="../assets/js/"></script>
+
+<script>
+    $.get("../controllers/dashboard/getdashboarddata.php" , {} , function(data)
+    {
+        console.log(data);
+    });
+</script>

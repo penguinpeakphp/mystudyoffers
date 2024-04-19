@@ -71,7 +71,7 @@
 
                             <div class="last-password">
 
-                                <p>Not registered? <a href="javascript:void(0)" onclick="$('#openregister').click();" title="Student Registration"><b>Create an account</b></a></p>
+                                <p>Not registered? <a href="javascript:void(0)" onclick='$("#exampleModal").modal("show");' title="Student Registration"><b>Create an account</b></a></p>
 
                             </div>
 
