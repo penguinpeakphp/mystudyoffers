@@ -36,7 +36,7 @@
                         <h1>Student Login</h1>
                         <ul>
                             <li>
-                                <a href="https://demo.mystudyoffers.com/">Home</a>
+                                <a href="home.php">Home</a>
                             </li>
                             <li>Login</li>
                         </ul>
@@ -61,7 +61,7 @@
                         </div>
 
 
-                        <form id="loginform" action="https://demo.mystudyoffers.com/logincheck">
+                        <form id="loginform">
 
                             <input type="email" name="email" placeholder="E-mail" required="required">
 

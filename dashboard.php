@@ -20,7 +20,7 @@ checksession();
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">-->
 
     <!-- font-awesome css -->
-    <link rel="stylesheet" type="text/css" href="https://demo.mystudyoffers.com/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 
     <!-- Elmentkit Icon CSS -->
     <link rel="stylesheet" type="text/css" href="elementskit-icon-pack/assets/css/ekiticons.css">

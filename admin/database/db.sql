@@ -441,7 +441,7 @@ create table studentqualification
     primary key(studentid , qualificationid)
 );
 
-insert into studentqualification values(1 , 3),(1 , 7);
+-- insert into studentqualification values(1 , 3),(1 , 7);
 
 drop table if exists studentqualificationsub;
 create table studentqualificationsub
@@ -453,7 +453,7 @@ create table studentqualificationsub
     primary key(studentid , qualificationsubid)
 );
 
-insert into studentqualificationsub values(1 , 15),(1 , 3),(1 , 6);
+-- insert into studentqualificationsub values(1 , 15),(1 , 3),(1 , 6);
 
 drop table if exists studentworkexperience;
 create table studentworkexperience
@@ -476,15 +476,15 @@ create table testtypetestscore
     primary key(studentid , testid , testscoreid)
 );
 
-insert into testtypetestscore values
-(1 , 1 , 1),
-(1 , 2 , 1),
-(1 , 3 , 1),
-(1 , 4 , 1),
-(1 , 5 , 1),
-(1 , 6 , 1),
-(1 , 7 , 1),
-(1 , 8 , 1);
+-- insert into testtypetestscore values
+-- (1 , 1 , 1),
+-- (1 , 2 , 1),
+-- (1 , 3 , 1),
+-- (1 , 4 , 1),
+-- (1 , 5 , 1),
+-- (1 , 6 , 1),
+-- (1 , 7 , 1),
+-- (1 , 8 , 1);
 
 drop table if exists studentcountry;
 create table studentcountry

@@ -4,4 +4,5 @@
 
     $emailimageurl = "https://demo.mystudyoffers.com/images/logo-img.png";
     $siteurl = "http://localhost:8000";
+    $emailreferenceurl = "https://demo.mystudyoffers.com";
 ?>
