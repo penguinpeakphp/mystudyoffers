@@ -8,13 +8,6 @@
         <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-    <div class="search-bar">
-        <form class="search-form d-flex align-items-center" method="POST" action="#">
-            <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-        </form>
-    </div><!-- End Search Bar -->
-
     <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
 
@@ -103,13 +96,13 @@
 
                 <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                     <i class="bi bi-chat-left-text"></i>
-                    <span class="badge bg-success badge-number">3</span>
+                    <span class="badge bg-success badge-number newchats"></span>
                 </a><!-- End Messages Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
                     <li class="dropdown-header">
-                        You have 3 new messages
-                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                        You have <span class="newchats"></span> new messages
+                        <a href="../query/query.php"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
                     </li>
                     <li>
                         <hr class="dropdown-divider">

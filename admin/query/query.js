@@ -139,11 +139,11 @@ $(function()
                         let query = response.queries[i];
                         let tr = `
                             <tr>
-                                <th scope="row">${query.queryid}</th>
+                                <th scope="row">${query.qi}</th>
                                 <td>${query.name}</td>
                                 <td>${query.querytopic}</td>
-                                <td>${query.createdate}</td>
-                                <td><button type="button" data-queryid="${query.queryid}" data-studentname="${query.name}" class="btn btn-primary view" data-bs-toggle="modal" data-bs-target="#ExtralargeModal">
+                                <td>${query.messagetime}</td>
+                                <td><button type="button" data-queryid="${query.qi}" data-studentname="${query.name}" class="btn btn-primary view" data-bs-toggle="modal" data-bs-target="#ExtralargeModal">
                                     View
                                 </button></td>
                         `;
@@ -153,7 +153,7 @@ $(function()
 
                     $(".view").on("click" , function()
                     {
-                        getconversation($(this).attr("data-queryid") , $(this).attr("data-studentname"));
+                        getconversation($(this).attr("data-qi") , $(this).attr("data-studentname"));
                     });
                 }
             }

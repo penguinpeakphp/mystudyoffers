@@ -17,8 +17,40 @@
 <script src="../assets/js/"></script>
 
 <script>
-    $.get("../controllers/dashboard/getdashboarddata.php" , {} , function(data)
+    let parts = window.location.href.split('/');
+    if(parts[parts.length - 1] != "login.php")
     {
-        console.log(data);
-    });
+        $.get("../controllers/dashboard/getdashboarddata.php" , {} , function(data)
+        {
+            try
+            {
+                //Parse the data received from the server
+                let response = JSON.parse(data);
+
+                //If the response is not successful, then show the error in alert
+                if(response.success == false)
+                {
+                    alert(response.error);
+
+                    //Redirect to login page if the user is required to be login again
+                    if(response.login == true)
+                    {
+                        window.location.href = "../login/login.php";
+                    }
+                }
+                else
+                {
+                    $("#newstudents").text(response.newstudents);
+                    $("#newqueries").text(response.newqueries);
+                    $(".newchats").text(response.newchats);
+
+                    
+                }
+            }
+            catch(error)
+            {
+                alert("Error occurred while trying to read server response");
+            }
+        });
+    }
 </script>
