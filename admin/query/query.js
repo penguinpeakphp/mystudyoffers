@@ -39,7 +39,7 @@ $(function()
                         //If admin has sent the message
                         if(chat.studentid == null && chat.adminid != null)
                         {
-                            tr += `<h5 class="card-title">You</h5>`;
+                            tr += `<h5 class="card-title">You (<span class="time">${chat.timestring}</span>)</h5>`;
                         }
 
                         //If student has sent the message
@@ -49,7 +49,6 @@ $(function()
                         }
 
                         tr += `
-                                    <p class="time">${chat.timestring}</p>
                                     <p class="card-text">${chat.message}</p> `;
 
                         //If the last message is sent by the student, render reply section

@@ -23,7 +23,7 @@
         $response["conversation"] = [];
 
         //Query the database for fetching the conversation from the table
-        $select = $db->prepare("SELECT * , DATE_FORMAT(messagetime, '%m/%d/%Y . %h:%i %p') AS timestring FROM queryconversation WHERE queryid = ? ORDER BY conversationid DESC");
+        $select = $db->prepare("SELECT * , DATE_FORMAT(messagetime, '%m-%d-%Y . %h:%i %p') AS timestring FROM queryconversation WHERE queryid = ? ORDER BY conversationid DESC");
         if($select == false)
         {
             failure($response , "Error while fetching conversation");

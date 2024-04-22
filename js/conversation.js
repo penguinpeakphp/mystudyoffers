@@ -35,7 +35,7 @@ $(function()
                         <div class="review-list">
                             <div class="review-box d-block">
                                 <div class="review-img">
-                                    <img src="assets/images/users/c5.jpg" class="img-fluid" />
+                                    <img src="images/icons/usericon.png" class="img-fluid" />
                                 </div>
                                 <div class="review-detail">
                         `;

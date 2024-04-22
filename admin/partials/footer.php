@@ -40,11 +40,22 @@
                 }
                 else
                 {
+                    //Fill the data where necessary
                     $("#newstudents").text(response.newstudents);
                     $("#newqueries").text(response.newqueries);
                     $(".newchats").text(response.newchats);
 
-                    
+                    for(let i=0; i<response.followups.length; i++)
+                    {
+                        let followup = response.followups[i];
+                        $("#followupbody").append(`
+                            <tr>
+                                <th scope="row"><a>${followup.followupid}</a></th>
+                                <td>${followup.name}</td>
+                                <td><a class="text-primary">${followup.followup}</a></td>
+                            </tr>
+                        `);
+                    }
                 }
             }
             catch(error)

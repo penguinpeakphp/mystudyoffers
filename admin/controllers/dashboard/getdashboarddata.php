@@ -45,6 +45,19 @@
         $row = $result->fetch_assoc();
         $response["newchats"] = $row["chats"];
 
+        //Fetch followups
+        $response["followups"] = [];
+        $result = $db->query("SELECT followupid , followup , name  FROM studentfollowup sf INNER JOIN student s ON sf.studentid = s.studentid");
+        if($result == false)
+        {
+            failure($response , "Error fetching followups");
+            goto end;
+        }
+        while($row = $result->fetch_assoc())
+        {
+            array_push($response["followups"] , $row);
+        }
+
         end:;
     }
     catch(Exception  $e)

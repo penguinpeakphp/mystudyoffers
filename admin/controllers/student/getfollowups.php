@@ -16,7 +16,7 @@
         $response["followups"] = [];
 
         //Query the database for fetching follow up of students
-        $select = $db->prepare("SELECT followup , noteaddedon , nextfollowupdate FROM studentfollowup WHERE studentid = ? ORDER BY noteaddedon DESC");
+        $select = $db->prepare("SELECT followup ,  DATE_FORMAT(noteaddedon,'%d-%m-%Y %H:%i:%s') AS noteaddedon ,  DATE_FORMAT(nextfollowupdate,'%d-%m-%Y') AS nextfollowupdate FROM studentfollowup WHERE studentid = ? ORDER BY noteaddedon DESC");
         if($select == false)
         {
             failure($response , "Error while fetching follow up");
