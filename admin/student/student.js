@@ -102,6 +102,25 @@ $(function()
                         $("#studentbody").append(tr);
                     }
 
+                    new simpleDatatables.DataTable(document.getElementById("studenttable"), {
+                        perPageSelect: [5, 10, 15, ["All", -1]],
+                        columns: [
+                            {
+                                select: 2,
+                                sortSequence: ["desc", "asc"]
+                            },
+                            {
+                                select: 3,
+                                sortSequence: ["desc"]
+                            },
+                            {
+                                select: 4,
+                                cellClass: "green",
+                                headerClass: "red"
+                            }
+                        ]
+                    });
+
                     //Open Follow up modal on clicking the button
                     $(".followup").on("click" , function()
                     {

@@ -118,9 +118,16 @@
   <li class="nav-item">
     <a class="nav-link collapsed" href="../query/query.php">
       <i class="bi-chat-left-text"></i>
-      <span>Query</span>
+      <span>Query (<span class="newchats"></span>)</span>
     </a>
   </li><!-- End Queries Nav -->
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="../followup/followup.php">
+      <i class="bi-telephone-forward-fill"></i>
+      <span>Follow Ups</span>
+    </a>
+  </li>
 
 </ul>
 

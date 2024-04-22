@@ -61,7 +61,7 @@ checksession();
                             <h5 class="card-title">Student Lead List</h5>
 
                             <!-- Table with stripped rows -->
-                            <table class="table table-striped">
+                            <table class="table table-striped" id="studenttable">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>

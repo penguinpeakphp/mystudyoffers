@@ -14,54 +14,86 @@
 <script src="../assets/js/main.js"></script>
 
 <script src="../assets/js/jquery.js"></script>
-<script src="../assets/js/"></script>
 
 <script>
-    let parts = window.location.href.split('/');
-    if(parts[parts.length - 1] != "login.php")
+    function getdashboarddata()
     {
-        $.get("../controllers/dashboard/getdashboarddata.php" , {} , function(data)
+        let parts = window.location.href.split('/');
+        if(parts[parts.length - 1] != "login.php")
         {
-            try
+            $.get("../controllers/dashboard/getdashboarddata.php" , {} , function(data)
             {
-                //Parse the data received from the server
-                let response = JSON.parse(data);
-
-                //If the response is not successful, then show the error in alert
-                if(response.success == false)
+                try
                 {
-                    alert(response.error);
+                    //Parse the data received from the server
+                    let response = JSON.parse(data);
 
-                    //Redirect to login page if the user is required to be login again
-                    if(response.login == true)
+                    //If the response is not successful, then show the error in alert
+                    if(response.success == false)
                     {
-                        window.location.href = "../login/login.php";
+                        alert(response.error);
+
+                        //Redirect to login page if the user is required to be login again
+                        if(response.login == true)
+                        {
+                            window.location.href = "../login/login.php";
+                        }
+                    }
+                    else
+                    {
+                        //Fill the data where necessary
+                        $("#newstudents").text(response.newstudents);
+                        $("#newqueries").text(response.newqueries);
+                        $(".newchats").text(response.newchats);
+
+                        //Loop through the followups and render the table for it
+                        for(let i=0; i<response.followups.length; i++)
+                        {
+                            let followup = response.followups[i];
+                            $("#dashboardfollowupbody").append(`
+                                <tr>
+                                    <th scope="row"><a>${followup.followupid}</a></th>
+                                    <td>${followup.name}</td>
+                                    <td><a class="text-primary">${followup.followup}</a></td>
+                                </tr>
+                            `);
+                        }
+
+                        //Loop through the chats and render the table for it
+                        for(let i=0; i<response.chats.length; i++)
+                        {
+                            let chat = response.chats[i];
+                            if(i == 5) 
+                            {
+                                break
+                            };
+
+                            $(".messages").append(`
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+
+                                <li class="message-item">
+                                    <a href="#">
+                                        <div>
+                                            <h4>${chat.name}</h4>
+                                            <p>${chat.message}</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            `);
+                        }
                     }
                 }
-                else
+                catch(error)
                 {
-                    //Fill the data where necessary
-                    $("#newstudents").text(response.newstudents);
-                    $("#newqueries").text(response.newqueries);
-                    $(".newchats").text(response.newchats);
-
-                    for(let i=0; i<response.followups.length; i++)
-                    {
-                        let followup = response.followups[i];
-                        $("#followupbody").append(`
-                            <tr>
-                                <th scope="row"><a>${followup.followupid}</a></th>
-                                <td>${followup.name}</td>
-                                <td><a class="text-primary">${followup.followup}</a></td>
-                            </tr>
-                        `);
-                    }
+                    alert("Error occurred while trying to read server response");
                 }
-            }
-            catch(error)
-            {
-                alert("Error occurred while trying to read server response");
-            }
-        });
+            });
+        }
     }
+    $(function()
+    {
+        getdashboarddata();
+    });
 </script>

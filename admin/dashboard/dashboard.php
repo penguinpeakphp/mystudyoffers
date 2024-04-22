@@ -186,7 +186,7 @@ checksession();
                                 <div class="card-body">
                                     <h5 class="card-title">Follow Ups <span>| Today</span></h5>
 
-                                    <table class="table table-borderless">
+                                    <table class="table table-borderless" id="dashboardfollowup">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
@@ -194,7 +194,7 @@ checksession();
                                                 <th scope="col">Follow Up</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="followupbody">
+                                        <tbody id="dashboardfollowupbody">
                                         </tbody>
                                     </table>
 

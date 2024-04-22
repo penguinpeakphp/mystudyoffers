@@ -35,16 +35,6 @@
         $row = $result->fetch_assoc();
         $response["newqueries"] = $row["newqueries"];
 
-        //Fetch number of conversations replied today
-        $result = $db->query("SELECT count(*) AS chats FROM queryconversation WHERE DATE(messagetime) > '{$today}'");
-        if($result == false)
-        {
-            failure($response , "Error fetching number of new chats");
-            goto end;
-        }
-        $row = $result->fetch_assoc();
-        $response["newchats"] = $row["chats"];
-
         //Fetch followups
         $response["followups"] = [];
         $result = $db->query("SELECT followupid , followup , name  FROM studentfollowup sf INNER JOIN student s ON sf.studentid = s.studentid");
@@ -57,6 +47,22 @@
         {
             array_push($response["followups"] , $row);
         }
+
+        //Fetch chats
+        $response["chats"] = [];
+        $result = $db->query("SELECT name , message , queryid FROM queryconversation qc INNER JOIN student s ON qc.studentid = s.studentid WHERE qc.studentid IS NOT NULL AND readbyadmin = 0");
+        if($result == false)
+        {
+            failure($response , "Error fetching new conversations");
+            goto end;
+        }
+        $i = 0;
+        while($row = $result->fetch_assoc())
+        {
+            array_push($response["chats"] , $row);
+            $i++;
+        }
+        $response["newchats"] = $i; 
 
         end:;
     }
