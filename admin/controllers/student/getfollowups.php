@@ -16,7 +16,7 @@
         $response["followups"] = [];
 
         //Query the database for fetching follow up of students
-        $select = $db->prepare("SELECT followup , followupdate FROM studentfollowup WHERE studentid = ? ORDER BY followupdate DESC");
+        $select = $db->prepare("SELECT followup , noteaddedon , nextfollowupdate FROM studentfollowup WHERE studentid = ? ORDER BY noteaddedon DESC");
         if($select == false)
         {
             failure($response , "Error while fetching follow up");

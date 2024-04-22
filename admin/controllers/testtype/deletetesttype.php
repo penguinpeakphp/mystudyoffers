@@ -32,7 +32,7 @@
             $delete->bind_param("i" , $_POST["testid"]);
             if($delete->execute() == false)
             {
-                failure($response , "Error wihle deleting the test type");
+                failure($response , "Error while deleting the test type");
                 goto end;
             }
         }

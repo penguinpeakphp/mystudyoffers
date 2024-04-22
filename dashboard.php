@@ -181,12 +181,10 @@ checksession();
                                 <h6 class="pb-2">Country of Interest (<a href="countryinterest.php">Edit</a>)</h6>
                             </div>
 
-
                             <div class="detail mb-3">
                                 <h6 class="pb-2">My Work Experience (<a href="testscoreprofile.php">Edit</a>)</h6>
                                 <span id="workexperience"></span>
                             </div>
-
 
                         </div>
                     </div>

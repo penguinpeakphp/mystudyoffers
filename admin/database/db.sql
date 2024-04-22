@@ -424,7 +424,8 @@ create table studentfollowup
 	followupid int not null primary key auto_increment,
     studentid int not null,
     followup text not null,
-    followupdate datetime not null default current_timestamp(),
+    noteaddedon datetime not null default current_timestamp(),
+    nextfollowupdate date not null,
     foreign key (studentid) references student(studentid)
 );
 
@@ -517,6 +518,8 @@ create table queryconversation
     adminid int,
     message text,
     messagetime datetime default current_timestamp(),
+    readbystudent boolean not null default false,
+    readbyadmin boolean not null default false,
     foreign key (queryid) references studentquery (queryid)
 );
 

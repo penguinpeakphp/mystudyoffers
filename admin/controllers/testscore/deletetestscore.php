@@ -32,7 +32,7 @@
             $delete->bind_param("i" , $_POST["testscoreid"]);
             if($delete->execute() == false)
             {
-                failure($response , "Error wihle deleting the test score");
+                failure($response , "Error while deleting the test score");
                 goto end;
             }
         }

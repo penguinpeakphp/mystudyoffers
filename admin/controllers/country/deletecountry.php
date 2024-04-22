@@ -32,7 +32,7 @@
             $delete->bind_param("i" , $_POST["countryid"]);
             if($delete->execute() == false)
             {
-                failure($response , "Error wihle deleting the country");
+                failure($response , "Error while deleting the country");
                 goto end;
             }
         }

@@ -32,7 +32,7 @@
             $delete->bind_param("i" , $_POST["academicid"]);
             if($delete->execute() == false)
             {
-                failure($response , "Error wihle deleting the academic qualification");
+                failure($response , "Error while deleting the academic qualification");
                 goto end;
             }
         }

@@ -32,7 +32,7 @@
             $delete->bind_param("i" , $_POST["awardingbodyid"]);
             if($delete->execute() == false)
             {
-                failure($response , "Error wihle deleting the awarding body");
+                failure($response , "Error while deleting the awarding body");
                 goto end;
             }
         }

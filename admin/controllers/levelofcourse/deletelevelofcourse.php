@@ -32,7 +32,7 @@
             $delete->bind_param("i" , $_POST["levelofcourseid"]);
             if($delete->execute() == false)
             {
-                failure($response , "Error wihle deleting the level of course");
+                failure($response , "Error while deleting the level of course");
                 goto end;
             }
         }

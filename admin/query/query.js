@@ -153,7 +153,7 @@ $(function()
 
                     $(".view").on("click" , function()
                     {
-                        getconversation($(this).attr("data-qi") , $(this).attr("data-studentname"));
+                        getconversation($(this).attr("data-queryid") , $(this).attr("data-studentname"));
                     });
                 }
             }

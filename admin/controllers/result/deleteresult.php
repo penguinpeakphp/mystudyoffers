@@ -32,7 +32,7 @@
             $delete->bind_param("i" , $_POST["resultid"]);
             if($delete->execute() == false)
             {
-                failure($response , "Error wihle deleting the result");
+                failure($response , "Error while deleting the result");
                 goto end;
             }
         }

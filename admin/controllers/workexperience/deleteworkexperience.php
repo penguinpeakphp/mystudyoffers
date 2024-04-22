@@ -32,7 +32,7 @@
             $delete->bind_param("i" , $_POST["workexperienceid"]);
             if($delete->execute() == false)
             {
-                failure($response , "Error wihle deleting the work experience");
+                failure($response , "Error while deleting the work experience");
                 goto end;
             }
         }

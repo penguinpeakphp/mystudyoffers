@@ -32,7 +32,7 @@
             $delete->bind_param("i" , $_POST["stateid"]);
             if($delete->execute() == false)
             {
-                failure($response , "Error wihle deleting the state");
+                failure($response , "Error while deleting the state");
                 goto end;
             }
         }

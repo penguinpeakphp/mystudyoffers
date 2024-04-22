@@ -45,7 +45,7 @@
             //Execute the query
             if($delete->execute() == false)
             {
-                failure($response , "Error wihle removing old work experience");
+                failure($response , "Error while removing old work experience");
                 $db->rollback();
                 goto end;
             }

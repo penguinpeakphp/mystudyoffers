@@ -41,6 +41,26 @@
             }
         }
 
+        //Query the database to mark all unread conversation
+        $update = $db->prepare("UPDATE queryconversation SET readbystudent = 1 WHERE queryid = ? AND readbystudent = 0 AND studentid IS NULL");
+        if($update == false)
+        {
+            failure($response , "Error while marking conversation as read");
+            goto end;
+        }
+        else
+        {
+            //Bind the parameters
+            $update->bind_param("i" , $_GET["queryid"]);
+
+            //Execute the query
+            if($update->execute() == false)
+            {
+                failure($response , "Error while marking conversation as read");
+                goto end;
+            }
+        }
+
         end:;
     }
     catch(Exception $e)

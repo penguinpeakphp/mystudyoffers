@@ -32,7 +32,7 @@
             $delete->bind_param("i" , $_POST["subjectinterestid"]);
             if($delete->execute() == false)
             {
-                failure($response , "Error wihle deleting the subject interest");
+                failure($response , "Error while deleting the subject interest");
                 goto end;
             }
         }

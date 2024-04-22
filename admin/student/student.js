@@ -32,7 +32,8 @@ $(function()
                         $("#followupbody").append(`
                             <tr>
                                 <th scope="row">${followup.followup}</th>
-                                <td>${followup.followupdate}</td>
+                                <td>${followup.noteaddedon}</td>
+                                <td>${followup.nextfollowupdate}</td>
                             </tr>
                         `);
                     }
@@ -95,7 +96,6 @@ $(function()
 
                         //Render buttons and have index in the data-index attribute to fetch the country details for editing
                         tr += `<td>
-                            <button type="button" class="btn btn-danger delete" data-studentid="${student.studentid}"><i class="bi-trash"></i></button>
                             <button type="button" class="btn btn-primary followup" data-studentid="${student.studentid}"><i class="bi-telephone-forward-fill"></i></button>
                         </td>`;
 
@@ -131,7 +131,8 @@ $(function()
                         //Extract the student id from the attribute
                         let studentid = $(this).attr("data-studentid");
                         let followup = $("#followuptext").val();
-                        $.post("../controllers/student/addfollowup.php" , {"studentid":studentid , "followup":followup} , function(data)
+                        let nextfollowupdate = $("#nextfollowupdate").val();
+                        $.post("../controllers/student/addfollowup.php" , {"studentid":studentid , "followup":followup , "nextfollowupdate":nextfollowupdate} , function(data)
                         {
                             try
                             {
@@ -156,6 +157,7 @@ $(function()
 
                                     //Refresh the followup text
                                     $("#followuptext").val("");
+                                    $("#nextfollowupdate").val("");
 
                                     //Hide the current modal
                                     $("#addfollowupmodal").modal("hide");

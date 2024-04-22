@@ -60,8 +60,6 @@ checksession();
                         <div class="card-body">
                             <h5 class="card-title">Student Lead List</h5>
 
-                            <button type="button" class="btn btn-primary add"><i class="bi-plus-square"></i></button>
-
                             <!-- Table with stripped rows -->
                             <table class="table table-striped">
                                 <thead>
@@ -163,7 +161,8 @@ checksession();
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">Follow Up</th>
-                                                        <th scope="col">Date</th>
+                                                        <th scope="col">Note Added On</th>
+                                                        <th scope="col">Follow Up Date</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="followupbody">
@@ -187,7 +186,12 @@ checksession();
                                         </div>
                                         <div class="modal-body">
                                             <div class="col-12">
+                                                <label for="followuptext">Follow Up Note</label>
                                                 <textarea class="form-control" id="followuptext" style="height: 100px;"></textarea>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="nextfollowupdate">Next Follow Up Date</label>
+                                                <input type="date" id="nextfollowupdate" class="form-control">
                                             </div>
                                         </div>
                                         <div class="modal-footer">

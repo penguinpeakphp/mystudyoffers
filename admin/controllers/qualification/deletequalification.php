@@ -32,7 +32,7 @@
             $delete->bind_param("i" , $_POST["qualificationid"]);
             if($delete->execute() == false)
             {
-                failure($response , "Error wihle deleting the qualification");
+                failure($response , "Error while deleting the qualification");
                 goto end;
             }
         }

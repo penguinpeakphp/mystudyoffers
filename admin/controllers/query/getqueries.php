@@ -27,11 +27,14 @@
             //Execute the query
             if($select->execute() == false)
             {
-                failure($resposne , "Error while fetching query list");
+                failure($response , "Error while fetching query list");
                 goto end;
             }
 
+            //Fetch the result
             $result = $select->get_result();
+
+            //Loop through all the queries and push the data into the array
             while($row = $result->fetch_assoc())
             {
                 array_push($response["queries"] , $row);

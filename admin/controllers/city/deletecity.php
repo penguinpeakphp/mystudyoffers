@@ -32,7 +32,7 @@
             $delete->bind_param("i" , $_POST["cityid"]);
             if($delete->execute() == false)
             {
-                failure($response , "Error wihle deleting the city");
+                failure($response , "Error while deleting the city");
                 goto end;
             }
         }
