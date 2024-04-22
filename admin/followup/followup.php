@@ -65,6 +65,7 @@ checksession();
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">Student Name</th>
                                         <th scope="col">Follow Up</th>
                                         <th scope="col">Note Added On</th>
                                         <th scope="col">Follow Up Date</th>

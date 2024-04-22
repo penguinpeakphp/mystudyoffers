@@ -64,7 +64,7 @@ $(function()
                             tr += `
                                 <div class="review-content">
                                     <a href="javscript:void(0)" class="form-icon" id="replybtn"><img src="images/icons/send-icon.png"></a>
-                                    <input type="text" placeholder="More Question..?" name="" id="reply" class="form-control">
+                                    <input type="text" placeholder="Reply" name="" id="reply" class="form-control">
                                 </div>
                             `;
                         }

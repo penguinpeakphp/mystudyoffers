@@ -29,6 +29,7 @@ $(function()
                         let tr = `
                             <tr>
                                 <th scope="row">${followup.followupid}</th>
+                                <td>${followup.name}</td>
                                 <td>${followup.followup}</td>
                                 <td>${followup.noteaddedon}</td>
                                 <td>${followup.nextfollowupdate}</td>

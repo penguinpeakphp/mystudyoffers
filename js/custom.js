@@ -19,7 +19,6 @@ function getXMLHTTP() { //fuction to return the xml http object
     return xmlhttp;
 }
 
-
 function getState(countryId)
 {       
 var strURL="findState.php?country="+countryId;
@@ -36,7 +35,7 @@ if(req)
             }
             else
             {
-                alert("There was a problem while using XMLHTTP:\n" + req.statusText);
+                $(".error-msg").text("There was a problem while using XMLHTTP: " + req.statusText);
             }
         }               
     }           
@@ -61,7 +60,7 @@ if(req)
             }
             else
             {
-                alert("There was a problem while using XMLHTTP:\n" + req.statusText);
+                $(".error-msg").text("There was a problem while using XMLHTTP: " + req.statusText);
             }
         } 
     } 
@@ -75,7 +74,7 @@ function chkvalidate() {
 var fresult='N';
 
 if ($('input[name^=stcourselevel]:checked').length <= 0) {
-    alert("Kindly Select Level of Course!");
+    $(".error-msg").text("Kindly Select Level of Course!")
     fresult='N';
     return false;
 }else{
@@ -83,7 +82,7 @@ if ($('input[name^=stcourselevel]:checked').length <= 0) {
 }
 
 if ($('input[name^=intakesmajor]:checked').length <= 0) {
-    alert("Kindly Select Major Intakes!");
+    $(".error-msg").text("Kindly Select Major Intakes!");
     fresult='N';
     return false;
 }else{
@@ -91,7 +90,7 @@ if ($('input[name^=intakesmajor]:checked').length <= 0) {
 }
 
 if ($('input[name^=intakesminor]:checked').length <= 0) {
-    alert("Kindly Select Minor Intakes!");
+    $(".error-msg").text("Kindly Select Minor Intakes!");
     fresult='N';
     return false;
 }else{
@@ -107,7 +106,7 @@ function chkboxlengthchk(chkbox,selcnt)
 {
 var le = document.querySelectorAll('input[name="'+chkbox+'"]:checked').length;
 if(le>selcnt){
-    alert('You have reached the maximum selection('+selcnt+') limit!');
+    $(".error-msg").text("You have reached the maximum selection('+selcnt+') limit!");
 return false;
 }
 }

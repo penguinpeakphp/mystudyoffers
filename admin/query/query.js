@@ -45,7 +45,7 @@ $(function()
                         //If student has sent the message
                         if(chat.studentid != null && chat.adminid == null)
                         {
-                            tr += `<h5 class="card-title">${name}</h5>`;
+                            tr += `<h5 class="card-title">${name} (<span class="time">${chat.timestring}</span>)</h5>`;
                         }
 
                         tr += `
@@ -55,7 +55,7 @@ $(function()
                         if(chat.studentid != null && i == 0)
                         {
                             tr += `
-                                <input type="text" id="reply"/>
+                                <textarea type="text" id="reply" class="form-control"></textarea>
                                 <button class="btn btn-primary" id="replybtn">Reply</button>
                             `;
                         }
