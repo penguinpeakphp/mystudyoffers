@@ -69,11 +69,18 @@ $(function()
                         if(chat.adminid != null && i == 0)
                         {
                             tr += `
-                                <div class="review-content">
-                                    <a href="javscript:void(0)" class="form-icon" id="replybtn"><img src="images/icons/send-icon.png"></a>
-                                    <input type="file" name="file" id="file" accept=".pdf, .doc" />
-                                    <input type="text" placeholder="Reply" name="" id="reply" class="form-control">
+                            <div class="review-content">
+                                <div class="form-file">
+                                    <label for="file" class="file-upload-label">
+                                        <i class="bi-paperclip" style="font-size:24px;"></i>
+                                    </label>
+                                    <input type="file" id="file" name="file" accept=".pdf, .doc" style="display: none;">
                                 </div>
+                                <a href="javascript:void(0)" class="form-icon" id="replybtn"><img src="images/icons/send-icon.png"></a>
+                                <div class="form-input">
+                                    <input type="text" placeholder="Reply" id="reply" class="form-control">
+                                </div>
+                            </div>
                             `;
                         }
 

@@ -56,11 +56,11 @@ checksession();
                 <section class="add-question">
                     <div class="container">
                         <div class="input-container mb-3">
-                            <select id="querytype" name="querytype">
-                                <option value="" disabled selected>Select Query Type</option>
+                            <input id="query" type="text" placeholder="Enter your query">
+                            <select id="querytype" name="querytype" class="form-select">
+                                <option value="" disabled selected>Query Type</option>
                             </select>
-                            <input type="text" placeholder="Enter your question..." id="query">
-                            <button class="question-button" id="askquery">Ask Query</button>
+                            <button class="question-button" id="askquery">Add Query</button>
                         </div>
                     </div>
                 </section>

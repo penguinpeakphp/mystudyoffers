@@ -60,8 +60,12 @@ $(function()
                         if(chat.studentid != null && i == 0)
                         {
                             tr += `
-                                <textarea type="text" id="reply" class="form-control"></textarea>
-                                <input type="file" name="file" id="file" accept=".pdf, .doc">
+                                <div class="mb-3">
+                                    <textarea type="text" id="reply" class="form-control"></textarea>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <input type="file" class="form-control" name="file" id="file" accept=".pdf, .doc">
+                                </div>
                                 <button class="btn btn-primary" id="replybtn">Reply</button>
                             `;
                         }

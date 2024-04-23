@@ -872,3 +872,15 @@
   height: auto;
 }
 }
+
+@media(max-width:767px){
+  .add-question .input-container {
+     flex-wrap: wrap !important;
+  }
+  .add-question input[type="text"] {
+     width:100% !important;
+    }
+    .add-question .question-button {
+      top: 80%;
+    }
+  }
