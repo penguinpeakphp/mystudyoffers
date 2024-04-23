@@ -1,6 +1,5 @@
 $(function()
 {
-
     //Function for getting conversation of a query
     function getconversation(queryid , name)
     {
