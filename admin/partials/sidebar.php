@@ -105,6 +105,11 @@
           <i class="bi bi-circle"></i><span>Result</span>
         </a>
       </li>
+      <li>
+        <a href="../querytype/querytype.php">
+          <i class="bi bi-circle"></i><span>Query Type</span>
+        </a>
+      </li>
     </ul>
   </li><!-- End Masters Nav -->
 

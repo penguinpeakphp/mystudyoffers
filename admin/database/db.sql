@@ -509,6 +509,17 @@ create table studentquery
     foreign key (studentid) references student(studentid) on delete cascade
 );
 
+drop table if exists querytype;
+create table querytype
+(
+	querytypeid int not null primary key auto_increment,
+    querytypename varchar(100) not null,
+    querytypestatus boolean not null default true
+);
+
+insert into querytype(querytypename) values
+("General Question"),("Loan Inquiry"),("Admission Inquiry");
+
 drop table if exists queryconversation;
 create table queryconversation
 (
