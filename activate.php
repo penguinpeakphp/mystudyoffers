@@ -81,7 +81,7 @@
           <div class="section-head"><br>
             <p class="section-paragraph">
               Hello <b></b>, Your account is active now.
-              <br><br><b><a href="<?= $siteurl ?>/login" title="Login">Login</a></b> to your account and complete your profile.
+              <br><br><b><a href="<?= $siteurl ?>/login.php" title="Login">Login</a></b> to your account and complete your profile.
               <br><br>For any support or help connect with us on <b><a href="mailto:<?= $siteemail ?>"><?= $siteemail ?></a></b>
             </p>
           </div>

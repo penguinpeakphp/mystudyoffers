@@ -16,7 +16,7 @@
         $today = date("Y-m-d");
 
         //Fetch number of students registered today
-        $result = $db->query("SELECT count(*) AS newstudents FROM student WHERE registeredon > '{$today}'");
+        $result = $db->query("SELECT count(*) AS newstudents FROM student WHERE registeredon >= '{$today}'");
         if($result == false)
         {
             failure($response , "Error fetching number of students");
@@ -26,7 +26,7 @@
         $response["newstudents"] = $row["newstudents"];
 
         //Fetch number of queries asked today
-        $result = $db->query("SELECT count(*) AS newqueries FROM studentquery WHERE createdate > '{$today}'");
+        $result = $db->query("SELECT count(*) AS newqueries FROM studentquery WHERE createdate >= '{$today}'");
         if($result == false)
         {
             failure($response , "Error fetching number of new queries");
