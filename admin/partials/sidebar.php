@@ -10,6 +10,10 @@
     </a>
   </li>
 
+  <?php
+    if($_SESSION["canaccessmaster"] == true)
+    {
+  ?>
   <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
       <i class="bi bi-menu-button-wide"></i><span>Masters</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -112,6 +116,9 @@
       </li>
     </ul>
   </li><!-- End Masters Nav -->
+  <?php
+    }
+  ?>
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="../student/student.php">

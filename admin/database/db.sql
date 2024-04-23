@@ -6,12 +6,17 @@ use mystudyoffers;
 drop table if exists adminuser;
 create table adminuser
 (
-	adminid int not null,
-    email varchar(250) not null,
-    password varchar(500) not null
+	adminid int not null primary key auto_increment,
+    email varchar(250) not null unique,
+    password varchar(500) not null,
+    canaccessmaster boolean not null default false
 );
 
-insert into adminuser values(1 , 'admin@admin.com' , 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec');
+insert into adminuser values
+(1 , 'admin@mystudyoffers.com' , 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec' , true),
+(2 , 'cs1@mystudyoffers.com' , 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec' , false),
+(3 , 'cs2@mystudyoffers.com' , 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec' , false),
+(4 , 'cs3@mystudyoffers.com' , 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec' , false);
 
 drop table if exists country;
 create table country

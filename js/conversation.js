@@ -108,8 +108,6 @@ $(function()
                             processData: false,
                             success: function(data)
                             {
-                                console.log(data);
-                                return;
                                 try
                                 {
                                     //Parse the data received from the server

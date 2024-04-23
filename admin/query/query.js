@@ -61,6 +61,7 @@ $(function()
                         {
                             tr += `
                                 <textarea type="text" id="reply" class="form-control"></textarea>
+                                <input type="file" name="file" id="file" accept=".pdf, .doc">
                                 <button class="btn btn-primary" id="replybtn">Reply</button>
                             `;
                         }
@@ -76,32 +77,50 @@ $(function()
 
                     $("#replybtn").on("click" , function()
                     {
+                        //Fetch the message from input field
                         let reply = $("#reply").val();
-                        $.post("../controllers/query/updateconversation.php" , {"queryid":queryid , "reply":reply} , function(data)
-                        {   
-                            try
-                            {
-                                //Parse the data received from the server
-                                let response = JSON.parse(data);
+                        let file = $("#file")[0].files[0];
 
-                                //If the response is not successful, then show the error in alert
-                                if(response.success == false)
+                        let formdata = new FormData();
+                        formdata.append("queryid",queryid);
+                        formdata.append("reply" , reply);
+                        if(file)
+                        {
+                            formdata.append("file" , file);
+                        }
+
+                        $.ajax({
+                            url: "../controllers/query/updateconversation.php",
+                            type: "POST",
+                            data:  formdata,
+                            contentType: false,
+                            processData: false,
+                            success: function(data)
+                            {
+                                try
                                 {
-                                    alert(response.error);
-                                    if(response.login == true)
+                                    //Parse the data received from the server
+                                    let response = JSON.parse(data);
+
+                                    //If the response is not successful, then show the error in alert
+                                    if(response.success == false)
                                     {
-                                        window.location.href = "login.php";
+                                        alert(response.error);
+                                        if(response.login == true)
+                                        {
+                                            window.location.href = "login.php";
+                                        }
+                                    }
+                                    else
+                                    {
+                                        //Reload the conversation after successul reply
+                                        getconversation(queryid , name);
                                     }
                                 }
-                                else
+                                catch(error)
                                 {
-                                    //Reload the conversation after successul reply
-                                    getconversation(queryid , name);
+                                    alert("Error occurred while trying to read server response " + error);
                                 }
-                            }
-                            catch(error)
-                            {
-                                alert("Error occurred while trying to read server response " + error);
                             }
                         });
                     });

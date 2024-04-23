@@ -2,6 +2,11 @@
     require_once "../../database/db.php";
     require_once "../globalfunctions.php";
 
+    function getFileExtension($filename) 
+    {
+        return strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+    }
+
     try
     {
         $response["success"] = true;
@@ -55,7 +60,7 @@
             $filename = $conversationid.".".getFileExtension($_FILES["file"]["name"]);
 
             //Move the file to the respective directory
-            if(move_uploaded_file($_FILES["file"]["tmp_name"] , "../../conversationfiles/".$filename) == false)
+            if(move_uploaded_file($_FILES["file"]["tmp_name"] , "../../../conversationfiles/".$filename) == false)
             {
                 failure($response , "Error while uploading the file");
                 $db->rollback();

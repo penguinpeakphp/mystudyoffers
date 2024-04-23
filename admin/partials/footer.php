@@ -14,6 +14,7 @@
 <script src="../assets/js/main.js"></script>
 
 <script src="../assets/js/jquery.js"></script>
+<script src="https://cdn.datatables.net/2.0.5/js/dataTables.min.js"></script>
 
 <script>
     function getdashboarddata()

@@ -10,7 +10,7 @@ checksession();
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Dashboard - NiceAdmin Bootstrap Template</title>
+    <title>Dashboard</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -30,6 +30,7 @@ checksession();
     <link href="../assets/vendor/quill/quill.bubble.css" rel="stylesheet">
     <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/2.0.5/js/dataTables.min.js" rel="stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="../assets/css/style.css" rel="stylesheet">
@@ -226,7 +227,9 @@ checksession();
                                     <!-- Line Chart -->
                                     <div id="reportsChart"></div>
 
-                                    <script>
+                                    <p>Coming Soon</p>
+
+                                    <!-- <script>
                                         document.addEventListener("DOMContentLoaded", () => {
                                             new ApexCharts(document.querySelector("#reportsChart"), {
                                                 series: [{
@@ -277,7 +280,7 @@ checksession();
                                                 }
                                             }).render();
                                         });
-                                    </script>
+                                    </script> -->
                                     <!-- End Line Chart -->
 
                                 </div>
@@ -300,60 +303,6 @@ checksession();
                                         <li><a class="dropdown-item" href="#">This Month</a></li>
                                         <li><a class="dropdown-item" href="#">This Year</a></li>
                                     </ul>
-                                </div>
-
-                                <div class="card-body pb-0">
-                                    <h5 class="card-title">Top Selling <span>| Today</span></h5>
-
-                                    <table class="table table-borderless">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Preview</th>
-                                                <th scope="col">Product</th>
-                                                <th scope="col">Price</th>
-                                                <th scope="col">Sold</th>
-                                                <th scope="col">Revenue</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row"><a href="#"><img src="../assets/img/product-1.jpg" alt=""></a></th>
-                                                <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                                                <td>$64</td>
-                                                <td class="fw-bold">124</td>
-                                                <td>$5,828</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"><a href="#"><img src="../assets/img/product-2.jpg" alt=""></a></th>
-                                                <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                                                <td>$46</td>
-                                                <td class="fw-bold">98</td>
-                                                <td>$4,508</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"><a href="#"><img src="../assets/img/product-3.jpg" alt=""></a></th>
-                                                <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                                                <td>$59</td>
-                                                <td class="fw-bold">74</td>
-                                                <td>$4,366</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"><a href="#"><img src="../assets/img/product-4.jpg" alt=""></a></th>
-                                                <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                                                <td>$32</td>
-                                                <td class="fw-bold">63</td>
-                                                <td>$2,016</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"><a href="#"><img src="../assets/img/product-5.jpg" alt=""></a></th>
-                                                <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                                                <td>$79</td>
-                                                <td class="fw-bold">41</td>
-                                                <td>$3,239</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
                                 </div>
 
                             </div>
@@ -383,7 +332,8 @@ checksession();
                         <div class="card-body">
                             <h5 class="card-title">Recent Activity <span>| Today</span></h5>
 
-                            <div class="activity">
+                            <p>Coming Soon</p>
+                            <!-- <div class="activity">
 
                                 <div class="activity-item d-flex">
                                     <div class="activite-label">32 min</div>
@@ -391,7 +341,7 @@ checksession();
                                     <div class="activity-content">
                                         Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
                                     </div>
-                                </div><!-- End activity item-->
+                                </div>
 
                                 <div class="activity-item d-flex">
                                     <div class="activite-label">56 min</div>
@@ -399,7 +349,7 @@ checksession();
                                     <div class="activity-content">
                                         Voluptatem blanditiis blanditiis eveniet
                                     </div>
-                                </div><!-- End activity item-->
+                                </div>
 
                                 <div class="activity-item d-flex">
                                     <div class="activite-label">2 hrs</div>
@@ -407,7 +357,7 @@ checksession();
                                     <div class="activity-content">
                                         Voluptates corrupti molestias voluptatem
                                     </div>
-                                </div><!-- End activity item-->
+                                </div>
 
                                 <div class="activity-item d-flex">
                                     <div class="activite-label">1 day</div>
@@ -415,7 +365,7 @@ checksession();
                                     <div class="activity-content">
                                         Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
                                     </div>
-                                </div><!-- End activity item-->
+                                </div>
 
                                 <div class="activity-item d-flex">
                                     <div class="activite-label">2 days</div>
@@ -423,7 +373,7 @@ checksession();
                                     <div class="activity-content">
                                         Est sit eum reiciendis exercitationem
                                     </div>
-                                </div><!-- End activity item-->
+                                </div>
 
                                 <div class="activity-item d-flex">
                                     <div class="activite-label">4 weeks</div>
@@ -431,9 +381,9 @@ checksession();
                                     <div class="activity-content">
                                         Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
                                     </div>
-                                </div><!-- End activity item-->
+                                </div>
 
-                            </div>
+                            </div> -->
 
                         </div>
                     </div><!-- End Recent Activity -->
@@ -456,9 +406,11 @@ checksession();
                         <div class="card-body pb-0">
                             <h5 class="card-title">Budget Report <span>| This Month</span></h5>
 
+                            <p>Coming Soon</p>
+
                             <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
 
-                            <script>
+                            <!-- <script>
                                 document.addEventListener("DOMContentLoaded", () => {
                                     var budgetChart = echarts.init(document.querySelector("#budgetChart")).setOption({
                                         legend: {
@@ -507,13 +459,13 @@ checksession();
                                         }]
                                     });
                                 });
-                            </script>
+                            </script> -->
 
                         </div>
                     </div><!-- End Budget Report -->
 
                     <!-- Website Traffic -->
-                    <div class="card">
+                    <!-- <div class="card">
                         <div class="filter">
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -588,10 +540,10 @@ checksession();
                             </script>
 
                         </div>
-                    </div><!-- End Website Traffic -->
+                    </div> -->
 
                     <!-- News & Updates Traffic -->
-                    <div class="card">
+                    <!-- <div class="card">
                         <div class="filter">
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -639,10 +591,10 @@ checksession();
                                     <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
                                 </div>
 
-                            </div><!-- End sidebar recent posts-->
+                            </div>
 
                         </div>
-                    </div><!-- End News & Updates -->
+                    </div> -->
 
                 </div><!-- End Right side columns -->
 
