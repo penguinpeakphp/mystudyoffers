@@ -56,6 +56,9 @@ checksession();
                 <section class="add-question">
                     <div class="container">
                         <div class="input-container mb-3">
+                            <select id="querytype" name="querytype">
+                                <option value="" disabled selected>Select Query Type</option>
+                            </select>
                             <input type="text" placeholder="Enter your question..." id="query">
                             <button class="question-button" id="askquery">Ask Query</button>
                         </div>
@@ -68,6 +71,7 @@ checksession();
                                 <th scope="col">Sr.</th>
                                 <th scope="col">My Query</th>
                                 <th scope="col">Last Reply</th>
+                                <th scope="col">Query Type</th>
                                 <th scope="col">Reply</th>
                             </tr>
                         </thead>

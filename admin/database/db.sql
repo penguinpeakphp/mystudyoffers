@@ -376,6 +376,14 @@ insert into result(resultname) values
 ('90% to 94%'),
 ('95% to 100%');
 
+drop table if exists querytype;
+create table querytype
+(
+	querytypeid int not null primary key auto_increment,
+    querytypename varchar(100) not null,
+    querytypestatus boolean not null default true
+);
+
 drop table if exists student;
 create table student
 (
@@ -504,17 +512,11 @@ create table studentquery
 (
 	queryid int not null primary key auto_increment,
     studentid int not null,
+    querytypeid int,
     querytopic text not null,
     createdate date default(current_date),
-    foreign key (studentid) references student(studentid) on delete cascade
-);
-
-drop table if exists querytype;
-create table querytype
-(
-	querytypeid int not null primary key auto_increment,
-    querytypename varchar(100) not null,
-    querytypestatus boolean not null default true
+    foreign key (studentid) references student(studentid) on delete cascade,
+    foreign key (querytypeid) references querytype(querytypeid) on delete set null
 );
 
 insert into querytype(querytypename) values
@@ -542,9 +544,9 @@ begin
 end//
 delimiter ;
 
-insert into studentquery(studentid , querytopic) values
-(1 , "How to learn react?"),
-(1 , "How to start doing programming?");
+insert into studentquery(studentid , querytopic , querytypeid) values
+(1 , "How to learn react?" , 1),
+(1 , "How to start doing programming?" , 2);
 
 insert into queryconversation(queryid , studentid , adminid , message) values
 (1 , NULL , 1 , "Watch online tutorials"),

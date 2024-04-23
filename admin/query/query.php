@@ -67,6 +67,7 @@ checksession();
                                         <th scope="col">#</th>
                                         <th scope="col">Student Name</th>
                                         <th scope="col">Query Topic</th>
+                                        <th scope="col">Query Type</th>
                                         <th scope="col">Last Message Time</th>
                                         <th scope="col">View Conversation</th>
                                     </tr>

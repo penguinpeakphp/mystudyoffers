@@ -141,6 +141,7 @@ $(function()
                                 <th scope="row">${query.qi}</th>
                                 <td>${query.name}</td>
                                 <td>${query.querytopic}</td>
+                                <td>${query.querytypename}</td>
                                 <td>${query.messagetime}</td>
                                 <td><button type="button" data-queryid="${query.qi}" data-studentname="${query.name}" class="btn btn-primary view" data-bs-toggle="modal" data-bs-target="#ExtralargeModal">
                                     View

@@ -21,6 +21,15 @@ $(function()
                 }
                 else
                 {
+                    //Loop through the query types and render the table rows
+                    for(let i=0; i<response.querytypes.length; i++)
+                    {
+                        let querytype = response.querytypes[i];
+                        $("#querytype").append(`
+                            <option value="${querytype.querytypeid}">${querytype.querytypename}</option>
+                        `);
+                    }
+                
                     //Loop through the queries and render the table rows
                     for(let i=0; i<response.queries.length; i++)
                     {
@@ -29,6 +38,7 @@ $(function()
                             <tr>
                                 <td>${query.qi}</td>
                                 <td>${query.querytopic}</td>
+                                <td>${query.querytypename}</td>
                         `;
 
                         //If the admin has replied last
@@ -64,8 +74,9 @@ $(function()
     $("#askquery").on("click" , function()
     {
         let query = $("#query").val();
+        let querytypeid = $("#querytype").val();
         
-        $.post("controllers/query/createquery.php" , {"query":query} , function(data)
+        $.post("controllers/query/createquery.php" , {"query":query , "querytypeid":querytypeid} , function(data)
         {
             try
             {
@@ -85,6 +96,7 @@ $(function()
                 {
                     //Empty the input field
                     $("#query").val("");
+                    $("#querytype").val("");
 
                     getquerylist();
                 }

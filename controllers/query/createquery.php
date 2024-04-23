@@ -13,14 +13,14 @@
         }
 
         //Check if the query has been received
-        if(!isset($_POST["query"]))
+        if(!isset($_POST["query"]) || !isset($_POST["querytypeid"]) || $_POST["query"] == "" || $_POST["querytypeid"] == "")
         {
-            failure($response , "Please enter your query");
+            failure($response , "Please enter both query and query type");
             goto end;
         }
 
         //Query the database to insert the student query
-        $insert = $db->prepare("INSERT INTO studentquery(studentid , querytopic) VALUES(? , ?)");
+        $insert = $db->prepare("INSERT INTO studentquery(studentid , querytopic , querytypeid) VALUES(? , ? , ?)");
         if($insert == false)
         {
             failure($response , "Error Occurred while creating student query");
@@ -29,7 +29,7 @@
         else
         {
             //Bind the parameters
-            $insert->bind_param("is" , $_SESSION["studentid"] , $_POST["query"]);
+            $insert->bind_param("isi" , $_SESSION["studentid"] , $_POST["query"] , $_POST["querytypeid"]);
 
             //Execute the query
             if($insert->execute() == false)

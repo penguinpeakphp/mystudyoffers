@@ -39,6 +39,7 @@ function sendactivationmail($to, $subject, $activationtoken, $id)
         global $emailimageurl;
         global $siteurl;
         global $emailreferenceurl;
+        global $activateimageurl;
 
         //Replace the content inside the email content
         $emailContent = file_get_contents('activationemail.html');
@@ -48,6 +49,7 @@ function sendactivationmail($to, $subject, $activationtoken, $id)
         $emailContent = str_replace('[sitephone]' , $sitephone , $emailContent);
         $emailContent = str_replace('[siteemail]' , $siteemail , $emailContent);
         $emailContent = str_replace('[imageurl]' , $emailimageurl , $emailContent);
+        $emailContent = str_replace('[activateimageurl]' , $activateimageurl , $emailContent);
         $emailContent = str_replace('[activatelink]' , $siteurl."/activate.php?id={$id}&token={$activationtoken}" , $emailContent);
         $emailContent = str_replace('[emailreferenceurl]' , $emailreferenceurl , $emailContent);
 

@@ -16,7 +16,7 @@
         $response["queries"] = [];
 
         //Query the database for fetching student queries
-        $select = $db->prepare("SELECT queryid qi, querytopic , (SELECT studentid FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS studentid , (SELECT adminid FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS adminid , (SELECT DATE_FORMAT(messagetime, '%d-%m-%Y') FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS lastdate FROM studentquery WHERE studentid = ?");
+        $select = $db->prepare("SELECT queryid qi, querytopic , querytypeid qti, (SELECT querytypename FROM querytype WHERE querytypeid = qti) AS querytypename , (SELECT studentid FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS studentid , (SELECT adminid FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS adminid , (SELECT DATE_FORMAT(messagetime, '%d-%m-%Y') FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS lastdate FROM studentquery WHERE studentid = ?");
         if($select == false)
         {
             failure($response , "Error while fetching query list");
@@ -41,6 +41,23 @@
                 array_push($response["queries"] , $row);
             }
         }
+
+         //Declare qyerytypes array for storing the data of different query types
+         $response["querytypes"] = [];
+
+         //Query the database for selecting all the query type data from the query type table
+         $select = $db->query("SELECT * FROM querytype");
+         if($select == false)
+         {
+             failure($response , "Error while fetching query type list");
+             goto end;
+         }
+ 
+         //Loop through all the rows and push the query type data into the array one by one
+         while($row = $select->fetch_assoc())
+         {
+             array_push($response["querytypes"] , $row);
+         }
 
         end:;
     }
