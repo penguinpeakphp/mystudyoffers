@@ -48,6 +48,12 @@ $(function()
                             tr += `<h5 class="card-title">${name} (<span class="time">${chat.timestring}</span>)</h5>`;
                         }
 
+                        //Check if the file was attached or not
+                        if(chat.filename != null)
+                        {
+                            tr += `<p><a href="../../../conversationfiles/${chat.filename}" target="_blank">View File</a></p>`
+                        }
+
                         tr += `
                                     <p class="card-text">${chat.message}</p> `;
 

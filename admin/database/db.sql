@@ -530,6 +530,7 @@ create table queryconversation
     studentid int,
     adminid int,
     message text,
+    filename varchar(200),
     messagetime datetime default current_timestamp(),
     readbystudent boolean not null default false,
     readbyadmin boolean not null default false,

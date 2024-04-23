@@ -52,6 +52,13 @@ $(function()
                         }
 
                         tr += `<span>${chat.timestring}</span>`;
+
+                        //Check if the file was attached or not
+                        if(chat.filename != null)
+                        {
+                            tr += `<p><a href="conversationfiles/${chat.filename}" target="_blank">View File</a></p>`;
+                        }
+
                         tr += `
                                     <p>
                                         ${chat.message}
@@ -64,6 +71,7 @@ $(function()
                             tr += `
                                 <div class="review-content">
                                     <a href="javscript:void(0)" class="form-icon" id="replybtn"><img src="images/icons/send-icon.png"></a>
+                                    <input type="file" name="file" id="file" accept=".pdf, .doc" />
                                     <input type="text" placeholder="Reply" name="" id="reply" class="form-control">
                                 </div>
                             `;
@@ -82,33 +90,50 @@ $(function()
                     {
                         //Fetch the message from input field
                         let reply = $("#reply").val();
+                        let file = $("#file")[0].files[0];
 
-                        //Request the server to update the conversation with the reply
-                        $.post("controllers/query/updateconversation.php" , {"queryid":queryid , "reply":reply} , function(data)
+                        let formdata = new FormData();
+                        formdata.append("queryid",queryid);
+                        formdata.append("reply" , reply);
+                        if(file)
                         {
-                            try
-                            {
-                                //Parse the data received from the server
-                                let response = JSON.parse(data);
+                            formdata.append("file" , file);
+                        }
 
-                                //If the response is not successful, then show the error in alert
-                                if(response.success == false)
+                        $.ajax({
+                            url: "controllers/query/updateconversation.php",
+                            type: "POST",
+                            data:  formdata,
+                            contentType: false,
+                            processData: false,
+                            success: function(data)
+                            {
+                                console.log(data);
+                                return;
+                                try
                                 {
-                                    $(".error-msg").text(response.error);
-                                    if(response.login == true)
+                                    //Parse the data received from the server
+                                    let response = JSON.parse(data);
+
+                                    //If the response is not successful, then show the error in alert
+                                    if(response.success == false)
                                     {
-                                        window.location.href = "login.php";
+                                        $(".error-msg").text(response.error);
+                                        if(response.login == true)
+                                        {
+                                            window.location.href = "login.php";
+                                        }
+                                    }
+                                    else
+                                    {
+                                        //Reload the conversation after successul reply
+                                        loadconversation();
                                     }
                                 }
-                                else
+                                catch(error)
                                 {
-                                    //Reload the conversation after successul reply
-                                    loadconversation();
+                                    alert("Error occurred while trying to read server response " + error);
                                 }
-                            }
-                            catch(error)
-                            {
-                                alert("Error occurred while trying to read server response " + error);
                             }
                         });
                     });
