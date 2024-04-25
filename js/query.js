@@ -34,9 +34,16 @@ $(function()
                     for(let i=0; i<response.queries.length; i++)
                     {
                         let query = response.queries[i];
-                        let tr = `
-                            <tr>
-                                <td>${query.qi}</td>
+                        let tr = '';
+                        if(query.readbystudent == 0)
+                        {
+                            tr += '<tr style="background: lightgoldenrodyellow;">';
+                        }
+                        else
+                        {
+                            tr += '<tr>';
+                        }
+                        tr += `<td>${i+1}</td>
                                 <td>${query.querytopic}</td>
                                 <td>${query.querytypename}</td>
                         `;

@@ -48,7 +48,6 @@ checksession();
         </div>
         <div class="modal-footer">
             <a href="queries.php" type="button" class="btn btn-primary">Go to Queries</a>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
         </div>
     </div>

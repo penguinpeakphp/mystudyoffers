@@ -1,7 +1,7 @@
 $(function()
 {
     //Open Register modal for displaying register form
-    $("#openregister").on("click" , function()
+    $(".registerbutton").on("click" , function()
     {
         $("#exampleModal").modal("show");
     });

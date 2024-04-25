@@ -9,7 +9,7 @@
     //Function for checking the session and taking action accordingly
     function checksession(&$response = null)
     {
-        //Start the session if the session is not
+        //Start the session if the session is set
         if (!isset($_SESSION)) 
         {
             session_start();

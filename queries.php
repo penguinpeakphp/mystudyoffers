@@ -72,7 +72,7 @@ checksession();
                                 <th scope="col">My Query</th>
                                 <th scope="col">Query Type</th>
                                 <th scope="col">Last Reply</th>
-                                <th scope="col">Reply</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody id="querybody">

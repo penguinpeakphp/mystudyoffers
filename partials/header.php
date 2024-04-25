@@ -72,7 +72,7 @@
                         {
                     ?>
                             <div class="header-btn">
-                                <a href="/dashboard.php" type="button" class="login-btn"><?= $_SESSION["name"] ?></a>
+                                <a href="/dashboard.php" type="button" class="login-btn">My Dashboard</a>
                                 <a type="button" class="register-btn logout">Logout</a>
                             </div>
                     <?php   
@@ -82,7 +82,7 @@
                     ?>
                             <div class="header-btn">
                                 <a href="/login.php" type="button" class="login-btn">Login</a>
-                                <a type="button" class="register-btn" id="openregister">Register</a>
+                                <a type="button" class="registerbutton register-btn" id="openregister">Register</a>
                             </div>
                     <?php
                         }        

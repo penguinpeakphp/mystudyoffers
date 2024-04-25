@@ -35,7 +35,7 @@ if(req)
             }
             else
             {
-                $(".error-msg").text("There was a problem while using XMLHTTP: " + req.statusText);
+                alert("There was a problem while using XMLHTTP: " + req.statusText);
             }
         }               
     }           
@@ -60,7 +60,7 @@ if(req)
             }
             else
             {
-                $(".error-msg").text("There was a problem while using XMLHTTP: " + req.statusText);
+                alert("There was a problem while using XMLHTTP: " + req.statusText);
             }
         } 
     } 
@@ -74,7 +74,7 @@ function chkvalidate() {
 var fresult='N';
 
 if ($('input[name^=stcourselevel]:checked').length <= 0) {
-    $(".error-msg").text("Kindly Select Level of Course!")
+    alert("There was a problem while using XMLHTTP: " + req.statusText);
     fresult='N';
     return false;
 }else{
@@ -82,7 +82,7 @@ if ($('input[name^=stcourselevel]:checked').length <= 0) {
 }
 
 if ($('input[name^=intakesmajor]:checked').length <= 0) {
-    $(".error-msg").text("Kindly Select Major Intakes!");
+    alert("There was a problem while using XMLHTTP: " + req.statusText);
     fresult='N';
     return false;
 }else{
@@ -90,7 +90,7 @@ if ($('input[name^=intakesmajor]:checked').length <= 0) {
 }
 
 if ($('input[name^=intakesminor]:checked').length <= 0) {
-    $(".error-msg").text("Kindly Select Minor Intakes!");
+    alert("There was a problem while using XMLHTTP: " + req.statusText);
     fresult='N';
     return false;
 }else{
@@ -106,7 +106,7 @@ function chkboxlengthchk(chkbox,selcnt)
 {
 var le = document.querySelectorAll('input[name="'+chkbox+'"]:checked').length;
 if(le>selcnt){
-    $(".error-msg").text("You have reached the maximum selection('+selcnt+') limit!");
+    alert("There was a problem while using XMLHTTP: " + req.statusText);
 return false;
 }
 }
