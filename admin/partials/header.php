@@ -1,6 +1,8 @@
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
 
+    <div class="loader"></div>
+
     <div class="d-flex align-items-center justify-content-between">
         <a href="../dashboard/dashboard.php" class="logo d-flex align-items-center">
             <img src="../../images/logo-img.png" alt="">

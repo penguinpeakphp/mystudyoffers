@@ -32,7 +32,7 @@
         <li>
             <a href="queries.php">
                 <i class="bx bxs-chat"></i>
-                <span class="link_name">Queries</span>
+                <span class="link_name">Queries (<span class="chatnums"></span>)</span>
             </a>
         </li>
         <li>

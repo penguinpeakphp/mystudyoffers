@@ -3,6 +3,7 @@
     if(!isset($_SESSION)){session_start();}
 ?>
 <header id="header">
+    <div class="loader"></div>
     <div class="container">
         <div class="main-header">
             <div class="row">

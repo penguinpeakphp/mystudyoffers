@@ -56,11 +56,11 @@ checksession();
                 <section class="add-question">
                     <div class="container">
                         <div class="input-container mb-3">
-                            <input id="query" type="text" placeholder="Enter your query">
-                            <select id="querytype" name="querytype" class="form-select">
+                            <select id="querytype" name="querytype" class="form-select h-100">
                                 <option value="" disabled selected>Query Type</option>
                             </select>
-                            <button class="question-button" id="askquery">Add Query</button>
+                            <input class="h-100" id="query" type="text" placeholder="Enter your query">
+                            <button class="question-button h-100" id="askquery">Add Query</button>
                         </div>
                     </div>
                 </section>
@@ -70,8 +70,8 @@ checksession();
                             <tr>
                                 <th scope="col">Sr.</th>
                                 <th scope="col">My Query</th>
-                                <th scope="col">Last Reply</th>
                                 <th scope="col">Query Type</th>
+                                <th scope="col">Last Reply</th>
                                 <th scope="col">Reply</th>
                             </tr>
                         </thead>

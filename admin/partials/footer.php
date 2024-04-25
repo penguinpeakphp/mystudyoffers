@@ -97,4 +97,14 @@
     {
         getdashboarddata();
     });
+
+    $(document).ajaxStart(function() 
+    {
+        $('.loader').show(); /* Show loader when AJAX starts */
+    });
+
+    $(document).ajaxStop(function() 
+    {
+        $('.loader').hide(); /* Hide loader when AJAX completes */
+    });
 </script>

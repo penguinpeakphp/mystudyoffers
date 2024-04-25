@@ -12,6 +12,21 @@
             goto end;
         }
 
+        $response["nums"] = "";
+        if(isset($_GET["nums"]) && $_GET["nums"] == "nums")
+        {
+            $result = $db->query("SELECT count(*) AS newchats FROM queryconversation WHERE readbystudent =
+            0 AND readbyadmin = 0 AND queryid IN (SELECT queryid FROM studentquery WHERE studentid = '{$_SESSION["studentid"]}')");
+            if($result == false)
+            {
+                failure($response , "Error fetching new number of chats");
+                goto end;
+            }
+            $row = $result->fetch_assoc();
+            $response["nums"] = $row["newchats"];
+            goto end;
+        }
+
         //Declare array for storing conversation
         $response["conversation"] = [];
 

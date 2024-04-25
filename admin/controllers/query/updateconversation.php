@@ -1,7 +1,43 @@
 <?php
+    require_once "../../../controllers/globaldata.php";
     require_once "../../database/db.php";
     require_once "../globalfunctions.php";
 
+    //Function for sending email for new message
+    function sendnewmessageemail($to , $subject , $name)
+    {
+        //Using global variables for using them in the email content
+        global $sitephone;
+        global $siteemail;
+        global $emailimageurl;
+        global $siteurl;
+        global $emailreferenceurl;
+
+        //Replace the content inside the email content
+        $emailContent = file_get_contents('newmessageemail.html');
+        $emailContent = str_replace('[name]', $name, $emailContent);
+        $emailContent = str_replace('[subject]', $subject, $emailContent);
+
+        $emailContent = str_replace('[siteurl]' , $siteurl , $emailContent);
+        $emailContent = str_replace('[sitephone]' , $sitephone , $emailContent);
+        $emailContent = str_replace('[siteemail]' , $siteemail , $emailContent);
+        $emailContent = str_replace('[imageurl]' , $emailimageurl , $emailContent);
+        $emailContent = str_replace('[emailreferenceurl]' , $emailreferenceurl , $emailContent);
+
+        //Use global mail variable for sending mail to the dedicated recipient
+        global $mail;
+
+        $mail->addAddress($to);
+
+        //Send email as HTML
+        $mail->isHTML(true);
+
+        $mail->Subject = $subject;
+        $mail->Body = $emailContent;
+        $mail->send();
+    }
+
+    //Function for fetching extension of file
     function getFileExtension($filename) 
     {
         return strtolower(pathinfo($filename, PATHINFO_EXTENSION));
@@ -76,6 +112,16 @@
                 goto end;
             }
         }
+
+        $result = $db->query("SELECT name , email FROM student WHERE studentid = (SELECT sq.studentid FROM queryconversation qc INNER JOIN studentquery sq ON qc.queryid = sq.queryid WHERE qc.conversationid = '{$conversationid}')");
+        if($result == false)
+        {
+            failure($response , "Error fetching name and email of student");
+            goto end;
+        }
+        $row = $result->fetch_assoc();
+        sendnewmessageemail($row["email"] , "New Message Notification" , $row["name"]);
+        
 
         //Commit the database if everything goes well
         if($response["success"] == true)

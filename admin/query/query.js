@@ -56,8 +56,8 @@ $(function()
                         tr += `
                                     <p class="card-text">${chat.message}</p> `;
 
-                        //If the last message is sent by the student, render reply section
-                        if(chat.studentid != null && i == 0)
+                        //Reply to the last message
+                        if(i == 0)
                         {
                             tr += `
                                 <div class="mb-3">

@@ -65,8 +65,8 @@ $(function()
                                     </p>
                                `;
 
-                        //If the last message is sent by the admin, render reply section
-                        if(chat.adminid != null && i == 0)
+                        //Reply to the last message
+                        if(i == 0)
                         {
                             tr += `
                             <div class="review-content">

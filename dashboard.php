@@ -35,6 +35,24 @@ checksession();
 </head>
 
 <body>
+    <!-- Modal -->
+    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="messageModalLabel">Alert</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            You have got new query reply(s) from MyStudyOffers.
+        </div>
+        <div class="modal-footer">
+            <a href="queries.php" type="button" class="btn btn-primary">Go to Queries</a>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+    </div>
     <?php
     require_once "partials/header.php";
     ?>
@@ -171,8 +189,8 @@ checksession();
                         <h4 class="mb-3">My Information:</h4>
                         <div class="user-info">
                             <div>
-                                <p><b>Email:</b><br><span class="email"></span></p>
-                                <p><b>Phone:</b><br><span class="phone"></span></p>
+                                <p><b>Email:</b><br><span class="email text-dark"></span></p>
+                                <p><b>Phone:</b><br><span class="phone text-dark"></span></p>
                             </div>
                         </div>
                         <div class="study-detail">

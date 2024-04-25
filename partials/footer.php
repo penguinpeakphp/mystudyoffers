@@ -218,6 +218,48 @@
     <script src="js/register.js"></script>
     <script src="js/logout.js"></script>
     <script>
-        let currentFilename = window.location.pathname.split('/').pop();
-        $(`.sidemenu .mb-4  a[href='${currentFilename}']`).parent().addClass("active");
+        $(function()
+        {
+            //Make the menus active based on the file open
+            let currentFilename = window.location.pathname.split('/').pop();
+            $(`.sidemenu .mb-4  a[href='${currentFilename}']`).parent().addClass("active");
+
+            //Get the number of new messages only when certain pages are open
+            if(currentFilename == "dashboard.php" || currentFilename == "queries.php" || currentFilename == "conversation.php")
+            {
+                $.get("controllers/query/getconversation.php" , {"nums":"nums"} , function(data)
+                {
+                    //Parse the data received from the server
+                    let response = JSON.parse(data);
+
+                    //If the response is not successful, then show the error in alert
+                    if(response.success == false)
+                    {
+                        $(".error-msg").text(response.error);
+                        if(response.login == true)
+                        {
+                            window.location.href = "login.php";
+                        }
+                    }
+                    else
+                    {
+                        $(".chatnums").text(response.nums);
+
+                        //On dashboard, show the pop up for the new messages
+                        if(currentFilename == "dashboard.php" && response.nums != 0)  $("#messageModal").modal("show");
+                    }
+                });
+            }
+        });
+
+        $(document).ajaxStart(function() 
+        {
+            $('.loader').show(); /* Show loader when AJAX starts */
+        });
+
+        $(document).ajaxStop(function() 
+        {
+            $('.loader').hide(); /* Hide loader when AJAX completes */
+        });
+
     </script>
