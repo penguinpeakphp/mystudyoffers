@@ -187,5 +187,49 @@ $(function()
         });
     }
 
+    //Function for filling countries in the dropdown menu
+    function fillcountries()
+    {
+        $.get("../controllers/country/getcountries.php" , {} , function(data)
+        {
+            try
+            {
+                //Parse the data received from the server
+                let response = JSON.parse(data);
+
+                //If the response is not successful, then show the error in alert
+                if(response.success == false)
+                {
+                    alert(response.error);
+
+                    //Redirect to login page if the user is required to be login again
+                    if(response.login == true)
+                    {
+                        window.location.href = "../login/login.php";
+                    }
+                }
+                else
+                {
+                    for(let i=0; i<response.countries.length; i++)
+                    {
+                        let country = response.countries[i];
+                        $(".countrylist").append(`
+                            <li>
+                                <label class="dropdown-item">
+                                    <input type="checkbox" value="${country.countryid}"> ${country.countryname}
+                                </label>
+                            </li>
+                        `);
+                    }
+                }
+            }
+            catch(error)
+            {
+                alert("Error occurred while trying to read server response");
+            }
+        });
+    }
+
     getadminuserlist();
+    fillcountries();
 });

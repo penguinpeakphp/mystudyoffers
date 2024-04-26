@@ -12,7 +12,7 @@
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="../adminuser/adminuser.php">
-      <i class="bi bi-grid"></i>
+      <i class="bi-shield-lock"></i>
       <span>Admin Users</span>
     </a>
   </li>

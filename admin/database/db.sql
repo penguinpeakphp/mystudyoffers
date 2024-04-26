@@ -10,8 +10,7 @@ create table adminuser
     adminname varchar(150) not null,
     adminemail varchar(250) not null unique,
     adminpassword varchar(500) not null,
-    countryid int,
-    adminstatus boolean not null default false,
+    adminstatus boolean not null default true,
     canaccessmaster boolean not null default false
 );
 
@@ -20,6 +19,7 @@ insert into adminuser(adminname , adminemail , adminpassword , canaccessmaster) 
 ('Counsellor 1' , 'cs1@mystudyoffers.com' , 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec' , false),
 ('Counsellor 2' , 'cs2@mystudyoffers.com' , 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec' , false),
 ('Counsellor 3' , 'cs3@mystudyoffers.com' , 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec' , false);
+
 
 drop table if exists country;
 create table country
@@ -90,16 +90,18 @@ create table levelofcourse
     levelofcoursestatus boolean not null default true
 );
 
-INSERT INTO levelofcourse (levelofcoursename) VALUES
-('School Certificates'),
-('Post Schooling Certificates'),
-('Vocational '),
-('Diploma'),
-('UG Degrees'),
-('Post Graduate Diploma'),
-('Post Graduate Degree/Masters'),
-('Doctrate'),
-('Post Doctorate');
+insert into levelofcourse(levelofcoursename) values
+("Schooling"), 
+("Undergraduate Certificate"), 
+("Undergraduate Diploma"), 
+("Undergraduate Degree"), 
+("Postgraduate Certificate"), 
+("Postgraduate Diploma"), 
+("Postgraduate Degree"), 
+("Doctorate"), 
+("Professional Qualification"), 
+("Licensing Qualification"), 
+("Other");
 
 drop table if exists planningyear;
 create table planningyear
@@ -592,3 +594,44 @@ insert into queryconversation(queryid , studentid , adminid , message) values
 (2 , NULL , 1 , "Start practicing"),
 (2 , 1 , NULL , "Send the book for it"),
 (2 , NULL , 1 , "I will share the link");
+
+drop table university;
+create table university
+(
+	universityid int not null primary key auto_increment,
+	universityname varchar(1000) not null,
+    universitylicensenumber varchar(50) default "",
+    keycontactname varchar(100) not null,
+    keycontactdesignation varchar(200) not null,
+    keycontactemail varchar(250) not null,
+    yearestablishment varchar(10) not null,
+    overview text,
+    maincampuscountryid int not null,
+    maincampuscityid int not null,
+    maincampusstreetaddress varchar(500) not null,
+    maincampuspostcode varchar(20) not null,
+    universityimage varchar(150) not null,
+    foreign key(maincampuscountryid) references country(countryid),
+    foreign key(maincampuscityid) references city(cityid)
+);
+
+drop table if exists othercampusaddress;
+create table othercampusaddress
+(
+	universityid int not null,
+    othercampuscityid int not null,
+    othercampusstreetaddress varchar(500) not null,
+    othercampusstreetaddress varchar(500) not null,
+    othercampuspostcode varchar(20) not null,
+    foreign key(universityid) references university(universityid),
+    foreign key(othercampuscityid) references university(universityid)
+);
+
+drop table if exists universitylevelofcourse;
+create table universitylevelofcourse
+(
+	universityid int not null,
+    levelofcourseid int not null,
+    foreign key(universityid) references university(universityid),
+    foreign key(levelofcourseid) references levelofcourse(levelofcourseid)
+);

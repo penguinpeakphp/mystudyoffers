@@ -25,7 +25,7 @@
         }
 
         //Query the database to fetch the respective user
-        $select = $db->prepare("SELECT adminid , email , password , canaccessmaster FROM adminuser WHERE email = ?");
+        $select = $db->prepare("SELECT adminid , adminemail , adminpassword , canaccessmaster , adminstatus FROM adminuser WHERE adminemail = ?");
         if($select == false)
         {
             failure($response , "Error checking your credentials");
@@ -56,9 +56,16 @@
             $row = $result->fetch_assoc();
 
             //Check hash passwords for authentication
-            if($row["password"] != hash("sha512" , $_POST["password"]))
+            if($row["adminpassword"] != hash("sha512" , $_POST["password"]))
             {
                 failure($response , "Wrong email/password entered");
+                goto end;
+            }
+
+            //Check if the admin is allowed or not
+            if($row["adminstatus"] == 0)
+            {
+                failure($response , "You are not allowed to login");
                 goto end;
             }
         }
