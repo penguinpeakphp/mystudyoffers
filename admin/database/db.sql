@@ -462,8 +462,7 @@ create table student
     registeredon date
 );
 
-DELIMITER //
-
+delimiter //
 CREATE TRIGGER setdefaultstudentdate BEFORE INSERT ON student
 FOR EACH ROW
 BEGIN
@@ -471,10 +470,8 @@ BEGIN
         SET NEW.registeredon = CURRENT_DATE;
     END IF;
 END;
-
 //
-
-DELIMITER ;
+delimiter ;
 
 drop table if exists studentacademics;
 create table studentacademics
@@ -590,13 +587,12 @@ create table studentquery
     studentid int not null,
     querytypeid int,
     querytopic text not null,
-    createdate date default(current_date),
+    createdate date,
     foreign key (studentid) references student(studentid) on delete cascade,
     foreign key (querytypeid) references querytype(querytypeid) on delete set null
 );
 
-DELIMITER //
-
+delimiter //
 CREATE TRIGGER setdefaultstudentquerydate BEFORE INSERT ON studentquery
 FOR EACH ROW
 BEGIN
@@ -604,10 +600,8 @@ BEGIN
         SET NEW.createdate = CURRENT_DATE;
     END IF;
 END;
-
 //
-
-DELIMITER ;
+delimiter ;
 
 insert into querytype(querytypename) values
 ("General Question"),("Loan Inquiry"),("Admission Inquiry");
