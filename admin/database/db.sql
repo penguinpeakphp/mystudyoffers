@@ -394,6 +394,58 @@ create table querytype
     querytypestatus boolean not null default true
 );
 
+drop table if exists accreditation;
+create table accreditation
+(
+	accreditationid int primary key auto_increment,
+    accreditationname varchar(50) not null,
+    accreditationstatus boolean not null default true
+);
+
+insert into accreditation(accreditationname) values
+("Govt"), 
+("Regulatory"), 
+("Licensing"), 
+("Industry"), 
+("International"), 
+("Others Applicable");
+
+drop table if exists otherfee;
+create table otherfee
+(
+	otherfeeid int not null primary key auto_increment,
+    otherfeename varchar(150) not null,
+    otherfeestatus boolean not null default true
+);
+
+insert into otherfee(otherfeename) values
+("Registration Fee"), 
+("Technology Fee"), 
+("Security Deposit"), 
+("Library Fee"), 
+("Lab Fee"), 
+("Dresscode Fee"), 
+("Awarding Fee"), 
+("Transport Fee"), 
+("If Residential Program - Accommodation And Food");
+
+drop table if exists financialaid;
+create table financialaid
+(
+	financialaidid int not null primary key auto_increment,
+    financialaidname varchar(150) not null,
+    financialaidstatus boolean not null default true
+);
+
+insert into financialaid(financialaidname) values
+("Scholarship"), 
+("Discounts"), 
+("Bursary"), 
+("Financial Aid"), 
+("Student Loans"), 
+("Discounts");
+
+
 drop table if exists student;
 create table student
 (
@@ -595,43 +647,43 @@ insert into queryconversation(queryid , studentid , adminid , message) values
 (2 , 1 , NULL , "Send the book for it"),
 (2 , NULL , 1 , "I will share the link");
 
-drop table university;
-create table university
-(
-	universityid int not null primary key auto_increment,
-	universityname varchar(1000) not null,
-    universitylicensenumber varchar(50) default "",
-    keycontactname varchar(100) not null,
-    keycontactdesignation varchar(200) not null,
-    keycontactemail varchar(250) not null,
-    yearestablishment varchar(10) not null,
-    overview text,
-    maincampuscountryid int not null,
-    maincampuscityid int not null,
-    maincampusstreetaddress varchar(500) not null,
-    maincampuspostcode varchar(20) not null,
-    universityimage varchar(150) not null,
-    foreign key(maincampuscountryid) references country(countryid),
-    foreign key(maincampuscityid) references city(cityid)
-);
+-- drop table university;
+-- create table university
+-- (
+-- 	universityid int not null primary key auto_increment,
+-- 	universityname varchar(1000) not null,
+--     universitylicensenumber varchar(50) default "",
+--     keycontactname varchar(100) not null,
+--     keycontactdesignation varchar(200) not null,
+--     keycontactemail varchar(250) not null,
+--     yearestablishment varchar(10) not null,
+--     overview text,
+--     maincampuscountryid int not null,
+--     maincampuscityid int not null,
+--     maincampusstreetaddress varchar(500) not null,
+--     maincampuspostcode varchar(20) not null,
+--     universityimage varchar(150) not null,
+--     foreign key(maincampuscountryid) references country(countryid),
+--     foreign key(maincampuscityid) references city(cityid)
+-- );
 
-drop table if exists othercampusaddress;
-create table othercampusaddress
-(
-	universityid int not null,
-    othercampuscityid int not null,
-    othercampusstreetaddress varchar(500) not null,
-    othercampusstreetaddress varchar(500) not null,
-    othercampuspostcode varchar(20) not null,
-    foreign key(universityid) references university(universityid),
-    foreign key(othercampuscityid) references university(universityid)
-);
+-- drop table if exists othercampusaddress;
+-- create table othercampusaddress
+-- (
+-- 	universityid int not null,
+--     othercampuscityid int not null,
+--     othercampusstreetaddress varchar(500) not null,
+--     othercampusstreetaddress varchar(500) not null,
+--     othercampuspostcode varchar(20) not null,
+--     foreign key(universityid) references university(universityid),
+--     foreign key(othercampuscityid) references university(universityid)
+-- );
 
-drop table if exists universitylevelofcourse;
-create table universitylevelofcourse
-(
-	universityid int not null,
-    levelofcourseid int not null,
-    foreign key(universityid) references university(universityid),
-    foreign key(levelofcourseid) references levelofcourse(levelofcourseid)
-);
+-- drop table if exists universitylevelofcourse;
+-- create table universitylevelofcourse
+-- (
+-- 	universityid int not null,
+--     levelofcourseid int not null,
+--     foreign key(universityid) references university(universityid),
+--     foreign key(levelofcourseid) references levelofcourse(levelofcourseid)
+-- );
