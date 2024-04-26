@@ -10,6 +10,13 @@
     </a>
   </li>
 
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="../adminuser/adminuser.php">
+      <i class="bi bi-grid"></i>
+      <span>Admin Users</span>
+    </a>
+  </li>
+
   <?php
     if($_SESSION["canaccessmaster"] == true)
     {

@@ -179,6 +179,11 @@ $(function()
                         $("#querybody").append(tr);
                     }
 
+                    //Initialize data table
+                    $("#querytable").DataTable({
+                        dom: '<"top-controls"fl>t'
+                    });
+
                     $(".view").on("click" , function()
                     {
                         getconversation($(this).attr("data-queryid") , $(this).attr("data-studentname"));

@@ -50,7 +50,7 @@
 
         //Fetch chats
         $response["chats"] = [];
-        $result = $db->query("SELECT name , message , queryid FROM queryconversation qc INNER JOIN student s ON qc.studentid = s.studentid WHERE qc.studentid IS NOT NULL AND readbyadmin = 0");
+        $result = $db->query("SELECT message , queryid FROM queryconversation WHERE studentid IS NOT NULL AND readbyadmin = 0");
         if($result == false)
         {
             failure($response , "Error fetching new conversations");
