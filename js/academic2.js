@@ -17,7 +17,7 @@ $(function()
                     //If the response is not successful, then show the error in alert
                     if(response.success == false)
                     {
-                        $(".error-msg").text(response.error);
+                        showalert(response.error)
                         if(response.login == true)
                         {
                             window.location.href = "login.php";
@@ -101,7 +101,7 @@ $(function()
                     //If the response is not successful, then show the error in alert
                     if(response.success == false)
                     {
-                        $(".error-msg").text(response.error);
+                        showalert(response.error)
                         if(response.login == true)
                         {
                             window.location.href = "login.php";

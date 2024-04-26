@@ -24,7 +24,7 @@ $(function()
                     //If the response is not successful, then show the error in alert
                     if(response.success == false)
                     {
-                        $(".error-msg").text(response.error);
+                        showalert(response.error)
                     }
                     else
                     {

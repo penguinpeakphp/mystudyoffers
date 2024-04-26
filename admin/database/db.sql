@@ -402,8 +402,22 @@ create table student
     activationtoken varchar(15) not null,
     profilestatus varchar(50) not null default "academic",
     status boolean not null default false,
-    registeredon date not null default(current_date)
+    registeredon date
 );
+
+DELIMITER //
+
+CREATE TRIGGER setdefaultstudentdate BEFORE INSERT ON student
+FOR EACH ROW
+BEGIN
+    IF NEW.registeredon IS NULL THEN
+        SET NEW.registeredon = CURRENT_DATE;
+    END IF;
+END;
+
+//
+
+DELIMITER ;
 
 drop table if exists studentacademics;
 create table studentacademics
@@ -523,6 +537,20 @@ create table studentquery
     foreign key (studentid) references student(studentid) on delete cascade,
     foreign key (querytypeid) references querytype(querytypeid) on delete set null
 );
+
+DELIMITER //
+
+CREATE TRIGGER setdefaultstudentquerydate BEFORE INSERT ON studentquery
+FOR EACH ROW
+BEGIN
+    IF NEW.createdate IS NULL THEN
+        SET NEW.createdate = CURRENT_DATE;
+    END IF;
+END;
+
+//
+
+DELIMITER ;
 
 insert into querytype(querytypename) values
 ("General Question"),("Loan Inquiry"),("Admission Inquiry");

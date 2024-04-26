@@ -212,6 +212,40 @@
     </div>
     <!-- modal end -->
 
+    <!-- Modal -->
+    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="messageModalLabel">Alert</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                You have got new query reply(s) from MyStudyOffers.
+            </div>
+            <div class="modal-footer">
+                <a href="queries.php" type="button" class="btn btn-primary">Go to Queries</a>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="alertModalLabel">Alert</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -235,7 +269,7 @@
                     //If the response is not successful, then show the error in alert
                     if(response.success == false)
                     {
-                        $(".error-msg").text(response.error);
+                        showalert(response.error)
                         if(response.login == true)
                         {
                             window.location.href = "login.php";
@@ -251,6 +285,12 @@
                 });
             }
         });
+
+        function showalert(message)
+        {
+            $("#alertModal .modal-body").text(message);
+            $("#alertModal").modal("show");
+        }
 
         $(document).ajaxStart(function() 
         {

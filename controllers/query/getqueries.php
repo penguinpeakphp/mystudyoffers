@@ -63,7 +63,7 @@
     }
     catch(Exception $e)
     {
-        failure($response , "Error Occurred while fetching query list - " . $e->getMessage());
+        failure($response , "Error Occurred while fetching query list - " . $e->getCode());
     }
 
     echo json_encode($response);
