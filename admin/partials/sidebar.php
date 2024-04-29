@@ -121,6 +121,21 @@
           <i class="bi bi-circle"></i><span>Query Type</span>
         </a>
       </li>
+      <li>
+        <a href="../accreditation/accreditation.php">
+          <i class="bi bi-circle"></i><span>Accreditation</span>
+        </a>
+      </li>
+      <li>
+        <a href="../otherfee/otherfee.php">
+          <i class="bi bi-circle"></i><span>Other Fee</span>
+        </a>
+      </li>
+      <li>
+        <a href="../financialaid/financialaid.php">
+          <i class="bi bi-circle"></i><span>Financial Aid</span>
+        </a>
+      </li>
     </ul>
   </li><!-- End Masters Nav -->
   <?php
