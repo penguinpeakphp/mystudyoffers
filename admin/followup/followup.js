@@ -30,7 +30,8 @@ $(function()
                             <tr>
                                 <th scope="row">${followup.followupid}</th>
                                 <td>${followup.name}</td>
-                                <td>${followup.followup}</td>
+                                <td>${followup.remarks}</td>
+                                <td>${followup.followtemplatename}</td>
                                 <td>${followup.noteaddedon}</td>
                                 <td>${followup.nextfollowupdate}</td>
                         `;

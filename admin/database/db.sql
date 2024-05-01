@@ -504,7 +504,9 @@ create table studentfollowup
 (
 	followupid int not null primary key auto_increment,
     studentid int not null,
-    followup text not null,
+    followuptemplateid int,
+    followuptemplatebody text,
+    remarks text not null,
     noteaddedon datetime not null default current_timestamp(),
     nextfollowupdate date not null,
     foreign key (studentid) references student(studentid)

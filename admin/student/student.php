@@ -162,6 +162,8 @@ checksession();
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">Follow Up</th>
+                                                        <th scope="col">Remarks</th>
+                                                        <th scope="col">Follow Up Template</th>
                                                         <th scope="col">Note Added On</th>
                                                         <th scope="col">Follow Up Date</th>
                                                     </tr>
@@ -187,8 +189,12 @@ checksession();
                                         </div>
                                         <div class="modal-body">
                                             <div class="col-12">
-                                                <label for="followuptext">Follow Up Note</label>
-                                                <textarea class="form-control" id="followuptext" style="height: 100px;"></textarea>
+                                                <label for="followuptemplatebody">Follow Up Body</label>
+                                                <textarea class="form-control" id="followuptemplatebody" style="height: 100px;"></textarea>
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="remarks">Follow Up Remarks</label>
+                                                <textarea class="form-control" id="remarks" style="height: 100px;"></textarea>
                                             </div>
                                             <div class="col-6">
                                                 <label for="nextfollowupdate">Next Follow Up Date</label>
