@@ -68,7 +68,8 @@ checksession();
                                         <th scope="col">#</th>
                                         <th scope="col">Student Name</th>
                                         <th scope="col">Remarks</th>
-                                        <th scope="col">Follow Up Template</th>
+                                        <th scope="col">Follow Up Template Name</th>
+                                        <th scope="col">Follow Up Template Body</th>
                                         <th scope="col">Note Added On</th>
                                         <th scope="col">Follow Up Date</th>
                                     </tr>

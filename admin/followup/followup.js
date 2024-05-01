@@ -31,7 +31,8 @@ $(function()
                                 <th scope="row">${followup.followupid}</th>
                                 <td>${followup.name}</td>
                                 <td>${followup.remarks}</td>
-                                <td>${followup.followtemplatename}</td>
+                                <td>${followup.followuptemplatename}</td>
+                                <td>${followup.followuptemplatebody}</td>
                                 <td>${followup.noteaddedon}</td>
                                 <td>${followup.nextfollowupdate}</td>
                         `;

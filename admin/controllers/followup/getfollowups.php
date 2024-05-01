@@ -16,7 +16,7 @@
         $response["followups"] = [];
 
         //Query the database for fetching student follow ups
-        $result = $db->query("SELECT name , followuptemplatename , followupid , remarks , DATE_FORMAT(noteaddedon,'%d-%m-%Y %H:%i:%s') AS noteaddedon , DATE_FORMAT(nextfollowupdate,'%d-%m-%Y') AS nextfollowupdate FROM studentfollowup sf INNER JOIN student s ON sf.studentid = s.studentid INNER JOIN followuptemplate ft ON ft.followuptemplateid = sf.followuptemplateid");
+        $result = $db->query("SELECT name , followuptemplatename , sf.followuptemplatebody , followupid , remarks , DATE_FORMAT(noteaddedon,'%d-%m-%Y %H:%i:%s') AS noteaddedon , DATE_FORMAT(nextfollowupdate,'%d-%m-%Y') AS nextfollowupdate FROM studentfollowup sf INNER JOIN student s ON sf.studentid = s.studentid INNER JOIN followuptemplate ft ON ft.followuptemplateid = sf.followuptemplateid");
         if($result == false)
         {
             failure($response , "Error while fetching student followups");

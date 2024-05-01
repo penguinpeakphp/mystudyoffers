@@ -12,15 +12,15 @@
             goto end;
         }
 
-        //Check if the studentid and followup has been receievd
-        if(!isset($_POST["studentid"]) || !isset($_POST["followup"]) || !isset($_POST["nextfollowupdate"]) || $_POST["studentid"] == "" || $_POST["followup"] == "" || $_POST["nextfollowupdate"] == "")
+        //Check if all the data has been receievd
+        if(!isset($_POST["studentid"]) || !isset($_POST["remarks"]) || !isset($_POST["nextfollowupdate"]) || !isset($_POST["followuptemplatebody"]) || !isset($_POST["followuptemplateid"]) || $_POST["studentid"] == "" || $_POST["remarks"] == "" || $_POST["nextfollowupdate"] == "" || $_POST["followuptemplatebody"] == "" || $_POST["followuptemplateid"] == "")
         {
             failure($response , "Please provide all the information");
             goto end;
         }
 
         //Query the database for inserting follow up
-        $insert = $db->prepare("INSERT INTO studentfollowup(studentid , followup , nextfollowupdate) VALUES(? , ? , ?)");
+        $insert = $db->prepare("INSERT INTO studentfollowup(studentid , remarks , nextfollowupdate , followuptemplateid , followuptemplatebody) VALUES(? , ? , ? , ? , ?)");
         if($insert == false)
         {
             failure($response , "Error while inserting follow up");
@@ -29,7 +29,7 @@
         else
         {
             //Bind the parameters
-            $insert->bind_param("iss" , $_POST["studentid"] , $_POST["followup"] , $_POST["nextfollowupdate"]);
+            $insert->bind_param("issis" , $_POST["studentid"] , $_POST["remarks"] , $_POST["nextfollowupdate"] , $_POST["followuptemplateid"] , $_POST["followuptemplatebody"]);
 
             //Execute the query
             if($insert->execute() == false)

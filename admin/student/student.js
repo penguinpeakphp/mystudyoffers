@@ -31,12 +31,36 @@ $(function()
                         let followup = response.followups[i];
                         $("#followupbody").append(`
                             <tr>
-                                <th scope="row">${followup.followup}</th>
+                                <th scope="row">${followup.followupid}</th>
+                                <td>${followup.remarks}</td>
+                                <td>${followup.followuptemplatename}</td>
+                                <td>${followup.followuptemplatebody}</td>
                                 <td>${followup.noteaddedon}</td>
                                 <td>${followup.nextfollowupdate}</td>
                             </tr>
                         `);
                     }
+
+                    //Declare variable for storing template bodies
+                    let templatebodies = [];
+
+                    $("#followuptemplatelist").html("<option selected disabled>Select Template</option>");
+                    //Loop through the followup templates and render the table
+                    for(let i=0; i<response.followuptemplates.length; i++)
+                    {
+                        let followuptemplate = response.followuptemplates[i];
+                        $("#followuptemplatelist").append(`
+                            <option value="${followuptemplate.followuptemplateid}">${followuptemplate.followuptemplatename}</option>
+                        `);
+
+                        templatebodies[followuptemplate.followuptemplateid] = followuptemplate.followuptemplatebody;
+                    }
+
+                    //Fill the template body text area on changing the select option
+                    $("#followuptemplatelist").on("change" , function()
+                    {
+                        $("#followuptemplatebody").val(templatebodies[$(this).val()]);
+                    });
                 }
             }
             catch(error)
@@ -135,9 +159,12 @@ $(function()
                     {
                         //Extract the student id from the attribute
                         let studentid = $(this).attr("data-studentid");
-                        let followup = $("#followuptext").val();
+                        let remarks = $("#remarks").val();
+                        let followuptemplatebody = $("#followuptemplatebody").val();                        
+                        let followuptemplateid = $("#followuptemplatelist :selected").val();
                         let nextfollowupdate = $("#nextfollowupdate").val();
-                        $.post("../controllers/student/addfollowup.php" , {"studentid":studentid , "followup":followup , "nextfollowupdate":nextfollowupdate} , function(data)
+
+                        $.post("../controllers/student/addfollowup.php" , {"studentid":studentid , "remarks":remarks , "nextfollowupdate":nextfollowupdate , "followuptemplatebody":followuptemplatebody , "followuptemplateid":followuptemplateid} , function(data)
                         {
                             try
                             {
@@ -161,7 +188,7 @@ $(function()
                                     getfollowups(studentid);
 
                                     //Refresh the followup text
-                                    $("#followuptext").val("");
+                                    $("#remarks").val("");
                                     $("#nextfollowupdate").val("");
 
                                     //Hide the current modal
