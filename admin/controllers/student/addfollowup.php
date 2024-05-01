@@ -1,6 +1,42 @@
 <?php
     require_once "../../database/db.php";
     require_once "../globalfunctions.php";
+    require_once "../../../controllers/globaldata.php";
+
+    //Function for sending email for new follow up
+    function sendnewfollowupemail($to , $subject , $name , $followupbody)
+    {
+        //Using global variables for using them in the email content
+        global $sitephone;
+        global $siteemail;
+        global $emailimageurl;
+        global $siteurl;
+        global $emailreferenceurl;
+
+        //Replace the content inside the email content
+        $emailContent = file_get_contents('newfollowupmessage.html');
+        $emailContent = str_replace('[name]', $name, $emailContent);
+        $emailContent = str_replace('[subject]', $subject, $emailContent);
+
+        $emailContent = str_replace('[siteurl]' , $siteurl , $emailContent);
+        $emailContent = str_replace('[sitephone]' , $sitephone , $emailContent);
+        $emailContent = str_replace('[siteemail]' , $siteemail , $emailContent);
+        $emailContent = str_replace('[imageurl]' , $emailimageurl , $emailContent);
+        $emailContent = str_replace('[emailreferenceurl]' , $emailreferenceurl , $emailContent);
+        $emailContent = str_replace('[followupbody]' , $followupbody , $emailContent);
+
+        //Use global mail variable for sending mail to the dedicated recipient
+        global $mail;
+
+        $mail->addAddress($to);
+
+        //Send email as HTML
+        $mail->isHTML(true);
+
+        $mail->Subject = $subject;
+        $mail->Body = $emailContent;
+        $mail->send();
+    }
 
     try
     {
@@ -38,6 +74,32 @@
                 goto end;
             }
         }
+
+        //Query the database for fetching email of the student
+        $select = $db->prepare("SELECT name , email FROM student WHERE studentid = ?");
+        if($select == false)
+        {
+            failure($response , "Error while fetching student email");
+            goto end;
+        }
+        else
+        {
+            //Bind the parameters
+            $select->bind_param("i" , $_POST["studentid"]);
+
+            //Execute the query
+            if($select->execute() == false)
+            {
+                failure($response , "Error while fetching student email");
+                goto end;
+            }
+
+            $result = $select->get_result();
+            $row = $result->fetch_assoc();
+        }
+
+        //Send email for new follow up to the student
+        //sendnewfollowupemail($row["email"] , "New Follow Up Notification" , $row["name"] , $_POST["followuptemplatebody"]);
 
         end:;
     }
