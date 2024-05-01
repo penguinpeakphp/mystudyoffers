@@ -513,6 +513,15 @@ create table studentfollowup
 insert into student(name , surname , phone , email , password , pincode , activationtoken , status)
 values("Rahil" , "Khatri" , "123" , "php@penguinpeak.com" , "33275a8aa48ea918bd53a9181aa975f15ab0d0645398f5918a006d08675c1cb27d5c645dbd084eee56e675e25ba4019f2ecea37ca9e2995b49fcb12c096a032e" , "380015" , "" , true);
 
+drop table if exists followuptemplate;
+create table followuptemplate
+(
+	followuptemplateid int not null primary key auto_increment,
+    followuptemplatename varchar(200) not null,
+    followuptemplatebody text not null,
+    followuptemplatestatus boolean not null default true
+);
+
 drop table if exists studentqualification;
 create table studentqualification
 (

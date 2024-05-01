@@ -75,10 +75,8 @@ checksession();
                                 <tbody id="followupbody">
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>

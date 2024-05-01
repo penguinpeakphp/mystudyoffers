@@ -136,6 +136,11 @@
           <i class="bi bi-circle"></i><span>Financial Aid</span>
         </a>
       </li>
+      <li>
+        <a href="../followuptemplate/followuptemplate.php">
+          <i class="bi bi-circle"></i><span>Follow Up Template</span>
+        </a>
+      </li>
     </ul>
   </li><!-- End Masters Nav -->
   <?php
