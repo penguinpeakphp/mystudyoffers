@@ -25,7 +25,7 @@
         }
 
         //Query the database to fetch the respective user
-        $select = $db->prepare("SELECT adminid , adminemail , adminpassword , canaccessmaster , adminstatus FROM adminuser WHERE adminemail = ?");
+        $select = $db->prepare("SELECT adminid , adminemail , adminpassword , admintype , adminstatus FROM adminuser WHERE adminemail = ?");
         if($select == false)
         {
             failure($response , "Error checking your credentials");
@@ -73,7 +73,7 @@
         //Set the session variables
         $_SESSION["adminemail"] = $_POST["email"];
         $_SESSION["adminid"] = $row["adminid"];
-        $_SESSION["canaccessmaster"] = $row["canaccessmaster"];
+        $_SESSION["admintype"] = $row["admintype"];
 
         end:;
     }

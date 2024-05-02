@@ -12,7 +12,6 @@
             goto end;
         }
 
-
         $today = date("Y-m-d");
 
         //Fetch number of students registered today

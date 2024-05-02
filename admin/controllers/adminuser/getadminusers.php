@@ -12,11 +12,17 @@
             goto end;
         }
 
+        if(!isset($_GET["admintype"]))
+        {
+            failure($response , "Please provide type for fetching the data");
+            goto end;
+        }
+
         //Declare admin users array for storing the data of different admin users
         $response["adminusers"] = [];
 
         //Query the database for selecting all the admin user data from the adminuser table
-        $select = $db->prepare("SELECT adminid , adminname , adminemail , adminstatus FROM adminuser WHERE adminid <> 1 AND adminid <> ?");
+        $select = $db->prepare("SELECT adminid , adminname , adminemail , adminstatus , (SELECT countryname FROM country WHERE countryid = adminuser.countryid) AS countryname FROM adminuser WHERE adminid <> 1 AND adminid <> ? AND admintype = ?");
         if($select == false)
         {
             failure($response , "Error while fetching admin user list");
@@ -25,7 +31,7 @@
         else
         {
             //Bind the parameters
-            $select->bind_param("i" , $_SESSION["adminid"]);
+            $select->bind_param("is" , $_SESSION["adminid"] , $_GET["admintype"]);
 
             //Execute the query
             if($select->execute() == false)

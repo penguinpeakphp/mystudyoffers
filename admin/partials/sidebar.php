@@ -10,6 +10,10 @@
     </a>
   </li>
 
+  <?php
+    if($_SESSION["admintype"] == "admin")
+    {
+  ?>
   <li class="nav-item">
     <a class="nav-link collapsed" href="../adminuser/adminuser.php">
       <i class="bi-shield-lock"></i>
@@ -17,10 +21,13 @@
     </a>
   </li>
 
-  <?php
-    if($_SESSION["canaccessmaster"] == true)
-    {
-  ?>
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="../telecaller/telecaller.php">
+      <i class="bi-laptop"></i>
+      <span>Telecallers</span>
+    </a>
+  </li>
+
   <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
       <i class="bi bi-menu-button-wide"></i><span>Masters</span><i class="bi bi-chevron-down ms-auto"></i>

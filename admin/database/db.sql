@@ -3,24 +3,6 @@ create database mystudyoffers;
 
 use mystudyoffers;
 
-drop table if exists adminuser;
-create table adminuser
-(
-	adminid int not null primary key auto_increment,
-    adminname varchar(150) not null,
-    adminemail varchar(250) not null unique,
-    adminpassword varchar(500) not null,
-    adminstatus boolean not null default true,
-    canaccessmaster boolean not null default false
-);
-
-insert into adminuser(adminname , adminemail , adminpassword , canaccessmaster) values
-('Rahil Khatri' , 'admin@mystudyoffers.com' , 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec' , true),
-('Counsellor 1' , 'cs1@mystudyoffers.com' , 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec' , false),
-('Counsellor 2' , 'cs2@mystudyoffers.com' , 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec' , false),
-('Counsellor 3' , 'cs3@mystudyoffers.com' , 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec' , false);
-
-
 drop table if exists country;
 create table country
 (
@@ -38,6 +20,25 @@ insert into country(countryname) values
 ('Other'),
 ('New Zealand'),
 ('Asia');
+
+drop table if exists adminuser;
+create table adminuser
+(
+	adminid int not null primary key auto_increment,
+    adminname varchar(150) not null,
+    adminemail varchar(250) not null unique,
+    adminpassword varchar(500) not null,
+    adminstatus boolean not null default true,
+    admintype varchar(30) not null,
+    countryid int,
+    foreign key (countryid) references country (countryid)
+);
+
+insert into adminuser(adminname , adminemail , adminpassword , admintype) values
+('Rahil Khatri' , 'admin@mystudyoffers.com' , 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec' , "admin"),
+('Admin 1' , 'admin1@mystudyoffers.com' , 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec' , "telecaller"),
+('Admin 2' , 'admin2@mystudyoffers.com' , 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec' , "telecaller"),
+('Admin 3' , 'admin3@mystudyoffers.com' , 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec' , "telecaller");
 
 drop table if exists state;
 create table state
