@@ -10,7 +10,7 @@ checksession();
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Telecallers</title>
+    <title>Telecaller</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -48,7 +48,7 @@ checksession();
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="../dashboard/dashboard.php">Home</a></li>
                     <li class="breadcrumb-item">Masters</li>
-                    <li class="breadcrumb-item active">Telcaller</li>
+                    <li class="breadcrumb-item active">Telecaller</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -70,7 +70,6 @@ checksession();
                                         <th scope="col">#</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
-                                        <th scope="col">Country</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -104,7 +103,7 @@ checksession();
                                                 <div class="row mb-3">
                                                     <div class="col-12">
                                                         <label for="editadminpassword" class="form-label">Password</label>
-                                                        <input type="email" class="form-control" id="editadminpassword" name="editadminpassword">
+                                                        <input type="password" class="form-control" id="editadminpassword" name="editadminpassword">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
@@ -163,7 +162,7 @@ checksession();
                                                 <div class="row mb-3">
                                                     <div class="col-12">
                                                         <label for="addadminpassword" class="form-label">Password</label>
-                                                        <input type="email" class="form-control" id="addadminpassword" name="addadminpassword">
+                                                        <input type="password" class="form-control" id="addadminpassword" name="addadminpassword">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
@@ -210,6 +209,6 @@ checksession();
     ?>
 </body>
 
-<script src="../telecaller.js"></script>
+<script src="telecaller.js"></script>
 
 </html>

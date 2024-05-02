@@ -22,7 +22,7 @@
         $response["adminusers"] = [];
 
         //Query the database for selecting all the admin user data from the adminuser table
-        $select = $db->prepare("SELECT adminid , adminname , adminemail , adminstatus , (SELECT countryname FROM country WHERE countryid = adminuser.countryid) AS countryname FROM adminuser WHERE adminid <> 1 AND adminid <> ? AND admintype = ?");
+        $select = $db->prepare("SELECT adminid , adminname , adminemail , adminstatus FROM adminuser WHERE adminid <> 1 AND adminid <> ? AND admintype = ?");
         if($select == false)
         {
             failure($response , "Error while fetching admin user list");
