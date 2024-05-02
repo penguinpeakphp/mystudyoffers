@@ -29,9 +29,7 @@ create table adminuser
     adminemail varchar(250) not null unique,
     adminpassword varchar(500) not null,
     adminstatus boolean not null default true,
-    admintype varchar(30) not null,
-    countryid int,
-    foreign key (countryid) references country (countryid)
+    admintype varchar(30) not null
 );
 
 insert into adminuser(adminname , adminemail , adminpassword , admintype) values
@@ -474,6 +472,13 @@ END;
 //
 delimiter ;
 
+drop table if exists studenttelecaller;
+create table studenttelecaller
+(
+	studentid int not null,
+    telecallerid int not null
+);
+
 drop table if exists studentacademics;
 create table studentacademics
 (
@@ -492,14 +497,6 @@ create table studentacademics
     unique key(studentid , academicid)
 );
 
--- delimiter //
--- drop trigger if exists createstudentdetails//
--- create trigger createstudentdetails after insert on student for each row
--- begin
--- 	insert into studentacademics(studentid) values(new.studentid);
--- end//
--- delimiter ;
-
 drop table if exists studentfollowup;
 create table studentfollowup
 (
@@ -512,6 +509,21 @@ create table studentfollowup
     nextfollowupdate date not null,
     foreign key (studentid) references student(studentid)
 );
+
+delimiter //
+drop trigger if exists assignstudent//
+create trigger assignstudent after insert on student for each row
+begin
+	declare tlid int;
+    declare counts int;
+    
+	select telecallerid , count(*) as num into tlid , counts from 
+    adminuser au inner join studenttelecaller st on au.adminid = st.telecallerid 
+    group by telecallerid order by num , telecallerid limit 1;
+    
+    insert into studenttelecaller values(new.studentid , tlid);
+end//
+delimiter ;
 
 insert into student(name , surname , phone , email , password , pincode , activationtoken , status)
 values("Rahil" , "Khatri" , "123" , "php@penguinpeak.com" , "33275a8aa48ea918bd53a9181aa975f15ab0d0645398f5918a006d08675c1cb27d5c645dbd084eee56e675e25ba4019f2ecea37ca9e2995b49fcb12c096a032e" , "380015" , "" , true);
