@@ -15,30 +15,37 @@
         //Declare array for storing queries
         $response["queries"] = [];
 
-        //Query the database for fetching student queries
-        $select = $db->prepare("SELECT queryid qi, querytopic , querytypeid qti , (SELECT querytypename FROM querytype WHERE querytypeid = qti) AS querytypename , (SELECT DATE_FORMAT(messagetime,'%d-%m-%Y %h:%i %p') FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS messagetime , sq.studentid , name FROM studentquery sq INNER JOIN student s ON sq.studentid = s.studentid ORDER BY messagetime DESC");
-        if($select == false)
+        //Check if the logged in user is admin or not
+        if($_SESSION["admintype"] == "admin")
+        {
+            //Query the database for fetching all student queries
+            $select = $db->prepare("SELECT queryid qi, querytopic , querytypeid qti , (SELECT querytypename FROM querytype WHERE querytypeid = qti) AS querytypename , (SELECT DATE_FORMAT(messagetime,'%d-%m-%Y %h:%i %p') FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS messagetime , sq.studentid , name FROM studentquery sq INNER JOIN student s ON sq.studentid = s.studentid ORDER BY messagetime DESC");   
+        }
+
+        //Check if the logged in user is telecaller or not
+        if($_SESSION["admintype"] == "telecaller")
+        {
+            //Query the database for fetching relevant student queries related to telecaller
+            $select = $db->prepare("SELECT queryid qi, querytopic , querytypeid qti , (SELECT querytypename FROM querytype WHERE querytypeid = qti) AS querytypename , (SELECT DATE_FORMAT(messagetime,'%d-%m-%Y %h:%i %p') FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS messagetime , sq.studentid , name FROM studentquery sq INNER JOIN student s ON sq.studentid = s.studentid INNER JOIN studenttelecaller st ON s.studentid = st.studentid WHERE telecallerid = ? ORDER BY messagetime DESC");
+
+            //Bind the parameters
+            $select->bind_param("i" , $_SESSION["adminid"]);
+        }
+
+        //Execute the query
+        if($select->execute() == false)
         {
             failure($response , "Error while fetching query list");
             goto end;
         }
-        else
+
+        //Fetch the result
+        $result = $select->get_result();
+
+        //Loop through all the queries and push the data into the array
+        while($row = $result->fetch_assoc())
         {
-            //Execute the query
-            if($select->execute() == false)
-            {
-                failure($response , "Error while fetching query list");
-                goto end;
-            }
-
-            //Fetch the result
-            $result = $select->get_result();
-
-            //Loop through all the queries and push the data into the array
-            while($row = $result->fetch_assoc())
-            {
-                array_push($response["queries"] , $row);
-            }
+            array_push($response["queries"] , $row);
         }
 
         end:;

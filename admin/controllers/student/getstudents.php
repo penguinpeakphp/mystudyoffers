@@ -14,13 +14,44 @@
 
         //Declare variable for storing student lead
         $response["students"] = [];
-        
-        //Query the database for fetching the student data
-        $result = $db->query("SELECT * FROM student");
-        if($result == false)
+
+        //Check if the admin type is admin
+        if($_SESSION["admintype"] == "admin")
         {
-            failure($response , "Error while fetching student list");
-            goto end;
+            //Query the database for fetching all the student data
+            $result = $db->query("SELECT * FROM student");
+            if($result == false)
+            {
+                failure($response , "Error while fetching student list");
+                goto end;
+            }
+        }
+
+        //Check if the admin type is telecaller
+        if($_SESSION["admintype"] == "telecaller")
+        {
+            //Query the database for fetching the student data assigned to this telecaller only
+            $select = $db->prepare("SELECT * FROM student WHERE studentid IN (SELECT studentid FROM studenttelecaller WHERE telecallerid = ?)");
+            if($select == false)
+            {
+                failure($response , "Error while fetching student list");
+                goto end;
+            }
+            else
+            {
+                //Bind the parameters
+                $select->bind_param("i" , $_SESSION["adminid"]);
+
+                //Execute the query
+                if($select->execute() == false)
+                {
+                    failure($response , "Error while fetching student list");
+                    goto end;
+                }
+
+                //$
+                $result = $select->get_result();
+            }
         }
 
         //Loop through the result and push the data into the array

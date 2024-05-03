@@ -15,8 +15,21 @@
         //Declare an array for storing followups
         $response["followups"] = [];
 
-        //Query the database for fetching student follow ups
-        $result = $db->query("SELECT name , followuptemplatename , sf.followuptemplatebody , followupid , remarks , DATE_FORMAT(noteaddedon,'%d-%m-%Y %H:%i:%s') AS noteaddedon , DATE_FORMAT(nextfollowupdate,'%d-%m-%Y') AS nextfollowupdate FROM studentfollowup sf INNER JOIN student s ON sf.studentid = s.studentid INNER JOIN followuptemplate ft ON ft.followuptemplateid = sf.followuptemplateid");
+        //Check if the user is admin or not
+        if($_SESSION["admintype"] == "admin")
+        {
+            //Query the database for fetching all student follow ups
+            $result = $db->query("SELECT name , followuptemplatename , sf.followuptemplatebody , followupid , remarks , DATE_FORMAT(noteaddedon,'%d-%m-%Y %H:%i:%s') AS noteaddedon , DATE_FORMAT(nextfollowupdate,'%d-%m-%Y') AS nextfollowupdate FROM studentfollowup sf INNER JOIN student s ON sf.studentid = s.studentid INNER JOIN followuptemplate ft ON ft.followuptemplateid = sf.followuptemplateid");    
+        }
+
+        //Check if the user is telecaller or not
+        if($_SESSION["admintype"] == "telecaller")
+        {
+            //Query the database for fetching student follow ups relevevant to the telecaller
+            $result = $db->query("SELECT name , followuptemplatename , sf.followuptemplatebody , followupid , remarks , DATE_FORMAT(noteaddedon,'%d-%m-%Y %H:%i:%s') AS noteaddedon , DATE_FORMAT(nextfollowupdate,'%d-%m-%Y') AS nextfollowupdate FROM studentfollowup sf INNER JOIN student s ON sf.studentid = s.studentid INNER JOIN followuptemplate ft ON ft.followuptemplateid = sf.followuptemplateid INNER JOIN studenttelecaller st ON sf.studentid = st.studentid WHERE telecallerid = '{$_SESSION["adminid"]}'");
+        }
+
+        
         if($result == false)
         {
             failure($response , "Error while fetching student followups");
