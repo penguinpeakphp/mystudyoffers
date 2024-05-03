@@ -517,9 +517,8 @@ begin
 	declare tlid int;
     declare counts int;
     
-	select telecallerid , count(*) as num into tlid , counts from 
-    adminuser au inner join studenttelecaller st on au.adminid = st.telecallerid 
-    group by telecallerid order by num , telecallerid limit 1;
+	select adminid , (select count(*) from studenttelecaller where telecallerid = adminid) as count into tlid , counts
+    from adminuser where admintype = "telecaller" order by count, adminid limit 1;
     
     insert into studenttelecaller values(new.studentid , tlid);
 end//

@@ -128,7 +128,7 @@ $(function()
 
                     //Initialize data table
                     $("#studenttable").DataTable({
-                        dom: '<"top-controls"fl>t'
+                        dom: '<"top-controls"fl>tp'
                     });
 
                     //Open Follow up modal on clicking the button

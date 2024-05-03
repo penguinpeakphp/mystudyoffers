@@ -41,7 +41,7 @@ $(function()
 
                     //Initialize data table
                     $("#followup").DataTable({
-                        dom: '<"top-controls"fl>t'
+                        dom: '<"top-controls"fl>tp'
                     });
                 }
             }

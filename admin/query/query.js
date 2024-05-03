@@ -181,7 +181,7 @@ $(function()
 
                     //Initialize data table
                     $("#querytable").DataTable({
-                        dom: '<"top-controls"fl>t'
+                        dom: '<"top-controls"fl>tp'
                     });
 
                     $(".view").on("click" , function()
