@@ -44,7 +44,7 @@ $(function()
                     //Declare variable for storing template bodies
                     let templatebodies = [];
 
-                    $("#followuptemplatelist").html("<option selected disabled>Select Template</option>");
+                    $("#followuptemplatelist").html("<option selected disabled value=''>Select Template</option>");
                     //Loop through the followup templates and render the table
                     for(let i=0; i<response.followuptemplates.length; i++)
                     {

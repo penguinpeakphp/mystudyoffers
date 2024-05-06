@@ -99,7 +99,7 @@
         }
 
         //Send email for new follow up to the student
-        //sendnewfollowupemail($row["email"] , "New Follow Up Notification" , $row["name"] , $_POST["followuptemplatebody"]);
+        sendnewfollowupemail($row["email"] , "New Follow Up Notification" , $row["name"] , $_POST["followuptemplatebody"]);
 
         end:;
     }
