@@ -664,43 +664,78 @@ insert into queryconversation(queryid , studentid , adminid , message) values
 (2 , 1 , NULL , "Send the book for it"),
 (2 , NULL , 1 , "I will share the link");
 
--- drop table university;
--- create table university
--- (
--- 	universityid int not null primary key auto_increment,
--- 	universityname varchar(1000) not null,
---     universitylicensenumber varchar(50) default "",
---     keycontactname varchar(100) not null,
---     keycontactdesignation varchar(200) not null,
---     keycontactemail varchar(250) not null,
---     yearestablishment varchar(10) not null,
---     overview text,
---     maincampuscountryid int not null,
---     maincampuscityid int not null,
---     maincampusstreetaddress varchar(500) not null,
---     maincampuspostcode varchar(20) not null,
---     universityimage varchar(150) not null,
---     foreign key(maincampuscountryid) references country(countryid),
---     foreign key(maincampuscityid) references city(cityid)
--- );
+drop table if exists university;
+create table university
+(
+	universityid int not null primary key auto_increment,
+	universityname varchar(1000) not null,
+    universitylicensenumber varchar(50) default "",
+    keycontactname varchar(100) not null,
+    keycontactdesignation varchar(200) not null,
+    keycontactemail varchar(250) not null,
+    yearestablishment varchar(10) not null,
+    overview text,
+    maincampuscountryid int,
+    maincampuscityid int,
+    maincampusstreetaddress varchar(500) not null,
+    maincampuspostcode varchar(20) not null,
+    universityimage varchar(150) not null,
+    foreign key(maincampuscountryid) references country(countryid) on delete set null,
+    foreign key(maincampuscityid) references city(cityid) on delete set null
+);
 
--- drop table if exists othercampusaddress;
--- create table othercampusaddress
+drop table if exists othercampusaddress;
+create table othercampusaddress
+(
+	universityid int not null,
+    othercampuscityid int,
+    othercampusstreetaddress varchar(500) not null,
+    othercampuspostcode varchar(20) not null,
+    foreign key(universityid) references university(universityid) on delete cascade,
+    foreign key(othercampuscityid) references university(universityid) on delete set null
+);
+
+drop table if exists universityfees;
+create table universityfees
+(
+	applicationfee decimal(10 , 2) not null,
+    tuitionfee decimal(10 , 2) not null
+);
+
+drop table if exists universitylevelofcourse;
+create table universitylevelofcourse
+(
+	universityid int not null,
+    levelofcourseid int,
+    foreign key(universityid) references university(universityid) on delete cascade,
+    foreign key(levelofcourseid) references levelofcourse(levelofcourseid) on delete set null
+);
+
+drop table if exists universityotherfees;
+create table universityotherfees
+(
+	universityid int not null,
+    otherfeeid int,
+    foreign key (universityid) references university(universityid) on delete cascade,
+    foreign key (otherfeeid) references otherfee(otherfeeid) on delete set null
+);
+
+drop table if exists universitystatistics;
+create table universitystatistics
+(
+	universityid int not null,
+	totalstudents int,
+    totalinternationalstudents int,
+    acceptancerate decimal(10 , 2),
+    graduateemploymentrate decimal(10 , 2),
+    foreign key(universityid) references university(universityid) on delete cascade
+);
+
+-- drop table if exists universityassets;
+-- create table universityassets
 -- (
 -- 	universityid int not null,
---     othercampuscityid int not null,
---     othercampusstreetaddress varchar(500) not null,
---     othercampusstreetaddress varchar(500) not null,
---     othercampuspostcode varchar(20) not null,
---     foreign key(universityid) references university(universityid),
---     foreign key(othercampuscityid) references university(universityid)
--- );
-
--- drop table if exists universitylevelofcourse;
--- create table universitylevelofcourse
--- (
--- 	universityid int not null,
---     levelofcourseid int not null,
---     foreign key(universityid) references university(universityid),
---     foreign key(levelofcourseid) references levelofcourse(levelofcourseid)
+-- 	logoimage varchar(500),
+--     mascotimage varchar(500),
+--     
 -- );
