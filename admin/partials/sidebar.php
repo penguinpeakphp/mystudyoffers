@@ -162,6 +162,13 @@
   </li><!-- End Students Nav -->
 
   <li class="nav-item">
+    <a class="nav-link collapsed" href="../university/university.php">
+      <i class="bi-building"></i>
+      <span>University</span>
+    </a>
+  </li><!-- End University Nav -->
+
+  <li class="nav-item">
     <a class="nav-link collapsed" href="../query/query.php">
       <i class="bi-chat-left-text"></i>
       <span>Query (<span class="newchats"></span>)</span>

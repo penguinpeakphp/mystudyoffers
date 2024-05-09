@@ -1,7 +1,9 @@
 //Global variable for storing the country and state list
 let countries;
 let states;
+let cities;
 let academics;
+let levelofcourses;
 
 //Function for populating the options in a select/option menu
 function populatecountries(elementid)
@@ -28,6 +30,18 @@ function populatestates(elementid)
 }
 
 //Function for populating the options in a select/option menu
+function populatecities(elementid)
+{
+    $(elementid).html(`<option disabled selected value="">Select City</option>`)
+    cities.forEach(function(city)
+    {
+        $(elementid).append(`
+            <option value="${city.cityid}">${city.cityname}</option>
+        `);
+    });
+}
+
+//Function for populating the options in a select/option menu
 function populateacademics(elementid)
 {
     $(elementid).html(`<option disabled selected value="">Select Academic Qualification</option>`);
@@ -36,5 +50,17 @@ function populateacademics(elementid)
         $(elementid).append(`
             <option value="${academic.academicid}">${academic.academicname}</option>
         `)
+    });
+}
+
+//Function for populating the options in a select/option menu
+function populatelevelofcourses(elementid)
+{
+    $(elementid).html(`<option disabled selected value="">Select Level of Courses</option>`);
+    levelofcourses.forEach(function(levelofcourse)
+    {
+        $(elementid).append(`
+            <option value="${levelofcourse.levelofcourseid}">${levelofcourse.levelofcoursename}</option>
+        `);
     });
 }
