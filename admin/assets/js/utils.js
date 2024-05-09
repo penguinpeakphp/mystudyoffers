@@ -60,7 +60,10 @@ function populatelevelofcourses(elementid)
     levelofcourses.forEach(function(levelofcourse)
     {
         $(elementid).append(`
-            <option value="${levelofcourse.levelofcourseid}">${levelofcourse.levelofcoursename}</option>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="levelofcourse-${levelofcourse.levelofcourseid}" value="${levelofcourse.levelofcourseid}">
+            <label class="form-check-label" for="levelofcourse-${levelofcourse.levelofcourseid}">${levelofcourse.levelofcoursename}</label>
+        </div>
         `);
     });
 }

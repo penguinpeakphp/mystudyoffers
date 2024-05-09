@@ -88,9 +88,15 @@ checksession();
                                         </div>
                                         <div class="col-6">
                                             <label for="courselevelsoffered" class="form-label">Offered Course Levels</label>
-                                            <select class="form-select courselevelsoffered" id="courselevelsoffered" aria-label="Course Level">
-                                                <option selected="" disabled="" value="">Select Course Levels</option>
-                                            </select>
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCheckboxButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Select Options
+                                                </button>
+                                                    <div class="dropdown-menu p-2 courselevelsoffered" aria-labelledby="dropdownCheckboxButton">
+                                                        
+                                                    </div>
+                                            </div>
+
                                         </div>
                                         <div class="col-6">
                                             <label for="keycontactname" class="form-label">Key Contact Name</label>
