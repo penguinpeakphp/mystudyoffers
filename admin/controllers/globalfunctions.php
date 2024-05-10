@@ -129,25 +129,4 @@
 
         return true;
     }
-
-    //Function for fetching the list of level of courses
-    function getlevelofcourses(&$response , &$levelofcourses)
-    {
-        //Access the global variable
-        global $db;
-
-        //Query the database for fetching level of courses
-        $result = $db->query("SELECT * FROM levelofcourse");
-        if($result == false)
-        {
-            failure($response , "Error while fetching level of courses list");
-            return false;
-        }
-
-        //Loop through the level of courses and push the data into the array
-        while($row = $result->fetch_assoc())
-        {
-            array_push($levelofcourses , $row);
-        }
-    }
 ?>

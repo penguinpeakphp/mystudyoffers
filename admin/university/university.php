@@ -65,10 +65,10 @@ checksession();
                                     <button class="nav-link w-100 active" id="tab1" data-bs-toggle="tab" data-bs-target="#section1" type="button" role="tab" aria-controls="section1" aria-selected="false" tabindex="-1">University Information</button>
                                 </li>
                                 <li class="nav-item flex-fill" role="presentation">
-                                    <button class="nav-link w-100" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-justified" type="button" role="tab" aria-controls="profile" aria-selected="false" tabindex="-1">Profile</button>
+                                    <button class="nav-link w-100" id="tab4" data-bs-toggle="tab" data-bs-target="#section4" type="button" role="tab" aria-controls="section4" aria-selected="true">University Statistics</button>
                                 </li>
                                 <li class="nav-item flex-fill" role="presentation">
-                                    <button class="nav-link w-100" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-justified" type="button" role="tab" aria-controls="contact" aria-selected="true">Contact</button>
+                                    <button class="nav-link w-100" id="tab5" data-bs-toggle="tab" data-bs-target="#section5" type="button" role="tab" aria-controls="section5" aria-selected="false" tabindex="-1">Tuition and Fees</button>
                                 </li>
                             </ul>
                             <div class="tab-content pt-2" id="myTabjustifiedContent">
@@ -89,14 +89,13 @@ checksession();
                                         <div class="col-6">
                                             <label for="courselevelsoffered" class="form-label">Offered Course Levels</label>
                                             <div class="dropdown">
-                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCheckboxButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Select Options
+                                                <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="courselevelsdropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Course Levels
                                                 </button>
-                                                    <div class="dropdown-menu p-2 courselevelsoffered" aria-labelledby="dropdownCheckboxButton">
+                                                    <div class="dropdown-menu p-2 courselevelsoffered w-100" aria-labelledby="courselevelsdropdown">
                                                         
                                                     </div>
                                             </div>
-
                                         </div>
                                         <div class="col-6">
                                             <label for="keycontactname" class="form-label">Key Contact Name</label>
@@ -167,11 +166,67 @@ checksession();
                                         </div>
                                     </form>
                                 </div>
-                                <div class="tab-pane fade" id="profile-justified" role="tabpanel" aria-labelledby="profile-tab">
-                                    Nesciunt totam et. Consequuntur magnam aliquid eos nulla dolor iure eos quia. Accusantium distinctio omnis et atque fugiat. Itaque doloremque aliquid sint quasi quia distinctio similique. Voluptate nihil recusandae mollitia dolores. Ut laboriosam voluptatum dicta.
+
+                                <div class="tab-pane fade" id="section4" role="tabpanel" aria-labelledby="section4">
+                                    <form class="row g-3" id="universitystatistics">
+                                        <div class="col-6">
+                                            <label for="totalstudents" class="form-label">Total Students</label> 
+                                            <input type="text" class="form-control" id="totalstudents">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="totalinternationstudents" class="form-label">Total International Students</label> 
+                                            <input type="text" class="form-control" id="totalinternationstudents">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="acceptancerate" class="form-label">Acceptance Rate</label> 
+                                            <input type="text" class="form-control" id="acceptancerate">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="graduateemploymentrate" class="form-label">Graduate Employment Rate</label> 
+                                            <input type="text" class="form-control" id="graduateemploymentrate">
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="tab-pane fade" id="contact-justified" role="tabpanel" aria-labelledby="contact-tab">
-                                    Saepe animi et soluta ad odit soluta sunt. Nihil quos omnis animi debitis cumque. Accusantium quibusdam perspiciatis qui qui omnis magnam. Officiis accusamus impedit molestias nostrum veniam. Qui amet ipsum iure. Dignissimos fuga tempore dolor.
+
+                                <div class="tab-pane fade" id="section5" role="tabpanel" aria-labelledby="section5">
+                                    <form class="row g-3" id="tuitionandfees">
+                                        <div class="col-6">
+                                            <label for="applicationfee" class="form-label">Application Fee</label> 
+                                            <input type="text" class="form-control" id="applicationfee">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="tuitionfee" class="form-label">Tuition Fee</label> 
+                                            <input type="number" class="form-control" id="tuitionfee">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="otherfees" class="form-label">Other Fees</label>
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="otherfeesdropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Other Fees
+                                                </button>
+                                                    <div class="dropdown-menu p-2 otherfees w-100" aria-labelledby="otherfeesdropdown">
+                                                        
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="financialaid" class="form-label">Financial Aid</label>
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="financialaiddropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Financial Aid
+                                                </button>
+                                                    <div class="dropdown-menu p-2 financialaid w-100" aria-labelledby="financialaiddropdown">
+                                                        
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div><!-- End Default Tabs -->
                         </div>

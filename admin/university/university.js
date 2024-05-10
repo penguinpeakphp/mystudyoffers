@@ -1,40 +1,137 @@
 $(function()
 {
-    $.get("../controllers/university/getformdata.php" , {} , function(data)
+    $.get("../controllers/city/getcities.php" , {} , function(data)
     {
         try
+        {
+            //Parse the data received from the server
+            let response = JSON.parse(data);
+
+            //If the response is not successful, then show the error in alert
+            if(response.success == false)
             {
-                //Parse the data received from the server
-                let response = JSON.parse(data);
+                alert(response.error);
 
-                //If the response is not successful, then show the error in alert
-                if(response.success == false)
+                //Redirect to login page if the user is required to be login again
+                if(response.login == true)
                 {
-                    alert(response.error);
-
-                    //Redirect to login page if the user is required to be login again
-                    if(response.login == true)
-                    {
-                        window.location.href = "../login/login.php";
-                    }
-                }
-                else
-                {
-                    //Assign the data to global variables
-                    cities = response.cities;
-                    levelofcourses = response.levelofcourses;
-
-                    //Populate the select options
-                    populatecities(".citylist");
-                    populatelevelofcourses(".courselevelsoffered");
+                    window.location.href = "../login/login.php";
                 }
             }
-            catch(error)
+            else
             {
-                alert("Error occurred while trying to read server response");
+                //Assign the data to global variable
+                cities = response.cities;
+
+                //Populate the select options
+                populatecities(".citylist");
             }
+        }
+        catch(error)
+        {
+            alert("Error occurred while trying to read server response");
+        }
     });
 
+    $.get("../controllers/levelofcourse/getlevelofcourses.php" , {} , function(data)
+    {
+        try
+        {
+            //Parse the data received from the server
+            let response = JSON.parse(data);
+
+            //If the response is not successful, then show the error in alert
+            if(response.success == false)
+            {
+                alert(response.error);
+
+                //Redirect to login page if the user is required to be login again
+                if(response.login == true)
+                {
+                    window.location.href = "../login/login.php";
+                }
+            }
+            else
+            {
+                //Assign the data to global variable
+                levelofcourses = response.levelofcourses;
+
+                //Populate the select options
+                populatelevelofcourses(".courselevelsoffered");
+            }
+        }
+        catch(error)
+        {
+            alert("Error occurred while trying to read server response");
+        }
+    });
+
+    $.get("../controllers/otherfee/getotherfees.php" , {} , function(data)
+    {
+        try
+        {
+            //Parse the data received from the server
+            let response = JSON.parse(data);
+
+            //If the response is not successful, then show the error in alert
+            if(response.success == false)
+            {
+                alert(response.error);
+
+                //Redirect to login page if the user is required to be login again
+                if(response.login == true)
+                {
+                    window.location.href = "../login/login.php";
+                }
+            }
+            else
+            {
+                //Assign the data to global variable
+                otherfees = response.otherfees;
+
+                //Populate the checkbox dropdown
+                populateuniversityotherfees(".otherfees");
+            }
+        }
+        catch(error)
+        {
+            alert("Error occurred while trying to read server response");
+        }
+    });
+
+    $.get("../controllers/financialaid/getfinancialaids.php" , {} , function(data)
+    {
+        try
+        {
+            //Parse the data received from the server
+            let response = JSON.parse(data);
+
+            //If the response is not successful, then show the error in alert
+            if(response.success == false)
+            {
+                alert(response.error);
+
+                //Redirect to login page if the user is required to be login again
+                if(response.login == true)
+                {
+                    window.location.href = "../login/login.php";
+                }
+            }
+            else
+            {
+                //Assign the data to global variable
+                financialaids = response.financialaids;
+
+                //Populate the checkbox dropdown
+                populateuniversityfinancialaid(".financialaid");
+            }
+        }
+        catch(error)
+        {
+            alert("Error occurred while trying to read server response");
+        }
+    });
+    
     function validateAllCampuses() 
     {
         var allFilled = true;
