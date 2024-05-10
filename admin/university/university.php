@@ -65,6 +65,9 @@ checksession();
                                     <button class="nav-link w-100 active" id="tab1" data-bs-toggle="tab" data-bs-target="#section1" type="button" role="tab" aria-controls="section1" aria-selected="false" tabindex="-1">University Information</button>
                                 </li>
                                 <li class="nav-item flex-fill" role="presentation">
+                                    <button class="nav-link w-100" id="tab2" data-bs-toggle="tab" data-bs-target="#section2" type="button" role="tab" aria-controls="section2" aria-selected="false" tabindex="-1">University Intellectual Assets</button>
+                                </li>
+                                <li class="nav-item flex-fill" role="presentation">
                                     <button class="nav-link w-100" id="tab4" data-bs-toggle="tab" data-bs-target="#section4" type="button" role="tab" aria-controls="section4" aria-selected="true">University Statistics</button>
                                 </li>
                                 <li class="nav-item flex-fill" role="presentation">
@@ -163,6 +166,46 @@ checksession();
                                         
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tab-pane fade active show" id="section2" role="tabpanel" aria-labelledby="section2">
+                                    <form class="row g-3" id="universityintellectualassets">
+                                        <div class="col-6">
+                                            <label for="logoimage" class="form-label">Logo Image</label> 
+                                            <input type="file" class="form-control" id="logoimage">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="mascotimage" class="form-label">Mascot Image</label> 
+                                            <input type="file" class="form-control" id="mascotimage">
+                                        </div>
+                                        <div id="otherteamsandclubslist">
+                                            <div id="otherteamsandclubstemplate" class="d-none">
+                                                <div class="col-12">
+                                                    <label for="otherteamsandclubs" class="form-label">Other Teams and Clubs</label>
+                                                    <input type="text" class="form-control otherteamsandclubs">
+                                                </div>
+                                                <div class="col-4 mt-3">
+                                                    <button type="button" class="btn btn-danger removeteamsandclubs">Remove Team/Club</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 mt-3">
+                                            <button type="button" class="btn btn-primary" id="addteamsandclubs">Add Teams and Clubs</button>
+                                        </div>
+                                        <div id="facilityimageslist">
+                                            <div id="facilityimagestemplate" class="d-none">
+                                                <div class="col-6">
+                                                    <label for="facilityimages" class="form-label">Facility Images</label>
+                                                    <input type="file" class="form-control facilityimages">
+                                                </div>
+                                                <div class="col-4 mt-3">
+                                                    <button type="button" class="btn btn-danger removefacilityimages">Remove Facility Image</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 mt-3">
+                                            <button type="button" class="btn btn-primary" id="addfacilityimages">Add Facility Image</button>
                                         </div>
                                     </form>
                                 </div>

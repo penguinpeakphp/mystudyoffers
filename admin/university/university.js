@@ -197,4 +197,51 @@ $(function()
             newCampus.remove();
         });
     });
+
+    //Function for checking if other teams and clubs have been added or not
+    function checkteamsandclubs()
+    {
+        let allFilled = true;
+
+        $(".otherteamsandclubs").each(function()
+        {
+            if($(this).val() == "")
+            {
+                alert("Please fill the details before adding more");
+                allFilled = false;
+            }
+        });
+
+        return allFilled;
+    }
+
+    $("#addteamsandclubs").on("click" , function()
+    {
+        //Check if other teams and clubs have been added
+        if(!checkteamsandclubs())
+        {
+            alert("Please enter all other teams and clubs before adding more");
+            return;
+        }
+
+        //Clone the template
+        let newteamsandclubs = $("#otherteamsandclubstemplate");
+
+        // Remove attribute for preventing multiple ID copy issue
+        newteamsandclubs.removeAttr("id");
+        
+        // Remove 'd-none' class to make it visible
+        newteamsandclubs.removeClass("d-none");
+        
+        // Append the new teamsandclubs to the container
+        $("#otherteamsandclubslist").append(newteamsandclubs);
+
+        //Populate the select option with cities
+        populatecities(newteamsandclubs.find(".othercampuscity"));
+        
+        // Attach event handler to the "Remove" button
+        newteamsandclubs.find(".removeteamsandclubs").on("click", function() {
+            newteamsandclubs.remove();
+        });
+    });
 });

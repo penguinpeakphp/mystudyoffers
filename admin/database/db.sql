@@ -675,12 +675,10 @@ create table university
     keycontactemail varchar(250) not null,
     yearestablishment varchar(10) not null,
     overview text,
-    maincampuscountryid int,
     maincampuscityid int,
     maincampusstreetaddress varchar(500) not null,
     maincampuspostcode varchar(20) not null,
     universityimage varchar(150) not null,
-    foreign key(maincampuscountryid) references country(countryid) on delete set null,
     foreign key(maincampuscityid) references city(cityid) on delete set null
 );
 
@@ -724,18 +722,31 @@ drop table if exists universitystatistics;
 create table universitystatistics
 (
 	universityid int not null,
-	totalstudents int,
-    totalinternationalstudents int,
-    acceptancerate decimal(10 , 2),
-    graduateemploymentrate decimal(10 , 2),
+	totalstudents int not null,
+    totalinternationalstudents int not null,
+    acceptancerate decimal(10 , 2) not null,
+    graduateemploymentrate decimal(10 , 2) not null,
     foreign key(universityid) references university(universityid) on delete cascade
 );
 
--- drop table if exists universityassets;
--- create table universityassets
--- (
--- 	universityid int not null,
--- 	logoimage varchar(500),
---     mascotimage varchar(500),
---     
--- );
+drop table if exists universityassets;
+create table universityassets
+(
+	universityid int not null,
+	logoimage varchar(500),
+    mascotimage varchar(500)
+);
+
+drop table if exists universityclubsandteams;
+create table universityclubsandteams
+(
+	universityid int not null,
+    clubsanteams varchar(150) not null
+);
+
+drop table if exists universityfacilityimages;
+create table universityfacilityimages
+(
+	universityid int not null,
+    image varchar(150) not null
+);
