@@ -180,32 +180,33 @@ checksession();
                                             <input type="file" class="form-control" id="mascotimage">
                                         </div>
                                         <div id="otherteamsandclubslist">
-                                            <div id="otherteamsandclubstemplate" class="d-none">
-                                                <div class="col-12">
-                                                    <label for="otherteamsandclubs" class="form-label">Other Teams and Clubs</label>
-                                                    <input type="text" class="form-control otherteamsandclubs">
-                                                </div>
-                                                <div class="col-4 mt-3">
-                                                    <button type="button" class="btn btn-danger removeteamsandclubs">Remove Team/Club</button>
-                                                </div>
-                                            </div>
+                                            <p><b>Other Teams and Clubs</b></p>
                                         </div>
                                         <div class="col-4 mt-3">
                                             <button type="button" class="btn btn-primary" id="addteamsandclubs">Add Teams and Clubs</button>
                                         </div>
-                                        <div id="facilityimageslist">
-                                            <div id="facilityimagestemplate" class="d-none">
-                                                <div class="col-6">
-                                                    <label for="facilityimages" class="form-label">Facility Images</label>
-                                                    <input type="file" class="form-control facilityimages">
-                                                </div>
-                                                <div class="col-4 mt-3">
-                                                    <button type="button" class="btn btn-danger removefacilityimages">Remove Facility Image</button>
-                                                </div>
+                                        <div id="otherteamsandclubstemplate" class="d-none">
+                                            <div class="col-12">
+                                                <label for="otherteamsandclubs" class="form-label">Other Teams and Clubs</label>
+                                                <input type="text" class="form-control otherteamsandclubs">
                                             </div>
+                                            <div class="col-4 mt-3">
+                                                <button type="button" class="btn btn-danger removeteamsandclubs">Remove Team/Club</button>
+                                            </div>
+                                        </div>
+                                        <div id="facilityimageslist">
                                         </div>
                                         <div class="col-4 mt-3">
                                             <button type="button" class="btn btn-primary" id="addfacilityimages">Add Facility Image</button>
+                                        </div>
+                                        <div id="facilityimagestemplate" class="d-none">
+                                            <div class="col-6">
+                                                <label for="facilityimages" class="form-label">Facility Images</label>
+                                                <input type="file" class="form-control facilityimages">
+                                            </div>
+                                            <div class="col-4 mt-3">
+                                                <button type="button" class="btn btn-danger removefacilityimages">Remove Facility Image</button>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>

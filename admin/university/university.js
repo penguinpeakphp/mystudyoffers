@@ -203,11 +203,10 @@ $(function()
     {
         let allFilled = true;
 
-        $(".otherteamsandclubs").each(function()
+        $("#otherteamsandclubslist .otherteamsandclubs").each(function()
         {
             if($(this).val() == "")
             {
-                alert("Please fill the details before adding more");
                 allFilled = false;
             }
         });
@@ -225,7 +224,7 @@ $(function()
         }
 
         //Clone the template
-        let newteamsandclubs = $("#otherteamsandclubstemplate");
+        let newteamsandclubs = $("#otherteamsandclubstemplate").clone();
 
         // Remove attribute for preventing multiple ID copy issue
         newteamsandclubs.removeAttr("id");
@@ -235,13 +234,50 @@ $(function()
         
         // Append the new teamsandclubs to the container
         $("#otherteamsandclubslist").append(newteamsandclubs);
-
-        //Populate the select option with cities
-        populatecities(newteamsandclubs.find(".othercampuscity"));
         
         // Attach event handler to the "Remove" button
         newteamsandclubs.find(".removeteamsandclubs").on("click", function() {
             newteamsandclubs.remove();
+        });
+    });
+
+    //Function for checking if all the images have been attached
+    function validateFacilityImages() {
+        let allFilled = true;
+    
+        $("#facilityimageslist .facilityimages").each(function() {
+            // Check if there's a file selected
+            if ($(this).val() === "") {
+                allFilled = false;
+            }
+        });
+    
+        return allFilled;
+    }
+    
+    $("#addfacilityimages").on("click", function() {
+        // Validate if all existing file inputs are filled
+        if (!validateFacilityImages()) {
+            alert("Please select a file for all existing facility images before adding more.");
+            return; // Exit if validation fails
+        }
+
+        // Clone the template to create a new file input
+        let newFacilityImage = $("#facilityimagestemplate").clone();
+
+        // Remove ID to avoid duplication
+        newFacilityImage.removeAttr("id");
+
+        // Reset the file input and make it visible
+        newFacilityImage.find("input[type='file']").val(""); // Reset file input
+        newFacilityImage.removeClass("d-none");
+
+        // Append the new file input field to the list
+        $("#facilityimageslist").append(newFacilityImage);
+
+        // Attach event handler to the "Remove" button
+        newFacilityImage.find(".removefacilityimages").on("click", function() {
+            newFacilityImage.remove();
         });
     });
 });
