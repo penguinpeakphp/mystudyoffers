@@ -6,6 +6,8 @@ let academics;
 let levelofcourses;
 let otherfees;
 let financialaids;
+let accreditations;
+let rankawardingbodies;
 
 //Function for populating the options in a select/option menu
 function populatecountries(elementid)
@@ -78,8 +80,8 @@ function populateuniversityotherfees(elementid)
     {
         $(elementid).append(`
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="levelofcourse-${otherfee.otherfeeid}" value="${otherfee.otherfeeid}">
-            <label class="form-check-label" for="levelofcourse-${otherfee.otherfeeid}">${otherfee.otherfeename}</label>
+            <input class="form-check-input" type="checkbox" id="otherfee-${otherfee.otherfeeid}" value="${otherfee.otherfeeid}">
+            <label class="form-check-label" for="otherfee-${otherfee.otherfeeid}">${otherfee.otherfeename}</label>
         </div>
         `);
     });
@@ -93,9 +95,37 @@ function populateuniversityfinancialaid(elementid)
     {
         $(elementid).append(`
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="levelofcourse-${financialaid.financialaidid}" value="${financialaid.financialaid}">
-            <label class="form-check-label" for="levelofcourse-${financialaid.financialaidid}">${financialaid.financialaidname}</label>
+            <input class="form-check-input" type="checkbox" id="financialaid-${financialaid.financialaidid}" value="${financialaid.financialaid}">
+            <label class="form-check-label" for="financialaid-${financialaid.financialaidid}">${financialaid.financialaidname}</label>
         </div>
+        `);
+    });
+}
+
+//Function for populating accreditation status
+function populateaccreditations(elementid)
+{
+    $(elementid).html(`<option disabled selected value="">Select Accreditation Status</option>`);
+    accreditations.forEach(function(accreditation)
+    {
+        $(elementid).append(`
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="accreditation-${accreditation.accreditationid}" value="${accreditation.accreditationname}">
+            <label class="form-check-label" for="accreditation-${accreditation.accreditationid}">${accreditation.accreditationname}</label>
+        </div>
+        `);
+    });
+}
+
+//Function for populating rank awarding bodies
+function populaterankawardingbodies(elementid)
+{
+    console.log(rankawardingbodies);
+    $(elementid).html(`<option disabled selected value="">Select Rank Awarding Body</option>`);
+    rankawardingbodies.forEach(function(rankawardingbody)
+    {
+        $(elementid).append(`
+            <option value="${rankawardingbody.rankawardingbodyid}">${rankawardingbody.rankawardingbodyname}</option>
         `);
     });
 }
