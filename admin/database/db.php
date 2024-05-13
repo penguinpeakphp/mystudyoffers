@@ -4,5 +4,6 @@
     define("password" , "root@123");
     define("database" , "mystudyoffers");
 
-    $db = new mysqli(server , user , password , database);
+    $db = new mysqli
+    (server , user , password , database);
 ?>
