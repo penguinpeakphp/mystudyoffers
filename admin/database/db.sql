@@ -510,6 +510,14 @@ create table studentfollowup
     foreign key (studentid) references student(studentid)
 );
 
+drop table if exists rankawardingbody;
+create table rankawardingbody
+(
+	rankawardingbodyid int not null primary key auto_increment,
+    rankawardingbodyname varchar(100) not null,
+    rankawardingbodystatus boolean not null default true
+);
+
 delimiter //
 drop trigger if exists assignstudent//
 create trigger assignstudent after insert on student for each row
