@@ -19,7 +19,7 @@
         if($_SESSION["admintype"] == "admin")
         {
             //Query the database for fetching all the student data
-            $result = $db->query("SELECT * FROM student");
+            $result = $db->query("SELECT * , (SELECT distinct(adminname) FROM studenttelecaller st INNER JOIN adminuser au ON st.telecallerid = au.adminid WHERE st.studentid = s.studentid) AS telecallername FROM student s");
             if($result == false)
             {
                 failure($response , "Error while fetching student list");
@@ -49,7 +49,6 @@
                     goto end;
                 }
 
-                //$
                 $result = $select->get_result();
             }
         }

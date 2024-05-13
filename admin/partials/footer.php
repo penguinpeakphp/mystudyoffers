@@ -56,7 +56,7 @@
                                 <tr>
                                     <th scope="row"><a>${followup.followupid}</a></th>
                                     <td>${followup.name}</td>
-                                    <td><a class="text-primary">${followup.followup}</a></td>
+                                    <td><a class="text-primary">${followup.followuptemplatebody}</a></td>
                                 </tr>
                             `);
                         }

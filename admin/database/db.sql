@@ -475,7 +475,7 @@ delimiter ;
 drop table if exists studenttelecaller;
 create table studenttelecaller
 (
-	studentid int not null,
+	studentid int not null unique key,
     telecallerid int not null
 );
 

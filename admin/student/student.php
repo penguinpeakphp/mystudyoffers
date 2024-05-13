@@ -70,6 +70,7 @@ checksession();
                                         <th scope="col">Surname</th>
                                         <th scope="col">Phone</th>
                                         <th scope="col">Email</th>
+                                        <th scope="col">Assigned To</th>
                                         <th scope="col">Pincode</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>

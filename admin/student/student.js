@@ -73,6 +73,7 @@ $(function()
     //Function for getting student list
     function getstudentlist()
     {
+        $("#studentbody").html("");
         $.get("../controllers/student/getstudents.php" , {} , function(data)
         {
             try
@@ -106,6 +107,15 @@ $(function()
                             <td>${student.surname}</td>
                             <td>${student.phone}</td>
                             <td>${student.email}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary telecallerbtn dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    ${student.telecallername}
+                                    </button>
+                                    <div class="dropdown-menu telecallerlist" data-studentid=${student.studentid}>
+                                    </div>
+                                </div>
+                            </td>
                             <td>${student.pincode}</td>
                         `;
 
@@ -125,6 +135,82 @@ $(function()
 
                         $("#studentbody").append(tr);
                     }
+
+                    $.get("../controllers/adminuser/getadminusers.php" , {"admintype":"telecaller"} , function(data)
+                    {
+                        try
+                        {
+                            //Parse the data received from the server
+                            let response = JSON.parse(data);
+
+                            //If the response is not successful, then show the error in alert
+                            if(response.success == false)
+                            {
+                                alert(response.error);
+
+                                //Redirect to login page if the user is required to be login again
+                                if(response.login == true)
+                                {
+                                    window.location.href = "../login/login.php";
+                                }
+                            }
+                            else
+                            {
+                                for(let i=0; i<response.adminusers.length; i++)
+                                {
+                                    let adminuser = response.adminusers[i];
+                                    $(".telecallerlist").append(`
+                                        <a class="dropdown-item" href="javascript:void(0)" data-adminid="${adminuser.adminid}">${adminuser.adminname}</a>
+                                    `);
+                                }
+
+                                $(".telecallerlist .dropdown-item").on("click" , function()
+                                {
+                                    if(!confirm("Are you sure you want to change the assigned telecaller?"))
+                                    {
+                                        return;
+                                    }
+                                    let adminid = $(this).attr("data-adminid");
+                                    let studentid = $(this).parent().attr("data-studentid");
+
+                                    let thiselement = $(this);
+                                    
+                                    $.post("../controllers/student/editstudent.php" , {"action":"changetelecaller" , "adminid":adminid , "studentid":studentid} , function(data) 
+                                    {
+                                        try
+                                        {
+                                            //Parse the data received from the server
+                                            let response = JSON.parse(data);
+
+                                            //If the response is not successful, then show the error in alert
+                                            if(response.success == false)
+                                            {
+                                                alert(response.error);
+
+                                                //Redirect to login page if the user is required to be login again
+                                                if(response.login == true)
+                                                {
+                                                    window.location.href = "../login/login.php";
+                                                }
+                                            }
+                                            else
+                                            {
+                                                $(".telecallerlist .dropdown-item").parent().siblings().get(0).textContent = thiselement.text();
+                                            }
+                                        }
+                                        catch(error)
+                                        {
+                                            alert("Error occurred while trying to read server response");
+                                        }
+                                    });
+                                });
+                            }
+                        }
+                        catch(error)
+                        {
+                            alert("Error occurred while trying to read server response");
+                        }
+                    });
 
                     //Initialize data table
                     $("#studenttable").DataTable({
