@@ -148,6 +148,11 @@
           <i class="bi bi-circle"></i><span>Follow Up Template</span>
         </a>
       </li>
+      <li>
+        <a href="../rankawardingbody/rankawardingbody.php">
+          <i class="bi bi-circle"></i><span>Rank Awarding Body</span>
+        </a>
+      </li>
     </ul>
   </li><!-- End Masters Nav -->
   <?php
