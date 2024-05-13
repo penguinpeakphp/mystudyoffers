@@ -68,6 +68,9 @@ checksession();
                                     <button class="nav-link w-100" id="tab2" data-bs-toggle="tab" data-bs-target="#section2" type="button" role="tab" aria-controls="section2" aria-selected="false" tabindex="-1">University Intellectual Assets</button>
                                 </li>
                                 <li class="nav-item flex-fill" role="presentation">
+                                    <button class="nav-link w-100" id="tab3" data-bs-toggle="tab" data-bs-target="#section3" type="button" role="tab" aria-controls="section3" aria-selected="false" tabindex="-1">University Rankings</button>
+                                </li>
+                                <li class="nav-item flex-fill" role="presentation">
                                     <button class="nav-link w-100" id="tab4" data-bs-toggle="tab" data-bs-target="#section4" type="button" role="tab" aria-controls="section4" aria-selected="true">University Statistics</button>
                                 </li>
                                 <li class="nav-item flex-fill" role="presentation">
@@ -78,11 +81,11 @@ checksession();
                                 <div class="tab-pane fade active show" id="section1" role="tabpanel" aria-labelledby="section1">
                                     <form class="row g-3" id="universityinformationform">
                                         <div class="col-6">
-                                            <label for="universityname" class="form-label">University Name</label> 
+                                            <label for="universityname" class="form-label">University Name</label>
                                             <input type="text" class="form-control" id="universityname">
                                         </div>
                                         <div class="col-6">
-                                            <label for="universityimage" class="form-label">University Image</label> 
+                                            <label for="universityimage" class="form-label">University Image</label>
                                             <input type="file" class="form-control" id="universityimage">
                                         </div>
                                         <div class="col-6">
@@ -95,9 +98,9 @@ checksession();
                                                 <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="courselevelsdropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Course Levels
                                                 </button>
-                                                    <div class="dropdown-menu p-2 courselevelsoffered w-100" aria-labelledby="courselevelsdropdown">
-                                                        
-                                                    </div>
+                                                <div class="dropdown-menu p-2 courselevelsoffered w-100" aria-labelledby="courselevelsdropdown">
+
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-6">
@@ -163,20 +166,20 @@ checksession();
                                             </div>
                                             <hr>
                                         </div>
-                                        
+
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                         </div>
                                     </form>
                                 </div>
-                                <div class="tab-pane fade active show" id="section2" role="tabpanel" aria-labelledby="section2">
+                                <div class="tab-pane fade" id="section2" role="tabpanel" aria-labelledby="section2">
                                     <form class="row g-3" id="universityintellectualassets">
                                         <div class="col-6">
-                                            <label for="logoimage" class="form-label">Logo Image</label> 
+                                            <label for="logoimage" class="form-label">Logo Image</label>
                                             <input type="file" class="form-control" id="logoimage">
                                         </div>
                                         <div class="col-6">
-                                            <label for="mascotimage" class="form-label">Mascot Image</label> 
+                                            <label for="mascotimage" class="form-label">Mascot Image</label>
                                             <input type="file" class="form-control" id="mascotimage">
                                         </div>
                                         <div id="otherteamsandclubslist">
@@ -210,23 +213,76 @@ checksession();
                                         </div>
                                     </form>
                                 </div>
+                                <div class="tab-pane fade" id="section3" role="tabpanel" aria-labelledby="section3">
+                                    <form id="universityrankings">
+                                        <div class="row my-3">
+                                            <label class="col-sm-2 col-form-label">Accreditation Status</label>
+                                            <div class="col-sm-10">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="accreditationstatus" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Course Levels
+                                                    </button>
+                                                    <div class="dropdown-menu p-2 accreditationstatus w-100" aria-labelledby="accreditationstatus">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Name of Ranking, Rank Awarding Body, Year of Ranking, Description -->
+                                        <div id="otherrankingslist">
+                                            <p><b>Rankings</b></p>
+                                        </div>
+                                        <div class="row d-none otherrankings" id="otherrankingstemplate">
+                                            <div class="col-4">
+                                                <label for="nameofranking" class="form-label">Name of Ranking</label>
+                                                <input type="text" class="form-control" id="nameofranking">
+                                            </div>
+                                            <div class="col-4">
+                                                <label for="rankawardingbody" class="form-label">Rank Awarding Body</label>
+                                                <div class="col-sm-12">
+                                                    <select class="form-select" aria-label="Default select example">
+                                                        <option selected="selected" disabled="disabled" value="">Open this select menu</option>
+                                                        <option value="1">One</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <label for="yearofranking" class="form-label">Year of Ranking</label>
+                                                <input type="text" class="form-control" id="yearofranking">
+                                            </div>
+                                            <div class="col-12 my-2">
+                                                <label for="description" class="form-label mb-3">Description</label>
+                                                <textarea class="form-control" id="description"></textarea>
+                                            </div>
+                                            <div class="col-4 my-3">
+                                                <button type="button" class="btn btn-danger removeotherranking">Remove Ranking</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 mt-3">
+                                            <button type="button" class="btn btn-primary" id="addotherrankings">Add Ranking</button>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
 
                                 <div class="tab-pane fade" id="section4" role="tabpanel" aria-labelledby="section4">
                                     <form class="row g-3" id="universitystatistics">
                                         <div class="col-6">
-                                            <label for="totalstudents" class="form-label">Total Students</label> 
+                                            <label for="totalstudents" class="form-label">Total Students</label>
                                             <input type="text" class="form-control" id="totalstudents">
                                         </div>
                                         <div class="col-6">
-                                            <label for="totalinternationstudents" class="form-label">Total International Students</label> 
+                                            <label for="totalinternationstudents" class="form-label">Total International Students</label>
                                             <input type="text" class="form-control" id="totalinternationstudents">
                                         </div>
                                         <div class="col-6">
-                                            <label for="acceptancerate" class="form-label">Acceptance Rate</label> 
+                                            <label for="acceptancerate" class="form-label">Acceptance Rate</label>
                                             <input type="text" class="form-control" id="acceptancerate">
                                         </div>
                                         <div class="col-6">
-                                            <label for="graduateemploymentrate" class="form-label">Graduate Employment Rate</label> 
+                                            <label for="graduateemploymentrate" class="form-label">Graduate Employment Rate</label>
                                             <input type="text" class="form-control" id="graduateemploymentrate">
                                         </div>
                                         <div class="text-center">
@@ -238,11 +294,11 @@ checksession();
                                 <div class="tab-pane fade" id="section5" role="tabpanel" aria-labelledby="section5">
                                     <form class="row g-3" id="tuitionandfees">
                                         <div class="col-6">
-                                            <label for="applicationfee" class="form-label">Application Fee</label> 
+                                            <label for="applicationfee" class="form-label">Application Fee</label>
                                             <input type="text" class="form-control" id="applicationfee">
                                         </div>
                                         <div class="col-6">
-                                            <label for="tuitionfee" class="form-label">Tuition Fee</label> 
+                                            <label for="tuitionfee" class="form-label">Tuition Fee</label>
                                             <input type="number" class="form-control" id="tuitionfee">
                                         </div>
                                         <div class="col-6">
@@ -251,9 +307,9 @@ checksession();
                                                 <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="otherfeesdropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Other Fees
                                                 </button>
-                                                    <div class="dropdown-menu p-2 otherfees w-100" aria-labelledby="otherfeesdropdown">
-                                                        
-                                                    </div>
+                                                <div class="dropdown-menu p-2 otherfees w-100" aria-labelledby="otherfeesdropdown">
+
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-6">
@@ -262,9 +318,9 @@ checksession();
                                                 <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="financialaiddropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Financial Aid
                                                 </button>
-                                                    <div class="dropdown-menu p-2 financialaid w-100" aria-labelledby="financialaiddropdown">
-                                                        
-                                                    </div>
+                                                <div class="dropdown-menu p-2 financialaid w-100" aria-labelledby="financialaiddropdown">
+
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="text-center">

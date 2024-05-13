@@ -198,6 +198,63 @@ $(function()
         });
     });
 
+    function checkrankings() 
+    {
+        let allFilled = true;
+
+        $("#otherrankingslist .otherrankings").each(function()
+        {
+            // Check all input fields and the select element in this campus
+            $(this).find("input, select, textarea").each(function() 
+            {
+                if ($(this).val() === "" || $(this).val() === null) 
+                {
+                    allFilled = false; // If any field is empty, mark this campus as invalid
+                }
+            });
+
+            // If any campus section is invalid, mark the whole validation as false
+            if (!allFilled) 
+            {
+                allFilled = false;
+                // Optionally add a highlight or some indication on the invalid campus
+                $(this).css("border", "1px solid red");
+            } 
+            else 
+            {
+                // Reset border if the section is valid
+                $(this).css("border", "none");
+            }
+        });
+
+        return allFilled;
+    }
+
+    $("#addotherrankings").on("click" , function()
+    {
+        if(!checkrankings())
+        {
+            alert("Please enter all other rankings before adding more");
+            return;
+        }
+        //Clone the template
+        let newRanking = $("#otherrankingstemplate").clone();
+
+        // Remove attribute for preventing multiple ID copy issue
+        newRanking.removeAttr("id");
+        
+        // Remove 'd-none' class to make it visible
+        newRanking.removeClass("d-none");
+        
+        // Append the new ranking to the container
+        $("#otherrankingslist").append(newRanking);
+
+        // Attach event handler to the "Remove" button
+        newRanking.find(".removeotherranking").on("click", function() {
+            newRanking.remove();
+        });
+    });
+
     //Function for checking if other teams and clubs have been added or not
     function checkteamsandclubs()
     {
