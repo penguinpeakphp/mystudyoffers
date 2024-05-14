@@ -22,7 +22,7 @@
         $response["adminusers"] = [];
 
         //Query the database for selecting all the admin user data from the adminuser table
-        $select = $db->prepare("SELECT adminid , adminname , adminemail , adminstatus FROM adminuser WHERE adminid <> 1 AND adminid <> ? AND admintype = ?");
+        $select = $db->prepare("SELECT adminid , adminname , adminemail , adminstatus FROM adminuser WHERE adminid <> 'admin-1' AND adminid <> ? AND admintype = ?");
         if($select == false)
         {
             failure($response , "Error while fetching admin user list");
@@ -31,7 +31,7 @@
         else
         {
             //Bind the parameters
-            $select->bind_param("is" , $_SESSION["adminid"] , $_GET["admintype"]);
+            $select->bind_param("ss" , $_SESSION["adminid"] , $_GET["admintype"]);
 
             //Execute the query
             if($select->execute() == false)

@@ -28,13 +28,13 @@
 
             $update = $db->prepare("UPDATE adminuser SET adminname = ? , adminemail = ?, adminpassword = ? , adminstatus = ? WHERE adminid = ?");
             //Bind the parameters
-            $update->bind_param("sssii" , $_POST["adminname"] , $_POST["adminemail"] , $_POST["adminpassword"] , $_POST["adminstatus"] , $_POST["adminid"]);
+            $update->bind_param("sssis" , $_POST["adminname"] , $_POST["adminemail"] , $_POST["adminpassword"] , $_POST["adminstatus"] , $_POST["adminid"]);
         }           
         else
         {
             $update = $db->prepare("UPDATE adminuser SET adminname = ? , adminemail = ?, adminstatus = ? WHERE adminid = ?");
             //Bind the parameters
-            $update->bind_param("ssii" , $_POST["adminname"] , $_POST["adminemail"] , $_POST["adminstatus"] , $_POST["adminid"]);
+            $update->bind_param("ssis" , $_POST["adminname"] , $_POST["adminemail"] , $_POST["adminstatus"] , $_POST["adminid"]);
         }
 
         //Execute the query

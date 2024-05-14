@@ -668,7 +668,7 @@ create table queryconversation
 	conversationid int not null primary key auto_increment,
     queryid int not null,
     studentid int,
-    adminid int,
+    adminid varchar(50),
     message text,
     filename varchar(200),
     messagetime datetime default current_timestamp(),
@@ -723,7 +723,7 @@ create table othercampusaddress
     othercampusstreetaddress varchar(500) not null,
     othercampuspostcode varchar(20) not null,
     foreign key(universityid) references university(universityid) on delete cascade,
-    foreign key(othercampuscityid) references university(universityid) on delete set null
+    foreign key(othercampuscityid) references city(cityid) on delete set null
 );
 
 drop table if exists universityfees;
