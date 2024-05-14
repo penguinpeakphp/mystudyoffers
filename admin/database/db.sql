@@ -3,6 +3,14 @@ create database mystudyoffers;
 
 use mystudyoffers;
 
+create table id_generator (
+    prefix varchar(20) primary key,
+    next_id int
+);
+
+insert into id_generator (prefix, next_id) values ('university', 1);
+insert into id_generator (prefix, next_id) values ('admin', 1);
+
 drop table if exists country;
 create table country
 (
@@ -24,13 +32,30 @@ insert into country(countryname) values
 drop table if exists adminuser;
 create table adminuser
 (
-	adminid int not null primary key auto_increment,
+	adminid varchar(50) not null primary key,
     adminname varchar(150) not null,
     adminemail varchar(250) not null unique,
     adminpassword varchar(500) not null,
     adminstatus boolean not null default true,
     admintype varchar(30) not null
 );
+
+create table log(id int);
+
+delimiter //
+
+CREATE TRIGGER adminuser_before_insert
+BEFORE INSERT ON adminuser
+FOR EACH ROW
+BEGIN
+    DECLARE nextid INT;
+    SELECT next_id INTO nextid FROM id_generator WHERE prefix = 'admin';
+    insert into log values(nextid);
+    SET NEW.adminid = CONCAT('admin-', nextid);
+    UPDATE id_generator SET next_id = next_id + 1 WHERE prefix = 'admin';
+END//
+
+delimiter ;
 
 insert into adminuser(adminname , adminemail , adminpassword , admintype) values
 ('Rahil Khatri' , 'admin@mystudyoffers.com' , 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec' , "admin"),
@@ -476,7 +501,7 @@ drop table if exists studenttelecaller;
 create table studenttelecaller
 (
 	studentid int not null unique key,
-    telecallerid int not null
+    telecallerid varchar(50) not null
 );
 
 drop table if exists studentacademics;
@@ -522,7 +547,7 @@ delimiter //
 drop trigger if exists assignstudent//
 create trigger assignstudent after insert on student for each row
 begin
-	declare tlid int;
+	declare tlid varchar(50);
     declare counts int;
     
 	select adminid , (select count(*) from studenttelecaller where telecallerid = adminid) as count into tlid , counts
@@ -675,7 +700,7 @@ insert into queryconversation(queryid , studentid , adminid , message) values
 drop table if exists university;
 create table university
 (
-	universityid int not null primary key auto_increment,
+	universityid varchar(50) primary key,
 	universityname varchar(1000) not null,
     universitylicensenumber varchar(50) default "",
     keycontactname varchar(100) not null,
@@ -693,7 +718,7 @@ create table university
 drop table if exists othercampusaddress;
 create table othercampusaddress
 (
-	universityid int not null,
+	universityid varchar(50) not null,
     othercampuscityid int,
     othercampusstreetaddress varchar(500) not null,
     othercampuspostcode varchar(20) not null,
@@ -711,7 +736,7 @@ create table universityfees
 drop table if exists universitylevelofcourse;
 create table universitylevelofcourse
 (
-	universityid int not null,
+	universityid varchar(50) not null,
     levelofcourseid int,
     foreign key(universityid) references university(universityid) on delete cascade,
     foreign key(levelofcourseid) references levelofcourse(levelofcourseid) on delete set null
@@ -720,7 +745,7 @@ create table universitylevelofcourse
 drop table if exists universityotherfees;
 create table universityotherfees
 (
-	universityid int not null,
+	universityid varchar(50) not null,
     otherfeeid int,
     foreign key (universityid) references university(universityid) on delete cascade,
     foreign key (otherfeeid) references otherfee(otherfeeid) on delete set null
@@ -729,7 +754,7 @@ create table universityotherfees
 drop table if exists universitystatistics;
 create table universitystatistics
 (
-	universityid int not null,
+	universityid varchar(50) not null,
 	totalstudents int not null,
     totalinternationalstudents int not null,
     acceptancerate decimal(10 , 2) not null,
@@ -740,7 +765,7 @@ create table universitystatistics
 drop table if exists universityassets;
 create table universityassets
 (
-	universityid int not null,
+	universityid varchar(50) not null,
 	logoimage varchar(500),
     mascotimage varchar(500)
 );
@@ -748,13 +773,27 @@ create table universityassets
 drop table if exists universityclubsandteams;
 create table universityclubsandteams
 (
-	universityid int not null,
+	universityid varchar(50) not null,
     clubsanteams varchar(150) not null
 );
 
 drop table if exists universityfacilityimages;
 create table universityfacilityimages
 (
-	universityid int not null,
+	universityid varchar(50) not null,
     image varchar(150) not null
 );
+
+delimiter //
+
+CREATE TRIGGER university_before_insert
+BEFORE INSERT ON university
+FOR EACH ROW
+BEGIN
+    DECLARE next_id INT;
+    SELECT next_id INTO next_id FROM id_generator WHERE prefix = 'university';
+    SET NEW.universityid = CONCAT('university-', next_id);
+    UPDATE id_generator SET next_id = next_id + 1 WHERE prefix = 'university';
+END//
+
+delimiter ;

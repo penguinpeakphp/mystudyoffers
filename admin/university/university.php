@@ -240,7 +240,7 @@ checksession();
                                             <div class="col-4">
                                                 <label for="rankawardingbody" class="form-label">Rank Awarding Body</label>
                                                 <div class="col-sm-12">
-                                                    <select class="form-select" aria-label="Default select rankawardingbodylist">
+                                                    <select class="form-select rankawardingbodylist" aria-label="Default select">
                                                     </select>
                                                 </div>
                                             </div>

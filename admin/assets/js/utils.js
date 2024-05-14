@@ -120,7 +120,6 @@ function populateaccreditations(elementid)
 //Function for populating rank awarding bodies
 function populaterankawardingbodies(elementid)
 {
-    console.log(rankawardingbodies);
     $(elementid).html(`<option disabled selected value="">Select Rank Awarding Body</option>`);
     rankawardingbodies.forEach(function(rankawardingbody)
     {
