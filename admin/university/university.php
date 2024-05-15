@@ -220,7 +220,7 @@ checksession();
                                             <div class="col-sm-10">
                                                 <div class="dropdown">
                                                     <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="accreditationstatus" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Course Levels
+                                                        Accreditation Status
                                                     </button>
                                                     <div class="dropdown-menu p-2 accreditationstatus w-100" aria-labelledby="accreditationstatus">
 
@@ -240,9 +240,7 @@ checksession();
                                             <div class="col-4">
                                                 <label for="rankawardingbody" class="form-label">Rank Awarding Body</label>
                                                 <div class="col-sm-12">
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected="selected" disabled="disabled" value="">Open this select menu</option>
-                                                        <option value="1">One</option>
+                                                    <select class="form-select rankawardingbodylist" aria-label="Default select">
                                                     </select>
                                                 </div>
                                             </div>

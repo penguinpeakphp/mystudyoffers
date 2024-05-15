@@ -131,7 +131,73 @@ $(function()
             alert("Error occurred while trying to read server response");
         }
     });
+
+    $.get("../controllers/accreditation/getaccreditations.php" , {} , function(data)
+    {
+        try
+        {
+            //Parse the data received from the server
+            let response = JSON.parse(data);
+
+            //If the response is not successful, then show the error in alert
+            if(response.success == false)
+            {
+                alert(response.error);
+
+                //Redirect to login page if the user is required to be login again
+                if(response.login == true)
+                {
+                    window.location.href = "../login/login.php";
+                }
+            }
+            else
+            {
+                //Assign the data to global variable
+                accreditations = response.accreditations;
+
+                //Populate the checkbox dropdown
+                populateaccreditations(".accreditationstatus");
+            }
+        }
+        catch(error)
+        {
+            alert("Error occurred while trying to read server response");
+        }
+    });
     
+    $.get("../controllers/rankawardingbody/getrankawardingbodies.php" , {} , function(data)
+    {
+        try
+        {
+            //Parse the data received from the server
+            let response = JSON.parse(data);
+
+            //If the response is not successful, then show the error in alert
+            if(response.success == false)
+            {
+                alert(response.error);
+
+                //Redirect to login page if the user is required to be login again
+                if(response.login == true)
+                {
+                    window.location.href = "../login/login.php";
+                }
+            }
+            else
+            {
+                //Assign the data to global variable
+                rankawardingbodies = response.rankawardingbodies;
+
+                //Populate the checkbox dropdown
+                populaterankawardingbodies(".rankawardingbodylist");
+            }
+        }
+        catch(error)
+        {
+            alert("Error occurred while trying to read server response");
+        }
+    });
+
     function validateAllCampuses() 
     {
         var allFilled = true;
@@ -249,6 +315,9 @@ $(function()
         // Append the new ranking to the container
         $("#otherrankingslist").append(newRanking);
 
+        //Populate rank awarding bodies
+        populaterankawardingbodies("#rankawardingbodylist");
+
         // Attach event handler to the "Remove" button
         newRanking.find(".removeotherranking").on("click", function() {
             newRanking.remove();
@@ -299,12 +368,15 @@ $(function()
     });
 
     //Function for checking if all the images have been attached
-    function validateFacilityImages() {
+    function validateFacilityImages() 
+    {
         let allFilled = true;
     
-        $("#facilityimageslist .facilityimages").each(function() {
+        $("#facilityimageslist .facilityimages").each(function() 
+        {
             // Check if there's a file selected
-            if ($(this).val() === "") {
+            if ($(this).val() === "") 
+            {
                 allFilled = false;
             }
         });
@@ -312,7 +384,8 @@ $(function()
         return allFilled;
     }
     
-    $("#addfacilityimages").on("click", function() {
+    $("#addfacilityimages").on("click", function() 
+    {
         // Validate if all existing file inputs are filled
         if (!validateFacilityImages()) {
             alert("Please select a file for all existing facility images before adding more.");

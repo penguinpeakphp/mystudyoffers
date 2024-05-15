@@ -24,7 +24,7 @@
             else
             {
                 //Bind the parameters
-                $update->bind_param("ii" , $_POST["adminid"] , $_POST["studentid"]);
+                $update->bind_param("si" , $_POST["adminid"] , $_POST["studentid"]);
 
                 //Execute the query
                 if($update->execute() == false)

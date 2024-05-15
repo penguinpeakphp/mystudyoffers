@@ -75,7 +75,7 @@
         else
         {
             //Bind the parameters
-            $insert->bind_param("iis" , $_POST["queryid"] , $_SESSION["adminid"] , $_POST["reply"]);
+            $insert->bind_param("iss" , $_POST["queryid"] , $_SESSION["adminid"] , $_POST["reply"]);
 
             //Execute the query
             if($insert->execute() == false)
