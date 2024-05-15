@@ -40,8 +40,6 @@ create table adminuser
     admintype varchar(30) not null
 );
 
-create table log(id int);
-
 delimiter //
 
 CREATE TRIGGER adminuser_before_insert
@@ -50,7 +48,6 @@ FOR EACH ROW
 BEGIN
     DECLARE nextid INT;
     SELECT next_id INTO nextid FROM id_generator WHERE prefix = 'admin';
-    insert into log values(nextid);
     SET NEW.adminid = CONCAT('admin-', nextid);
     UPDATE id_generator SET next_id = next_id + 1 WHERE prefix = 'admin';
 END//
@@ -711,8 +708,7 @@ create table university
     maincampuscityid int,
     maincampusstreetaddress varchar(500),
     maincampuspostcode varchar(20),
-    universityimage varchar(150),
-    foreign key(maincampuscityid) references city(cityid) on delete set null
+    universityimage varchar(150)
 );
 
 drop table if exists universitydatastatus;
@@ -731,8 +727,8 @@ create table othercampusaddress
 (
 	universityid varchar(50) not null,
     othercampuscityid int,
-    othercampusstreetaddress varchar(500) not null,
-    othercampuspostcode varchar(20) not null,
+    othercampusstreetaddress varchar(500),
+    othercampuspostcode varchar(20),
     foreign key(universityid) references university(universityid) on delete cascade,
     foreign key(othercampuscityid) references city(cityid) on delete set null
 );
@@ -789,21 +785,24 @@ create table universityassets
 (
 	universityid varchar(50) not null,
 	logoimage varchar(500),
-    mascotimage varchar(500)
+    mascotimage varchar(500),
+    foreign key (universityid) references university(universityid)
 );
 
 drop table if exists universityclubsandteams;
 create table universityclubsandteams
 (
 	universityid varchar(50) not null,
-    clubsanteams varchar(150) not null
+    clubsanteams varchar(150) not null,
+    foreign key (universityid) references university(universityid)
 );
 
 drop table if exists universityfacilityimages;
 create table universityfacilityimages
 (
 	universityid varchar(50) not null,
-    image varchar(150) not null
+    image varchar(150) not null,
+    foreign key (universityid) references university(universityid)
 );
 
 delimiter //
@@ -812,9 +811,9 @@ CREATE TRIGGER university_before_insert
 BEFORE INSERT ON university
 FOR EACH ROW
 BEGIN
-    DECLARE next_id INT;
-    SELECT next_id INTO next_id FROM id_generator WHERE prefix = 'university';
-    SET NEW.universityid = CONCAT('university-', next_id);
+    DECLARE nextid INT;
+    SELECT next_id INTO nextid FROM id_generator WHERE prefix = 'university';
+    SET NEW.universityid = CONCAT('university-', nextid);
     UPDATE id_generator SET next_id = next_id + 1 WHERE prefix = 'university';
 END//
 

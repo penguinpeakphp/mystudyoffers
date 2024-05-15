@@ -166,7 +166,7 @@ $(function()
 
                                 $(".telecallerlist .dropdown-item").on("click" , function()
                                 {
-                                    if(!confirm("Are you sure you want to change the assigned telecaller?"))
+                                    if(!confirm(`Are you sure you want to change the assigned person to ${$(this).text()}?`))
                                     {
                                         return;
                                     }
