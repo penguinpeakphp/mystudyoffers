@@ -82,20 +82,20 @@ checksession();
                                     <form class="row g-3" id="universityinformationform">
                                         <div class="col-6">
                                             <label for="universityname" class="form-label">University Name</label>
-                                            <input type="text" class="form-control" id="universityname">
+                                            <input type="text" class="form-control" id="universityname" name="universityname">
                                         </div>
                                         <div class="col-6">
                                             <label for="universityimage" class="form-label">University Image</label>
-                                            <input type="file" class="form-control" id="universityimage">
+                                            <input type="file" class="form-control" id="universityimage" name="universityimage">
                                         </div>
                                         <div class="col-6">
                                             <label for="universitylicensenumber" class="form-label">University License Number</label>
-                                            <input type="text" class="form-control" id="universitylicensenumber">
+                                            <input type="text" class="form-control" id="universitylicensenumber" name="universitylicensenumber">
                                         </div>
                                         <div class="col-6">
                                             <label for="courselevelsoffered" class="form-label">Offered Course Levels</label>
                                             <div class="dropdown">
-                                                <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="courselevelsdropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="courselevelsdropdown" name="courselevelsdropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Course Levels
                                                 </button>
                                                 <div class="dropdown-menu p-2 courselevelsoffered w-100" aria-labelledby="courselevelsdropdown">
@@ -105,60 +105,60 @@ checksession();
                                         </div>
                                         <div class="col-6">
                                             <label for="keycontactname" class="form-label">Key Contact Name</label>
-                                            <input type="text" class="form-control" id="keycontactname">
+                                            <input type="text" class="form-control" id="keycontactname" name="keycontactname">
                                         </div>
                                         <div class="col-6">
                                             <label for="keycontactemail" class="form-label">Key Contact Email</label>
-                                            <input type="email" class="form-control" id="keycontactemail">
+                                            <input type="email" class="form-control" id="keycontactemail" name="keycontactemail">
                                         </div>
                                         <div class="col-6">
                                             <label for="keycontactdesignation" class="form-label">Key Contact Designation</label>
-                                            <input type="text" class="form-control" id="keycontactdesignation">
+                                            <input type="text" class="form-control" id="keycontactdesignation" name="keycontactdesignation">
                                         </div>
                                         <div class="col-6">
                                             <label for="yearestablishment" class="form-label">Year Establishment</label>
-                                            <input type="number" class="form-control" id="yearestablishment">
+                                            <input type="number" class="form-control" id="yearestablishment" name="yearestablishment">
                                         </div>
                                         <div class="col-12">
                                             <label for="overview" class="form-label">Description/Overview</label>
-                                            <textarea class="form-control" placeholder="Overview" id="overview" rows="5"></textarea>
+                                            <textarea class="form-control" placeholder="Overview" id="overview" name="overview" rows="5"></textarea>
                                         </div>
                                         <p><b>Main Campus Details</b></p>
                                         <div class="col-12">
                                             <label for="maincampusstreetaddress" class="form-label">Street Address</label>
-                                            <input type="text" class="form-control" id="maincampusstreetaddress">
+                                            <input type="text" class="form-control" id="maincampusstreetaddress" name="maincampusstreetaddress">
                                         </div>
                                         <div class="col-6">
                                             <label for="maincampuscity" class="form-label">City</label>
-                                            <select class="form-select citylist" id="maincampuscity" aria-label="City">
+                                            <select class="form-select citylist" id="maincampuscity" name="maincampuscity" aria-label="City">
                                                 <option selected="" disabled="" value="">Select City</option>
                                             </select>
                                         </div>
                                         <div class="col-6">
                                             <label for="maincampuspostcode" class="form-label">Post Code</label>
-                                            <input type="text" class="form-control" id="maincampuspostcode">
+                                            <input type="text" class="form-control" id="maincampuspostcode" name="maincampuspostcode">
                                         </div>
                                         <div id="othercampusdetails">
                                             <p><b>Other Campus Details</b></p>
                                         </div>
 
-                                        <button type="button" class="btn btn-primary" id="addothercampus">Add Another Campus</button>
+                                        <button type="button" class="btn btn-primary" id="addothercampus" name="addothercampus">Add Another Campus</button>
 
                                         <div id="othercampustemplate" class="othercampus d-none">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <label for="othercampusstreetaddress" class="form-label">Street Address</label>
-                                                    <input id="othercampusstreetaddress" type="text" class="form-control othercampusstreetaddress">
+                                                    <label class="form-label">Street Address</label>
+                                                    <input name="othercampusstreetaddress" type="text" class="form-control othercampusstreetaddress">
                                                 </div>
                                                 <div class="col-6">
-                                                    <label for="othercampuscity" class="form-label">City</label>
-                                                    <select id="othercampuscity" class="form-select othercampuscity" aria-label="City">
+                                                    <label class="form-label">City</label>
+                                                    <select name="othercampuscity" class="form-select othercampuscity" aria-label="City">
                                                         <option selected="" disabled="" value="">Select City</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-6 mb-2">
-                                                    <label for="othercampuspostcode" class="form-label">Post Code</label>
-                                                    <input type="text" class="form-control othercampuspostcode" id="othercampuspostcode">
+                                                    <label class="form-label">Post Code</label>
+                                                    <input type="text" class="form-control othercampuspostcode" name="othercampuspostcode">
                                                 </div>
                                                 <div class="col-12 text-right">
                                                     <button type="button" class="btn btn-danger removeothercampus">Remove</button>
@@ -168,12 +168,12 @@ checksession();
                                         </div>
 
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="submit" class="btn btn-primary" id="universityinfobtn">Submit</button>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="tab-pane fade" id="section2" role="tabpanel" aria-labelledby="section2">
-                                    <form class="row g-3" id="universityintellectualassets">
+                                    <form class="row g-3" id="universityintellectualassets">    
                                         <div class="col-6">
                                             <label for="logoimage" class="form-label">Logo Image</label>
                                             <input type="file" class="form-control" id="logoimage">
@@ -190,8 +190,8 @@ checksession();
                                         </div>
                                         <div id="otherteamsandclubstemplate" class="d-none">
                                             <div class="col-12">
-                                                <label for="otherteamsandclubs" class="form-label">Other Teams and Clubs</label>
-                                                <input type="text" class="form-control otherteamsandclubs">
+                                                <label class="form-label">Other Teams and Clubs</label>
+                                                <input type="text" class="form-control otherteamsandclubs" name="otherteamsandclubs">
                                             </div>
                                             <div class="col-4 mt-3">
                                                 <button type="button" class="btn btn-danger removeteamsandclubs">Remove Team/Club</button>
@@ -204,8 +204,8 @@ checksession();
                                         </div>
                                         <div id="facilityimagestemplate" class="d-none">
                                             <div class="col-6">
-                                                <label for="facilityimages" class="form-label">Facility Images</label>
-                                                <input type="file" class="form-control facilityimages">
+                                                <label class="form-label">Facility Images</label>
+                                                <input type="file" class="form-control facilityimages" name="facilityimages">
                                             </div>
                                             <div class="col-4 mt-3">
                                                 <button type="button" class="btn btn-danger removefacilityimages">Remove Facility Image</button>
@@ -243,7 +243,7 @@ checksession();
                                             <div class="col-4">
                                                 <label for="rankawardingbody" class="form-label">Rank Awarding Body</label>
                                                 <div class="col-sm-12">
-                                                    <select class="form-select rankawardingbodylist" aria-label="Default select">
+                                                    <select class="form-select rankawardingbodylist" aria-label="Default select" name="rankawardingbodies">
                                                     </select>
                                                 </div>
                                             </div>
@@ -344,5 +344,6 @@ checksession();
 
 <script src="../assets/js/utils.js"></script>
 <script src="university.js"></script>
+<script src="adduniversity.js"></script>
 
 </html>

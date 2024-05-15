@@ -701,18 +701,29 @@ drop table if exists university;
 create table university
 (
 	universityid varchar(50) primary key,
-	universityname varchar(1000) not null,
+	universityname varchar(1000),
     universitylicensenumber varchar(50) default "",
-    keycontactname varchar(100) not null,
-    keycontactdesignation varchar(200) not null,
-    keycontactemail varchar(250) not null,
-    yearestablishment varchar(10) not null,
+    keycontactname varchar(100),
+    keycontactdesignation varchar(200),
+    keycontactemail varchar(250),
+    yearestablishment varchar(10),
     overview text,
     maincampuscityid int,
-    maincampusstreetaddress varchar(500) not null,
-    maincampuspostcode varchar(20) not null,
-    universityimage varchar(150) not null,
+    maincampusstreetaddress varchar(500),
+    maincampuspostcode varchar(20),
+    universityimage varchar(150),
     foreign key(maincampuscityid) references city(cityid) on delete set null
+);
+
+drop table if exists universitydatastatus;
+create table universitydatastatus
+(
+	universityid varchar(50) not null,
+    universityinformation boolean not null default false,
+    universityrankings boolean not null default false,
+    universitystatistics boolean not null default false,
+    universitytuitionandfees boolean not null default false,
+    foreign key (universityid) references university(universityid)
 );
 
 drop table if exists othercampusaddress;
@@ -729,8 +740,10 @@ create table othercampusaddress
 drop table if exists universityfees;
 create table universityfees
 (
+	universityid varchar(50) not null,
 	applicationfee decimal(10 , 2) not null,
-    tuitionfee decimal(10 , 2) not null
+    tuitionfee decimal(10 , 2) not null,
+    foreign key (universityid) references university(universityid)
 );
 
 drop table if exists universitylevelofcourse;
@@ -751,14 +764,23 @@ create table universityotherfees
     foreign key (otherfeeid) references otherfee(otherfeeid) on delete set null
 );
 
+drop table if exists universityfinancialaid;
+create table universityfinancialaid
+(
+	universityid varchar(50) not null,
+    financialaidid int,
+    foreign key (universityid) references university(universityid) on delete cascade,
+    foreign key (financialaidid) references financialaid(financialaidid) on delete set null
+);
+
 drop table if exists universitystatistics;
 create table universitystatistics
 (
 	universityid varchar(50) not null,
-	totalstudents int not null,
-    totalinternationalstudents int not null,
-    acceptancerate decimal(10 , 2) not null,
-    graduateemploymentrate decimal(10 , 2) not null,
+	totalstudents int,
+    totalinternationalstudents int,
+    acceptancerate decimal(10 , 2),
+    graduateemploymentrate decimal(10 , 2),
     foreign key(universityid) references university(universityid) on delete cascade
 );
 
