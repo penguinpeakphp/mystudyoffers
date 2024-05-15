@@ -1,11 +1,29 @@
 <?php
 require_once "controllers/functions/globalfunctions.php";
+require_once "admin/database/db.php";
 
 session_start();
-if($_SESSION["profilestatus"] != "dashboard")
+$result = $db->query("SELECT profilestatus FROM student where studentid = " . $_SESSION["studentid"]);
+$url = "";
+$row = $result->fetch_assoc();
+if($row["profilestatus"] == "academic")
 {
-    header("Location:".$_SESSION["url"]);
+    $url = "academicprofile1.php";
 }
+if($row["profilestatus"] == "qualification")
+{
+    $url = "qualificationprofile.php";
+}
+if($row["profilestatus"] == "testscore")
+{
+    $url = "testscoreprofile.php";
+}
+if($row["profilestatus"] == "countryinterest")
+{
+    $url = "countryinterest.php";
+}
+header("Location: ".$url);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
