@@ -44,9 +44,9 @@
                     else
                     {
                         //Fill the data where necessary
-                        $("#newstudents").text(response.newstudents);
-                        $("#newqueries").text(response.newqueries);
-                        $(".newchats").text(response.newchats);
+                        $("#newstudents").html(`<a href='../student/student.php'>`+response.newstudents+`</a>`);
+                        $("#newqueries").html(`<a href='../query/query.php'>`+response.newqueries+`</a>`);
+                        $(".newchats").html(response.newchats);
 
                         //Loop through the followups and render the table for it
                         for(let i=0; i<response.followups.length; i++)
@@ -57,6 +57,7 @@
                                     <th scope="row"><a>${followup.followupid}</a></th>
                                     <td>${followup.name}</td>
                                     <td><a class="text-primary">${followup.followuptemplatebody}</a></td>
+                                    <td>${followup.assignedto}</td>
                                 </tr>
                             `);
                         }

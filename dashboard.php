@@ -1,7 +1,11 @@
 <?php
 require_once "controllers/functions/globalfunctions.php";
 
-checksession();
+session_start();
+if($_SESSION["profilestatus"] != "dashboard")
+{
+    header("Location:".$_SESSION["url"]);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

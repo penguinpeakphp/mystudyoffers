@@ -36,7 +36,7 @@
 
         //Fetch followups
         $response["followups"] = [];
-        $result = $db->query("SELECT followupid , remarks , name , followuptemplatebody FROM studentfollowup sf INNER JOIN student s ON sf.studentid = s.studentid WHERE nextfollowupdate = '{$today}'");
+        $result = $db->query("SELECT followupid , remarks , name , followuptemplatebody , (SELECT adminname FROM studenttelecaller st INNER JOIN adminuser au ON st.telecallerid = au.adminid WHERE studentid = s.studentid) AS assignedto FROM studentfollowup sf INNER JOIN student s ON sf.studentid = s.studentid WHERE nextfollowupdate = '{$today}'");
         if($result == false)
         {
             failure($response , "Error fetching followups");

@@ -84,6 +84,8 @@
             $_SESSION["studentid"] = $row["studentid"];
             $_SESSION["name"] = $row["name"];
             $_SESSION["email"] = $row["email"];
+            $_SESSION["profilestatus"] = $row["profilestatus"];
+            $_SESSION["url"] = $response["url"];
         }
 
         end:;
