@@ -1,1 +1,5 @@
 db.php
+package.json
+package-lock.json
+gulpfile.js
+node_modules
