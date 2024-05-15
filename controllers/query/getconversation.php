@@ -16,7 +16,7 @@
         if(isset($_GET["nums"]) && $_GET["nums"] == "nums")
         {
             $result = $db->query("SELECT count(*) AS newchats FROM queryconversation WHERE readbystudent =
-            0 AND readbyadmin = 0 AND queryid IN (SELECT queryid FROM studentquery WHERE studentid = '{$_SESSION["studentid"]}')");
+            0 AND readbyadmin = 0 AND adminid IS NOT NULL AND queryid IN (SELECT queryid FROM studentquery WHERE studentid = '{$_SESSION["studentid"]}')");
             if($result == false)
             {
                 failure($response , "Error fetching new number of chats");

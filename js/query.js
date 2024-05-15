@@ -30,6 +30,7 @@ $(function()
                         `);
                     }
                 
+                    $("#querybody").html("");
                     //Loop through the queries and render the table rows
                     for(let i=0; i<response.queries.length; i++)
                     {

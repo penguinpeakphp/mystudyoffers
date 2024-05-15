@@ -687,12 +687,12 @@ insert into studentquery(studentid , querytopic , querytypeid) values
 (1 , "How to start doing programming?" , 2);
 
 insert into queryconversation(queryid , studentid , adminid , message) values
-(1 , NULL , 1 , "Watch online tutorials"),
+(1 , NULL , "admin-1" , "Watch online tutorials"),
 (1 , 1 , NULL , "Send the link"),
-(1 , NULL , 1 , "I will send tomorrow"),
-(2 , NULL , 1 , "Start practicing"),
+(1 , NULL , "admin-1" , "I will send tomorrow"),
+(2 , NULL , "admin-1" , "Start practicing"),
 (2 , 1 , NULL , "Send the book for it"),
-(2 , NULL , 1 , "I will share the link");
+(2 , NULL , "admin-1" , "I will share the link");
 
 drop table if exists university;
 create table university
