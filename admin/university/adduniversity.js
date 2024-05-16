@@ -188,15 +188,189 @@ $(function()
             accreditations.push($(this).val());
         });
 
+        //Loop through the ranking list and push the object into the array
         let rankings = [];
         $("#otherrankingslist .otherrankings").each(function()
         {
-            let rankawardingbody = {};
-            $(this).find("input[name=nameofranking]").val();
-            $(this).find("select[name=rankawardingbodies]").val();
-            $(this).find("input[name=yearofranking]").val();
-            $(this).find("input[name=description]").val();
+            let ranking = {};
+            ranking.rankingname = $(this).find("input[name=nameofranking]").val();
+            ranking.rankawardingbody = $(this).find("select[name=rankawardingbodies]").val();
+            ranking.yearofranking = $(this).find("input[name=yearofranking]").val();
+            ranking.description = $(this).find("textarea[name=description]").val();
 
+            rankings.push(ranking);
         });
+
+        //Create the formdata and append data to it
+        let formData = new FormData();
+        formData.append('universityid' , universityid);
+        formData.append("universityrankings", "universityrankings");
+        formData.append('accreditations', JSON.stringify(accreditations));
+        formData.append('rankings', JSON.stringify(rankings));
+
+        //Make an ajax call for adding the university data
+        $.ajax({
+            url: "../controllers/university/adduniversity.php",
+            type: 'POST',
+            data: formData,
+            success: function(data) 
+            {
+                try
+                {
+                    //Parse the data received from the server
+                    let response = JSON.parse(data);
+
+                    //If the response is not successful, then show the error in alert
+                    if(response.success == false)
+                    {
+                        alert(response.error);
+
+                        //Redirect to login page if the user is required to be login again
+                        if(response.login == true)
+                        {
+                            window.location.href = "../login/login.php";
+                        }
+                    }
+                    else
+                    {
+                        alert("University data added successfully");
+                    }
+                }
+                catch(error)
+                {
+                    alert("Error occurred while trying to read server response");
+                }
+            },
+            processData: false,
+            contentType: false
+        });
+    });
+
+    $("#universitystatistics").on("submit" , function(e)
+    {
+        e.preventDefault();
+
+        //Fetch the data from the fields
+        let totalstudents = $("#totalstudents").val();
+        let totalinternationalstudents = $("#totalinternationalstudents").val();
+        let acceptancerate = $("#acceptancerate").val();
+        let graduateemploymentrate = $("#graduateemploymentrate").val();
+
+        //Create the formdata and append data to it
+        let formData = new FormData(this);
+        formData.append('universityid' , universityid);
+        formData.append("universitystatistics", "universitystatistics");
+        formData.append('totalstudents', totalstudents);
+        formData.append('totalinternationalstudents', totalinternationalstudents);
+        formData.append('acceptancerate', acceptancerate);
+        formData.append('graduateemploymentrate', graduateemploymentrate);
+
+        //Make an ajax call for adding the university data
+        $.ajax({
+            url: "../controllers/university/adduniversity.php",
+            type: 'POST',
+            data: formData,
+            success: function(data) 
+            {
+                try
+                {
+                    //Parse the data received from the server
+                    let response = JSON.parse(data);
+
+                    //If the response is not successful, then show the error in alert
+                    if(response.success == false)
+                    {
+                        alert(response.error);
+
+                        //Redirect to login page if the user is required to be login again
+                        if(response.login == true)
+                        {
+                            window.location.href = "../login/login.php";
+                        }
+                    }
+                    else
+                    {
+                        alert("University data added successfully");
+                    }
+                }
+                catch(error)
+                {
+                    alert("Error occurred while trying to read server response");
+                }
+            },
+            processData: false,
+            contentType: false
+        });
+    });
+
+    $("#tuitionandfees").on("submit" , function(e)
+    {
+        e.preventDefault();
+
+        //Fetch the data from the fields
+        let applicationfee = $("#applicationfee").val();
+        let tuitionfee = $("#tuitionfee").val();
+
+        let otherfees = [];
+        let financialaids = [];
+
+        //Loop through the other fees and push the data into the array
+        $(".otherfees input[type=checkbox]:checked").each(function()
+        {
+            otherfees.push($(this).val());
+        });
+
+        //Loop through the financial aid and push the data into the array
+        $(".financialaid input[type=checkbox]:checked").each(function()
+        {
+            financialaids.push($(this).val());
+        });
+
+        //Create the formdata and append data to it
+        let formData = new FormData(this);
+        formData.append('universityid' , universityid);
+        formData.append("tuitionandfees", "tuitionandfees");
+        formData.append('applicationfee', applicationfee);
+        formData.append('tuitionfee', tuitionfee);
+        formData.append('otherfees', JSON.stringify(otherfees));
+        formData.append('financialaids', JSON.stringify(financialaids));
+
+        //Make an ajax call for adding the university data
+        $.ajax({
+            url: "../controllers/university/adduniversity.php",
+            type: 'POST',
+            data: formData,
+            success: function(data) 
+            {
+                try
+                {
+                    //Parse the data received from the server
+                    let response = JSON.parse(data);
+
+                    //If the response is not successful, then show the error in alert
+                    if(response.success == false)
+                    {
+                        alert(response.error);
+
+                        //Redirect to login page if the user is required to be login again
+                        if(response.login == true)
+                        {
+                            window.location.href = "../login/login.php";
+                        }
+                    }
+                    else
+                    {
+                        alert("University data added successfully");
+                    }
+                }
+                catch(error)
+                {
+                    alert("Error occurred while trying to read server response");
+                }
+            },
+            processData: false,
+            contentType: false
+        });
+        
     });
 })

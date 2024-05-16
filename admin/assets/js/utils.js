@@ -95,7 +95,7 @@ function populateuniversityfinancialaid(elementid)
     {
         $(elementid).append(`
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="financialaid-${financialaid.financialaidid}" value="${financialaid.financialaid}">
+            <input class="form-check-input" type="checkbox" id="financialaid-${financialaid.financialaidid}" value="${financialaid.financialaidid}">
             <label class="form-check-label" for="financialaid-${financialaid.financialaidid}">${financialaid.financialaidname}</label>
         </div>
         `);
@@ -110,7 +110,7 @@ function populateaccreditations(elementid)
     {
         $(elementid).append(`
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="accreditation-${accreditation.accreditationid}" value="${accreditation.accreditationname}">
+            <input class="form-check-input" type="checkbox" id="accreditation-${accreditation.accreditationid}" value="${accreditation.accreditationid}">
             <label class="form-check-label" for="accreditation-${accreditation.accreditationid}">${accreditation.accreditationname}</label>
         </div>
         `);

@@ -713,6 +713,25 @@ create table university
     universityimage varchar(150)
 );
 
+drop table if exists universityrankings;
+create table universityrankings
+(
+	universityid varchar(50),
+    rankingname varchar(150),
+    rankawardingbodyid int,
+    yearofranking varchar(10),
+    description text,
+    foreign key (universityid) references university(universityid) on delete cascade
+);
+
+drop table if exists universityaccreditations;
+create table universityaccreditations
+(
+	universityid varchar(50),
+    accreditationid int,
+    foreign key (universityid) references university(universityid) on delete cascade
+);
+
 drop table if exists universitydatastatus;
 create table universitydatastatus
 (
@@ -739,8 +758,8 @@ drop table if exists universityfees;
 create table universityfees
 (
 	universityid varchar(50) not null unique key,
-	applicationfee decimal(10 , 2) not null,
-    tuitionfee decimal(10 , 2) not null,
+	applicationfee varchar(25) not null,
+    tuitionfee varchar(25) not null,
     foreign key (universityid) references university(universityid) on delete cascade
 );
 

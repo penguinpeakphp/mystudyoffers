@@ -272,19 +272,19 @@ checksession();
                                     <form class="row g-3" id="universitystatistics">
                                         <div class="col-6">
                                             <label for="totalstudents" class="form-label">Total Students</label>
-                                            <input type="text" class="form-control" id="totalstudents">
+                                            <input type="number" class="form-control" id="totalstudents">
                                         </div>
                                         <div class="col-6">
-                                            <label for="totalinternationstudents" class="form-label">Total International Students</label>
-                                            <input type="text" class="form-control" id="totalinternationstudents">
+                                            <label for="totalinternationalstudents" class="form-label">Total International Students</label>
+                                            <input type="number" class="form-control" id="totalinternationalstudents">
                                         </div>
                                         <div class="col-6">
                                             <label for="acceptancerate" class="form-label">Acceptance Rate</label>
-                                            <input type="text" class="form-control" id="acceptancerate">
+                                            <input type="number" class="form-control" id="acceptancerate" step="any">
                                         </div>
                                         <div class="col-6">
                                             <label for="graduateemploymentrate" class="form-label">Graduate Employment Rate</label>
-                                            <input type="text" class="form-control" id="graduateemploymentrate">
+                                            <input type="number" class="form-control" id="graduateemploymentrate" step="any">
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -300,7 +300,7 @@ checksession();
                                         </div>
                                         <div class="col-6">
                                             <label for="tuitionfee" class="form-label">Tuition Fee</label>
-                                            <input type="number" class="form-control" id="tuitionfee">
+                                            <input type="text" class="form-control" id="tuitionfee">
                                         </div>
                                         <div class="col-6">
                                             <label for="otherfees" class="form-label">Other Fees</label>

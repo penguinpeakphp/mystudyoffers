@@ -20,17 +20,17 @@
     //Set PHPMailer to use SMTP.
     $mail->isSMTP();
     //Set SMTP host name                          
-    $mail->Host = "smtp.hostinger.com";
+    $mail->Host = "smtp.gmail.com";
     //Set this to true if SMTP host requires authentication to send email
     $mail->SMTPAuth = true;
     //Provide username and password     
-    $mail->Username = "php@penguinpeak.com";
-    $mail->Password = "r@hiL@602";
+    $mail->Username = "mystudyofferscom@gmail.com";
+    $mail->Password = "zgvn otrx rwrf bras";
     //If SMTP requires TLS encryption then set it
-    $mail->SMTPSecure = "ssl";
+    $mail->SMTPSecure = "TLS";
     //Set TCP port to connect to
-    $mail->Port = 465;
+    $mail->Port = 587;      
 
-    $mail->From = "php@penguinpeak.com";
-    $mail->FromName = "Penguin Peak";
+    $mail->From = "mystudyofferscom@gmail.com";
+    $mail->FromName = "MSO";      
 ?>

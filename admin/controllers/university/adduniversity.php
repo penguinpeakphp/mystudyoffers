@@ -1,6 +1,7 @@
 <?php
     require_once "../../database/db.php";
     require_once "../globalfunctions.php";
+    require_once "functions.php";
 
     try
     {
@@ -44,7 +45,7 @@
             keycontactemail,
             yearestablishment,
             overview,
-            maincampuscityid ,
+            maincampuscityid,
             maincampusstreetaddress,
             maincampuspostcode,
             universityimage) VALUES(? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ?)");
@@ -85,26 +86,22 @@
             //Append university id in the response
             $response["universityid"] = $universityid;
 
-            //Check if directory of particular location already exists, if not create directory with the name as university id
-            if(!is_dir("../../universitydata/".$universityid))
+            //Check and create directory
+            if(!createdir($universityid))
             {
-                //Create the directory with name as universityid
-                if(mkdir("../../universitydata/".$universityid) == false)
+                failure($response , "Error while creating university directory");
+                $db->rollback();
+                goto end;
+            }
+
+            if(isset($_FILES["universityimage"]))
+            {
+                //Upload the file with the new name
+                if(move_uploaded_file($_FILES["universityimage"]["tmp_name"] , "../../universitydata/".$universityid."/".$filename) == false)
                 {
-                    failure($response , "Error while creating university directory");
+                    failure($response , "Error while uploading university image");
                     $db->rollback();
                     goto end;
-                }
-
-                if(isset($_FILES["universityimage"]))
-                {
-                    //Upload the file with the new name
-                    if(move_uploaded_file($_FILES["universityimage"]["tmp_name"] , "../../universitydata/".$universityid."/".$filename) == false)
-                    {
-                        failure($response , "Error while uploading university image");
-                        $db->rollback();
-                        goto end;
-                    }
                 }
             }
 
@@ -164,27 +161,22 @@
         //Second step of adding university
         if(isset($_POST["universityintellectualassets"]))
         {
-            
-            if(isset($_POST["universityid"]) && $_POST["universityid"] == "")
+            //Check for university id
+            if(!checkuniversityid())
             {
-                failure($response , "Error while adding unversity intellectual assets due to missing ID");
+                failure($response , "Error while adding university intellectual assets due to missing ID");
                 goto end;
             }
 
             //Decode the json string
             $_POST["otherteamsandclubs"] = json_decode($_POST["otherteamsandclubs"]);
 
-            //Check if directory of particular location already exists, if not create directory with the name as university id
-            $universityid = $_POST["universityid"];
-            if(!is_dir("../../universitydata/".$universityid))
+            //Check and create directory
+            if(!createdir($universityid))
             {
-                //Create the directory with name as universityid
-                if(mkdir("../../universitydata/".$universityid) == false)
-                {
-                    failure($response , "Error while creating university directory");
-                    $db->rollback();
-                    goto end;
-                }
+                failure($response , "Error while creating university directory");
+                $db->rollback();
+                goto end;
             }
 
             //Set the logo image and mascot image names if uploaded
@@ -309,7 +301,222 @@
         //Third step of adding university
         if(isset($_POST["universityrankings"]))
         {
-            
+            //Check university id is provided or not
+            if(!checkuniversityid())
+            {
+                failure($response , "Error while adding unversity rankings due to missing ID");
+                $db->rollback();
+                goto end;
+            }
+
+            $universityid = $_POST["universityid"];
+
+            //Check and create directory if does not exists
+            if(!createdir($universityid))
+            {
+                failure($response , "Error while creating university directory");
+                $db->rollback();
+                goto end;
+            }
+
+            //Decode the json data
+            $_POST["accreditations"] = json_decode($_POST["accreditations"]);
+            $_POST["rankings"] = json_decode($_POST['rankings']);
+
+            foreach($_POST["accreditations"] as $accreditation)
+            {
+                //Query the database for inserting accreditations
+                $insert = $db->prepare("INSERT INTO universityaccreditations(universityid , accreditationid) VALUES(? , ?)");
+                if($insert == false)
+                {
+                    failure($response , "Error while adding university accreditations");
+                    $db->rollback();
+                    goto end;
+                }
+                else
+                {
+                    //Bind the parameters
+                    $insert->bind_param("si" , $universityid , $accreditation);
+
+                    //Execute the query
+                    if($insert->execute() == false)
+                    {
+                        failure($response , "Error while adding university accreditations");
+                        $db->rollback();
+                        goto end;
+                    }
+                }
+            }
+
+            foreach($_POST["rankings"] as $ranking)
+            {
+                //Query the database for inserting rankings
+                $insert = $db->prepare("INSERT INTO universityrankings(universityid , rankingname , rankawardingbodyid , yearofranking, description) VALUES(? , ? , ? , ? , ?)");
+                if($insert == false)
+                {
+                    failure($response , "Error while adding university rankings");
+                    $db->rollback();
+                    goto end;
+                }
+                else
+                {
+                    //Bind the parameters
+                    $insert->bind_param("ssiss" , $universityid , $ranking->rankingname , $ranking->rankawardingbody , $ranking->yearofranking , $ranking->description);
+
+                    //Execute the query
+                    if($insert->execute() == false)
+                    {
+                        failure($response , "Error while adding university rankings");
+                        $db->rollback();
+                        goto end;
+                    }
+                }
+            }
+
+        }
+
+        //Fourth step of adding university
+        if(isset($_POST["universitystatistics"]))
+        {
+            //Check if universityid was provided
+            if(!checkuniversityid())
+            {
+                failure($response , "Error while adding university statistics due to missing ID");
+                $db->rollback();
+                goto end;
+            }
+
+            //Create the directory with name as universityid
+            if(!createdir($universityid))
+            {
+                failure($response , "Error while creating university directory");
+                $db->rollback();
+                goto end;
+            }
+
+            $universityid = $_POST["universityid"];
+
+            //Query the database for inserting statistics
+            $insert = $db->prepare("INSERT INTO universitystatistics(universityid , totalstudents , totalinternationalstudents , acceptancerate , graduateemploymentrate) VALUES(? , ? , ? , ? , ?)");
+            if($insert == false)
+            {
+                failure($response , "Error while adding university statistics");
+                $db->rollback();
+                goto end;
+            }
+            else
+            {
+                //Bind the parameters
+                $insert->bind_param("siidd" , $universityid , $_POST["totalstudents"] , $_POST["totalinternationalstudents"] , $_POST["acceptancerate"] , $_POST["graduateemploymentrate"]);
+
+                //Execute the query
+                if($insert->execute() == false)
+                {
+                    failure($response , "Error while adding university statistics");
+                    $db->rollback();
+                    goto end;
+                }
+            }
+        }
+
+        //Fifth step of adding university
+        if(isset($_POST["tuitionandfees"]))
+        {
+            //Check if universityid was provided
+            if(!checkuniversityid())
+            {
+                failure($response , "Error while adding university statistics due to missing ID");
+                $db->rollback();
+                goto end;
+            }
+
+            //Create the directory with name as universityid
+            if(!createdir($universityid))
+            {
+                failure($response , "Error while creating university directory");
+                $db->rollback();
+                goto end;
+            }
+
+            $universityid = $_POST["universityid"];
+
+            //Query the database for inserting fees into the table
+            $insert = $db->prepare("INSERT INTO universityfees(universityid , applicationfee , tuitionfee) VALUES(? , ? , ?)");
+            if($insert == false)
+            {
+                failure($response , "Error while adding university fees");
+                $db->rollback();
+                goto end;
+            }
+            else
+            {
+                //Bind the parameters
+                $insert->bind_param("sss" , $universityid , $_POST["applicationfee"] , $_POST["tuitionfee"]);
+
+                //Execute the query
+                if($insert->execute() == false)
+                {
+                    failure($response , "Error while adding university fees");
+                    $db->rollback();
+                    goto end;
+                }
+            }
+
+            //Decode the json string
+            $_POST["otherfees"] = json_decode($_POST["otherfees"]);
+            $_POST["financialaids"] = json_decode($_POST["financialaids"]);
+
+            //Loop through all the other fees
+            foreach($_POST["otherfees"] as $otherfee)
+            {
+                //Query the database for inserting other fees
+                $insert = $db->prepare("INSERT INTO universityotherfees(universityid , otherfeeid) VALUES(? , ?)");
+                if($insert == false)
+                {
+                    failure($response , "Error while adding university other fees");
+                    $db->rollback();
+                    goto end;
+                }
+                else
+                {
+                    //Bind the parameters
+                    $insert->bind_param("si" , $universityid , $otherfee);
+
+                    //Execute the query
+                    if($insert->execute() == false)
+                    {
+                        failure($response , "Error while adding university other fees");
+                        $db->rollback();
+                        goto end;
+                    }
+                }
+            }
+
+            //Loop through all the financial aids
+            foreach($_POST["financialaids"] as $financialaid)
+            {
+                //Query the database for inserting financial aids
+                $insert = $db->prepare("INSERT INTO universityfinancialaid(universityid , financialaidid) VALUES(? , ?)");
+                if($insert == false)
+                {
+                    failure($response , "Error while adding university financial aids");
+                    $db->rollback();
+                    goto end;
+                }
+                else
+                {
+                    //Bind the parameters
+                    $insert->bind_param("si" , $universityid , $financialaid);
+
+                    //Execute the query
+                    if($insert->execute() == false)
+                    {
+                        failure($response , "Error while adding university financial aids");
+                        $db->rollback();
+                        goto end;
+                    }
+                }
+            }
         }
 
         if($response["success"] == true)
