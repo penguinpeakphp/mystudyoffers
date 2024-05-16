@@ -86,7 +86,7 @@ checksession();
                                         </div>
                                         <div class="col-6">
                                             <label for="universityimage" class="form-label">University Image</label>
-                                            <input type="file" class="form-control" id="universityimage" name="universityimage">
+                                            <input type="file" class="form-control" id="universityimage" name="universityimage" accept="image/jpeg, image/png">
                                         </div>
                                         <div class="col-6">
                                             <label for="universitylicensenumber" class="form-label">University License Number</label>
@@ -168,7 +168,7 @@ checksession();
                                         </div>
 
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary" id="universityinfobtn">Submit</button>
+                                            <button type="submit" class="btn btn-primary" id="universityinfobtn">Add</button>
                                         </div>
                                     </form>
                                 </div>
@@ -176,11 +176,11 @@ checksession();
                                     <form class="row g-3" id="universityintellectualassets">    
                                         <div class="col-6">
                                             <label for="logoimage" class="form-label">Logo Image</label>
-                                            <input type="file" class="form-control" id="logoimage">
+                                            <input type="file" class="form-control" id="logoimage" accept="image/jpeg, image/png">
                                         </div>
                                         <div class="col-6">
                                             <label for="mascotimage" class="form-label">Mascot Image</label>
-                                            <input type="file" class="form-control" id="mascotimage">
+                                            <input type="file" class="form-control" id="mascotimage" accept="image/jpeg, image/png">
                                         </div>
                                         <div id="otherteamsandclubslist">
                                             <p><b>Other Teams and Clubs</b></p>
@@ -205,7 +205,7 @@ checksession();
                                         <div id="facilityimagestemplate" class="d-none">
                                             <div class="col-6">
                                                 <label class="form-label">Facility Images</label>
-                                                <input type="file" class="form-control facilityimages" name="facilityimages">
+                                                <input type="file" class="form-control facilityimages" name="facilityimages" accept="image/jpeg, image/png">
                                             </div>
                                             <div class="col-4 mt-3">
                                                 <button type="button" class="btn btn-danger removefacilityimages">Remove Facility Image</button>
@@ -238,7 +238,7 @@ checksession();
                                         <div class="row d-none otherrankings" id="otherrankingstemplate">
                                             <div class="col-4">
                                                 <label for="nameofranking" class="form-label">Name of Ranking</label>
-                                                <input type="text" class="form-control" id="nameofranking">
+                                                <input type="text" class="form-control" name="nameofranking">
                                             </div>
                                             <div class="col-4">
                                                 <label for="rankawardingbody" class="form-label">Rank Awarding Body</label>
@@ -249,11 +249,11 @@ checksession();
                                             </div>
                                             <div class="col-4">
                                                 <label for="yearofranking" class="form-label">Year of Ranking</label>
-                                                <input type="text" class="form-control" id="yearofranking">
+                                                <input type="text" class="form-control" name="yearofranking">
                                             </div>
                                             <div class="col-12 my-2">
                                                 <label for="description" class="form-label mb-3">Description</label>
-                                                <textarea class="form-control" id="description"></textarea>
+                                                <textarea class="form-control" name="description"></textarea>
                                             </div>
                                             <div class="col-4 my-3">
                                                 <button type="button" class="btn btn-danger removeotherranking">Remove Ranking</button>

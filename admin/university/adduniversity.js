@@ -44,7 +44,10 @@ $(function()
         formData.append('universityinformation', 'universityinformation');
         formData.append('universityname', universityname);
         formData.append('universitylicensenumber', universitylicensenumber);
-        formData.append('universityimage', universityimage);
+        if(universityimage)
+        {
+            formData.append('universityimage', universityimage);
+        }
         formData.append('courselevelsoffered', JSON.stringify(courselevelsoffered));
         formData.append('keycontactname', keycontactname);
         formData.append('keycontactemail', keycontactemail);
@@ -61,12 +64,139 @@ $(function()
             url: "../controllers/university/adduniversity.php",
             type: 'POST',
             data: formData,
-            success: function (data) 
+            success: function(data) 
             {
-                console.log(data);
+                try
+                {
+                    //Parse the data received from the server
+                    let response = JSON.parse(data);
+
+                    //If the response is not successful, then show the error in alert
+                    if(response.success == false)
+                    {
+                        alert(response.error);
+
+                        //Redirect to login page if the user is required to be login again
+                        if(response.login == true)
+                        {
+                            window.location.href = "../login/login.php";
+                        }
+                    }
+                    else
+                    {
+                        universityid = response.universityid;
+                        alert("University added successfully");
+                    }
+                }
+                catch(error)
+                {
+                    alert("Error occurred while trying to read server response");
+                }
             },
             processData: false,
             contentType: false
+        });
+    });
+
+    $("#universityintellectualassets").on("submit" , function(e)
+    {
+        e.preventDefault();
+
+        //Fetch the data from the fields
+        let logoimage = $("#logoimage")[0].files[0];
+        let mascotimage = $("#mascotimage")[0].files[0];
+
+        //Loop through the other teams and clubs elements and push the value into the array
+        let otherteamsandclubs = [];
+        $("#otherteamsandclubslist .otherteamsandclubs").each(function()
+        {
+            otherteamsandclubs.push($(this).val());
+        });
+        
+        //Loop through the facility images and push the value into the array
+        let facilityimages = [];
+        $("#facilityimageslist .facilityimages").each(function()
+        {
+            facilityimages.push($(this)[0].files[0]);
+        });
+
+        let formData = new FormData(this);
+        formData.append('universityid' , universityid);
+        formData.append("universityintellectualassets", "universityintellectualassets");
+        if(logoimage)
+        {
+            formData.append('logoimage', logoimage);
+        }
+        if(mascotimage)
+        {
+            formData.append('mascotimage', mascotimage);   
+        }
+        formData.append('otherteamsandclubs', JSON.stringify(otherteamsandclubs));
+        // Append the array of files
+        facilityimages.forEach(function(file) 
+        {
+            formData.append('facilityimages[]', file);
+        });
+
+        //Make an ajax call for adding the university
+        $.ajax({
+            url: "../controllers/university/adduniversity.php",
+            type: 'POST',
+            data: formData,
+            success: function(data) 
+            {
+                try
+                {
+                    //Parse the data received from the server
+                    let response = JSON.parse(data);
+
+                    //If the response is not successful, then show the error in alert
+                    if(response.success == false)
+                    {
+                        alert(response.error);
+
+                        //Redirect to login page if the user is required to be login again
+                        if(response.login == true)
+                        {
+                            window.location.href = "../login/login.php";
+                        }
+                    }
+                    else
+                    {
+                        alert("University data added successfully");
+                    }
+                }
+                catch(error)
+                {
+                    alert("Error occurred while trying to read server response");
+                }
+            },
+            processData: false,
+            contentType: false
+        });
+    }); 
+
+    $("#universityrankings").on("submit" , function(e)
+    {
+        e.preventDefault();
+
+        //Fetch the data from the fields
+        let accreditations = [];
+        //Loop through the course level elements and push the value into the array
+        $(".accreditationstatus input[type=checkbox]:checked").each(function()
+        {
+            accreditations.push($(this).val());
+        });
+
+        let rankings = [];
+        $("#otherrankingslist .otherrankings").each(function()
+        {
+            let rankawardingbody = {};
+            $(this).find("input[name=nameofranking]").val();
+            $(this).find("select[name=rankawardingbodies]").val();
+            $(this).find("input[name=yearofranking]").val();
+            $(this).find("input[name=description]").val();
+
         });
     });
 })

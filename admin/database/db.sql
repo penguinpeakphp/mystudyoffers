@@ -540,6 +540,8 @@ create table rankawardingbody
     rankawardingbodystatus boolean not null default true
 );
 
+insert into rankawardingbody(rankawardingbodyname) values('Rank Awarding Body 1') , ('Rank Awarding Body 2');
+
 delimiter //
 drop trigger if exists assignstudent//
 create trigger assignstudent after insert on student for each row
@@ -697,7 +699,7 @@ insert into queryconversation(queryid , studentid , adminid , message) values
 drop table if exists university;
 create table university
 (
-	universityid varchar(50) primary key,
+	universityid varchar(50) not null primary key,
 	universityname varchar(1000),
     universitylicensenumber varchar(50) default "",
     keycontactname varchar(100),
@@ -736,10 +738,10 @@ create table othercampusaddress
 drop table if exists universityfees;
 create table universityfees
 (
-	universityid varchar(50) not null,
+	universityid varchar(50) not null unique key,
 	applicationfee decimal(10 , 2) not null,
     tuitionfee decimal(10 , 2) not null,
-    foreign key (universityid) references university(universityid)
+    foreign key (universityid) references university(universityid) on delete cascade
 );
 
 drop table if exists universitylevelofcourse;
@@ -772,7 +774,7 @@ create table universityfinancialaid
 drop table if exists universitystatistics;
 create table universitystatistics
 (
-	universityid varchar(50) not null,
+	universityid varchar(50) not null unique key,
 	totalstudents int,
     totalinternationalstudents int,
     acceptancerate decimal(10 , 2),
@@ -783,18 +785,18 @@ create table universitystatistics
 drop table if exists universityassets;
 create table universityassets
 (
-	universityid varchar(50) not null,
+	universityid varchar(50) not null unique key,
 	logoimage varchar(500),
     mascotimage varchar(500),
-    foreign key (universityid) references university(universityid)
+    foreign key (universityid) references university(universityid) on delete cascade
 );
 
 drop table if exists universityclubsandteams;
 create table universityclubsandteams
 (
 	universityid varchar(50) not null,
-    clubsanteams varchar(150) not null,
-    foreign key (universityid) references university(universityid)
+    clubsandteams varchar(150) not null,
+    foreign key (universityid) references university(universityid) on delete cascade
 );
 
 drop table if exists universityfacilityimages;
@@ -802,7 +804,7 @@ create table universityfacilityimages
 (
 	universityid varchar(50) not null,
     image varchar(150) not null,
-    foreign key (universityid) references university(universityid)
+    foreign key (universityid) references university(universityid) on delete cascade
 );
 
 delimiter //

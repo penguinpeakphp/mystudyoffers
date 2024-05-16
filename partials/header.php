@@ -1,6 +1,5 @@
 <?php
     require_once "controllers/globaldata.php";
-    if(!isset($_SESSION)){session_start();}
 ?>
 <header id="header">
     <div class="loader"></div>
