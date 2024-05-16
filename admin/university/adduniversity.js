@@ -86,6 +86,7 @@ $(function()
                     {
                         universityid = response.universityid;
                         alert("University added successfully");
+                        $("#universityinformationform *").prop("disabled" , true);
                     }
                 }
                 catch(error)
@@ -164,6 +165,7 @@ $(function()
                     else
                     {
                         alert("University data added successfully");
+                        $("#universityintellectualassets *").prop("disabled" , true);
                     }
                 }
                 catch(error)
@@ -234,6 +236,7 @@ $(function()
                     else
                     {
                         alert("University data added successfully");
+                        $("#universityrankings *").prop("disabled" , true);
                     }
                 }
                 catch(error)
@@ -291,6 +294,7 @@ $(function()
                     else
                     {
                         alert("University data added successfully");
+                        $("#universitystatistics *").prop("disabled" , true);
                     }
                 }
                 catch(error)
@@ -361,6 +365,7 @@ $(function()
                     else
                     {
                         alert("University data added successfully");
+                        $("#tuitionandfees *").prop("disabled" , true);
                     }
                 }
                 catch(error)

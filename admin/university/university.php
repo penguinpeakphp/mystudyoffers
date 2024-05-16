@@ -190,7 +190,6 @@ checksession();
                                         </div>
                                         <div id="otherteamsandclubstemplate" class="d-none">
                                             <div class="col-12">
-                                                <label class="form-label">Other Teams and Clubs</label>
                                                 <input type="text" class="form-control otherteamsandclubs" name="otherteamsandclubs">
                                             </div>
                                             <div class="col-4 mt-3">
@@ -198,13 +197,13 @@ checksession();
                                             </div>
                                         </div>
                                         <div id="facilityimageslist">
+                                            <p><b>Facility Images</b></p>
                                         </div>
                                         <div class="col-4 mt-3">
                                             <button type="button" class="btn btn-primary" id="addfacilityimages">Add Facility Image</button>
                                         </div>
                                         <div id="facilityimagestemplate" class="d-none">
                                             <div class="col-6">
-                                                <label class="form-label">Facility Images</label>
                                                 <input type="file" class="form-control facilityimages" name="facilityimages" accept="image/jpeg, image/png">
                                             </div>
                                             <div class="col-4 mt-3">
@@ -212,7 +211,7 @@ checksession();
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="submit" class="btn btn-primary">Add</button>
                                         </div>
                                     </form>
                                 </div>
@@ -263,7 +262,7 @@ checksession();
                                             <button type="button" class="btn btn-primary" id="addotherrankings">Add Ranking</button>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="submit" class="btn btn-primary">Add</button>
                                         </div>
                                     </form>
                                 </div>
@@ -287,7 +286,7 @@ checksession();
                                             <input type="number" class="form-control" id="graduateemploymentrate" step="any">
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="submit" class="btn btn-primary">Add</button>
                                         </div>
                                     </form>
                                 </div>
@@ -325,7 +324,7 @@ checksession();
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="submit" class="btn btn-primary">Add</button>
                                         </div>
                                     </form>
                                 </div>

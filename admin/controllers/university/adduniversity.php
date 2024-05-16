@@ -171,6 +171,8 @@
             //Decode the json string
             $_POST["otherteamsandclubs"] = json_decode($_POST["otherteamsandclubs"]);
 
+            $universityid = $_POST["universityid"];
+
             //Check and create directory
             if(!createdir($universityid))
             {
