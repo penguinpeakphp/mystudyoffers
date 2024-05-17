@@ -20,17 +20,19 @@
     //Set PHPMailer to use SMTP.
     $mail->isSMTP();
     //Set SMTP host name                          
-    $mail->Host = "smtp.gmail.com";
+    $mail->Host = "mail.mystudyoffers.com";
     //Set this to true if SMTP host requires authentication to send email
     $mail->SMTPAuth = true;
     //Provide username and password     
-    $mail->Username = "mystudyofferscom@gmail.com";
-    $mail->Password = "zgvn otrx rwrf bras";
+    $mail->Username = "noreply@mystudyoffers.com";
+    $mail->Password = "KdlA(Zj@zBmi";
+    
     //If SMTP requires TLS encryption then set it
     $mail->SMTPSecure = "TLS";
     //Set TCP port to connect to
     $mail->Port = 587;      
 
-    $mail->From = "mystudyofferscom@gmail.com";
-    $mail->FromName = "MSO";      
+    $mail->From = "noreply@mystudyoffers.com";
+    $mail->FromName = "MSO"; 
+    $mail->addreplyto('admin@mystudyoffers.com', 'MSO');   
 ?>
