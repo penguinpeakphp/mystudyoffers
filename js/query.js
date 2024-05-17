@@ -67,7 +67,7 @@ $(function()
                         }
 
                         tr += `
-                                <td><a href="conversation.php?queryid=${query.qi}" class="btn btn-reply">Reply</a></td>
+                                <td><a href="conversation.php?queryid=${query.qi}" class="btn btn-reply">View Replies</a></td>
                             </tr>
                         `;
 
