@@ -80,6 +80,14 @@ checksession();
                             <div class="tab-content pt-2" id="myTabjustifiedContent">
                                 <div class="tab-pane fade active show" id="section1" role="tabpanel" aria-labelledby="section1">
                                     <form class="row g-3" id="universityinformationform">
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="universitystatus" name="universitystatus">
+                                                <label class="form-check-label" for="universitystatus">
+                                                Active
+                                                </label>
+                                            </div>
+                                        </div>
                                         <div class="col-6">
                                             <label for="universityname" class="form-label">University Name</label>
                                             <input type="text" class="form-control" id="universityname" name="universityname">

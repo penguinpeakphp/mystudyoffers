@@ -7,6 +7,7 @@ $(function()
         e.preventDefault();
 
         //Fetch the data from the fields
+        let universitystatus = $("#universitystatus").prop("checked") ? 1 : 0;
         let universityname = $("#universityname").val();
         let universitylicensenumber = $("#universitylicensenumber").val();
         let universityimage = $("#universityimage")[0].files[0];
@@ -40,6 +41,7 @@ $(function()
 
         //Append all the data in the form data
         let formData = new FormData();
+        formData.append("universitystatus" , universitystatus);
         formData.append("universityid" , universityid);
         formData.append('universityinformation', 'universityinformation');
         formData.append('universityname', universityname);
@@ -66,6 +68,7 @@ $(function()
             data: formData,
             success: function(data) 
             {
+                console.log(data);
                 try
                 {
                     //Parse the data received from the server

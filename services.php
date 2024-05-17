@@ -56,7 +56,7 @@ if(!isset($_SESSION)){session_start();}
 <section class="about-mission-and-aim">
                 <div class="container">
                                     
-                        <div class="mission-and-aim-inside">
+                        <div>
                             <div class="about-mission-content">
                                 <div class="section-head">                                   
                                     <p class="section-paragraph">

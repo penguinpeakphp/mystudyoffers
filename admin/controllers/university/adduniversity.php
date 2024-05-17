@@ -16,7 +16,7 @@
 
         //First step of adding university
         if(isset($_POST["universityinformation"]))
-        {            
+        {         
             //Check if the university is not provided. If provided, then the user has already added current university on this page
             if(isset($_POST["universityid"]) && $_POST["universityid"] != "")
             {
@@ -48,7 +48,7 @@
             maincampuscityid,
             maincampusstreetaddress,
             maincampuspostcode,
-            universityimage) VALUES(? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ?)");
+            universityimage , universitystatus) VALUES(? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ?)");
 
             if($insert == false)
             {
@@ -59,7 +59,7 @@
             else
             {
                 //Bind the parameters
-                $insert->bind_param("sssssssisss" , $_POST["universityname"] , $_POST["universitylicensenumber"] , $_POST["keycontactname"] , $_POST["keycontactdesignation"] , $_POST["keycontactemail"] , $_POST["yearestablishment"] , $_POST["overview"] , $_POST["maincampuscity"] , $_POST["maincampusstreetaddress"] , $_POST["maincampuspostcode"], $filename);
+                $insert->bind_param("sssssssisssi" , $_POST["universityname"] , $_POST["universitylicensenumber"] , $_POST["keycontactname"] , $_POST["keycontactdesignation"] , $_POST["keycontactemail"] , $_POST["yearestablishment"] , $_POST["overview"] , $_POST["maincampuscity"] , $_POST["maincampusstreetaddress"] , $_POST["maincampuspostcode"], $filename , $_POST["universitystatus"]);
 
                 //Execute the query
                 if($insert->execute() == false)
