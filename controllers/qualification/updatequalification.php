@@ -133,7 +133,7 @@
         }
 
         //Query the database to update the profile status
-        $update = $db->prepare("UPDATE student SET profilestatus = 'testscore' WHERE studentid = ?");
+        $update = $db->prepare("UPDATE student SET profilestatus = 'testscore' WHERE studentid = ? AND (SELECT NOT testscore FROM studentprofiletrack WHERE studentid = ?)");
         if($update == false)
         {
             failure($response , "Error updating profile status");
@@ -143,7 +143,7 @@
         else
         {
             //Bind the parameters
-            $update->bind_param("i" , $_SESSION["studentid"]);
+            $update->bind_param("ii" , $_SESSION["studentid"] , $_SESSION["studentid"]);
 
             //Excecute the query
             if($update->execute() == false)
@@ -152,6 +152,13 @@
                 $db->rollback();
                 goto end;
             }
+        }
+
+        $update = $db->query("UPDATE studentprofiletrack SET qualification = 1 WHERE studentid = '{$_SESSION['studentid']}'");
+        if($update == false)
+        {
+            failure($response , "Error updating profile track status");
+            goto end;
         }
 
         //If everything is successful, commit the transaction

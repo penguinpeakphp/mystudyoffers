@@ -99,6 +99,13 @@
             }
         }
 
+        $update = $db->query("UPDATE studentprofiletrack SET countryinterest = 1 WHERE studentid = '{$_SESSION['studentid']}'");
+        if($update == false)
+        {
+            failure($response , "Error updating profile track status");
+            goto end;
+        }
+
         if($response["success"] == true)
         {
             $db->commit();

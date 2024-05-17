@@ -483,6 +483,17 @@ create table student
     registeredon date
 );
 
+drop table if exists studentprofiletrack;
+create table studentprofiletrack
+(
+	studentid int not null,
+    academic boolean not null default false,
+    qualification boolean not null default false,
+    testscore boolean not null default false,
+    countryinterest boolean not null default false,
+    foreign key (studentid) references student(studentid) on delete cascade
+);
+
 delimiter //
 CREATE TRIGGER setdefaultstudentdate BEFORE INSERT ON student
 FOR EACH ROW

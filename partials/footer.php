@@ -189,7 +189,7 @@
                                         <label for="pincode">Pincode</label>
                                         <input type="text" name="pincode" id="pincode" placeholder="Enter your pincode" required>
                                     </div>
-                                    <div class="form-col">
+                                    <div class="form-col register">
                                         <input type="checkbox" value="Terms" name="chkterms" id="chkterms">
                                         <label for="chkterms">Terms &amp; Conditions</label>
                                     </div>

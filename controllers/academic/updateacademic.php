@@ -25,26 +25,6 @@
             //Start the transaction as there are two queries need to be run for one functionality
             $db->begin_transaction();
 
-            // //Delete old academic data of the student
-            // $delete = $db->prepare("DELETE FROM studentacademics WHERE studentid = ? AND academicid = ?");
-            // if($delete == false)
-            // {
-            //     failure($response , "Error while removing old academic data");
-            //     $db->rollback();
-            //     goto end;
-            // }
-            // else
-            // {
-            //     //Bind the student id from the session
-            //     $delete->bind_param("ii" , $_SESSION["studentid"]);
-            //     if($delete->execute() == false)
-            //     {
-            //         failure($response , "Error while removing old academic data");
-            //         $db->rollback();
-            //         goto end;
-            //     }
-            // }
-
             $existingacademicids = [];
             $select = $db->prepare("SELECT * FROM studentacademics WHERE studentid = ?");
             if($select == false)
@@ -233,7 +213,7 @@
             }
 
             //Query the database to update the profile status
-            $update = $db->prepare("UPDATE student SET profilestatus = 'qualification' WHERE studentid = ?");
+            $update = $db->prepare("UPDATE student SET profilestatus = 'qualification' WHERE studentid = ? AND (SELECT NOT qualification FROM studentprofiletrack WHERE studentid = ?)");
             if($update == false)
             {
                 failure($response , "Error updating profile status");
@@ -242,7 +222,7 @@
             else
             {
                 //Bind the parameters
-                $update->bind_param("i" , $_SESSION["studentid"]);
+                $update->bind_param("ii" , $_SESSION["studentid"] , $_SESSION["studentid"]);
 
                 //Excecute the query
                 if($update->execute() == false)
@@ -250,6 +230,13 @@
                     failure($response , "Error updating profile status");
                     goto end;
                 }
+            }
+
+            $update = $db->query("UPDATE studentprofiletrack SET academic = 1 WHERE studentid = '{$_SESSION['studentid']}'");
+            if($update == false)
+            {
+                failure($response , "Error updating profile track status");
+                goto end;
             }
         }
 

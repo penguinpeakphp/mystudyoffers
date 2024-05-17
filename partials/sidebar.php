@@ -13,7 +13,7 @@
                 <img src="images/logo.png" class="img-fluid" />
             </div>
         </li>
-        <li>
+        <li style="display: flex;gap: 20px; align-items: center;">
             <i class="bx bxs-user-circle"></i>
             <span class="link_name">My Account</span>
         </li>

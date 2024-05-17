@@ -64,7 +64,7 @@ checksession();
                         </div>
                     </div>
                 </section>
-                <section class="query-list">
+                <section class="query-list table-responsive">
                     <table class="table table-bordered table-striped table-hover">
                         <thead>
                             <tr>
