@@ -189,9 +189,9 @@
                                         <label for="pincode">Pincode</label>
                                         <input type="text" name="pincode" id="pincode" placeholder="Enter your pincode" required>
                                     </div>
-                                    <div class="form-col form-check">
-                                        <input class="form-check-input" type="checkbox" value="Terms" name="chkterms" id="chkterms" style="width:0px!important;height: 30px!important;">
-                                        <label class="form-check-label" for="chkterms">Terms & Conditions</label>
+                                    <div class="form-col">
+                                        <input type="checkbox" value="Terms" name="chkterms" id="chkterms">
+                                        <label for="chkterms">Terms &amp; Conditions</label>
                                     </div>
                                     <div style="visibility:hidden; color:red" id="agree_chk_error">
                                         Can't proceed as you didn't agree to the terms!

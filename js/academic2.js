@@ -65,6 +65,13 @@ $(function()
                                 </div>
                             `);
                         }
+
+                        for(let i=0; i<response.selecteddata.length; i++)
+                        {
+                            let selecteddata = response.selecteddata[i];
+                            
+                            $(`#academic${selecteddata.academicid} [value=${selecteddata.majorsubjectid}]`).prop("checked" , true);
+                        }
                     }
                 }
                 catch(error)

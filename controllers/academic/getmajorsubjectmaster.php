@@ -29,6 +29,23 @@
             array_push($response["data"] , $row);
         }
 
+        //Declare array for storing the selected data
+        $response["selecteddata"] = [];
+
+        //Query the database to get the selected data
+        $result = $db->query("SELECT academicid , majorsubjectid FROM studentacademics WHERE studentid = '{$_SESSION['studentid']}'");
+        if($result == false)
+        {
+            failure($response , "Error while fetching data");
+            goto end;
+        }
+
+        //Push the data into the associative array
+        while($row = $result->fetch_assoc())
+        {
+            array_push($response["selecteddata"] , $row);
+        }
+
         end:;
     }
     catch(Exception $e)

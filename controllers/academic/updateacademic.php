@@ -25,9 +25,29 @@
             //Start the transaction as there are two queries need to be run for one functionality
             $db->begin_transaction();
 
-            //Delete old academic data of the student
-            $delete = $db->prepare("DELETE FROM studentacademics WHERE studentid = ?");
-            if($delete == false)
+            // //Delete old academic data of the student
+            // $delete = $db->prepare("DELETE FROM studentacademics WHERE studentid = ? AND academicid = ?");
+            // if($delete == false)
+            // {
+            //     failure($response , "Error while removing old academic data");
+            //     $db->rollback();
+            //     goto end;
+            // }
+            // else
+            // {
+            //     //Bind the student id from the session
+            //     $delete->bind_param("ii" , $_SESSION["studentid"]);
+            //     if($delete->execute() == false)
+            //     {
+            //         failure($response , "Error while removing old academic data");
+            //         $db->rollback();
+            //         goto end;
+            //     }
+            // }
+
+            $existingacademicids = [];
+            $select = $db->prepare("SELECT * FROM studentacademics WHERE studentid = ?");
+            if($select == false)
             {
                 failure($response , "Error while removing old academic data");
                 $db->rollback();
@@ -36,18 +56,55 @@
             else
             {
                 //Bind the student id from the session
-                $delete->bind_param("i" , $_SESSION["studentid"]);
-                if($delete->execute() == false)
+                $select->bind_param("i" , $_SESSION["studentid"]);
+                if($select->execute() == false)
                 {
                     failure($response , "Error while removing old academic data");
                     $db->rollback();
                     goto end;
+                }
+
+                $result = $select->get_result();
+                while($row = $result->fetch_assoc())
+                {
+                    array_push($existingacademicids , $row["academicid"]);
+                }
+            }
+
+            foreach($existingacademicids as $academicid)
+            {
+                if(!in_array($academicid , $_POST["chkquali"]))
+                {
+                    //Delete old academic data of the student
+                    $delete = $db->prepare("DELETE FROM studentacademics WHERE studentid = ? AND academicid = ?");
+                    if($delete == false)
+                    {
+                        failure($response , "Error while removing old academic data");
+                        $db->rollback();
+                        goto end;
+                    }
+                    else
+                    {
+                        //Bind the student id from the session
+                        $delete->bind_param("ii" , $_SESSION["studentid"] , $academicid);
+                        if($delete->execute() == false)
+                        {
+                            failure($response , "Error while removing old academic data");
+                            $db->rollback();
+                            goto end;
+                        }
+                    }
                 }
             }
 
             //Loop through all the options selected
             foreach($_POST["chkquali"] as $academicid)
             {
+                if(in_array($academicid , $existingacademicids))
+                {
+                    continue;
+                }
+
                 //Insert the student id and academic id into the studentacademic table
                 $insert = $db->prepare("INSERT INTO studentacademics(studentid , academicid) VALUES(? , ?)");
                 if($insert == false)

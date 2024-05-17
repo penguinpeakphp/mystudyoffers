@@ -100,11 +100,22 @@ $(function()
                                 </div>
                             `);
                         }
+
+
+                        console.log(response);
+                        for(let i=0; i<response.selecteddata.length; i++)
+                        {
+                            let selecteddata = response.selecteddata[i];
+
+                            $(`#academic${selecteddata.academicid} .passingyear [value=${selecteddata.passingyearid}]`).prop("checked" , true);
+                            $(`#academic${selecteddata.academicid} .result [value=${selecteddata.resultid}]`).prop("checked" , true);
+                            $(`#academic${selecteddata.academicid} .awardingbody [value=${selecteddata.awardingbodyid}]`).prop("checked" , true);
+                        }
                     }
                 }
                 catch(error)
                 {
-                    alert("Error occurred while trying to read server response");
+                    alert("Error occurred while trying to read server response " + error);
                 }
             }
         });

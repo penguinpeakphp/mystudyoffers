@@ -41,8 +41,33 @@
             }
         }
 
-        $response["results"] = [];
+        $response["selecteddata"] = [];
+        //Get selected passing years
+        $select = $db->prepare("SELECT academicid , majorsubjectid , passingyearid , resultid , awardingbodyid FROM studentacademics WHERE studentid = ?");
+        if($select == false)
+        {
+            failure($response , "Error while fetching selected passing year list");
+            goto end;
+        }
+        else
+        {
+            //Bind the student id from the session
+            $select->bind_param("i" , $_SESSION["studentid"]); 
 
+            //Excecute the query
+            if($select->execute() == false)
+            {
+                failure($response , "Error while fetching selected passing year list");
+                goto end;
+            }
+            $result = $select->get_result();
+            while($row = $result->fetch_assoc())
+            {
+                array_push($response["selecteddata"] , $row);
+            }
+        }
+
+        $response["results"] = [];
         //Query the database to fetch all the results from the database that are active
         $select = $db->prepare("SELECT * FROM result WHERE resultstatus = 1");
         if($select == false)
