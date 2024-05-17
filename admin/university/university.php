@@ -59,16 +59,14 @@ checksession();
                         <div class="card-body">
                             <h5 class="card-title">University List</h5>
 
-                            <table class="table table-striped" id="studenttable">
+                            <table class="table table-striped" id="universitytable">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Name</th>
-                                        <th scope="col">Surname</th>
-                                        <th scope="col">Phone</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Assigned To</th>
-                                        <th scope="col">Pincode</th>
+                                        <th scope="col">License Number</th>
+                                        <th scope="col">Contact Name</th>
+                                        <th scope="col">Contact Email</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -89,7 +87,6 @@ checksession();
 </body>
 
 <script src="../assets/js/utils.js"></script>
-<script src="university.js"></script>
-<script src="adduniversity.js"></script>
+<script src="universitylist.js"></script>
 
 </html>

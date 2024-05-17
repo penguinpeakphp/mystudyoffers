@@ -710,7 +710,8 @@ create table university
     maincampuscityid int,
     maincampusstreetaddress varchar(500),
     maincampuspostcode varchar(20),
-    universityimage varchar(150)
+    universityimage varchar(150),
+    universitystatus boolean not null default true
 );
 
 drop table if exists universityrankings;
