@@ -48,12 +48,30 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="contact.php">Contact us </a>
                                         </li>
-                                        <li class="nav-item d-black d-lg-none">
-                                            <a class="nav-link login-btn">Login</a>
-                                        </li>
-                                        <li class="nav-item d-black d-lg-none">
-                                            <a class="nav-link register-btn">Register </a>
-                                        </li>
+                                        <?php
+                                            if(isset($_SESSION["name"]))
+                                            {
+                                        ?>
+                                                <li class="nav-item d-black d-lg-none">
+                                                    <a href="/dashboard.php" class="nav-link login-btn">My Dashboard</a>
+                                                </li>
+                                                <li class="nav-item d-black d-lg-none">
+                                                    <a class="nav-link register-btn logout">Logout</a>
+                                                </li>
+                                        <?php
+                                            }
+                                            else
+                                            {
+                                        ?>
+                                                <li class="nav-item d-black d-lg-none">
+                                                    <a href="/login.php" class="nav-link login-btn">Login</a>
+                                                </li>
+                                                <li class="nav-item d-black d-lg-none">
+                                                    <a class="nav-link register-btn registerbutton">Register </a>
+                                                </li>
+                                        <?php
+                                            }
+                                        ?>
                                         <li class="nav-item d-black d-lg-none">
                                             <div class="info-text">
                                                 <strong>Call us</strong> : <?= $sitephone ?> <br>
