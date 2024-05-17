@@ -44,7 +44,9 @@ $(function()
                     //If the response is not successful, then show the error in alert
                     if(response.success == false)
                     {
-                        $("#registermsg").text(response.error);
+                        //$("#registermsg").text(response.error);
+                        showalert(response.error);
+                        
                     }
                     else
                     {
