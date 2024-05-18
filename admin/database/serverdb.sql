@@ -3,6 +3,7 @@ create database mystudyoffers;
 
 use mystudyoffers;
 
+drop table if exists id_generator;
 create table id_generator (
     prefix varchar(20) primary key,
     next_id int

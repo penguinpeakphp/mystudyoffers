@@ -56,10 +56,10 @@ $(function()
                 {
                     let academic = response.academicsubject[i];
 
-                    academic.majorsubjectname = academic.majorsubjectname == null ? "-" : academic.majorsubjectname;
-                    academic.passingyear = academic.passingyear == null ? "N/A" : academic.passingyear;
-                    academic.resultname = academic.resultname == null ? "N/A" : academic.resultname;
-                    academic.awardingbodyname = academic.awardingbodyname == null ? "N/A" : academic.awardingbodyname;
+                    academic.majorsubjectname = academic.majorsubjectname == null ? "" : academic.majorsubjectname;
+                    academic.passingyear = academic.passingyear == null ? "-" : academic.passingyear;
+                    academic.resultname = academic.resultname == null ? "-" : academic.resultname;
+                    academic.awardingbodyname = academic.awardingbodyname == null ? "-" : academic.awardingbodyname;
 
                     $("#academicdetail").append(`
                         <div class="mb-3">
