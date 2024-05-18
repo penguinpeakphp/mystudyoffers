@@ -79,9 +79,9 @@ header {
 }
 
 .logo-img img {
-  height: 90px;
+  height: 100px;
   width: auto;
-  margin: 0px 10px;
+  margin: 0px 35px;
 }
 
 .main_menu {
@@ -1115,10 +1115,21 @@ span.icon svg {
   width: 100%;
 }
 
+.accordion{width:100%;}
+
 .accordion-item {
   background:none;
   border: 0px;
   margin-bottom: 20px;
+}
+
+.according-edit{
+    text-align: right;
+}
+
+.according-edit a{
+    color:#FF0000;
+    font-weight:700;
 }
 
 .accordion-button {
@@ -5070,7 +5081,7 @@ figure {
 
 /* academics start*/
 .academics {
-  max-width: 700px;
+  max-width: 100%;
 }
 .academics .education-detail {
   /*height: 221px;*/
@@ -5212,7 +5223,7 @@ justify-content: center;
 .main {
   flex: 1;
   padding: 0px 0px!important;
-  min-height: 150vh;
+  min-height: 110vh;
 }
 
 .add-question .input-container {

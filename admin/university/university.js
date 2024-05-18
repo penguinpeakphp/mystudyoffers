@@ -1,4 +1,4 @@
-$(function()
+async function getcities()
 {
     $.get("../controllers/city/getcities.php" , {} , function(data)
     {
@@ -32,7 +32,10 @@ $(function()
             alert("Error occurred while trying to read server response");
         }
     });
+}
 
+async function getlevelofcourses()
+{
     $.get("../controllers/levelofcourse/getlevelofcourses.php" , {} , function(data)
     {
         try
@@ -65,7 +68,10 @@ $(function()
             alert("Error occurred while trying to read server response");
         }
     });
+}
 
+async function getotherfees()
+{
     $.get("../controllers/otherfee/getotherfees.php" , {} , function(data)
     {
         try
@@ -98,7 +104,10 @@ $(function()
             alert("Error occurred while trying to read server response");
         }
     });
+}
 
+async function getfinancialaids()
+{
     $.get("../controllers/financialaid/getfinancialaids.php" , {} , function(data)
     {
         try
@@ -131,7 +140,10 @@ $(function()
             alert("Error occurred while trying to read server response");
         }
     });
+}
 
+async function getaccreditations()
+{
     $.get("../controllers/accreditation/getaccreditations.php" , {} , function(data)
     {
         try
@@ -164,7 +176,10 @@ $(function()
             alert("Error occurred while trying to read server response");
         }
     });
-    
+}
+
+async function getrankawardingbodies()
+{
     $.get("../controllers/rankawardingbody/getrankawardingbodies.php" , {} , function(data)
     {
         try
@@ -197,7 +212,10 @@ $(function()
             alert("Error occurred while trying to read server response");
         }
     });
+}
 
+$(function()
+{
     function validateAllCampuses() 
     {
         var allFilled = true;

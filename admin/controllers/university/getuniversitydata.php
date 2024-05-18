@@ -13,9 +13,6 @@
             goto end;
         }
 
-        //Declare array for storing university information
-        $response["university"] = [];
-
         //Query the database to fetch the basic information of the university
         $select = $db->prepare("SELECT * FROM university WHERE universityid = ?");
         if($select == false)
@@ -46,7 +43,7 @@
         $select = $db->prepare("SELECT * FROM othercampusaddress WHERE universityid = ?");
         if($select == false)
         {
-            failure($resposne , "Error while fetching university information");
+            failure($response , "Error while fetching university information");
             goto end;
         }
         else
@@ -57,7 +54,7 @@
             //Execute the query
             if($select->execute() == false)
             {
-                failure($resposne , "Error while fetching university information");
+                failure($response , "Error while fetching university information");
                 goto end;
             }
 
@@ -65,6 +62,36 @@
             while($row = $result->fetch_assoc())
             {
                 array_push($response["othercampusaddresses"] , $row);
+            }
+        }
+
+        //Declare array for storing level of courses of university
+        $response["universitylevelofcourses"] = [];
+
+        //Query the database to fetch the level of courses
+        $select = $db->prepare("SELECT * FROM universitylevelofcourse WHERE universityid = ?");
+        if($select == false)
+        {
+            failure($response , "Error while fetching university information");
+            goto end;
+        }
+        else
+        {
+            //Bind the parameters
+            $select->bind_param("s" , $_GET["universityid"]);
+
+            //Execute the query
+            if($select->execute() == false)
+            {
+                failure($response , "Error while fetching university information");
+                goto end;
+            }
+
+            //Loop through the result and push the data into the array
+            $result = $select->get_result();
+            while($row = $result->fetch_assoc())
+            {
+                array_push($response["universitylevelofcourses"] , $row);
             }
         }
 

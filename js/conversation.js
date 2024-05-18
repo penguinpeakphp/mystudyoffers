@@ -5,6 +5,8 @@ $(function()
     const urlParams = new URLSearchParams(queryString);
     const queryid = urlParams.get('queryid');
 
+    $(".currentpage").text("Conversation").prev().remove();
+
     //Function for loading conversation
     function loadconversation()
     {
@@ -37,21 +39,23 @@ $(function()
                                 <div class="review-img">
                                     <img src="images/icons/usericon.png" class="img-fluid" />
                                 </div>
-                                <div class="review-detail">
                         `;
 
+                        tr += `<h6>`;
                         //If the admin has replied
                         if(chat.studentid == null && chat.adminid != null)
                         {
-                            tr += `<h6>MSO</h6>`;
+                            tr += `MSO`;
                         }
                         //If the student has replied
                         if(chat.studentid != null && chat.adminid == null)
                         {
-                            tr += `<h6>You</h6>`
+                            tr += `You`;
                         }
 
-                        tr += `<span>${chat.timestring}</span>`;
+                        tr += `<span>(${chat.timestring})</span>`;
+
+                        tr += `</h6>`;
 
                         //Check if the file was attached or not
                         if(chat.filename != null)

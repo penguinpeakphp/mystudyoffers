@@ -1,5 +1,7 @@
 $(function()
 {
+    $(".currentpage").text("Edit Profile / Academics");
+
     //Function for getting the major subject data for the selected academic data in the first step
     function getmajorsubjectdata()
     {

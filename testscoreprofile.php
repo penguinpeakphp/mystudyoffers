@@ -63,7 +63,9 @@ checksession();
 
                         <!--new code-->
                         <div class="styled-form maxwidth-100" id="testtypes">
-                            
+                            <div class="row clearfix" id="testtypeoptions">
+                                
+                            </div>
                         </div>
 
                         <div class="styled-form maxwidth-100 pt-30" id="submitbtns">

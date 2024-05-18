@@ -4,7 +4,7 @@
         <h2>Welcome back, <span class="name"><?= $_SESSION["name"] ?></span>!</h2>
         <p>Always stay updated in your student portal</p>
 
-        <div class="search-option">
+        <div class="search-option d-none">
             <div>
                 <label for="exampleFormControlInput1" class="form-label"><img src="images/icons/teacher.png" />Course Search</label>
                 <div class="search-content">

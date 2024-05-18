@@ -1,5 +1,7 @@
 $(function()
 {
+    $(".currentpage").text("Edit Profile / Test Scores and Work Experience");
+
     //Function for getting work experience and test scores
     function getworkexpandtestscores()
     {
@@ -46,31 +48,55 @@ $(function()
                         for(let i=0; i<response.testtypes.length; i++)
                         {
                             let testtype = response.testtypes[i];
+
                             //Render the heading and the division for the test scores
-                            $("#testtypes").append(`
-                                <h4 class="title mb-10 mt-30">${testtype.testname}</h4>
-                                <div class="row clearfix testscores" id="testtype${testtype.testid}"></div>
+                            $("#testtypeoptions").append(`
+                                <div class="formrow col-lg-6">
+                                    <input class="checkbox testtypecheckbox" type="checkbox" id="chkqualilevel${testtype.testid}" name="chkqualilevel[]" value="${testtype.testid}" data-testname="${testtype.testname}">
+                                    <label class="checklabel" for="chkqualilevel${testtype.testid}" data-content="${testtype.testname}">${testtype.testname}</label>
+                                </div>
                             `);
+                        }
 
-                            //Loop through the test scores
-                            for(let j=0; j<response.testscores.length; j++)
+                        //Render the options for the respective checked test type and remove the test types that are not checked
+                        $(".testtypecheckbox").on("click" , function()
+                        {
+                            if($(this).prop("checked") == true)
                             {
-                                let testscore = response.testscores[j];
-
-                                //Render test scores in each test type
-                                $("#testtype"+testtype.testid).append(`
-                                    <div class="formrow col-lg-4">
-                                        <input class="checkbox" type="radio" id="${testtype.testid}testscore${testscore.testscoreid}" name="testtype${testtype.testid}" value="${testscore.testscoreid}">
-                                        <label class="checklabel" for="${testtype.testid}testscore${testscore.testscoreid}" data-content="${testscore.testscore}">${testscore.testscore}</label>
+                                $("#testtypes").append(`
+                                    <div id="testtypediv${$(this).val()}">
+                                        <h4 class="title mb-10 mt-30">${$(this).attr("data-testname")}</h4>
+                                        <div class="row clearfix testscores" id="testtype${$(this).val()}"></div>
                                     </div>
                                 `);
+
+                                //Loop through the test scores and render the options
+                                for(let j=0; j<response.testscores.length; j++)
+                                {
+                                    let testscore = response.testscores[j];
+    
+                                    //Render test scores in each test type
+                                    $("#testtype"+$(this).val()).append(`
+                                        <div class="formrow col-lg-4">
+                                            <input class="checkbox" type="radio" id="${$(this).val()}testscore${testscore.testscoreid}" name="testtype${$(this).val()}" value="${testscore.testscoreid}">
+                                            <label class="checklabel" for="${$(this).val()}testscore${testscore.testscoreid}" data-content="${testscore.testscore}">${testscore.testscore}</label>
+                                        </div>
+                                    `);
+                                }
                             }
-                        }
+                            if($(this).prop("checked") == false)
+                            {
+                                $("#testtypes #testtypediv"+$(this).val()).remove();
+                            }
+                        });
 
                         //Loop through all the sets of test types and test scores
                         for(let i=0; i<response.testtypetestscores.length; i++)
                         {
                             let testtypetestscore = response.testtypetestscores[i];
+
+                            //Check the respective checkbox
+                            $("#chkqualilevel"+testtypetestscore.testid).click();
 
                             //Check the respective radios
                             $("#"+testtypetestscore.testid+"testscore"+testtypetestscore.testscoreid).prop("checked" , true);

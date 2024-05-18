@@ -1,5 +1,7 @@
 $(function()
 {
+    $(".currentpage").text("Edit Profile / Country of Interest");
+
     //Function for getting country of interest
     function getcountryinterest()
     {

@@ -1,5 +1,7 @@
 $(function()
 {
+    $(".currentpage").text("Edit Profile / Academics");
+
     //Function for getting result , passing year and awarding bodies for the respective academic major subject
     function getrestacademicdata()
     {

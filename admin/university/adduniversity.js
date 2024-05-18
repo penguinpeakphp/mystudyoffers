@@ -1,5 +1,13 @@
 $(function()
-{
+{   
+    //Prime the page
+    getcities();
+    getlevelofcourses();
+    getotherfees();
+    getfinancialaids();
+    getaccreditations();
+    getrankawardingbodies();
+
     let universityid = "";
 
     $("#universityinformationform").on("submit" , function(e)

@@ -1,5 +1,7 @@
 $(function()
 {
+    $(".currentpage").text("Edit Profile / Academics");
+
     //Function for getting academic data
     function getacademicdata()
     {

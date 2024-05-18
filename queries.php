@@ -69,9 +69,9 @@ checksession();
                         <thead>
                             <tr>
                                 <th scope="col">Sr.</th>
-                                <th scope="col">My Query</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Description</th>
                                 <th scope="col">Query Type</th>
-                                <th scope="col">Last Reply</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>

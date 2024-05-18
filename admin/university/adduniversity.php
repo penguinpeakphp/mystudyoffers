@@ -352,7 +352,7 @@ checksession();
 <script src="../assets/js/utils.js"></script>
 <script src="university.js"></script>
 <?php
-    if(isset($_GET["view"]) && $_GET["view"] == "view")
+    if(isset($_GET["view"]))
     {
 ?>
         <script src="viewuniversity.js"></script>

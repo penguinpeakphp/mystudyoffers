@@ -1,5 +1,7 @@
 $(function()
 {
+    $(".currentpage").text("Dashboard");
+
     $.get("controllers/student/getstudentdata.php" , {} , function(data)
     {
         try
@@ -53,6 +55,12 @@ $(function()
                 for(let i=0; i<response.academicsubject.length; i++)
                 {
                     let academic = response.academicsubject[i];
+
+                    academic.majorsubjectname = academic.majorsubjectname == null ? "-" : academic.majorsubjectname;
+                    academic.passingyear = academic.passingyear == null ? "N/A" : academic.passingyear;
+                    academic.resultname = academic.resultname == null ? "N/A" : academic.resultname;
+                    academic.awardingbodyname = academic.awardingbodyname == null ? "N/A" : academic.awardingbodyname;
+
                     $("#academicdetail").append(`
                         <div class="mb-3">
                             <span class="education-title">

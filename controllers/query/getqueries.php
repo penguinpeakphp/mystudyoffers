@@ -16,7 +16,7 @@
         $response["queries"] = [];
 
         //Query the database for fetching student queries
-        $select = $db->prepare("SELECT queryid qi, querytopic , querytypeid qti, (SELECT readbystudent FROM queryconversation WHERE queryid = qi AND studentid IS NULL ORDER BY conversationid DESC LIMIT 1) AS readbystudent, (SELECT querytypename FROM querytype WHERE querytypeid = qti) AS querytypename , (SELECT studentid FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS studentid , (SELECT adminid FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS adminid , (SELECT DATE_FORMAT(messagetime, '%d-%m-%Y') FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS lastdate FROM studentquery WHERE studentid = ? ORDER BY lastdate DESC");
+        $select = $db->prepare("SELECT queryid qi , querytypeid qti, (SELECT readbystudent FROM queryconversation WHERE queryid = qi AND studentid IS NULL ORDER BY conversationid DESC LIMIT 1) AS readbystudent, (SELECT querytypename FROM querytype WHERE querytypeid = qti) AS querytypename , (SELECT studentid FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS studentid , (SELECT adminid FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS adminid , (SELECT message FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS lastmessage , (SELECT DATE_FORMAT(messagetime, '%d-%m-%Y') FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS lastdate FROM studentquery WHERE studentid = ? ORDER BY lastdate DESC");
         if($select == false)
         {
             failure($response , "Error while fetching query list");

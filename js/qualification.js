@@ -1,5 +1,7 @@
 $(function()
 {
+    $(".currentpage").text("Edit Profile / Qualifications");
+
     //Function for fetching qualification data and student's selected qualification data
     function getqualificationdata()
     {

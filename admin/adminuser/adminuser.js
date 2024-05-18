@@ -137,7 +137,7 @@ $(function()
                         //Build the table row and its content
                         let tr = `
                         <tr>
-                            <th scope="row">${adminuser.adminid}</th>
+                            <th scope="row">${i+1}</th>
                             <td>${adminuser.adminname}</td>
                             <td>${adminuser.adminemail}</td>
                         `;

@@ -9,6 +9,17 @@ let financialaids;
 let accreditations;
 let rankawardingbodies;
 
+// let countriesfilled = false;
+// let statesfilled = false;
+// let citiesfilled = false;
+// let academicsfilled = false;
+// let levelofcoursesfilled = false;
+// let otherfeesfilled = false;
+// let financialaidsfilled = false;
+// let accreditationsfilled = false;
+// let rankawardingbodiesfilled = false;
+
+
 //Function for populating the options in a select/option menu
 function populatecountries(elementid)
 {
@@ -19,6 +30,8 @@ function populatecountries(elementid)
             <option value="${country.countryid}">${country.countryname}</option>
         `);
     });
+
+    countriesfilled = true;
 }
 
 //Function for populating the options in a select/option menu
@@ -31,6 +44,8 @@ function populatestates(elementid)
             <option value="${state.stateid}">${state.statename}</option>
         `);
     });
+
+    statesfilled = true;
 }
 
 //Function for populating the options in a select/option menu
@@ -43,6 +58,8 @@ function populatecities(elementid)
             <option value="${city.cityid}">${city.cityname}</option>
         `);
     });
+
+    citiesfilled = true;
 }
 
 //Function for populating the options in a select/option menu
@@ -55,6 +72,8 @@ function populateacademics(elementid)
             <option value="${academic.academicid}">${academic.academicname}</option>
         `)
     });
+
+    academicsfilled = true;
 }
 
 //Function for populating the options in a dropdown menu
@@ -70,6 +89,8 @@ function populatelevelofcourses(elementid)
         </div>
         `);
     });
+
+    levelofcoursesfilled = true;
 }
 
 //Function for populating other fees in a dropdown menu
@@ -85,6 +106,8 @@ function populateuniversityotherfees(elementid)
         </div>
         `);
     });
+
+    otherfeesfilled = true;
 }
 
 //Function for populating financial aid in a dropdown menu
@@ -100,6 +123,8 @@ function populateuniversityfinancialaid(elementid)
         </div>
         `);
     });
+
+    financialaidsfilled = true;
 }
 
 //Function for populating accreditation status
@@ -115,6 +140,8 @@ function populateaccreditations(elementid)
         </div>
         `);
     });
+
+    accreditationsfilled = true;
 }
 
 //Function for populating rank awarding bodies
@@ -127,4 +154,6 @@ function populaterankawardingbodies(elementid)
             <option value="${rankawardingbody.rankawardingbodyid}">${rankawardingbody.rankawardingbodyname}</option>
         `);
     });
+
+    rankawardingbodiesfilled = true;
 }

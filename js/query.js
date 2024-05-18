@@ -1,5 +1,7 @@
 $(function()
 {
+    $(".currentpage").text("Ask Queries").prev().remove();
+
     //Function for getting query lists
     function getquerylist()
     {
@@ -49,9 +51,8 @@ $(function()
                         {
                             tr += '<tr>';
                         }
+
                         tr += `<td>${i+1}</td>
-                                <td>${query.querytopic}</td>
-                                <td>${query.querytypename}</td>
                         `;
 
                         //If the admin has replied last
@@ -66,8 +67,19 @@ $(function()
                             tr += `<td>Yourself - ${query.lastdate}</td>`;
                         }
 
+                        //Format the last message if the length is greater than max length
+                        let maxLength = 100;
+                        if (query.lastmessage.length > maxLength) {
+                            query.lastmessage =  query.lastmessage.substring(0, maxLength) + '...';
+                        }
+
                         tr += `
-                                <td><a href="conversation.php?queryid=${query.qi}" class="btn btn-reply">View Replies</a></td>
+                            <td>${query.lastmessage}</td>
+                            <td>${query.querytypename}</td>
+                        `;
+
+                        tr += `
+                                <td><a href="conversation.php?queryid=${query.qi}" class="btn btn-reply">View/Replies</a></td>
                             </tr>
                         `;
 

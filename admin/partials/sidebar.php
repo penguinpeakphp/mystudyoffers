@@ -166,7 +166,7 @@
     </a>
   </li><!-- End Students Nav -->
 
-  <li class="nav-item">
+  <li class="nav-item d-none">
     <a class="nav-link collapsed" href="../university/university.php">
       <i class="bi-building"></i>
       <span>University</span>

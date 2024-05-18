@@ -80,26 +80,32 @@ header("Location: ".$url);
                 ?>
 
                 <section class="sub-main">
-                    <div>
-                        <!-- end myacademic section -->
-                        <div class="academics mb-5">
-                            <div class="title mb-2">
-                                <h5>My Academics</h5>
-                                <a href="academicprofile1.php">Edit</a>
+                    
+                    <div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <strong>My Academics</strong>
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body academics">
+        <div class="according-edit"><a href="academicprofile1.php">Edit</a></div>
+        <div class="education-detail" id="academicdetail">
                             </div>
-                            <div class="education-detail" id="academicdetail">
-                            </div>
-                        </div>
-
-                        <!-- end myacademic section -->
-
-                        <!-- my qualification section start -->
-                        <div class="academics mb-5">
-                            <div class="title mb-2">
-                                <h5>My Qualification</h5>
-                                <a href="qualificationprofile.php">Edit</a>
-                            </div>
-                            <div class="education-detail" id="qualificationlevel">
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+         <strong>My Qualification</strong>
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body academics">
+           <div class="according-edit"><a href="qualificationprofile.php">Edit</a></div>
+         <div class="education-detail" id="qualificationlevel">
                                 <div class="mb-3">
                                     <span class="education-title">
                                         Level of Qualification
@@ -108,7 +114,7 @@ header("Location: ".$url);
                                 </div>
 
                             </div>
-                            <!-- Next Qualification -->
+                                     <!-- Next Qualification -->
                             <div class="education-detail" id="nextqualification">
                                 <div class="mb-3">
                                     <span class="education-title">
@@ -118,18 +124,19 @@ header("Location: ".$url);
                                 </div>
 
                             </div>
-
-                        </div>
-                        <!--  my qualification section -->
-
-
-                        <!-- end myacademic section -->
-                        <div class="academics mb-5">
-                            <div class="title mb-2">
-                                <h5>My Test Scores</h5>
-                                <a href="testscoreprofile.php">Edit</a>
-                            </div>
-                            <div class="education-detail">
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+       <strong>My Test Scores</strong>
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body academics">
+          <div class="according-edit"><a href="testscoreprofile.php">Edit</a></div>
+        <div class="education-detail">
 
                                 <div class="education mb-3">
                                     <div class="subject-row">
@@ -137,57 +144,14 @@ header("Location: ".$url);
                                         </div>
                                     </div>
                                 </div>
-
-
-                                <!-- <div class="education mb-3">
-                                    <div class="subject-row">
-                                        <div class="progress-bar">
-
-                                            <div class="progress-fill pboxwidth">
-                                                TOEFL<br>7.0 overall </div>
-
-
-
-
-                                            <div class="progress-fill pboxwidth">
-                                                GMAT<br>6.5 overall </div>
-
-
-
-
-                                            <div class="progress-fill pboxwidth">
-                                                DuoLingo<br>6.0 overall </div>
-
-                                        </div>
-                                    </div>
                                 </div>
-
-
-                                <div class="education mb-3">
-                                    <div class="subject-row">
-                                        <div class="progress-bar">
-
-                                            <div class="progress-fill pboxwidth">
-                                                LanguageCert<br>5.5 overall or below </div>
-
-
-
-
-                                            <div class="progress-fill pboxwidth">
-                                                SAT<br>Preparing to Appear </div>
-
-                                        </div>
-                                    </div>
-                                </div> -->
-
-
-
-                            </div>
-                        </div>
-
-                        <!-- end myacademic section -->
-
-                    </div>
+      </div>
+    </div>
+  </div>
+</div>
+                    
+                    
+                   
 
                     <div class="person-detail">
                         <h4 class="mb-3">My Information:</h4>
@@ -215,9 +179,7 @@ header("Location: ".$url);
     </div>
     </section>
 
-    <?php
-    require_once "partials/footer.php";
-    ?>
+    <?php require_once "partials/footer.php";?>
     <script src="js/custom.js"></script>
     <script src="js/dashboard.js"></script>
 
