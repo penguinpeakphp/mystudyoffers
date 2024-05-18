@@ -28,16 +28,23 @@ $(function()
             else
             {
                 let university = response.university;
+                let universitylevelofcourses = response.universitylevelofcourses;
+                let universityotherfees = response.universityotherfees;
+
                 $("#universitystatus").prop("checked" , university.universitystatus);
                 $("#universityname").val(university.universityname);
                 $("#universitylicensenumber").val(university.universitylicensenumber);
                 
-                let courselevelsoffered = response.universitylevelofcourses;
-                
-                courselevelsoffered.forEach(function(data)
+                (async function()
                 {
-                    $(`.courselevelsoffered input[type=checkbox][value=data]`).prop("checked" , true);
-                });
+                    await getlevelofcourses();
+
+                    universitylevelofcourses.forEach(function(data)
+                    {
+                        console.log(data);
+                        $(`.courselevelsoffered input[type=checkbox][value=${data}]`).prop("checked" , true);
+                    });
+                })();
 
                 $("#keycontactname").val(university.keycontactname);
                 $("#keycontactemail").val(university.keycontactemail);

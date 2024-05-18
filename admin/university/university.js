@@ -1,6 +1,6 @@
 async function getcities()
 {
-    $.get("../controllers/city/getcities.php" , {} , function(data)
+    await $.get("../controllers/city/getcities.php" , {} , function(data)
     {
         try
         {
@@ -36,7 +36,7 @@ async function getcities()
 
 async function getlevelofcourses()
 {
-    $.get("../controllers/levelofcourse/getlevelofcourses.php" , {} , function(data)
+    await $.get("../controllers/levelofcourse/getlevelofcourses.php" , {} , function(data)
     {
         try
         {
@@ -72,7 +72,7 @@ async function getlevelofcourses()
 
 async function getotherfees()
 {
-    $.get("../controllers/otherfee/getotherfees.php" , {} , function(data)
+    await $.get("../controllers/otherfee/getotherfees.php" , {} , function(data)
     {
         try
         {
@@ -108,7 +108,7 @@ async function getotherfees()
 
 async function getfinancialaids()
 {
-    $.get("../controllers/financialaid/getfinancialaids.php" , {} , function(data)
+    await $.get("../controllers/financialaid/getfinancialaids.php" , {} , function(data)
     {
         try
         {
@@ -144,7 +144,7 @@ async function getfinancialaids()
 
 async function getaccreditations()
 {
-    $.get("../controllers/accreditation/getaccreditations.php" , {} , function(data)
+    await $.get("../controllers/accreditation/getaccreditations.php" , {} , function(data)
     {
         try
         {
@@ -180,7 +180,7 @@ async function getaccreditations()
 
 async function getrankawardingbodies()
 {
-    $.get("../controllers/rankawardingbody/getrankawardingbodies.php" , {} , function(data)
+    await $.get("../controllers/rankawardingbody/getrankawardingbodies.php" , {} , function(data)
     {
         try
         {

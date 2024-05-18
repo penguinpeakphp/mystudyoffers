@@ -1,6 +1,6 @@
 $(function()
 {   
-    //Prime the page
+    //Prime the page with data
     getcities();
     getlevelofcourses();
     getotherfees();

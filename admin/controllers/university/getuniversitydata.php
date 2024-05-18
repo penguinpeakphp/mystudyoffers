@@ -69,7 +69,7 @@
         $response["universitylevelofcourses"] = [];
 
         //Query the database to fetch the level of courses
-        $select = $db->prepare("SELECT * FROM universitylevelofcourse WHERE universityid = ?");
+        $select = $db->prepare("SELECT levelofcourseid FROM universitylevelofcourse WHERE universityid = ?");
         if($select == false)
         {
             failure($response , "Error while fetching university information");
@@ -91,7 +91,7 @@
             $result = $select->get_result();
             while($row = $result->fetch_assoc())
             {
-                array_push($response["universitylevelofcourses"] , $row);
+                array_push($response["universitylevelofcourses"] , $row["levelofcourseid"]);
             }
         }
 
