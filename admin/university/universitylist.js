@@ -3,7 +3,8 @@ $(function ()
     
     $.get("../controllers/university/getuniversitylist.php" , {}, function(data) 
     {
-        try {
+        try 
+        {
             let response = JSON.parse(data);
             if(response.success == false)
             {
@@ -16,6 +17,7 @@ $(function ()
             }
             else
             {
+                //Loop through the response array and render the table
                 for (let i = 0; i < response.universitylist.length; i++)
                 {
                     let university = response.universitylist[i];
@@ -42,9 +44,9 @@ $(function ()
                     //Render buttons and have index in the data-index attribute to fetch the country details for editing
                     tr += `
                     <td>
-                        <button type="button" class="btn btn-primary view" data-index="${i}" data-id="${university.universityid}">
+                        <a type="button" href="adduniversity.php?view=${university.universityid}" class="btn btn-primary view" data-index="${i}" data-id="${university.universityid}">
                             <i class="bi bi-eye"></i>
-                        </button>
+                        </a>
                         <button type="button" class="btn btn-warning edit" data-index="${i}" data-id="${university.universityid}">
                             <i class="bi-pencil-square"></i>
                         </button>
@@ -79,7 +81,8 @@ $(function ()
                     ]
                 });
             }
-        } catch (error) {
+        } catch (error) 
+        {
             alert("Error occurred while trying to read server response");
         }
     });

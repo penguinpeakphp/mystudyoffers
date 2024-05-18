@@ -68,7 +68,6 @@ $(function()
             data: formData,
             success: function(data) 
             {
-                console.log(data);
                 try
                 {
                     //Parse the data received from the server
