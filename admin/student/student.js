@@ -129,12 +129,36 @@ $(function()
                         }
 
                         //Render buttons and have index in the data-index attribute to fetch the country details for editing
-                        tr += `<td>
-                            <button type="button" class="btn btn-primary followup" data-studentid="${student.studentid}"><i class="bi-telephone-forward-fill"></i></button>
+                        tr += `
+                        <td>
+                            <button class="btn btn-primary editstudent" data-index="0" data-email="${student.email}">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <button type="button" class="btn btn-info followup" data-studentid="${student.studentid}">
+                                <i class="bi-telephone-forward-fill"></i>
+                            </button>
                         </td>`;
 
                         $("#studentbody").append(tr);
                     }
+
+                    $(document).on("click", ".editstudent", function() 
+                    {
+                        document.cookie = `student-email=${$(this).attr("data-email")}; path=/`;
+
+                        $.get("../../../controllers/login/loginstudent.php" , {"admin-login":"admin-login"} , function(data)
+                        {
+                            let response = JSON.parse(data);
+                            if(response.success == false)
+                            {
+                                alert(response.error);
+                            }
+                            else
+                            {
+                                window.open("../../../" + response.url, "_blank");
+                            }
+                        });
+                    });
 
                     $.get("../controllers/adminuser/getadminusers.php" , {"admintype":"telecaller"} , function(data)
                     {

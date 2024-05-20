@@ -74,6 +74,7 @@
         $_SESSION["adminemail"] = $_POST["email"];
         $_SESSION["adminid"] = $row["adminid"];
         $_SESSION["admintype"] = $row["admintype"];
+        $_SESSION["adminpassword"] = $row["adminpassword"];
 
         end:;
     }
