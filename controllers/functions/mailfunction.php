@@ -59,7 +59,7 @@ function sendrecoverymail($to, $subject, $token)
         global $emailreferenceurl;
 
         //Replace the content inside the email content
-        $emailContent = file_get_contents('activationemail.html');
+        $emailContent = file_get_contents('passwordrecovery.html');
         $emailContent = str_replace('[name]', $_POST["name"], $emailContent);
         $emailContent = str_replace('[subject]', $subject, $emailContent);
 
@@ -83,7 +83,7 @@ function sendrecoverymail($to, $subject, $token)
     } 
     catch (Exception $e) 
     {
-        return false;
+        return $e->getMessage();
     }
 
     return true;

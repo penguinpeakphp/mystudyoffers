@@ -56,6 +56,8 @@ $(function()
             contentType: false,
             success: function(data)
             {
+                console.log(data);
+                return;
                 try
                 {
                     //Parse the data received from the server
@@ -73,7 +75,7 @@ $(function()
                 }   
                 catch(error)    
                 {
-                    alert("Error occurred while trying to read server response " + error.getMessage());
+                    alert("Error occurred while trying to read server response");
                 }   
             },
             always: function()

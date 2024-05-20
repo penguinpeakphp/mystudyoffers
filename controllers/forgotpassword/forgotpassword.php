@@ -13,20 +13,20 @@
         }
 
         $email = $_POST["email"];
-        $stmt = $db->prepare("SELECT count(*) as count FROM student WHERE email = ?");
-        if(!$stmt) 
+        $select = $db->prepare("SELECT count(*) as count FROM student WHERE email = ?");
+        if(!$select) 
         {
-            failure($response , "Error Occurred while processing your request - " . $db->errno);
+            failure($response , "Error while checking email");
             goto end;
         }
-        $stmt->bind_param("s", $email);
-        if($stmt->execute() === false) 
+        $select->bind_param("s", $email);
+        if($select->execute() === false) 
         {
-            failure($response , "Error Occurred while processing your request - " . $stmt->errno);
+            failure($response , "Error while checking email");
             goto end;
         }
 
-        $result = $stmt->get_result();
+        $result = $select->get_result();
 
         if($result->num_rows == 0) 
         {
@@ -36,24 +36,26 @@
         else 
         {
             $token = uniqid();
-            $stmt = $db->prepare("INSERT INTO studentforgotpassword (email, token) VALUES (?, ?)");
-            if(!$stmt) 
+            $insert = $db->prepare("INSERT INTO studentforgotpassword (email, token) VALUES (?, ?)");
+            if(!$insert) 
             {
-                failure($response , "Error Occurred while processing your request - " . $db->errno);
+                failure($response , "Error Occurred while generating token");
                 goto end;
             }
 
-            $stmt->bind_param("ss", $email, $token);
-            if($stmt->execute() === false)
+            $insert->bind_param("ss", $email, $token);
+            if($insert->execute() === false)
             {
-                failure($response , "Error Occurred while processing your request - " . $stmt->errno);
+                failure($response , "Error Occurred while generating token");
                 goto end;
             }
-            if(sendrecoverymail($email, "Forgot Password", $token) === false)
-            {
-                failure($response , "Error Occurred while processing your request - " . $stmt->errno);
-                goto end;
-            }
+            // if(sendrecoverymail($email, "Forgot Password", $token) === false)
+            // {
+            //     failure($response , "Error Occurred while sending mail");
+            //     goto end;
+            // }
+
+            echo sendrecoverymail($email, "Forgot Password", $token);
             
         }
         end:;
