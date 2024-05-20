@@ -23,6 +23,7 @@ $(function()
                 }
                 else
                 {
+                    $("#querytype").html(`<option value="" disabled selected>Query Type</option>`);
                     //Loop through the query types and render the table rows
                     for(let i=0; i<response.querytypes.length; i++)
                     {
@@ -89,7 +90,7 @@ $(function()
             }
             catch(error)
             {
-                alert("Error occurred while trying to read server response " + error);
+                alert("Error occurred while trying to read server response");
             }
         });
     }

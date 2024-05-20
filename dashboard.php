@@ -2,27 +2,30 @@
 require_once "controllers/functions/globalfunctions.php";
 require_once "admin/database/db.php";
 
-session_start();
-$result = $db->query("SELECT profilestatus FROM student where studentid = " . $_SESSION["studentid"]);
-$url = "";
-$row = $result->fetch_assoc();
-if($row["profilestatus"] == "academic")
-{
-    $url = "academicprofile1.php";
+checksession();
+if(isset($_SESSION["studentid"]))
+{    
+    $result = $db->query("SELECT profilestatus FROM student where studentid = " . $_SESSION["studentid"]);
+    $url = "";
+    $row = $result->fetch_assoc();
+    if($row["profilestatus"] == "academic")
+    {
+        $url = "academicprofile1.php";
+    }
+    if($row["profilestatus"] == "qualification")
+    {
+        $url = "qualificationprofile.php";
+    }
+    if($row["profilestatus"] == "testscore")
+    {
+        $url = "testscoreprofile.php";
+    }
+    if($row["profilestatus"] == "countryinterest")
+    {
+        $url = "countryinterest.php";
+    }
+    header("Location: ".$url);
 }
-if($row["profilestatus"] == "qualification")
-{
-    $url = "qualificationprofile.php";
-}
-if($row["profilestatus"] == "testscore")
-{
-    $url = "testscoreprofile.php";
-}
-if($row["profilestatus"] == "countryinterest")
-{
-    $url = "countryinterest.php";
-}
-header("Location: ".$url);
 
 ?>
 <!DOCTYPE html>
