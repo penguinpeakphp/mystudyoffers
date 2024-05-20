@@ -1,11 +1,9 @@
 <?php
-if(!isset($_SESSION))
-{
+if (!isset($_SESSION)) {
     session_start();
 }
 
-if(isset($_SESSION["email"]) && isset($_SESSION["name"]))
-{
+if (isset($_SESSION["email"]) && isset($_SESSION["name"])) {
     header("Location: dashboard.php");
 }
 ?>
@@ -36,7 +34,7 @@ if(isset($_SESSION["email"]) && isset($_SESSION["name"]))
 
 <body>
     <?php
-        require_once "partials/header.php";
+    require_once "partials/header.php";
     ?>
 
     <section id="page-banner" class="fxt-page-banner">
@@ -78,6 +76,8 @@ if(isset($_SESSION["email"]) && isset($_SESSION["name"]))
 
                             <input type="password" name="password" placeholder="Password" required="required">
 
+                            <p class="text-center w-100"><a class="link-opacity-100" id="forgotPassword">Forgot Password</a></p>
+
                             <button type="submit" class="readon btn">Login</button>
 
                             <div class="last-password">
@@ -93,10 +93,27 @@ if(isset($_SESSION["email"]) && isset($_SESSION["name"]))
                 </div>
 
             </div>
-
-
         </div>
     </section>
+
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="forgotPasswordLabel">Forgot Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="forgotPasswordForm">
+                    <div class="modal-body">
+                        <input type="email" name="email" class="form-control" placeholder="E-mail" required="required">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-secondary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <?php
     require_once "partials/footer.php";

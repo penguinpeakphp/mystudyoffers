@@ -38,4 +38,48 @@ $(function()
             }
         });
     });
+
+    $("#forgotPassword").on("click", function()
+    {
+        $("#forgotPasswordModal").modal("show");
+    });
+
+    $("#forgotPasswordForm").on("submit", function(e)
+    {
+        e.preventDefault();
+        let formdata = new FormData(this);
+        $.ajax({
+            url: "controllers/forgotpassword/forgotpassword.php",
+            type: "POST",
+            data: formdata,
+            processData: false,
+            contentType: false,
+            success: function(data)
+            {
+                try
+                {
+                    //Parse the data received from the server
+                    let response = JSON.parse(data);
+
+                    //If the response is not successful, then show the error in alert
+                    if(response.success == false)
+                    {
+                        showalert(response.error);
+                    }
+                    else
+                    {
+                        showalert("Password reset link has been sent to your email address");
+                    }
+                }   
+                catch(error)    
+                {
+                    alert("Error occurred while trying to read server response " + error.getMessage());
+                }   
+            },
+            always: function()
+            {
+                $("#forgotPasswordModal").modal("hide");
+            }
+        });
+    });
 });
