@@ -5304,9 +5304,11 @@ justify-content: center;
 }
 .review-section  .review-box .review-img {
   flex-shrink: 0;
-  margin-right: 10px;
+ 
   height: 47px;
   width: 47px;
+   display: inline-block;
+    vertical-align: middle;
 }
 .review-section  .review-box .review-img img {
   height: 100%;
@@ -5315,12 +5317,14 @@ justify-content: center;
   border-radius: 50px;
 }
 
-.review-section  .review-detail h6 {
-  font-size: 20px;
-  font-weight: 600;
+.review-section  .review-box h6 {
+  font-size:18px;
+  font-weight: 700;
   line-height: 25px;
   margin-bottom: 5px;
   color: #060A27;
+  display: inline-block;
+   vertical-align: middle;
 }
 
 .review-section  .review-detail p {
@@ -5481,4 +5485,33 @@ section.add-question {
         }
 
       
-#querybody .btn {padding: 0px 0px !important;margin-top: 0px;font-size: 15px !important;border-radius: 10px !important;width: 100% !important;}
+#querybody .btn {
+    padding: 0px 0px !important;
+     margin-top: 0px;
+       font-size: 15px !important;
+    border-radius: 10px !important;
+    width: 75% !important;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+}
+@media only screen and (max-width: 767px) {
+    #querybody .btn {
+    width:100% !important;
+    padding:0px 8px !important
+    }
+     .main .sub-main .accordion{
+    max-width:350px !important;
+}
+}
+@media (min-width: 768px) and (max-width:991px) {
+      .main .sub-main .accordion{
+          width: 100% !important;
+}
+   .main .sub-main .accordion .academics{
+          width: 100% !important;
+}
+}
+
+
+

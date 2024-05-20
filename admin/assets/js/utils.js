@@ -60,7 +60,7 @@ function populateacademics(elementid)
     {
         $(elementid).append(`
             <option value="${academic.academicid}">${academic.academicname}</option>
-        `)
+        `);
     });
 
     academicsfilled = true;

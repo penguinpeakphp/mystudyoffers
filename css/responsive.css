@@ -222,7 +222,8 @@
     }
     .sidemenu .query-section { display: none;}
     .sub-main {     
-      gap: 0px;    
+      gap: 0px;
+              flex-wrap: wrap;
     }
     
 }
@@ -881,9 +882,9 @@
     background-image: none;
   }
  
-  .academics {
+ /* .academics {
     max-width: 400px;
-}
+} */
 .academics .education-detail .education .subject-row {flex-wrap: wrap;}
 .academics .education-detail {height: auto;}
 .experience {

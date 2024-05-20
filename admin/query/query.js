@@ -164,8 +164,19 @@ $(function()
                     for(let i=0; i<response.queries.length; i++)
                     {
                         let query = response.queries[i];
-                        let tr = `
-                            <tr>
+                        console.log(query);
+                        
+                        let tr = '';
+                        if(query.readbyadmin == 0)
+                        {
+                            tr += '<tr class="border border-warning border-2">';
+                        }
+                        else
+                        {
+                            tr += '<tr>';
+                        }
+
+                        tr += `
                                 <th scope="row">${query.qi}</th>
                                 <td>${query.name}</td>
                                 <td>${query.querytopic}</td>
@@ -181,24 +192,24 @@ $(function()
 
                     let querytable = $("#querytable")[0]; // Select the table element using jQuery
 
-                    new simpleDatatables.DataTable(querytable, {
-                        perPageSelect: [5, 10, 15, ["All", -1]],
-                        columns: [
-                            {
-                                select: 2,
-                                sortSequence: ["desc", "asc"]
-                            },
-                            {
-                                select: 3,
-                                sortSequence: ["desc"]
-                            },
-                            {
-                                select: 4,
-                                cellClass: "green",
-                                headerClass: "red"
-                            }
-                        ]
-                    });
+                    // new simpleDatatables.DataTable(querytable, {
+                    //     perPageSelect: [5, 10, 15, ["All", -1]],
+                    //     columns: [
+                    //         {
+                    //             select: 2,
+                    //             sortSequence: ["desc", "asc"]
+                    //         },
+                    //         {
+                    //             select: 3,
+                    //             sortSequence: ["desc"]
+                    //         },
+                    //         {
+                    //             select: 4,
+                    //             cellClass: "green",
+                    //             headerClass: "red"
+                    //         }
+                    //     ]
+                    // });
                     
                     $(".view").on("click" , function()
                     {

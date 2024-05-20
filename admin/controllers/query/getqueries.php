@@ -19,14 +19,14 @@
         if($_SESSION["admintype"] == "admin")
         {
             //Query the database for fetching all student queries
-            $select = $db->prepare("SELECT queryid qi, querytopic , querytypeid qti , (SELECT querytypename FROM querytype WHERE querytypeid = qti) AS querytypename , (SELECT DATE_FORMAT(messagetime,'%d-%m-%Y %h:%i %p') FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS messagetime , sq.studentid , name FROM studentquery sq INNER JOIN student s ON sq.studentid = s.studentid ORDER BY messagetime DESC");   
+            $select = $db->prepare("SELECT queryid qi, querytopic , querytypeid qti , (SELECT querytypename FROM querytype WHERE querytypeid = qti) AS querytypename , (SELECT DATE_FORMAT(messagetime,'%d-%m-%Y %h:%i %p') FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS messagetime , (SELECT readbyadmin FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS readbyadmin , sq.studentid , name FROM studentquery sq INNER JOIN student s ON sq.studentid = s.studentid ORDER BY messagetime DESC");   
         }
 
         //Check if the logged in user is telecaller or not
         if($_SESSION["admintype"] == "telecaller")
         {
             //Query the database for fetching relevant student queries related to telecaller
-            $select = $db->prepare("SELECT queryid qi, querytopic , querytypeid qti , (SELECT querytypename FROM querytype WHERE querytypeid = qti) AS querytypename , (SELECT DATE_FORMAT(messagetime,'%d-%m-%Y %h:%i %p') FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS messagetime , sq.studentid , name FROM studentquery sq INNER JOIN student s ON sq.studentid = s.studentid INNER JOIN studenttelecaller st ON s.studentid = st.studentid WHERE telecallerid = ? ORDER BY messagetime DESC");
+            $select = $db->prepare("SELECT queryid qi, querytopic , querytypeid qti , (SELECT querytypename FROM querytype WHERE querytypeid = qti) AS querytypename , (SELECT DATE_FORMAT(messagetime,'%d-%m-%Y %h:%i %p') FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS messagetime , (SELECT readbyadmin FROM queryconversation WHERE queryid = qi ORDER BY conversationid DESC LIMIT 1) AS readbyadmin , sq.studentid , name FROM studentquery sq INNER JOIN student s ON sq.studentid = s.studentid INNER JOIN studenttelecaller st ON s.studentid = st.studentid WHERE telecallerid = ? ORDER BY messagetime DESC");
 
             //Bind the parameters
             $select->bind_param("i" , $_SESSION["adminid"]);
