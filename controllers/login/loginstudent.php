@@ -71,7 +71,7 @@
             //Fetch a single row
             $row = $result->fetch_assoc();
 
-            if(isset($_GET["admin-login"]) && $admincheck == false)
+            if(!isset($_GET["admin-login"]) && $admincheck == false)
             {
                 //Check if the password matches with the original one after hashing the supplied one
                 if($row["password"] != hash("sha512" , $_POST["password"]))

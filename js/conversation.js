@@ -33,13 +33,23 @@ $(function()
                     for(let i=0; i<response.conversation.length; i++)
                     {
                         let chat = response.conversation[i];
-                        let tr = `
+                        let tr = '';
+                        tr = `
                         <div class="review-list">
                             <div class="review-box d-block">
                                 <div class="review-img">
-                                    <img src="images/icons/usericon.png" class="img-fluid" />
-                                </div>
                         `;
+
+                        if(chat.studentid == null && chat.adminid != null)
+                        {
+                            tr += `<img src="images/icons/usericon.png" class="img-fluid" />`;
+                        }
+                        if(chat.studentid != null && chat.adminid == null)
+                        {
+                            tr += `<img src="images/icons/usericon-admin.png" class="img-fluid" />`;
+                        }
+
+                        tr += '</div>';
 
                         tr += `<h6>`;
                         //If the admin has replied

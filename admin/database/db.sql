@@ -3,6 +3,7 @@ create database mystudyoffers;
 
 use mystudyoffers;
 
+drop table if exists id_generator;
 create table id_generator (
     prefix varchar(20) primary key,
     next_id int
@@ -239,6 +240,14 @@ create table student
     registeredon date
 );
 
+drop table if exists studentforgotpassword;
+create table studentforgotpassword
+(
+	studentid int not null unique,
+    token varchar(15) not null,
+    foreign key (studentid) references student(studentid) on delete cascade
+);
+
 drop table if exists studentprofiletrack;
 create table studentprofiletrack
 (
@@ -321,6 +330,8 @@ begin
     from adminuser where admintype = "telecaller" order by count, adminid limit 1;
     
     insert into studenttelecaller values(new.studentid , tlid);
+    
+    insert into studentprofiletrack(studentid) values(new.studentid);
 end//
 delimiter ;
 

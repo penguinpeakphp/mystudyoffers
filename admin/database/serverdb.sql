@@ -240,6 +240,14 @@ create table student
     registeredon date
 );
 
+drop table if exists studentforgotpassword;
+create table studentforgotpassword
+(
+	email VARCHAR(200) not null unique,
+    token varchar(15) not null,
+    foreign key (email) references student(email) on delete cascade
+);
+
 drop table if exists studentprofiletrack;
 create table studentprofiletrack
 (

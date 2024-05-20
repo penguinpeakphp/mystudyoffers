@@ -94,6 +94,90 @@
                 array_push($response["universitylevelofcourses"] , $row["levelofcourseid"]);
             }
         }
+        
+        //Query the database to fetch the university intellectual assets
+        $select = $db->prepare("SELECT * FROM universityassets WHERE universityid = ?");
+        if($select == false)
+        {
+            failure($response , "Error while fetching university assets");
+            goto end;
+        }
+        else
+        {
+            //Bind the parameters
+            $select->bind_param("s" , $_GET["universityid"]);
+
+            //Execute the query
+            if($select->execute() == false)
+            {
+                failure($response , "Error while fetching university assets");
+                goto end;
+            }
+
+            $result = $select->get_result();
+            $row = $result->fetch_assoc();
+            $response["universityassets"] = $row;
+        }
+
+        //Declare array for storing clubs and teams
+        $response["clubsandteams"] = [];
+
+        //Query the database to fetch other teams and clubs
+        $select = $db->prepare("SELECT clubsandteams FROM universityclubsandteams WHERE universityid = ?");
+        if($select == false)
+        {
+            failure($response , "Error while fetching university clubs and teams");
+            goto end;
+        }
+        else
+        {
+            //Bind the parameters
+            $select->bind_param("s" , $_GET["universityid"]);
+
+            //Execute the query
+            if($select->execute() == false)
+            {
+                failure($response , "Error while fetching university clubs and teams");
+                goto end;
+            }
+
+            //Loop through the result and push the data into the array
+            $result = $select->get_result();
+            while($row = $result->fetch_assoc())
+            {
+                array_push($response["clubsandteams"] , $row["clubsandteams"]);
+            }
+        }
+
+        //Declare array for storing university images
+        $response["facilityimages"] = [];
+
+        //Query the database to fetch facility images
+        $select = $db->prepare("SELECT image FROM universityfacilityimages WHERE universityid = ?");
+        if($select == false)
+        {
+            failure($response , "Error while fetching university facility images");
+            goto end;
+        }
+        else
+        {
+            //Bind the parameters
+            $select->bind_param("s" , $_GET["universityid"]);
+
+            //Execute the query
+            if($select->execute() == false)
+            {
+                failure($response , "Error while fetching university facility images");
+                goto end;
+            }
+
+            //Loop through the result and push the data into the array
+            $result = $select->get_result();
+            while($row = $result->fetch_assoc())
+            {
+                array_push($response["facilityimages"] , $row["image"]);
+            }
+        }
 
         end:;
     }

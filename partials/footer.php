@@ -39,7 +39,7 @@
                     <div class="col-md-4 col-lg-3 col-sm-6">
                         <h5>Useful Links</h5>
                         <ul>
-                            <li><a href="home.php">Home</a></li>
+                            <li><a href="/">Home</a></li>
                             <li><a href="about.php">About Us</a></li>
                             <li><a href="services.php">Services</a></li>
                             <li><a href="contact.php">Contact us</a></li>
@@ -92,7 +92,7 @@
             <div class="container">
                 <div class="row text-center">
                     <div class="col-md-auto col-sm-12 me-auto">
-                        <p>© 2023 MyStudyOffers.com All Rights Reserved.</p>
+                        <p>© 2024 MyStudyOffers.com All Rights Reserved.</p>
                     </div>
                     <div class="col-md-auto col-sm-12 me-auto ms-auto social-ic">
                         <a>

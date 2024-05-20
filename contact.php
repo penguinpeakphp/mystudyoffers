@@ -82,7 +82,7 @@ if(!isset($_SESSION)){session_start();}
                                 <h5 class="contact-list-title">PHONE</h5>
                                 <ul>
                                     <li>
-                                        <a href="tel:+91 89800 04238">+91 89800 04238</a>
+                                        <a href="tel:+91 6356000607 ">+91 6356000607</a>
                                     </li>                                   
                                 </ul>
                             </div>

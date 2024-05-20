@@ -9,16 +9,6 @@ let financialaids;
 let accreditations;
 let rankawardingbodies;
 
-// let countriesfilled = false;
-// let statesfilled = false;
-// let citiesfilled = false;
-// let academicsfilled = false;
-// let levelofcoursesfilled = false;
-// let otherfeesfilled = false;
-// let financialaidsfilled = false;
-// let accreditationsfilled = false;
-// let rankawardingbodiesfilled = false;
-
 
 //Function for populating the options in a select/option menu
 function populatecountries(elementid)
