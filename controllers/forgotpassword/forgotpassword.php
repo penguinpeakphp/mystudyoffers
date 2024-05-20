@@ -5,7 +5,7 @@
 
     try 
     {
-        var_dump($_POST);
+        $response["success"] = true;
         if(!isset($_POST["email"]) || empty($_POST["email"])) 
         {
             failure($response , "Please provide email");
@@ -49,14 +49,11 @@
                 failure($response , "Error Occurred while generating token");
                 goto end;
             }
-            // if(sendrecoverymail($email, "Forgot Password", $token) === false)
-            // {
-            //     failure($response , "Error Occurred while sending mail");
-            //     goto end;
-            // }
-
-            echo sendrecoverymail($email, "Forgot Password", $token);
-            
+            if(sendrecoverymail($email, "Forgot Password", $token) === false)
+            {
+                failure($response , "Error Occurred while sending mail");
+                goto end;
+            }            
         }
         end:;
     } 

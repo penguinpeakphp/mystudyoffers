@@ -60,13 +60,11 @@ function sendrecoverymail($to, $subject, $token)
 
         //Replace the content inside the email content
         $emailContent = file_get_contents('passwordrecovery.html');
-        $emailContent = str_replace('[name]', $_POST["name"], $emailContent);
         $emailContent = str_replace('[subject]', $subject, $emailContent);
-
         $emailContent = str_replace('[sitephone]' , $sitephone , $emailContent);
         $emailContent = str_replace('[siteemail]' , $siteemail , $emailContent);
         $emailContent = str_replace('[imageurl]' , $emailimageurl , $emailContent);
-        $emailContent = str_replace('[forgotlink]' , $siteurl."/{$token}", $emailContent);
+        $emailContent = str_replace('[forgotlink]' , $siteurl."/forgotpassword.php?token={$token}&email={$to}", $emailContent);
         $emailContent = str_replace('[emailreferenceurl]' , $emailreferenceurl , $emailContent);
 
         //Use global mail variable for sending mail to the dedicated recipient
@@ -83,7 +81,7 @@ function sendrecoverymail($to, $subject, $token)
     } 
     catch (Exception $e) 
     {
-        return $e->getMessage();
+        return false;
     }
 
     return true;
