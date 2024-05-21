@@ -40,7 +40,8 @@ $(function()
         });
     });
 
-    $("#forgotpasswordform").on("submit" , function(e) {
+    $("#forgotpasswordform").on("submit" , function(e) 
+    {
         e.preventDefault();
         //Get the formdata
         let formdata = new FormData(this);
