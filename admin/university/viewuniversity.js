@@ -221,7 +221,7 @@ $(function()
                 $("#universityintellectualassets *").prop("disabled" , true);
                 $("#universityrankings *:not(#accreditationstatus)").prop("disabled" , true);
                 $("#universitystatistics *").prop("disabled" , true);
-                $("tuitionandfees *:not(#otherfeesdropdown, #financialaiddropdown)").prop("disabled" , true);
+                $("#tuitionandfees *:not(#otherfeesdropdown, #financialaiddropdown)").prop("disabled" , true);
                 $("input[type=checkbox]").prop("disabled" , true);
             }
         }

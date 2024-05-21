@@ -24,7 +24,8 @@ try
     $cpassword = $_POST["cpassword"];
     $token = $_POST["token"];
 
-    if ($password != $cpassword) { 
+    if ($password != $cpassword) 
+    { 
         failure($response, "Passwords do not match");
         goto end;
     }
