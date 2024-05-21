@@ -42,6 +42,13 @@
             goto end;
         }
         
+        //Check if the email is valid
+        if(!filter_var($_POST["email"] , FILTER_VALIDATE_EMAIL))
+        {
+            failure($response , "Please enter a valid email");
+            goto end;
+        }
+
         studentlogin:;
 
         //Get the student with specified email

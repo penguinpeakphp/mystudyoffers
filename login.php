@@ -76,8 +76,6 @@ if (isset($_SESSION["email"]) && isset($_SESSION["name"])) {
 
                             <input type="password" name="password" placeholder="Password" required="required">
 
-                            <p class="text-center w-100"><a class="link-opacity-100" id="forgotPassword">Forgot Password</a></p>
-
                             <button type="submit" class="readon btn">Login</button>
 
                             <div class="last-password">
@@ -85,6 +83,8 @@ if (isset($_SESSION["email"]) && isset($_SESSION["name"])) {
                                 <p>Not registered? <a href="javascript:void(0)" onclick='$("#exampleModal").modal("show");' title="Student Registration"><b>Create an account</b></a></p>
 
                             </div>
+
+                            <a class="link-opacity-100" id="forgotPassword">Forgot Password</a>
 
                         </form>
 

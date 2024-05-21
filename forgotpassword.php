@@ -33,12 +33,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumbs-area">
-                        <h1>Change Password</h1>
+                        <h1>Reset Password</h1>
                         <ul>
                             <li>
                                 <a href="home.php">Home</a>
                             </li>
-                            <li>Change Password</li>
+                            <li>Reset Password</li>
                         </ul>
                     </div>
                 </div>
@@ -50,7 +50,6 @@
             <div class="noticed">
                 <div class="main-part">
                     <div class="method-account">
-                        <h2 class="login">Forgot Password</h2>
                         <div class="error-msg"></div>
                         <form id="forgot-password">
                             <input type="password" name="password" placeholder="Password" required="required">

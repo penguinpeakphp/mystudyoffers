@@ -23,7 +23,10 @@ $(function()
             {
                 try
                 {
+                    //Parse the data received from the server
                     let response = JSON.parse(data);
+
+                    //If the response is not successful, then show the error in alert
                     if(response.success == false)
                     {
                         showalert(response.error);
@@ -35,7 +38,7 @@ $(function()
                 }
                 catch(error)
                 {
-                    alert("Error occurred while trying to read server response " + error);
+                    alert("Error occurred while trying to read server response");
                 }
             }
         })
