@@ -179,6 +179,173 @@
             }
         }
 
+        //Declare array for storing university accreditations
+        $response["universityaccreditations"] = [];
+
+        //Query the database for fetching university accreditations
+        $select = $db->prepare("SELECT * FROM universityaccreditations WHERE universityid = ?");
+        if($select == false)
+        {
+            failure($response , "Error while fetching university accreditations");
+            goto end;
+        }
+        else
+        {
+            //Bind the parameters
+            $select->bind_param("s" , $_GET["universityid"]);
+
+            //Execute the query
+            if($select->execute() == false)
+            {
+                failure($response , "Error while fetching university accreditations");
+                goto end;
+            }
+
+            $result = $select->get_result();
+            while($row = $result->fetch_assoc())
+            {
+                array_push($response["universityaccreditations"] , $row);
+            }
+        }
+
+
+        //Declare array for storing university rankings
+        $response["universityrankings"] = [];
+
+        //Query the database for storing universityrankings
+        $select = $db->prepare("SELECT * FROM universityrankings WHERE universityid = ?");
+        if($select == false)
+        {
+            failure($response , "Error while fetching university rankings");
+            goto end;
+        }
+        else
+        {
+            //Bind the parameters
+            $select->bind_param("s" , $_GET["universityid"]);
+
+            //Execute the query
+            if($select->execute() == false)
+            {
+                failure($response , "Error while fetching university rankings");
+                goto end;
+            }
+
+            $result = $select->get_result();
+            while($row = $result->fetch_assoc())
+            {
+                array_push($response["universityrankings"] , $row);
+            }
+        }
+
+        //Query the database to fetch statistics
+        $select = $db->prepare("SELECT * FROM universitystatistics WHERE universityid = ?");
+        if($select == false)
+        {
+            failure($response , "Error while fetching university statistics");
+            goto end;
+        }
+        else
+        {
+            //Bind the parameters
+            $select->bind_param("s" , $_GET["universityid"]);
+
+            //Execute the query
+            if($select->execute() == false)
+            {
+                failure($response , "Error while fetching university statistics");
+                goto end;
+            }
+
+            $result = $select->get_result();
+            $row = $result->fetch_assoc();
+            $response["universitystatistics"] = $row;
+        }
+
+        //Query the database to fetch university fees
+        $select = $db->prepare("SELECT * FROM universityfees WHERE universityid = ?");
+        if($select == false)
+        {
+            failure($response , "Error while fetching university fees");
+            goto end;
+        }
+        else
+        {
+            //Bind the parameters
+            $select->bind_param("s" , $_GET["universityid"]);
+
+            //Execute the query
+            if($select->execute() == false)
+            {
+                failure($response , "Error while fetching university fees");
+                goto end;
+            }
+
+            $result = $select->get_result();
+            $row = $result->fetch_assoc();
+            $response["universityfees"] = $row;
+        }
+
+        //Declare array for storing university other fees
+        $response["universityotherfees"] = [];
+
+        //Query the database for fetching university other fees
+        $select = $db->prepare("SELECT * FROM universityotherfees WHERE universityid = ?");
+        if($select == false)
+        {
+            failure($response , "Error while fetching university other fees");
+            goto end;
+        }
+        else
+        {
+            //Bind the parameters
+            $select->bind_param("s" , $_GET["universityid"]);
+
+            //Execute the query
+            if($select->execute() == false)
+            {
+                failure($response , "Error while fetching university other fees");
+                goto end;
+            }
+
+            //Loop through the result and push the data into the array
+            $result = $select->get_result();
+            while($row = $result->fetch_assoc())
+            {
+                array_push($response["universityotherfees"] , $row);
+            }
+        }
+
+        //Declare array for storing university financial aids
+        $response["universityfinancialaids"] = [];
+
+        //Query the database for fetching university financial aids
+        $select = $db->prepare("SELECT * FROM universityfinancialaid WHERE universityid = ?");
+        if($select == false)
+        {
+            failure($response , "Error while fetching university financial aids");
+            goto end;
+        }
+        else
+        {
+            //Bind the parameters
+            $select->bind_param("s" , $_GET["universityid"]);
+
+            //Execute the query
+            if($select->execute() == false)
+            {
+                failure($response , "Error while fetching university financial aids");
+                goto end;
+            }
+
+            //Loop through the result and push the data into the array
+            $result = $select->get_result();
+            while($row = $result->fetch_assoc())
+            {
+                array_push($response["universityfinancialaids"] , $row);
+            }
+        }
+
         end:;
     }
     catch(Exception  $e)

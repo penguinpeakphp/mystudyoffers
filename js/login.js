@@ -68,6 +68,7 @@ $(function()
                     }
                     else
                     {
+                        $("#forgotPasswordModal").modal("hide");
                         showalert("Password reset link has been sent to your email address");
                     }
                 }   
@@ -75,10 +76,6 @@ $(function()
                 {
                     alert("Error occurred while trying to read server response");
                 }   
-            },
-            always: function()
-            {
-                $("#forgotPasswordModal").modal("hide");
             }
         });
     });

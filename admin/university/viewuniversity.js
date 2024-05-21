@@ -14,6 +14,8 @@ $(function()
             //Parse the data received from the server
             let response = JSON.parse(data);
 
+            console.log(response);
+
             //If the response is not successful, then show the error in alert
             if(response.success == false)
             {
@@ -34,6 +36,12 @@ $(function()
                 let universityassets = response.universityassets;
                 let clubsandteams = response.clubsandteams;
                 let facilityimages = response.facilityimages;
+                let universityaccreditations = response.universityaccreditations;
+                let universityrankings = response.universityrankings;
+                let universitystatistics = response.universitystatistics;
+                let universityfees = response.universityfees;
+                let universityotherfees = response.universityotherfees;
+                let universityfinancialaids = response.universityfinancialaids;
 
                 //Set the data according to the data received from the server
                 $("#universitystatus").prop("checked" , university.universitystatus);
@@ -65,6 +73,8 @@ $(function()
                 $("#maincampusstreetaddress").val(university.maincampusstreetaddress);
                 $("#maincampuspostcode").val(university.maincampuspostcode);
 
+                $("#totalstudents").val(university.totalstudents);
+
                 //Get the list of cities and then set the selected city
                 getcities().then(function()
                 {
@@ -89,20 +99,23 @@ $(function()
                     });
                 });
 
-                //If the file was uploaded, then display the view image link
-                if(universityassets.logoimage != "")
+                if(universityassets != null)
                 {
-                    $("#viewlogoimage").removeClass("d-none");
-                    $("#viewlogoimage").attr("href" , "../universitydata/" + university.universityid + "/" + universityassets.logoimage);
-                    $("#viewlogoimage").attr("target" , "_blank");
-                }
-
-                //If the file was uploaded, then display the view image link
-                if(universityassets.mascotimage != "")
-                {
-                    $("#viewmascotimage").removeClass("d-none");
-                    $("#viewmascotimage").attr("href" , "../universitydata/" + university.universityid + "/" + universityassets.mascotimage);
-                    $("#viewmascotimage").attr("target" , "_blank");
+                    //If the file was uploaded, then display the view image link
+                    if(universityassets.logoimage != "")
+                    {
+                        $("#viewlogoimage").removeClass("d-none");
+                        $("#viewlogoimage").attr("href" , "../universitydata/" + university.universityid + "/" + universityassets.logoimage);
+                        $("#viewlogoimage").attr("target" , "_blank");
+                    }
+    
+                    //If the file was uploaded, then display the view image link
+                    if(universityassets.mascotimage != "")
+                    {
+                        $("#viewmascotimage").removeClass("d-none");
+                        $("#viewmascotimage").attr("href" , "../universitydata/" + university.universityid + "/" + universityassets.mascotimage);
+                        $("#viewmascotimage").attr("target" , "_blank");
+                    }   
                 }
 
                 //Hide the add button for add other clubs and teams
@@ -140,14 +153,81 @@ $(function()
                     $(".removefacilityimages").addClass("d-none");
                 });
 
+                //Get the list of accreditations and then set the selected accreditations
+                getaccreditations().then(function()
+                {
+                    universityaccreditations.forEach(function(accreditation)
+                    {
+                        $(`.accreditationstatus input[type=checkbox][value=${accreditation.accreditationid}]`).prop("checked" , true);
+                    });
+                });
+
+                getrankawardingbodies().then(function()
+                {
+                    $("#addotherrankings").addClass("d-none");
+
+                    //Loop through all the rankings and display them
+                    universityrankings.forEach(function(ranking)
+                    {
+                        $("#addotherrankings").click();
+
+                        let lastRanking = $("#otherrankingslist .otherrankings").last();
+
+                        lastRanking.find("input[name=nameofranking]").val(ranking.rankingname);
+                        lastRanking.find("input[name=yearofranking]").val(ranking.yearofranking);
+                        lastRanking.find(`select[name=rankawardingbodies] [value=${ranking.rankawardingbodyid}]`).prop("selected" , true);
+                        lastRanking.find("textarea[name=description]").val(ranking.description);
+
+                        lastRanking.find(".removeotherranking").addClass("d-none");
+                    });
+                });
+
+                //Set the statistics data of the university
+                if(universitystatistics != null)
+                {
+                    $("#totalstudents").val(universitystatistics.totalstudents);
+                    $("#totalinternationalstudents").val(universitystatistics.totalinternationalstudents);
+                    $("#acceptancerate").val(universitystatistics.acceptancerate);
+                    $("#graduateemploymentrate").val(universitystatistics.graduateemploymentrate);
+                }
+
+                //Set the university fees for the university
+                if(universityfees != null)
+                {
+                    $("#applicationfee").val(universityfees.applicationfee);
+                    $("#tuitionfee").val(universityfees.tuitionfee);
+                }
+
+                //Get the other fees and then set the selected other fees
+                getotherfees().then(function()
+                {
+                    universityotherfees.forEach(function(otherfee)
+                    {
+                        $(`.otherfees input[type=checkbox][value=${otherfee.otherfeeid}]`).prop("checked" , true);
+                    });
+                });
+
+                //Get the financial aid and then set the selected financial aid
+                getfinancialaids().then(function()
+                {
+                    universityfinancialaids.forEach(function(financialaid)
+                    {
+                        $(`.financialaid input[type=checkbox][value=${financialaid.financialaidid}]`).prop("checked" , true);
+                    });
+                });
+
                 //Disable the forms and checkboxes
                 $("#universityinformationform *:not(#courselevelsdropdown)").prop("disabled" , true);
+                $("#universityintellectualassets *").prop("disabled" , true);
+                $("#universityrankings *:not(#accreditationstatus)").prop("disabled" , true);
+                $("#universitystatistics *").prop("disabled" , true);
+                $("tuitionandfees *:not(#otherfeesdropdown, #financialaiddropdown)").prop("disabled" , true);
                 $("input[type=checkbox]").prop("disabled" , true);
             }
         }
         catch(error)
         {
-            alert("Error occurred while trying to read server response" + error.stack);
+            alert("Error occurred while trying to read server response");
         }
     });
 });

@@ -58,7 +58,7 @@ checksession();
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">University List</h5>
-
+                            <a href="adduniversity.php" type="button" class="btn btn-primary add"><i class="bi-plus-square"></i></a>
                             <table class="table table-striped" id="universitytable">
                                 <thead>
                                     <tr>

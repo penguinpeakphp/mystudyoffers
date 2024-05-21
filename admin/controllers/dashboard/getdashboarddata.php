@@ -49,7 +49,7 @@
 
         //Fetch chats
         $response["chats"] = [];
-        $result = $db->query("SELECT message , queryid, name FROM queryconversation qc INNER JOIN student s ON s.studentid = qc.studentid WHERE qc.studentid IS NOT NULL AND readbyadmin = 0");
+        $result = $db->query("SELECT message , queryid, name FROM queryconversation qc INNER JOIN student s ON s.studentid = qc.studentid WHERE qc.studentid IS NOT NULL AND readbyadmin = 0 AND DATE_FORMAT(messagetime , '%Y-%m-%d') = '{$today}'");
         if($result == false)
         {
             failure($response , "Error fetching new conversations");
