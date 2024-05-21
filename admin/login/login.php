@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    session_destroy();
+session_start();
+session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,6 +73,11 @@
                                             <label for="password" class="form-label">Password</label>
                                             <input type="password" name="password" class="form-control" id="password" required>
                                         </div>
+                                        <div class="col-12 text-center">
+                                            <a type="button" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" id="adminsetpassword" class="text-decoration-none">
+                                                Forgot Password
+                                            </a>
+                                        </div>
 
                                         <div class="col-12">
                                             <button class="btn btn-primary w-100" type="submit">Login</button>
@@ -87,6 +92,31 @@
                 </div>
 
             </section>
+
+            <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-modal="true" role="dialog" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Forgot Password</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form id="forgotpasswordform">
+                            <div class="modal-body">
+                                <div class="col-12">
+                                    <label for="forgotemail" class="form-label">Email</label>
+                                    <div class="input-group">
+                                        <input type="email" name="forgotemail" class="form-control" id="forgotemail" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" id="submitforgotpassword" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </main><!-- End #main -->

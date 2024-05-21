@@ -31,6 +31,14 @@ create table adminuser
     admintype varchar(30) not null
 );
 
+drop table if exists adminforgotpassword;
+create table adminforgotpassword
+(
+	adminemail VARCHAR(200) not null unique,
+    token varchar(15) not null,
+    foreign key (adminemail) references adminuser(adminemail) on delete cascade
+);
+
 delimiter //
 drop trigger if exists adminuser_before_insert//
 CREATE TRIGGER adminuser_before_insert

@@ -21,7 +21,8 @@
     function getdashboarddata()
     {
         let parts = window.location.href.split('/');
-        if(parts[parts.length - 1] != "login.php")
+        let filename = parts[parts.length - 1];
+        if(filename != "login.php" && !filename.startsWith("resetpassword.php"))
         {
             $.get("../controllers/dashboard/getdashboarddata.php" , {} , function(data)
             {
