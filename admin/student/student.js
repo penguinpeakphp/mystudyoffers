@@ -236,26 +236,8 @@ $(function()
                         }
                     });
 
-                    //Initialize data table
-                    let studentTable = $("#studenttable")[0]; // Select the table element using jQuery
-
-                    new simpleDatatables.DataTable(studentTable, {
-                        perPageSelect: [5, 10, 15, ["All", -1]],
-                        columns: [
-                            {
-                                select: 2,
-                                sortSequence: ["desc", "asc"]
-                            },
-                            {
-                                select: 3,
-                                sortSequence: ["desc"]
-                            },
-                            {
-                                select: 4,
-                                cellClass: "green",
-                                headerClass: "red"
-                            }
-                        ]
+                    $('#studenttable').DataTable({
+                        dom: '<"top-controls"fl>tp'
                     });
                     
                     //Open Follow up modal on clicking the button

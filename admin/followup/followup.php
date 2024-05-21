@@ -62,7 +62,7 @@ checksession();
                             <h5 class="card-title">Follow Ups</h5>
 
                             <!-- Table with stripped rows -->
-                            <table class="table table-striped" id="followup">
+                            <table class="table table-striped w-100" id="followup">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>

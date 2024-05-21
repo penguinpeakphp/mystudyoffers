@@ -61,7 +61,7 @@ checksession();
                             <h5 class="card-title">Query List</h5>
 
                             <!-- Table with stripped rows -->
-                            <table class="table table-striped" id="querytable">
+                            <table class="table table-striped w-100" id="querytable">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>

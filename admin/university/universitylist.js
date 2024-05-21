@@ -1,8 +1,15 @@
 $(function () 
 {
-    async function getuniversitylist()
+    function setDataTable()
     {
-        await $.get("../controllers/university/getuniversitylist.php" , {}, function(data) 
+        $('#universitytable').DataTable({
+            dom: '<"top-controls"fl>tp'
+        });
+    }
+
+    function getuniversitylist()
+    {
+        $.get("../controllers/university/getuniversitylist.php" , {}, function(data) 
         {
             try 
             {
@@ -61,32 +68,11 @@ $(function ()
 
                         $("#universitybody").append(tr);
                     }
-
-                    // $("#universitytable").DataTable().destroy();
-
-                    // let universitytable = $("#universitytable")[0]; // Select the table element using jQuery
-
-                    // new simpleDatatables.DataTable(universitytable, {
-                    //     perPageSelect: [5, 10, 15, ["All", -1]],
-                    //     columns: [
-                    //         {
-                    //             select: 2,
-                    //             sortSequence: ["desc", "asc"]
-                    //         },
-                    //         {
-                    //             select: 3,
-                    //             sortSequence: ["desc"]
-                    //         },
-                    //         {
-                    //             select: 4,
-                    //             cellClass: "green",
-                    //             headerClass: "red"
-                    //         }
-                    //     ]
-                    // });
+                    
+                    setDataTable();
 
                     $(".delete").on("click", function ()
-                    {
+                    {   
                         if(!confirm("Are you sure you want to delete this university"))
                         {
                             return;
@@ -113,6 +99,7 @@ $(function ()
                                 else
                                 {
                                     alert("University successfully deleted");
+                                    $("#universitytable").DataTable().destroy();
                                     getuniversitylist();
                                 }
                             }
@@ -123,7 +110,8 @@ $(function ()
                         });
                     });
                 }
-            } catch (error) 
+            } 
+            catch (error) 
             {
                 alert("Error occurred while trying to read server response");
             }
