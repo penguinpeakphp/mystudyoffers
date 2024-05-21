@@ -93,7 +93,7 @@ $(function()
                     else
                     {
                         //Redirect to the success page for edit profile
-                        window.location.href = "editprofilesuccess.php";
+                        window.location.href = "dashboard.php";
                     }
                 }
                 catch(error)
