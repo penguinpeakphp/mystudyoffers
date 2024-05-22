@@ -2,6 +2,7 @@ $(function()
 {
     $(".currentpage").text("Dashboard");
 
+    //Send the get request to OTP controller
     $("#sendotp").on("click" , function()
     {
         $.get("controllers/student/OTPaction.php" , {"send":"send"} , function(data)
@@ -32,6 +33,20 @@ $(function()
         });
     });
 
+    //Resend the OTP on clicking the button
+    $("#resendotp").on("click" , function()
+    {
+        //Close the current Modal
+        $("#OTPModal").modal("hide");
+
+        //Click the send otp button after giving some time to jquery
+        setTimeout(function()
+        {
+            $("#sendotp").click();
+        } , 1000);
+    });
+
+    //Verify the OTP
     $("#verifyotp").on("click" , function()
     {
         $.post("controllers/student/OTPaction.php" , {"verify":"verify" , "OTP":$("#OTP").val()} , function(data)
@@ -88,6 +103,9 @@ $(function()
                 $(".email").text(student.email);
                 $(".phone").text(student.phone);
 
+                $("#OTPmobile").text(student.phone);
+
+                //Remove the banner is phone is already verified
                 if(student.phoneverified == 1)
                 {
                     $(".warning-banner").remove();

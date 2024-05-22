@@ -35,7 +35,7 @@ $(function()
                                     <div class="col-12">
                                         <div class="card-body">`;
 
-                        tr += '<div class="d-flex align-items-center justify-content-start">';
+                        tr += '<div class="d-flex align-items-center justify-content-start gap-2">';
 
                         //If admin has sent the message
                         if(chat.studentid == null && chat.adminid != null)

@@ -77,11 +77,11 @@ if (isset($_SESSION["studentid"])) {
         ?>
 
         <section class="sub-main">
-          <div id="sub-main-inner">
+          <div id="sub-main-inner" class="w-100">
             <div class="warning-banner mb-4">
               <div class="warning-info">
                 <h4>Please Verify your Phone Number with OTP</h4>
-                <a href="javascript:void(0)" id="sendotp" class="info-btn">Verify OTP</a>
+                <a href="javascript:void(0)" id="sendotp" class="info-btn">Send OTP</a>
               </div>
             </div>
             <div class="accordion" id="accordionExample">
@@ -153,11 +153,7 @@ if (isset($_SESSION["studentid"])) {
               </div>
             </div>
           </div>
-
-
-
-
-
+          
           <div class="person-detail">
             <h4 class="mb-3">My Information:</h4>
             <div class="user-info">

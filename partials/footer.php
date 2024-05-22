@@ -254,10 +254,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <p>Please check your mobile - <span id="OTPmobile"></span></p>
                 <input type="number" placeholder="Enter OTP" class="form-control" id="OTP" />
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="verifyotp">Verify</button>
+                <button type="button" class="btn btn-secondary col-6" id="verifyotp">Verify</button>
+                <button type="button" class="btn btn-secondary col-6" id="resendotp">Resend</button>
             </div>
             </div>
         </div>
