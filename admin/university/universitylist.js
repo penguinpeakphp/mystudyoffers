@@ -56,9 +56,9 @@ $(function ()
                             <a type="button" href="adduniversity.php?view=${university.universityid}" class="btn btn-primary view" data-index="${i}" data-id="${university.universityid}">
                                 <i class="bi bi-eye"></i>
                             </a>
-                            <button type="button" class="btn btn-warning edit" data-index="${i}" data-id="${university.universityid}">
+                            <a type="button" class="btn btn-warning edit" href="adduniversity.php?edit=${university.universityid}" data-index="${i}" data-id="${university.universityid}">
                                 <i class="bi-pencil-square"></i>
-                            </button>
+                            </a>
                             <button type="button" class="btn btn-danger delete" data-id="${university.universityid}">
                                 <i class="bi-trash"></i>
                             </button>

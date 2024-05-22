@@ -35,17 +35,23 @@ $(function()
                                     <div class="col-12">
                                         <div class="card-body">`;
 
+                        tr += '<div class="d-flex align-items-center justify-content-start">';
+
                         //If admin has sent the message
                         if(chat.studentid == null && chat.adminid != null)
                         {
-                            tr += `<h5 class="card-title">You (<span class="time">${chat.timestring}</span>)</h5>`;
+                            tr += `<img src="../../images/icons/usericon.png" alt="Profile" style="padding: 0px !important;" class="m-0  rounded-circle" style="height: 2vh; width: 2vh;">`;
+                            tr += `<h5 class="card-title d-inline m-0" style="padding: 0px !important;">You (<span class="time">${chat.timestring}</span>)</h5>`;
                         }
 
                         //If student has sent the message
                         if(chat.studentid != null && chat.adminid == null)
                         {
-                            tr += `<h5 class="card-title">${name} (<span class="time">${chat.timestring}</span>)</h5>`;
+                            tr += `<img src="../../images/icons/usericon-admin.png" alt="Profile" style="padding: 0px !important;" class="m-0  rounded-circle" style="height: 2vh; width: 2vh;">`;
+                            tr += `<h5 class="card-title d-inline m-0" style="padding: 0px !important;">${name} (<span class="time">${chat.timestring}</span>)</h5>`;
                         }
+
+                        tr += '</div>';
 
                         //Check if the file was attached or not
                         if(chat.filename != null)
@@ -60,13 +66,20 @@ $(function()
                         if(i == 0)
                         {
                             tr += `
-                                <div class="mb-3">
-                                    <textarea type="text" id="reply" class="form-control"></textarea>
+                                <div class="form-container">
+                                    <div class="file-input-container">
+                                        <label for="file" class="file-upload-label">
+                                            <i class="bi bi-paperclip"></i>
+                                        </label>
+                                        <input type="file" class="form-control custom-file-input" name="file" id="file" accept=".pdf, .doc">
+                                    </div>
+                                    <div class="textarea-container">
+                                        <textarea type="text" id="reply" class="form-control"></textarea>
+                                        <div class="button-container">
+                                            <button class="btn btn-primary" id="replybtn">Reply</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-6 mb-3">
-                                    <input type="file" class="form-control" name="file" id="file" accept=".pdf, .doc">
-                                </div>
-                                <button class="btn btn-primary" id="replybtn">Reply</button>
                             `;
                         }
 
@@ -164,12 +177,11 @@ $(function()
                     for(let i=0; i<response.queries.length; i++)
                     {
                         let query = response.queries[i];
-                        console.log(query);
                         
                         let tr = '';
                         if(query.readbyadmin == 0)
                         {
-                            tr += '<tr class="border border-warning border-2">';
+                            tr += '<tr style="--bs-table-bg:lightyellow !important;">';
                         }
                         else
                         {

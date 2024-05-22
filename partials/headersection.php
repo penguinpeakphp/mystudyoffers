@@ -14,7 +14,7 @@
     <a href="#" class="notification_content"><img src="images/notifications-1.png" class="notifiction-img" />
         <span>0</span></a>
 
-    <a href="#"><img src="images/user.png" alt /></a>
+    <a href="#"><img src="images/user.png" alt="user" /></a>
     <div class="d-flex flex-column">
         <h6 class="user-detail mb-0 name"><?= $_SESSION["name"] ?></h6>
         <!--<span class="user-detail-info">1234</span>-->

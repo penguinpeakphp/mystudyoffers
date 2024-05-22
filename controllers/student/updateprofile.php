@@ -12,13 +12,13 @@
             goto end;
         }
 
+        //Check if all the necessary data is provided
         if(
             !isset($_POST["editname"]) || !isset($_POST["editemail"]) || !isset($_POST["editphone"]) || !isset($_POST["editpincode"]) || !isset($_POST["editsurname"]) ||
             empty($_POST["editname"]) || empty($_POST["editemail"]) || empty($_POST["editphone"]) || empty($_POST["editpincode"] || empty($_POST["editsurname"]))
         )
         {
-            $response["success"] = false;
-            $response["message"] = "please fill the required fields";
+            failure($response , "Please fill all the required fields");
             goto end;
         }
 
@@ -28,11 +28,13 @@
         $pincode = $_POST["editpincode"];
         $surname = $_POST["editsurname"];
 
+        //If Password is not provided
         if(empty($_POST["editpassword"]) || !isset($_POST["editpassword"]))
         {
             $update = $db->prepare("UPDATE student SET name = ?, email = ?, phone = ?, surname = ?, pincode = ? WHERE studentid = ?");
             $update->bind_param("sssssi", $name, $email, $phone, $surname, $pincode, $_SESSION["studentid"]);
         }
+        //If password is provided
         else
         {
             $password = hash("sha512", $_POST["editpassword"]);

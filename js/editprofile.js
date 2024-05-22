@@ -1,6 +1,7 @@
 $(function()
 {
-    // $(".currentpage").text("Edit Profile");
+    $(".currentpage").text("Edit Profile");
+    
     function getstudentdata()
     {
         $.ajax({

@@ -6,13 +6,12 @@
 
         <div class="search-option d-none">
             <div>
-                <label for="exampleFormControlInput1" class="form-label"><img src="images/icons/teacher.png" />Course Search</label>
+                <label for="exampleFormControlInput1" class="form-label"><img src="images/icons/teacher.png" alt="Teacher"/>Course Search</label>
                 <div class="search-content">
                     <a class="form-icon"><img src="images/icons/search.png" /></a>
                     <input type="text" placeholder="Search..." name class="form-control" />
                 </div>
             </div>
-
         </div>
     </div>
 </section>
