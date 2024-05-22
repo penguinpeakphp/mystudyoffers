@@ -245,7 +245,8 @@ create table student
     activationtoken varchar(15) not null,
     profilestatus varchar(50) not null default "academic",
     status boolean not null default false,
-    registeredon date
+    registeredon date,
+    studentOTP int
 );
 
 drop table if exists studentforgotpassword;

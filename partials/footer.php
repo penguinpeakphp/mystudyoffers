@@ -258,8 +258,10 @@
             let currentFilename = window.location.pathname.split('/').pop();
             $(`.sidemenu .mb-4  a[href='${currentFilename}']`).parent().addClass("active");
 
-            //Get the number of new messages only when certain pages are open
-            if(currentFilename == "dashboard.php" || currentFilename == "queries.php" || currentFilename == "conversation.php")
+            // //Get the number of new messages only when certain pages are open
+            // if(currentFilename == "dashboard.php" || 
+            // currentFilename == "queries.php" || 
+            // currentFilename == "conversation.php")
             {
                 $.get("controllers/query/getconversation.php" , {"nums":"nums"} , function(data)
                 {

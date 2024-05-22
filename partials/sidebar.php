@@ -24,7 +24,7 @@
             </a>
         </li>
         <li>
-            <a href="academicprofile1.php">
+            <a href="editprofile.php">
                 <i class="bx bxs-user"></i>
                 <span class="link_name">My Profile</span>
             </a>
