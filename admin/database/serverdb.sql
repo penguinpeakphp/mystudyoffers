@@ -246,7 +246,8 @@ create table student
     profilestatus varchar(50) not null default "academic",
     status boolean not null default false,
     registeredon date,
-    studentOTP int
+    studentOTP int,
+    phoneverified boolean not null default false
 );
 
 drop table if exists studentforgotpassword;

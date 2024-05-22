@@ -2,6 +2,68 @@ $(function()
 {
     $(".currentpage").text("Dashboard");
 
+    $("#sendotp").on("click" , function()
+    {
+        $.get("controllers/student/OTPaction.php" , {"send":"send"} , function(data)
+        {
+            try
+            {
+                //Parse the data received from the server
+                let response = JSON.parse(data);
+
+                //If the response is not successful, then show the error in alert
+                if(response.success == false)
+                {
+                    showalert(response.error);
+                    if(response.login == true)
+                    {
+                        window.location.href = "login.php";
+                    }
+                }
+                else
+                {
+                    $("#OTPModal").modal("show");
+                }
+            }
+            catch(error)
+            {
+                alert("Error occurred while trying to read server response");
+            }
+        });
+    });
+
+    $("#verifyotp").on("click" , function()
+    {
+        $.post("controllers/student/OTPaction.php" , {"verify":"verify" , "OTP":$("#OTP").val()} , function(data)
+        {
+            try
+            {
+                //Parse the data received from the server
+                let response = JSON.parse(data);
+
+                //If the response is not successful, then show the error in alert
+                if(response.success == false)
+                {
+                    alert(response.error);
+                    if(response.login == true)
+                    {
+                        window.location.href = "login.php";
+                    }
+                }
+                else
+                {
+                    $("#OTPModal").modal("hide");
+                    showalert("OTP verified successfully");
+                    $(".warning-banner").remove();
+                }
+            }
+            catch(error)
+            {
+                alert("Error occurred while trying to read server response");
+            }
+        });
+    });
+
     $.get("controllers/student/getstudentdata.php" , {} , function(data)
     {
         try
@@ -25,6 +87,11 @@ $(function()
                 $(".name").text(student.name);
                 $(".email").text(student.email);
                 $(".phone").text(student.phone);
+
+                if(student.phoneverified == 1)
+                {
+                    $(".warning-banner").remove();
+                }
             }
         }
         catch(error)

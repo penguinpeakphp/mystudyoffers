@@ -5561,3 +5561,37 @@ section.add-question {
   margin-top: 5px;
 }
 
+.warning-banner{
+  background: #ff0000;
+    padding: 15px;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border-radius: 8px;
+}
+.warning-banner .warning-info{
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.warning-banner .warning-info h4{
+  font-size: 17px;
+  color: #fff;
+  font-weight: 600;
+  line-height: 20px;
+}
+.warning-banner .warning-info .info-btn{
+  background: #fff;
+  padding: 10px;
+  border-radius: 25px;
+  color: #ff0000;
+   text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22.5px;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.warning-banner .warning-info .info-btn:hover{
+   color: #fff;
+  background-color: #ff0000;
+  border: 2px solid #fff;
+}
+
