@@ -30,6 +30,12 @@
             </a>
         </li>
         <li>
+            <a href="changepassword.php">
+                <i class="bx bxs-user"></i>
+                <span class="link_name">Change Password</span>
+            </a>
+        </li>
+        <li>
             <a href="queries.php">
                 <i class="bx bxs-chat"></i>
                 <span class="link_name">Ask Queries (<span class="chatnums"></span>)</span>
