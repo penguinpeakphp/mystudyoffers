@@ -31,7 +31,7 @@
         </li>
         <li>
             <a href="changepassword.php">
-                <i class="bx bxs-user"></i>
+                <i class="bx bxs-lock"></i>
                 <span class="link_name">Change Password</span>
             </a>
         </li>
