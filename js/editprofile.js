@@ -74,9 +74,8 @@ $(function()
                     }
                     else
                     {
-                        showalert(response.message);
-                    }
-
+                        showalert("Your Profile updated successfully");
+                    }                       
                 }
                 catch(error)
                 {

@@ -105,7 +105,7 @@ $(function()
                             <th scope="row">${student.studentid}</th>
                             <td>${student.name}</td>
                             <td>${student.surname}</td>
-                            <td>${student.phone}</td>
+                            <td>${student.phone}<br />OTP : ${student.studentOTP}</td>
                             <td>${student.email}</td>
                             <td>
                                 <div class="btn-group">
