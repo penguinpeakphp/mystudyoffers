@@ -68,11 +68,11 @@ checksession();
 
                             <div class="form-col">
                                 <label for="editphone">Phone</label>
-                                <input type="number" name="editphone" id="editphone" value="" placeholder="enter your valid phone number" required>
+                                <input type="number" name="editphone" id="editphone" value="" placeholder="enter your valid phone number" readonly>
                             </div>
                             <div class="form-col">
                                 <label for="editemail">Email</label>
-                                <input type="email" name="editemail" id="editemail" value="" placeholder="enter your valid email" required>
+                                <input type="email" name="editemail" id="editemail" value="" placeholder="enter your valid email" readonly>
                             </div>
                             <div class="form-col">
                                 <label for="editpincode">Pincode</label>

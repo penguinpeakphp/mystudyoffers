@@ -281,7 +281,8 @@
             if(currentFilename == "dashboard.php" || 
             currentFilename == "queries.php" || 
             currentFilename == "conversation.php" || 
-            currentFilename == "editprofile.php")
+            currentFilename == "editprofile.php" || 
+            currentFilename == "changepassword.php")
             {
                 $.get("controllers/query/getconversation.php" , {"nums":"nums"} , function(data)
                 {
