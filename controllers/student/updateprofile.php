@@ -13,8 +13,8 @@
         }
 
         if(
-            !isset($_POST["editname"]) || !isset($_POST["editemail"]) || !isset($_POST["editphone"]) || !isset($_POST["editpincode"]) ||
-            empty($_POST["editname"]) || empty($_POST["editemail"]) || empty($_POST["editphone"]) || empty($_POST["editpincode"])
+            !isset($_POST["editname"]) || !isset($_POST["editemail"]) || !isset($_POST["editphone"]) || !isset($_POST["editpincode"]) || !isset($_POST["editsurname"]) ||
+            empty($_POST["editname"]) || empty($_POST["editemail"]) || empty($_POST["editphone"]) || empty($_POST["editpincode"] || empty($_POST["editsurname"]))
         )
         {
             $response["success"] = false;
@@ -26,17 +26,18 @@
         $email = $_POST["editemail"];
         $phone = $_POST["editphone"];
         $pincode = $_POST["editpincode"];
+        $surname = $_POST["editsurname"];
 
         if(empty($_POST["editpassword"]) || !isset($_POST["editpassword"]))
         {
-            $update = $db->prepare("UPDATE student SET name = ?, email = ?, phone = ?, pincode = ? WHERE studentid = ?");
-            $update->bind_param("ssssi", $name, $email, $phone, $pincode, $_SESSION["studentid"]);
+            $update = $db->prepare("UPDATE student SET name = ?, email = ?, phone = ?, surname = ?, pincode = ? WHERE studentid = ?");
+            $update->bind_param("sssssi", $name, $email, $phone, $surname, $pincode, $_SESSION["studentid"]);
         }
         else
         {
             $password = hash("sha512", $_POST["editpassword"]);
-            $update = $db->prepare("UPDATE student SET name = ?, email = ?, phone = ?, pincode = ?, password = ? WHERE studentid = ?");
-            $update->bind_param("sssssi", $name, $email, $phone, $pincode, $password, $_SESSION["studentid"]);
+            $update = $db->prepare("UPDATE student SET name = ?, email = ?, phone = ?, surname = ?, pincode = ?, password = ? WHERE studentid = ?");
+            $update->bind_param("ssssssi", $name, $email, $phone, $surname, $pincode, $password, $_SESSION["studentid"]);
         }
 
         if($update->execute() == false)

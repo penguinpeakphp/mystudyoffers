@@ -62,6 +62,11 @@ checksession();
                             </div>
 
                             <div class="form-col">
+                                <label for="editsurname">Surname</label>
+                                <input type="text" name="editsurname" id="editsurname" value="" placeholder="enter your surname" required>
+                            </div>
+
+                            <div class="form-col">
                                 <label for="editphone">Phone</label>
                                 <input type="number" name="editphone" id="editphone" value="" placeholder="enter your valid phone number" required>
                             </div>

@@ -31,6 +31,7 @@ $(function()
                         $("#editemail").val(response.studentdata.email);
                         $("#editphone").val(response.studentdata.phone);
                         $("#editpincode").val(response.studentdata.pincode);
+                        $("#editsurname").val(response.studentdata.surname);
                     }
                 }
                 catch(error)
