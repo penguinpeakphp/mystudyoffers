@@ -76,7 +76,7 @@ checksession();
                                 </tbody>
                             </table>
                             <div class="modal fade" id="ExtralargeModal" tabindex="-1" style="display: none;" aria-hidden="true">
-                                <div class="modal-dialog modal-xl">
+                                <div class="modal-dialog modal-xl modal-dialog-scrollable">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title">Conversation</h5>
@@ -90,10 +90,8 @@ checksession();
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>

@@ -362,6 +362,12 @@ checksession();
         <script src="viewuniversity.js"></script>
 <?php
     }
+    else if(isset($_GET["edit"]))
+    {
+?>
+        <script src="edituniversity.js"></script>
+<?php
+    }
     else
     {
 ?>

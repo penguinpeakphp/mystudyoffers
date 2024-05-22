@@ -12,13 +12,13 @@
             goto end;
         }
 
+        //Check if all the necessary data is provided
         if(
             !isset($_POST["editname"]) || !isset($_POST["editemail"]) || !isset($_POST["editphone"]) || !isset($_POST["editpincode"]) || !isset($_POST["editsurname"]) ||
             empty($_POST["editname"]) || empty($_POST["editemail"]) || empty($_POST["editphone"]) || empty($_POST["editpincode"] || empty($_POST["editsurname"]))
         )
         {
-            $response["success"] = false;
-            $response["message"] = "please fill the required fields";
+            failure($response , "Please fill all the required fields");
             goto end;
         }
 
