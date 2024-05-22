@@ -75,10 +75,6 @@ checksession();
                                 <input type="email" name="editemail" id="editemail" value="" placeholder="enter your valid email" required>
                             </div>
                             <div class="form-col">
-                                <label for="editpassword">Password</label>
-                                <input type="password" name="editpassword" id="editpassword" value="" placeholder="enter your password">
-                            </div>
-                            <div class="form-col">
                                 <label for="editpincode">Pincode</label>
                                 <input type="text" name="editpincode" id="editpincode" value="" placeholder="enter your pincode" required></input>
                             </div>

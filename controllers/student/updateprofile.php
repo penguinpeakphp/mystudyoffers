@@ -28,17 +28,8 @@
         $pincode = $_POST["editpincode"];
         $surname = $_POST["editsurname"];
 
-        if(empty($_POST["editpassword"]) || !isset($_POST["editpassword"]))
-        {
-            $update = $db->prepare("UPDATE student SET name = ?, email = ?, phone = ?, surname = ?, pincode = ? WHERE studentid = ?");
-            $update->bind_param("sssssi", $name, $email, $phone, $surname, $pincode, $_SESSION["studentid"]);
-        }
-        else
-        {
-            $password = hash("sha512", $_POST["editpassword"]);
-            $update = $db->prepare("UPDATE student SET name = ?, email = ?, phone = ?, surname = ?, pincode = ?, password = ? WHERE studentid = ?");
-            $update->bind_param("ssssssi", $name, $email, $phone, $surname, $pincode, $password, $_SESSION["studentid"]);
-        }
+        $update = $db->prepare("UPDATE student SET name = ?, email = ?, phone = ?, surname = ?, pincode = ? WHERE studentid = ?");
+        $update->bind_param("sssssi", $name, $email, $phone, $surname, $pincode, $_SESSION["studentid"]);
 
         if($update->execute() == false)
         {
