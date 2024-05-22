@@ -54,32 +54,32 @@ checksession();
 
                 <div class="profile-form">
                     <div class="register_form">
-                        <h3>My Profile</h3>
-                        <form action="" name="studentregi" method="post">
+                        <h3>Edit Profile</h3>
+                        <form id="editprofile">
                             <div class="form-col">
-                                <label for="">Name</label>
-                                <input type="text" name="name" placeholder="enter your name" required="">
+                                <label for="editname">Name</label>
+                                <input type="text" name="editname" id="editname" value="" placeholder="enter your name" required>
                             </div>
 
                             <div class="form-col">
-                                <label for="">Phone</label>
-                                <input type="number" name="phone" placeholder="enter your valid phone number" required="">
+                                <label for="editphone">Phone</label>
+                                <input type="number" name="editphone" id="editphone" value="" placeholder="enter your valid phone number" required>
                             </div>
                             <div class="form-col">
-                                <label for="">Email</label>
-                                <input type="email" name="stemail" id="stemail" placeholder="enter your valid email" required="">
+                                <label for="editemail">Email</label>
+                                <input type="email" name="editemail" id="editemail" value="" placeholder="enter your valid email" required>
                             </div>
                             <div class="form-col">
-                                <label for="">password</label>
-                                <input type="password" name="password" placeholder="enter your password" required="">
+                                <label for="editpassword">Password</label>
+                                <input type="password" name="editpassword" id="editpassword" value="" placeholder="enter your password">
                             </div>
                             <div class="form-col">
-                                <label for="">Address</label>
-                                <textarea id="exampleFormControlTextarea1" rows="5" style="height: 80px !important;"></textarea>
+                                <label for="editpincode">Pincode</label>
+                                <input type="text" name="editpincode" id="editpincode" value="" placeholder="enter your pincode" required></input>
                             </div>
 
-                            <div class="form-col">
-                                <input type="Submit" name="btnsubmit" value="Submit" class="register-btn">
+                            <div class="form-col mt-2">
+                                <button type="submit" class="register-btn">Update</button>
                             </div>
                         </form>
                     </div>
