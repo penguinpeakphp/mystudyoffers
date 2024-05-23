@@ -13,6 +13,35 @@
             goto end;
         }
       
+        function updatedatastatus($columnname , $universityid)
+        {
+            global $db;
+
+            //Update the flag for this page in universitydatastatus
+            $update = $db->prepare("UPDATE universitydatastatus SET {$columnname} = 1 WHERE universityid = ?");
+            if($update == false)
+            {
+                failure($response , "Error while updating university data status");
+                $db->rollback();
+                return false;
+            }
+            else
+            {
+                //Bind the parameters
+                $update->bind_param("s" , $universityid);
+
+                //Execute the query
+                if($update->execute() == false)
+                {
+                    failure($response , "Error while updating university data status");
+                    $db->rollback();
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
 
         //First step of adding university
         if(isset($_POST["universityinformation"]))
@@ -177,7 +206,6 @@
             if(!createdir($universityid))
             {
                 failure($response , "Error while creating university directory");
-                $db->rollback();
                 goto end;
             }
 
@@ -193,7 +221,6 @@
                 if(move_uploaded_file($_FILES["logoimage"]["tmp_name"] , "../../universitydata/".$universityid."/".$logoimagename) == false)
                 {
                     failure($response , "Error while uploading logo image");
-                    $db->rollback();
                     goto end;
                 }
             }
@@ -206,7 +233,6 @@
                 if(move_uploaded_file($_FILES["mascotimage"]["tmp_name"] , "../../universitydata/".$universityid."/".$mascotimagename) == false)
                 {
                     failure($response , "Error while uploading mascot image");
-                    $db->rollback();
                     goto end;
                 }
             }
@@ -298,6 +324,8 @@
                     $i++;
                 }
             }
+
+            updatedatastatus("universityassets" , $universityid);
         }
 
         //Third step of adding university
@@ -375,6 +403,8 @@
                 }
             }
 
+            updatedatastatus("universityrankings" , $universityid);
+
         }
 
         //Fourth step of adding university
@@ -419,6 +449,8 @@
                     goto end;
                 }
             }
+
+            updatedatastatus("universitystatistics" , $universityid);
         }
 
         //Fifth step of adding university
@@ -518,6 +550,12 @@
                         goto end;
                     }
                 }
+            }
+
+            if(updatedatastatus("universitytuitionandfees" , $universityid) == false)
+            {
+                $db->rollback();
+                goto end;
             }
         }
 

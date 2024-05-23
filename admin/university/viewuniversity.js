@@ -1,11 +1,15 @@
 $(function()
 {
-    //Remove all the submit buttons from the page
-    $("button[type=submit]").remove();
-
     //Fetch the get parameters from the url
     let params = new URLSearchParams(window.location.search);
     let universityid = params.get("view");
+    let isedit = params.get("edit");
+
+    if(isedit != "edit")
+    {
+        //Remove all the submit buttons from the page
+        $("button[type=submit]").remove();   
+    }
 
     $.get("../controllers/university/getuniversitydata.php" , {"universityid" : universityid} , function(data)
     {
@@ -75,14 +79,21 @@ $(function()
 
                 $("#totalstudents").val(university.totalstudents);
 
+                //Hide the add buttons
+                if(isedit != "edit")
+                {
+                    $("#addothercampus").addClass("d-none");
+                    $("#addteamsandclubs").addClass("d-none");
+                    $("#addotherrankings").addClass("d-none");
+                    $("#addfacilityimages").addClass("d-none");   
+                }
+
+
                 //Get the list of cities and then set the selected city
                 getcities().then(function()
                 {
                     //Set the main campus city
                     $(`#maincampuscity [value=${university.maincampuscityid}]`).prop("selected" , true);
-
-                    //Hide the add other campus
-                    $("#addothercampus").addClass("d-none");
 
                     //Populate the other campus details and fill in the data
                     othercampusaddresses.forEach(function(othercampusaddress)
@@ -118,8 +129,7 @@ $(function()
                     }   
                 }
 
-                //Hide the add button for add other clubs and teams
-                $("#addteamsandclubs").addClass("d-none");
+                
 
                 //Loop through all the clubs and teams and display them
                 clubsandteams.forEach(function(clubandteam)
@@ -132,9 +142,6 @@ $(function()
                     //Hide the remove button for remove other clubs and teams
                     $(".removeteamsandclubs").remove();
                 });
-
-                //Hide the add button for add facility images
-                $("#addfacilityimages").addClass("d-none");
 
                 //Loop through all the facility images and display them
                 facilityimages.forEach(function(facilityimage , index)
@@ -164,8 +171,6 @@ $(function()
 
                 getrankawardingbodies().then(function()
                 {
-                    $("#addotherrankings").addClass("d-none");
-
                     //Loop through all the rankings and display them
                     universityrankings.forEach(function(ranking)
                     {
@@ -216,13 +221,16 @@ $(function()
                     });
                 });
 
-                //Disable the forms and checkboxes
-                $("#universityinformationform *:not(#courselevelsdropdown)").prop("disabled" , true);
-                $("#universityintellectualassets *").prop("disabled" , true);
-                $("#universityrankings *:not(#accreditationstatus)").prop("disabled" , true);
-                $("#universitystatistics *").prop("disabled" , true);
-                $("#tuitionandfees *:not(#otherfeesdropdown, #financialaiddropdown)").prop("disabled" , true);
-                $("input[type=checkbox]").prop("disabled" , true);
+                if(isedit != "edit")
+                {
+                    //Disable the forms and checkboxes
+                    $("#universityinformationform *:not(#courselevelsdropdown)").prop("disabled" , true);
+                    $("#universityintellectualassets *").prop("disabled" , true);
+                    $("#universityrankings *:not(#accreditationstatus)").prop("disabled" , true);
+                    $("#universitystatistics *").prop("disabled" , true);
+                    $("#tuitionandfees *:not(#otherfeesdropdown, #financialaiddropdown)").prop("disabled" , true);
+                    $("input[type=checkbox]").prop("disabled" , true);   
+                }
             }
         }
         catch(error)

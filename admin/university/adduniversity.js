@@ -8,7 +8,47 @@ $(function()
     getaccreditations();
     getrankawardingbodies();
 
-    let universityid = "";
+
+    //Extract get parameters from URL
+    let params = new URLSearchParams(window.location.search);
+    let isedit = params.get("edit");
+    let universityid = params.get("view");
+
+    if(isedit == "edit")
+    {
+        $("button[type=submit]").text("Edit");   
+    }
+
+    let controller;
+
+    let universitydatastatus;
+
+    async function getuniversitydatastatus()
+    {
+        await $.get("../controllers/university/getuniversitydatastatus.php" , {"universityid":universityid} , function(data)
+        {
+            try
+            {
+                //Parse the data received from the server
+                let response = JSON.parse(data);
+
+                //If the response is not successful, then show the error in alert
+                if(response.success == false)
+                {
+                    alert(response.error);
+                }
+                else
+                {
+                    universitydatastatus = response.universitydatastatus;  
+                    console.log(response);
+                }
+            }
+            catch(error)
+            {
+                alert("Error occurred while trying to read server response");
+            }
+        });
+    }
 
     $("#universityinformationform").on("submit" , function(e)
     {
@@ -69,43 +109,65 @@ $(function()
         formData.append('maincampuspostcode', maincampuspostcode);
         formData.append('othercampus', JSON.stringify(othercampus));
 
-        //Make an ajax call for adding the university
-        $.ajax({
-            url: "../controllers/university/adduniversity.php",
-            type: 'POST',
-            data: formData,
-            success: function(data) 
+        getuniversitydatastatus().then(function()
+        {
+            if(universitydatastatus != null)
             {
-                try
+                //Get the filename from href tag
+                let imagename = $("#viewuniversityimage").attr("href").split("/").pop();
+
+                formData.append("olduniversityimagename" , imagename);
+
+                controller = "edituniversity.php";
+            }
+            else
+            {
+                controller = "adduniversity.php";
+                formData.set("universityid" , "");
+            }
+
+
+            //Make an ajax call for adding the university
+            $.ajax({
+                url: `../controllers/university/${controller}`,
+                type: 'POST',
+                data: formData,
+                success: function(data) 
                 {
-                    //Parse the data received from the server
-                    let response = JSON.parse(data);
-
-                    //If the response is not successful, then show the error in alert
-                    if(response.success == false)
+                    try
                     {
-                        alert(response.error);
+                        //Parse the data received from the server
+                        let response = JSON.parse(data);
 
-                        //Redirect to login page if the user is required to be login again
-                        if(response.login == true)
+                        //If the response is not successful, then show the error in alert
+                        if(response.success == false)
                         {
-                            window.location.href = "../login/login.php";
+                            alert(response.error);
+
+                            //Redirect to login page if the user is required to be login again
+                            if(response.login == true)
+                            {
+                                window.location.href = "../login/login.php";
+                            }
+                        }
+                        else
+                        {
+                            universityid = response.universityid;
+                            alert("University data added successfully");
+                            if(isedit != "edit")
+                            {
+                                $("#universityinformationform *").prop("disabled" , true);   
+                            }
                         }
                     }
-                    else
+                    catch(error)
                     {
-                        universityid = response.universityid;
-                        alert("University added successfully");
-                        $("#universityinformationform *").prop("disabled" , true);
+                        alert("Error occurred while trying to read server response");
                     }
-                }
-                catch(error)
-                {
-                    alert("Error occurred while trying to read server response");
-                }
-            },
-            processData: false,
-            contentType: false
+                },
+                processData: false,
+                contentType: false
+            });
         });
     });
 
@@ -149,42 +211,72 @@ $(function()
             formData.append('facilityimages[]', file);
         });
 
-        //Make an ajax call for adding the university
-        $.ajax({
-            url: "../controllers/university/adduniversity.php",
-            type: 'POST',
-            data: formData,
-            success: function(data) 
+        getuniversitydatastatus().then(function()
+        {
+            controller = universitydatastatus.universityassets ? "edituniversity.php" : "adduniversity.php";  
+
+            if(controller == "edituniversity.php")
             {
-                try
+                let i =0;
+                $(".viewfacilityimage").each(function()
                 {
-                    //Parse the data received from the server
-                    let response = JSON.parse(data);
+                    i++;
+                });
+                formData.append("oldfacilityimagecount" , i);
+                
+                //Check if the href attribute is there or not
+                if($(".viewlogoimage").attr("href"))
+                {
+                    formData.append("oldlogoimagename" , $(".viewlogoimage").attr("href").split("/").pop());
+                }
+                if($(".viewmascotimage").attr("href"))
+                {
+                    formData.append("oldmascotimagename" , $(".viewmascotimage").attr("href").split("/").pop());
+                }
+            }
 
-                    //If the response is not successful, then show the error in alert
-                    if(response.success == false)
+            console.log(controller);
+
+            //Make an ajax call for adding the university
+            $.ajax({
+                url: `../controllers/university/${controller}`,
+                type: 'POST',
+                data: formData,
+                success: function(data) 
+                {
+                    try
                     {
-                        alert(response.error);
+                        //Parse the data received from the server
+                        let response = JSON.parse(data);
 
-                        //Redirect to login page if the user is required to be login again
-                        if(response.login == true)
+                        //If the response is not successful, then show the error in alert
+                        if(response.success == false)
                         {
-                            window.location.href = "../login/login.php";
+                            alert(response.error);
+
+                            //Redirect to login page if the user is required to be login again
+                            if(response.login == true)
+                            {
+                                window.location.href = "../login/login.php";
+                            }
+                        }
+                        else
+                        {
+                            alert("University data added successfully");
+                            if(isedit != "edit")
+                            {
+                                $("#universityintellectualassets *").prop("disabled" , true);
+                            }
                         }
                     }
-                    else
+                    catch(error)
                     {
-                        alert("University data added successfully");
-                        $("#universityintellectualassets *").prop("disabled" , true);
+                        alert("Error occurred while trying to read server response");
                     }
-                }
-                catch(error)
-                {
-                    alert("Error occurred while trying to read server response");
-                }
-            },
-            processData: false,
-            contentType: false
+                },
+                processData: false,
+                contentType: false
+            });
         });
     }); 
 
@@ -220,42 +312,50 @@ $(function()
         formData.append('accreditations', JSON.stringify(accreditations));
         formData.append('rankings', JSON.stringify(rankings));
 
-        //Make an ajax call for adding the university data
-        $.ajax({
-            url: "../controllers/university/adduniversity.php",
-            type: 'POST',
-            data: formData,
-            success: function(data) 
-            {
-                try
+        getuniversitydatastatus().then(function()
+        {
+            controller = universitydatastatus.universityrankings ? "edituniversity.php" : "adduniversity.php";
+
+            //Make an ajax call for adding the university data
+            $.ajax({
+                url: `../controllers/university/${controller}`,
+                type: 'POST',
+                data: formData,
+                success: function(data) 
                 {
-                    //Parse the data received from the server
-                    let response = JSON.parse(data);
-
-                    //If the response is not successful, then show the error in alert
-                    if(response.success == false)
+                    try
                     {
-                        alert(response.error);
+                        //Parse the data received from the server
+                        let response = JSON.parse(data);
 
-                        //Redirect to login page if the user is required to be login again
-                        if(response.login == true)
+                        //If the response is not successful, then show the error in alert
+                        if(response.success == false)
                         {
-                            window.location.href = "../login/login.php";
+                            alert(response.error);
+
+                            //Redirect to login page if the user is required to be login again
+                            if(response.login == true)
+                            {
+                                window.location.href = "../login/login.php";
+                            }
+                        }
+                        else
+                        {
+                            alert("University data added successfully");
+                            if(isedit != "edit")
+                            {
+                                $("#universityrankings *").prop("disabled" , true);
+                            }
                         }
                     }
-                    else
+                    catch(error)
                     {
-                        alert("University data added successfully");
-                        $("#universityrankings *").prop("disabled" , true);
+                        alert("Error occurred while trying to read server response");
                     }
-                }
-                catch(error)
-                {
-                    alert("Error occurred while trying to read server response");
-                }
-            },
-            processData: false,
-            contentType: false
+                },
+                processData: false,
+                contentType: false
+            });
         });
     });
 
@@ -278,42 +378,50 @@ $(function()
         formData.append('acceptancerate', acceptancerate);
         formData.append('graduateemploymentrate', graduateemploymentrate);
 
-        //Make an ajax call for adding the university data
-        $.ajax({
-            url: "../controllers/university/adduniversity.php",
-            type: 'POST',
-            data: formData,
-            success: function(data) 
-            {
-                try
+        getuniversitydatastatus().then(function()
+        {
+            controller = universitydatastatus.universitystatistics ? "edituniversity.php" : "adduniversity.php";
+            
+            //Make an ajax call for adding the university data
+            $.ajax({
+                url: `../controllers/university/${controller}`,
+                type: 'POST',
+                data: formData,
+                success: function(data) 
                 {
-                    //Parse the data received from the server
-                    let response = JSON.parse(data);
-
-                    //If the response is not successful, then show the error in alert
-                    if(response.success == false)
+                    try
                     {
-                        alert(response.error);
+                        //Parse the data received from the server
+                        let response = JSON.parse(data);
 
-                        //Redirect to login page if the user is required to be login again
-                        if(response.login == true)
+                        //If the response is not successful, then show the error in alert
+                        if(response.success == false)
                         {
-                            window.location.href = "../login/login.php";
+                            alert(response.error);
+
+                            //Redirect to login page if the user is required to be login again
+                            if(response.login == true)
+                            {
+                                window.location.href = "../login/login.php";
+                            }
+                        }
+                        else
+                        {
+                            alert("University data added successfully");
+                            if(isedit != "edit")
+                            {
+                                $("#universitystatistics *").prop("disabled" , true);
+                            }
                         }
                     }
-                    else
+                    catch(error)
                     {
-                        alert("University data added successfully");
-                        $("#universitystatistics *").prop("disabled" , true);
+                        alert("Error occurred while trying to read server response");
                     }
-                }
-                catch(error)
-                {
-                    alert("Error occurred while trying to read server response");
-                }
-            },
-            processData: false,
-            contentType: false
+                },
+                processData: false,
+                contentType: false
+            }); 
         });
     });
 
@@ -349,43 +457,50 @@ $(function()
         formData.append('otherfees', JSON.stringify(otherfees));
         formData.append('financialaids', JSON.stringify(financialaids));
 
-        //Make an ajax call for adding the university data
-        $.ajax({
-            url: "../controllers/university/adduniversity.php",
-            type: 'POST',
-            data: formData,
-            success: function(data) 
-            {
-                try
+        getuniversitydatastatus().then(function()
+        {
+            controller = universitydatastatus.universitytuitionandfees ? "edituniversity.php" : "adduniversity.php";
+
+            //Make an ajax call for adding the university data
+            $.ajax({
+                url: `../controllers/university/${controller}`,
+                type: 'POST',
+                data: formData,
+                success: function(data) 
                 {
-                    //Parse the data received from the server
-                    let response = JSON.parse(data);
-
-                    //If the response is not successful, then show the error in alert
-                    if(response.success == false)
+                    try
                     {
-                        alert(response.error);
+                        //Parse the data received from the server
+                        let response = JSON.parse(data);
 
-                        //Redirect to login page if the user is required to be login again
-                        if(response.login == true)
+                        //If the response is not successful, then show the error in alert
+                        if(response.success == false)
                         {
-                            window.location.href = "../login/login.php";
+                            alert(response.error);
+
+                            //Redirect to login page if the user is required to be login again
+                            if(response.login == true)
+                            {
+                                window.location.href = "../login/login.php";
+                            }
+                        }
+                        else
+                        {
+                            alert("University data added successfully");
+                            if(isedit != "edit")
+                            {
+                                $("#tuitionandfees *").prop("disabled" , true);
+                            }
                         }
                     }
-                    else
+                    catch(error)
                     {
-                        alert("University data added successfully");
-                        $("#tuitionandfees *").prop("disabled" , true);
+                        alert("Error occurred while trying to read server response");
                     }
-                }
-                catch(error)
-                {
-                    alert("Error occurred while trying to read server response");
-                }
-            },
-            processData: false,
-            contentType: false
-        });
-        
+                },
+                processData: false,
+                contentType: false
+            });
+        });        
     });
 })

@@ -1,7 +1,5 @@
 $(function()
 {
-    $(".currentpage").text("Dashboard");
-
     //Send the get request to OTP controller
     $("#sendotp").on("click" , function()
     {

@@ -356,16 +356,17 @@ checksession();
 <script src="../assets/js/utils.js"></script>
 <script src="university.js"></script>
 <?php
-    if(isset($_GET["view"]))
+    if(isset($_GET["edit"]) && isset($_GET["view"]))
     {
 ?>
         <script src="viewuniversity.js"></script>
+        <script src="adduniversity.js"></script>
 <?php
     }
-    else if(isset($_GET["edit"]))
+    else if(isset($_GET["view"]))
     {
 ?>
-        <script src="edituniversity.js"></script>
+        <script src="viewuniversity.js"></script>
 <?php
     }
     else

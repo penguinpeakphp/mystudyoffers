@@ -470,6 +470,14 @@ create table university
     universitystatus boolean not null default true
 );
 
+delimiter //
+drop trigger if exists updateuniversitydatastatus//
+create trigger updateuniversitydatastatus after insert on university for each row
+begin
+	insert into universitydatastatus(universityid , universityinformation) values(new.universityid , true);
+end//
+delimiter ;
+
 drop table if exists universityrankings;
 create table universityrankings
 (
@@ -494,6 +502,7 @@ create table universitydatastatus
 (
 	universityid varchar(50) not null,
     universityinformation boolean not null default false,
+    universityassets boolean not null default false,
     universityrankings boolean not null default false,
     universitystatistics boolean not null default false,
     universitytuitionandfees boolean not null default false,

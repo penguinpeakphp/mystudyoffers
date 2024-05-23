@@ -1,5 +1,7 @@
 $(function()
 {
+    $(".currentpage").text("Change Password");
+
     $("#changepassword").on("submit", function(e)
     {
         e.preventDefault();
