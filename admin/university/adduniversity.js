@@ -20,7 +20,6 @@ $(function()
     }
 
     let controller;
-
     let universitydatastatus;
 
     async function getuniversitydatastatus()
@@ -109,6 +108,7 @@ $(function()
         formData.append('maincampuspostcode', maincampuspostcode);
         formData.append('othercampus', JSON.stringify(othercampus));
 
+        console.log(universityid);
         getuniversitydatastatus().then(function()
         {
             if(universitydatastatus != null)
@@ -125,6 +125,9 @@ $(function()
                 controller = "adduniversity.php";
                 formData.set("universityid" , "");
             }
+
+            console.log(universitydatastatus);
+            console.log(controller);
 
 
             //Make an ajax call for adding the university
@@ -153,6 +156,7 @@ $(function()
                         else
                         {
                             universityid = response.universityid;
+                            console.log("after " + universityid);
                             alert("University data added successfully");
                             if(isedit != "edit")
                             {

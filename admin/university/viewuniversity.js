@@ -88,6 +88,15 @@ $(function()
                     $("#addfacilityimages").addClass("d-none");   
                 }
 
+                //Hide the remove buttons
+                if(isedit != "edit")
+                {
+                    $(".removeotherranking").addClass("d-none");
+                    $(".removefacilityimages").addClass("d-none");
+                    $(".removeteamsandclubs").addClass("d-none");
+                    $(".removeothercampus").addClass("d-none");
+                }
+
 
                 //Get the list of cities and then set the selected city
                 getcities().then(function()
@@ -105,8 +114,6 @@ $(function()
                         lastOtherCampus.find("input[name=othercampusstreetaddress]").val(othercampusaddress.othercampusstreetaddress);
                         lastOtherCampus.find("input[name=othercampuspostcode]").val(othercampusaddress.othercampuspostcode);
                         lastOtherCampus.find(`select[name=othercampuscity] [value=${othercampusaddress.othercampuscityid}]`).prop("selected" , true);
-
-                        lastOtherCampus.find(".removeothercampus").addClass("d-none");
                     });
                 });
 
@@ -128,7 +135,6 @@ $(function()
                         $("#viewmascotimage").attr("target" , "_blank");
                     }   
                 }
-
                 
 
                 //Loop through all the clubs and teams and display them
@@ -138,16 +144,13 @@ $(function()
 
                     let lastClubAndTeam = $("#otherteamsandclubslist .otherteamsandclubs").last();
                     lastClubAndTeam.val(clubandteam);
-
-                    //Hide the remove button for remove other clubs and teams
-                    $(".removeteamsandclubs").remove();
                 });
 
                 //Loop through all the facility images and display them
                 facilityimages.forEach(function(facilityimage , index)
                 {
                     $("#addfacilityimages").click();
-                    $(".facilityimages").remove();
+                    $("#facilityimageslist .facilityimages").remove();
 
                     let lastFacilityImage = $("#facilityimageslist .viewfacilityimage").last();
 
@@ -155,9 +158,6 @@ $(function()
                     lastFacilityImage.text("Image " + (index + 1));
                     lastFacilityImage.attr("href" , "../universitydata/" + university.universityid + "/" + facilityimage);
                     lastFacilityImage.attr("target" , "_blank");
-
-                    //Hide the remove facility images
-                    $(".removefacilityimages").addClass("d-none");
                 });
 
                 //Get the list of accreditations and then set the selected accreditations
@@ -182,8 +182,6 @@ $(function()
                         lastRanking.find("input[name=yearofranking]").val(ranking.yearofranking);
                         lastRanking.find(`select[name=rankawardingbodies] [value=${ranking.rankawardingbodyid}]`).prop("selected" , true);
                         lastRanking.find("textarea[name=description]").val(ranking.description);
-
-                        lastRanking.find(".removeotherranking").addClass("d-none");
                     });
                 });
 

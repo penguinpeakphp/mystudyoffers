@@ -325,7 +325,11 @@
                 }
             }
 
-            updatedatastatus("universityassets" , $universityid);
+            if(updatedatastatus("universityassets" , $universityid) == false)
+            {
+                $db->rollback();
+                goto end;
+            }
         }
 
         //Third step of adding university
@@ -334,7 +338,7 @@
             //Check university id is provided or not
             if(!checkuniversityid())
             {
-                failure($response , "Error while adding unversity rankings due to missing ID");
+                failure($response , "Error while adding university rankings due to missing ID");
                 $db->rollback();
                 goto end;
             }
@@ -353,6 +357,7 @@
             $_POST["accreditations"] = json_decode($_POST["accreditations"]);
             $_POST["rankings"] = json_decode($_POST['rankings']);
 
+            //Loop through the accreditations and insert the data into the table
             foreach($_POST["accreditations"] as $accreditation)
             {
                 //Query the database for inserting accreditations
@@ -378,6 +383,7 @@
                 }
             }
 
+            //Loop through the rankings and insert the data into the table
             foreach($_POST["rankings"] as $ranking)
             {
                 //Query the database for inserting rankings
@@ -403,7 +409,11 @@
                 }
             }
 
-            updatedatastatus("universityrankings" , $universityid);
+            if(updatedatastatus("universityrankings" , $universityid) == false)
+            {
+                $db->rollback();
+                goto end;
+            }
 
         }
 
@@ -418,6 +428,8 @@
                 goto end;
             }
 
+            $universityid = $_POST["universityid"];
+
             //Create the directory with name as universityid
             if(!createdir($universityid))
             {
@@ -425,8 +437,6 @@
                 $db->rollback();
                 goto end;
             }
-
-            $universityid = $_POST["universityid"];
 
             //Query the database for inserting statistics
             $insert = $db->prepare("INSERT INTO universitystatistics(universityid , totalstudents , totalinternationalstudents , acceptancerate , graduateemploymentrate) VALUES(? , ? , ? , ? , ?)");
@@ -450,7 +460,11 @@
                 }
             }
 
-            updatedatastatus("universitystatistics" , $universityid);
+            if(updatedatastatus("universitystatistics" , $universityid) == false)
+            {
+                $db->rollback();
+                goto end;
+            }
         }
 
         //Fifth step of adding university
@@ -464,6 +478,8 @@
                 goto end;
             }
 
+            $universityid = $_POST["universityid"];
+
             //Create the directory with name as universityid
             if(!createdir($universityid))
             {
@@ -471,8 +487,6 @@
                 $db->rollback();
                 goto end;
             }
-
-            $universityid = $_POST["universityid"];
 
             //Query the database for inserting fees into the table
             $insert = $db->prepare("INSERT INTO universityfees(universityid , applicationfee , tuitionfee) VALUES(? , ? , ?)");
