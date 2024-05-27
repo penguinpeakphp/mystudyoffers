@@ -224,18 +224,18 @@ $(function()
                 formData.append("oldfacilityimagecount" , i);
                 
                 //Check if the href attribute is there or not
-                if($(".viewlogoimage").attr("href"))
+                if($("#viewlogoimage").attr("href") != "javascript:void(0)")
                 {
-                    formData.append("oldlogoimagename" , $(".viewlogoimage").attr("href").split("/").pop());
+                    formData.append("oldlogoimagename" , $("#viewlogoimage").attr("href").split("/").pop());
                 }
                 else
                 {
                     formData.append("oldlogoimagename" , "");
                 }
 
-                if($(".viewmascotimage").attr("href"))
+                if($("#viewmascotimage").attr("href") != "javascript:void(0)")
                 {
-                    formData.append("oldmascotimagename" , $(".viewmascotimage").attr("href").split("/").pop());
+                    formData.append("oldmascotimagename" , $("#viewmascotimage").attr("href").split("/").pop());
                 }
                 else
                 {

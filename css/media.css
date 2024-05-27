@@ -1,0 +1,256 @@
+@media only screen and (max-width: 1199px) {
+  .navbar-light .navbar-nav .nav-link {
+    font-size: 14px;
+  }
+
+  img.about-img2 {
+    width: 59%;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .main_menu .navbar-toggler {
+    padding: 0px;
+    font-size: 28px;
+    line-height: 0;
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 0px;
+    transition: none;
+    box-shadow: none !important;
+    margin-top: 8px;
+  }
+
+  .main_menu .navbar-light .navbar-toggler-icon {
+    background-image: none !important;
+  }
+
+  .navbar-collapse {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    width: 300px;
+    height: 100%;
+    background: #41034c;
+    z-index: 999;
+  }
+
+  .navbar-collapse.collapsing {
+    left: -75%;
+    transition: height 0s ease;
+  }
+
+  .navbar-collapse.show {
+    left: 0;
+    transition: left 0.3s ease-in-out;
+  }
+
+  .navbar-toggler.collapsed ~ .navbar-collapse {
+    transition: left 0.5s ease-in-out;
+  }
+
+  .navbar-light .navbar-nav .nav-item {
+    border-bottom: #530561 1px solid;
+  }
+
+  .navbar-light .navbar-nav a.nav-link.donate-btn {
+    margin: 10px 0px;
+    text-align: center;
+  }
+
+  .navbar-light .navbar-nav .nav-item:last-child {
+    border-bottom: 0px;
+  }
+
+  .navbar-light .navbar-nav .nav-link {
+    font-size: 14px;
+    color: #fff;
+  }
+
+  .navbar-light .navbar-nav .info-text {
+    font-size: 14px;
+    color: #fff;
+    margin-top: 20px;
+  }
+  .header-info {
+    display: none;
+  }
+
+  .header-btn {
+    display: none;
+  }
+
+  .logo-img img {
+    height: 60px;
+  }
+
+  span.save {
+    width: 130px;
+    height: 130px;
+    padding: 23px 5px;
+  }
+  .footer-top img {
+    margin-bottom: 30px;
+  }
+
+  .footer-middile ul {
+    margin-bottom: 30px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .footer-bottom ul {
+    display: inline-block;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .newsletter-box {
+    padding: 15px;
+  }
+
+  .newsleter-form input {
+    width: calc(100% - 60px);
+  }
+}
+@media only screen and (max-width: 380px) {
+  .navbar-collapse {
+    width: 280px;
+  }
+
+  .events-col img {
+    margin-bottom: 20px;
+    height: auto;
+  }
+
+  img.about-img2 {
+    width: 54%;
+    height: 150px;
+  }
+
+  img.about-img1 {
+    margin: 30px 20px 20px 0px;
+    height: 120px;
+  }
+
+  img.about-img3 {
+    height: 100px;
+  }
+
+  .about-col h3 {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .mystudy-dashboard .sidemenu .mobile-menu-toggle {
+    font-size: 40px;
+    width: 100%;
+    background-color: #fff;
+  }
+  .mystudy-dashboard .sidemenu .mobile-menu-toggle span {
+    font-size: 25px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    bottom: 10px;
+  }
+  .mystudy-dashboard .sidemenu {
+    max-width: 100%;
+    height: auto !important;
+    padding-right: 0;
+  }
+  .mystudy-dashboard .sidemenu ul {
+    display: none;
+  }
+  .mystudy-dashboard .sidemenu ul li.active {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: #fff;
+    width: initial;
+  }
+  .mystudy-dashboard .sidemenu .mst-logo {
+    display: none;
+  }
+  .mystudy-dashboard .sidemenu.active ul.menu-list {
+    display: block;
+    min-width: 350px;
+  }
+  .mystudy-dashboard .right-content {
+   max-width: 350px;
+}
+.right-content .detail  .visa-application img  {
+  height: 100px;
+}
+.mystudy-dashboard .left-content{
+  margin:0 auto;
+}
+}
+@media (max-width: 767px) {
+  .mystudy-dashboard .right-content .header-section .flex-item-2 {
+    display: none;
+  }
+  .mystudy-dashboard {
+    flex-wrap: wrap !important;
+    margin: 30px 0px;
+  }
+  .mystudy-dashboard .right-content .banner-section {
+    height: auto;
+    flex-direction: column;
+    background-image: none !important;
+  }
+  .mystudy-dashboard .right-content .banner-section .banner-content {
+    padding: 15px;
+  }
+  .mystudy-dashboard .right-content .banner-section .banner-content h2 {
+    font-size: 28px;
+    line-height: 45px;
+  }
+  .mystudy-dashboard .right-content .banner-section .banner-content p {
+    font-size: 18px;
+    line-height: 23px;
+    margin-bottom: 10px;
+  }
+  .progress-container {
+    width: 100%;
+  }
+  .right-content .detail .visa-application h2  {
+    font-size: 21px;
+    margin-bottom: 2px;
+  }
+
+  .right-content .detail .visa-application a {
+    font-size: 0.9em;
+    padding: 8px 16px;
+  }
+  .progress-container .my-progress-bar .label {
+    font-size: 12px;
+  }
+  .mystudy-dashboard .right-content .banner-section::before{
+    background-image: none !important;
+  }
+  .right-content .detail .education-detail .accordions .accordion-item .accordion-content .progress-bar {
+
+       width: 230px; 
+      display: table-row !important;
+      
+  
+  }
+}
+
+@media (max-width: 480px) {
+  .right-content .detail .visa-application h2  {
+    font-size: 21px;
+    margin-bottom: 2px;
+  }
+
+  .right-content .detail .visa-application a {
+    font-size: 0.8em;
+    padding: 6px 12px;
+  }
+  .travel-bookcontainer h2 {
+    font-size: 30px;
+  }
+}

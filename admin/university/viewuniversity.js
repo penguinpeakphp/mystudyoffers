@@ -158,38 +158,38 @@ $(function()
                         $("#viewlogoimage").attr("href" , "../universitydata/" + university.universityid + "/" + universityassets.logoimage);
                         $("#viewlogoimage").attr("target" , "_blank");
 
-                        // $("#deletelogoimage").removeClass("d-none");
-                        // $("#deletelogoimage").on("click" , function()
-                        // {
-                        //     if(confirm("Are you sure you want to delete the image?") == false)
-                        //     {
-                        //         return;
-                        //     }
+                        $("#deletelogoimage").removeClass("d-none");
+                        $("#deletelogoimage").on("click" , function()
+                        {
+                            if(confirm("Are you sure you want to delete the image?") == false)
+                            {
+                                return;
+                            }
 
-                        //     $.get("../controllers/university/deleteuniversitydata.php" , {"logoimage":universityassets.logoimage , "universityid":universityid} , function(data)
-                        //     {
-                        //         try
-                        //         {
-                        //             //Parse the data received from the server
-                        //             let response = JSON.parse(data);
+                            $.get("../controllers/university/deleteuniversitydata.php" , {"logoimage":universityassets.logoimage , "universityid":universityid} , function(data)
+                            {
+                                try
+                                {
+                                    //Parse the data received from the server
+                                    let response = JSON.parse(data);
 
-                        //             //If the response is not successful, then show the error in alert
-                        //             if(response.success == false)
-                        //             {
-                        //                 alert(response.error);
-                        //             }
-                        //             else
-                        //             {
-                        //                 $("#viewlogoimage").addClass("d-none");
-                        //                 $("#deletelogoimage").addClass("d-none");
-                        //             }
-                        //         }
-                        //         catch(error)
-                        //         {
-                        //             alert("Error occurred while trying to read server response");
-                        //         }
-                        //     });
-                        // });
+                                    //If the response is not successful, then show the error in alert
+                                    if(response.success == false)
+                                    {
+                                        alert(response.error);
+                                    }
+                                    else
+                                    {
+                                        $("#viewlogoimage").addClass("d-none");
+                                        $("#deletelogoimage").addClass("d-none");
+                                    }
+                                }
+                                catch(error)
+                                {
+                                    alert("Error occurred while trying to read server response");
+                                }
+                            });
+                        });
                     }
     
                     //If the file was uploaded, then display the view image link
@@ -198,6 +198,39 @@ $(function()
                         $("#viewmascotimage").removeClass("d-none");
                         $("#viewmascotimage").attr("href" , "../universitydata/" + university.universityid + "/" + universityassets.mascotimage);
                         $("#viewmascotimage").attr("target" , "_blank");
+
+                        $("#deletemascotimage").removeClass("d-none");
+                        $("#deletemascotimage").on("click" , function()
+                        {
+                            if(confirm("Are you sure you want to delete the image?") == false)
+                            {
+                                return;
+                            }
+
+                            $.get("../controllers/university/deleteuniversitydata.php" , {"mascotimage":universityassets.mascotimage , "universityid":universityid} , function(data)
+                            {
+                                try
+                                {
+                                    //Parse the data received from the server
+                                    let response = JSON.parse(data);
+
+                                    //If the response is not successful, then show the error in alert
+                                    if(response.success == false)
+                                    {
+                                        alert(response.error);
+                                    }
+                                    else
+                                    {
+                                        $("#viewmascotimage").addClass("d-none");
+                                        $("#deletemascotimage").addClass("d-none");
+                                    }
+                                }
+                                catch(error)
+                                {
+                                    alert("Error occurred while trying to read server response");
+                                }
+                            });
+                        });
                     }   
                 }
 
