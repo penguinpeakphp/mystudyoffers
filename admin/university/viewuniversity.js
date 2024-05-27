@@ -58,6 +58,39 @@ $(function()
                     $("#viewuniversityimage").removeClass("d-none");
                     $("#viewuniversityimage").attr("href" , "../universitydata/" + university.universityid + "/" + university.universityimage);
                     $("#viewuniversityimage").attr("target" , "_blank");
+
+                    $("#deleteuniversityimage").removeClass("d-none");
+                    $("#deleteuniversityimage").on("click" , function()
+                    {
+                        if(confirm("Are you sure you want to delete the image?") == false)
+                        {
+                            return;
+                        }
+
+                        $.get("../controllers/university/deleteuniversitydata.php" , {"universityimage":university.universityimage , "universityid":universityid} , function(data)
+                        {
+                            try
+                            {
+                                //Parse the data received from the server
+                                let response = JSON.parse(data);
+
+                                //If the response is not successful, then show the error in alert
+                                if(response.success == false)
+                                {
+                                    alert(response.error);
+                                }
+                                else
+                                {
+                                    $("#viewuniversityimage").addClass("d-none");
+                                    $("#deleteuniversityimage").addClass("d-none");
+                                }
+                            }
+                            catch(error)
+                            {
+                                alert("Error occurred while trying to read server response");
+                            }
+                        });
+                    });
                 }
 
                 //Get the level of courses and check the selected courses
@@ -97,7 +130,6 @@ $(function()
                     $(".removeothercampus").addClass("d-none");
                 }
 
-
                 //Get the list of cities and then set the selected city
                 getcities().then(function()
                 {
@@ -125,6 +157,39 @@ $(function()
                         $("#viewlogoimage").removeClass("d-none");
                         $("#viewlogoimage").attr("href" , "../universitydata/" + university.universityid + "/" + universityassets.logoimage);
                         $("#viewlogoimage").attr("target" , "_blank");
+
+                        // $("#deletelogoimage").removeClass("d-none");
+                        // $("#deletelogoimage").on("click" , function()
+                        // {
+                        //     if(confirm("Are you sure you want to delete the image?") == false)
+                        //     {
+                        //         return;
+                        //     }
+
+                        //     $.get("../controllers/university/deleteuniversitydata.php" , {"logoimage":universityassets.logoimage , "universityid":universityid} , function(data)
+                        //     {
+                        //         try
+                        //         {
+                        //             //Parse the data received from the server
+                        //             let response = JSON.parse(data);
+
+                        //             //If the response is not successful, then show the error in alert
+                        //             if(response.success == false)
+                        //             {
+                        //                 alert(response.error);
+                        //             }
+                        //             else
+                        //             {
+                        //                 $("#viewlogoimage").addClass("d-none");
+                        //                 $("#deletelogoimage").addClass("d-none");
+                        //             }
+                        //         }
+                        //         catch(error)
+                        //         {
+                        //             alert("Error occurred while trying to read server response");
+                        //         }
+                        //     });
+                        // });
                     }
     
                     //If the file was uploaded, then display the view image link
@@ -135,7 +200,6 @@ $(function()
                         $("#viewmascotimage").attr("target" , "_blank");
                     }   
                 }
-                
 
                 //Loop through all the clubs and teams and display them
                 clubsandteams.forEach(function(clubandteam)
@@ -151,6 +215,7 @@ $(function()
                 {
                     $("#addfacilityimages").click();
                     $("#facilityimageslist .facilityimages").remove();
+                    $("#facilityimageslist .removefacilityimages").addClass("d-none");
 
                     let lastFacilityImage = $("#facilityimageslist .viewfacilityimage").last();
 

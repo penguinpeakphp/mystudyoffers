@@ -233,7 +233,7 @@
             }
 
             $db->begin_transaction();
-
+            
             //Query the database to update the university assets
             $update = $db->prepare("UPDATE universityassets SET logoimage = ? , mascotimage = ? WHERE universityid = ?");
             if($update == false)

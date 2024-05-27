@@ -95,6 +95,7 @@ checksession();
                                         <div class="col-6">
                                             <label for="universityimage" class="form-label">University Image</label>
                                             <a href="javascript:void(0)" id="viewuniversityimage" class="d-none">View File</a>
+                                            <a href="javascript:void(0)" id="deleteuniversityimage" class="d-none">Delete File</a>
                                             <input type="file" class="form-control" id="universityimage" name="universityimage" accept="image/jpeg, image/png">
                                         </div>
                                         <div class="col-6">
@@ -186,11 +187,13 @@ checksession();
                                         <div class="col-6">
                                             <label for="logoimage" class="form-label">Logo Image</label>
                                             <a href="javascript:void(0)" id="viewlogoimage" class="d-none">View File</a>
+                                            <a href="javascript:void(0)" id="deletelogoimage" class="d-none">Delete File</a>
                                             <input type="file" class="form-control" id="logoimage" accept="image/jpeg, image/png">
                                         </div>
                                         <div class="col-6">
                                             <label for="mascotimage" class="form-label">Mascot Image</label>
                                             <a href="javascript:void(0)" id="viewmascotimage" class="d-none">View File</a>
+                                            <a href="javascript:void(0)" id="deletemascotimage" class="d-none">Delete File</a>
                                             <input type="file" class="form-control" id="mascotimage" accept="image/jpeg, image/png">
                                         </div>
                                         <div id="otherteamsandclubslist">
@@ -216,6 +219,7 @@ checksession();
                                         <div id="facilityimagestemplate" class="d-none">
                                             <div class="col-6">
                                                 <a href="javascript:void(0)"  class="d-none viewfacilityimage"></a>
+                                                <a href="javascript:void(0)" class="d-none deletefacilityimage">Delete File</a>
                                                 <input type="file" class="form-control facilityimages" name="facilityimages" accept="image/jpeg, image/png">
                                             </div>
                                             <div class="col-4 mt-3">

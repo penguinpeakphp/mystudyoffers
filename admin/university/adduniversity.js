@@ -39,7 +39,6 @@ $(function()
                 else
                 {
                     universitydatastatus = response.universitydatastatus;  
-                    console.log(response);
                 }
             }
             catch(error)
@@ -126,9 +125,6 @@ $(function()
                 formData.set("universityid" , "");
             }
 
-            console.log(universitydatastatus);
-            console.log(controller);
-
 
             //Make an ajax call for adding the university
             $.ajax({
@@ -156,7 +152,6 @@ $(function()
                         else
                         {
                             universityid = response.universityid;
-                            console.log("after " + universityid);
                             alert("University data added successfully");
                             if(isedit != "edit")
                             {
@@ -233,13 +228,20 @@ $(function()
                 {
                     formData.append("oldlogoimagename" , $(".viewlogoimage").attr("href").split("/").pop());
                 }
+                else
+                {
+                    formData.append("oldlogoimagename" , "");
+                }
+
                 if($(".viewmascotimage").attr("href"))
                 {
                     formData.append("oldmascotimagename" , $(".viewmascotimage").attr("href").split("/").pop());
                 }
+                else
+                {
+                    formData.append("oldmascotimagename" , "");
+                }
             }
-
-            console.log(controller);
 
             //Make an ajax call for adding the university
             $.ajax({
@@ -248,6 +250,7 @@ $(function()
                 data: formData,
                 success: function(data) 
                 {
+                    console.log(data);
                     try
                     {
                         //Parse the data received from the server
