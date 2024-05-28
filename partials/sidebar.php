@@ -1,59 +1,66 @@
-<div class="sidemenu">
-    <div class="mobile-menu-toggle d-lg-none d-sm-block" id="mobileMenuToggle">
-        <span class="navbar-toggler-icon">
-            <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 6H20M4 12H20M4 18H20" stroke="#000843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-        </span>
-        <span>My Accounts</span>
-    </div>
-    <ul class="mb-4">
-        <li>
-            <div class="logo-details">
-                <img src="images/logo.png" class="img-fluid" />
-            </div>
-        </li>
-        <li style="display: flex;gap: 20px; align-items: center;">
-            <i class="bx bxs-user-circle"></i>
-            <span class="link_name">My Account</span>
-        </li>
-        <li>
-            <a href="dashboard.php">
-                <i class="bx bxs-fridge"></i>
-                <span class="link_name">Dashboard</span>
-            </a>
-        </li>
-        <li>
-            <a href="editprofile.php">
-                <i class="bx bxs-user"></i>
-                <span class="link_name">Edit Profile</span>
-            </a>
-        </li>
-        <li>
-            <a href="queries.php">
-                <i class="bx bxs-chat"></i>
-                <span class="link_name">Ask Queries (<span class="chatnums"></span>)</span>
-            </a>
-        </li>
-        <li>
-            <a href="changepassword.php">
-                <i class="bx bxs-lock"></i>
-                <span class="link_name">Change Password</span>
-            </a>
-        </li>
-        <li>
-            <a href="javascript:void(0)" class="logout">
-                <i class="bx bxs-log-out"></i>
-                <span class="link_name">Logout</span>
-            </a>
-        </li>
-    </ul>
-    <div class="query-section">
-        <div class="query-info">
-            <img src="images/icons/message-question.svg" class="img-fluid" />
-            <a href="#">
-                <h3>Need Help</h3>
-            </a>
+<div class="left-content">
+    <div class="sidemenu">
+        <ul class="mst-logo">
+            <li style="background-color: #ffbf21">
+                <div class="logo-imgcontainer">
+                    <img src="images/logo.png" class="img-fluid">
+                </div>
+            </li>
+        </ul>
+        <div class="mobile-menu-toggle d-lg-none d-sm-block" id="mobileMenuToggle">
+            <i class="bx bx-menu"></i>
+            <span>My Accounts-list</span>
         </div>
+        <ul class="mb-4 menu-list">
+            <li>
+                <a href="">
+                    <i class="bx bx-user-circle"></i>
+                    <span>MY Account</span>
+                </a>
+            </li>
+            <li>
+                <a href="dashboard.php">
+                    <i class="bx bxs-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="editprofile.php">
+                    <i class="bx bxs-user"></i>
+                    <span>MY Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="queries.php">
+                    <i class="bx bx-question-mark"></i>
+                    <span>Queries</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="logout">
+                    <i class="bx bx-log-out"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="education-loan">
+        <img src="images/ms_imgs/education-loan.jpg" class="img-fluid bg-img">
+        <h3><img src="images/ms_imgs/education.png" class="img-fluid icon">Education Loan</h3>
+    </div>
+    <div class="education-loan">
+        <img src="images/ms_imgs/scholarship.jpg" class="img-fluid bg-img">
+        <h3><img src="images/ms_imgs/scholarship.png" class="img-fluid icon">Scholarship</h3>
+    </div>
+    <div class="education-loan">
+        <img src="images/ms_imgs/3.jpg" class="img-fluid bg-img">
+        <h3><img src="images/ms_imgs/misto-buddies.png" class="img-fluid icon">Misto Buddies</h3>
+    </div>
+    <div class="need-help-container">
+        <img src="images/ms_imgs/need-help.jpg" class="img-fluid">
+        <a href="">Check Us Now</a>
+    </div>
+    <div class="accomodation-container">
+        <img src="images/ms_imgs/accomodation.jpg" class="img-fluid">
     </div>
 </div>

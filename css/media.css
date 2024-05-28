@@ -232,12 +232,26 @@
     background-image: none !important;
   }
   .right-content .detail .education-detail .accordions .accordion-item .accordion-content .progress-bar {
-
        width: 230px; 
       display: table-row !important;
-      
-  
-  }
+        }
+  .right-content .add-question .input-container {
+    flex-wrap: wrap !important;
+}
+.right-content .add-question input[type="text"] {
+  width: 100% !important;
+}
+.right-content .add-question .question-button {
+  margin-top: 20px;
+  width: 100%;
+  position: relative;
+}
+.right-content .query-list .table-responsive {
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
+  max-width: 400px;
+}
 }
 
 @media (max-width: 480px) {

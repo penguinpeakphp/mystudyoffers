@@ -1,5 +1,7 @@
 $(function()
 {
+    $(".currentpage").text("Dashboard");
+
     //Send the get request to OTP controller
     $("#sendotp").on("click" , function()
     {
@@ -145,21 +147,16 @@ $(function()
                     academic.awardingbodyname = academic.awardingbodyname == null ? "-" : academic.awardingbodyname;
 
                     $("#academicdetail").append(`
-                        <div class="mb-3">
-                            <span class="education-title">
-                                ${academic.academicname} > ${academic.majorsubjectname} <!--<span class="border-line"></span>-->
-                                <span></span>
+                        <div class="according-text">
+                            <h5> ${academic.academicname} > ${academic.majorsubjectname} </h5>
+                            <a href="academicprofile1.php">Edit</a>
                         </div>
-                        <div class="education mb-3">
-                            <div class="subject-row">
-                                <div class="progress-bar">
-                                    <div class="progress-fill pboxwidth">Passing Year<br>${academic.passingyear}</div>
-                                    <div class="progress-fill pboxwidth">Result<br>${academic.resultname}</div>
-                                    <div class="progress-fill pboxwidth" title="CBSE">Awarding Body<br>${academic.awardingbodyname}</div>
-                                </div>
-                            </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill pboxwidth">Passing Year ${academic.passingyear}</div>
+                            <div class="progress-fill pboxwidth">Result ${academic.resultname}</div>
+                            <div class="progress-fill pboxwidth" title="CBSE">Awarding Body ${academic.awardingbodyname}</div>
                         </div>
-                    `);
+                    `)
                 }
             }
         }
@@ -191,29 +188,23 @@ $(function()
                 //Loop through the qualifications and render it in the dashboard
                 for(let i=0; i<response.qualifications.length; i++)
                 {
-                    let qualification = response.qualifications[i];
+                    let qualification = response.qualifications[i]; 
+
                     $("#qualificationlevel").append(`
-                        <div class="education mb-3">
-                            <div class="subject-row">
-                                <div class="progress-bar">
-                                    <div class="progress-fill pboxwidth_full">${qualification.qualificationname}</div>
-                                </div>
-                            </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill pboxwidth">${qualification.qualificationname}</div>
                         </div>
-                    `);
+                    `)
                 }
 
                 //Loop through the qualification subs and render it in the dashboard
                 for(let i=0; i<response.qualificationsubs.length; i++)
                 {
                     let qualificationsub = response.qualificationsubs[i];
+
                     $("#nextqualification").append(`
-                        <div class="education mb-3">
-                            <div class="subject-row">
-                                <div class="progress-bar">
-                                    <div class="progress-fill pboxwidth_full">${qualificationsub.qualificationsubname}</div>
-                                </div>
-                            </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill pboxwidth">${qualificationsub.qualificationsubname}</div>
                         </div>
                     `);
                 }
@@ -248,8 +239,11 @@ $(function()
                 for(let i=0; i<response.testtypetestscores.length; i++)
                 {
                     let testtypetestscore = response.testtypetestscores[i];
+
                     $("#testscores").append(`
-                        <div class="progress-fill pboxwidth col-4 my-1">${testtypetestscore.testname}<br>${testtypetestscore.testscore} </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill pboxwidth">${testtypetestscore.testname}<br>${testtypetestscore.testscore}</div>
+                        </div>
                     `);
                 }
                 $("#workexperience").text(response.workexperiencename);
