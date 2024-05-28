@@ -2,69 +2,57 @@
 require_once "controllers/functions/globalfunctions.php";
 
 checksession();
+
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <!-- Required meta ta-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!--fontawesome
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">-->
-
-    <!-- font-awesome css -->
-    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
-
-    <!-- Elmentkit Icon CSS -->
-    <link rel="stylesheet" type="text/css" href="elementskit-icon-pack/assets/css/ekiticons.css">
-
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-
-
+    <title>Conversation - My Study Offers</title>
+    <link rel="icon" href="images/logo-img.png" type="image/png" sizes="16x16" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="css/media.css" />
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
-
-    <title>Conversation - MyStudyOffers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
     <?php
     require_once "partials/header.php";
     ?>
-
-    <div class="container">
-
-        <div class="content-section">
-            <?php
-            require_once "partials/sidebar.php";
-            ?>
-
-            <section class="main">
-                <section class="header-section">
+    <div class="main">
+        <div class="container">
+            <div class="mystudy-dashboard">
+                <div class="left-content">
                     <?php
-                    require_once "partials/headersection.php";
+                    require_once "partials/sidebar.php";
                     ?>
-                </section>
-
-                <section>
-                    <div class="review-section">
+                </div>
+                <div class="right-content">
+                    <div class="header-section mb-4">
+                        <?php
+                        require_once "partials/headernav.php";
+                        ?>
                     </div>
-                </section>
-        </div>
-    </div>
-    </section>
 
-    <?php
-    require_once "partials/footer.php";
-    ?>
-    <script src="js/conversation.js"></script>
+                    <section>
+                        <div class="review-section">
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <?php
+        require_once "partials/footer.php";
+        ?>
+
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/custom.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script src="js/conversation.js"></script>
 
 </body>
 

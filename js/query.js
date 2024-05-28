@@ -1,6 +1,6 @@
 $(function()
 {
-    $(".currentpage").text("Ask Queries").prev().remove();
+    $(".currentpage").text("Ask Queries");
 
     //Function for getting query lists
     function getquerylist()
