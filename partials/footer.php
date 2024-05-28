@@ -258,8 +258,8 @@
                 <input type="number" placeholder="Enter OTP" class="form-control" id="OTP" />
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary col-6" id="verifyotp">Verify</button>
-                <button type="button" class="btn btn-secondary col-6" id="resendotp">Resend</button>
+                <button type="button" class="btn btn-secondary col-12" id="verifyotp">Verify</button>
+                <button type="button" class="btn btn-secondary col-12" id="resendotp">Resend</button>
             </div>
             </div>
         </div>
@@ -325,4 +325,14 @@
             $('.loader').hide(); /* Hide loader when AJAX completes */
         });
 
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+            const sideMenu = document.querySelector(".sidemenu");
+
+            mobileMenuToggle.addEventListener("click", function() {
+                sideMenu.classList.toggle("active");
+            });
+        });
     </script>

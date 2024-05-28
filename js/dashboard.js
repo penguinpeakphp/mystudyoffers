@@ -137,6 +137,11 @@ $(function()
             }
             else
             {
+                $("#academicdetail").append(`
+                    <div class="text-end">
+                        <a href="academicprofile1.php" class="edit-text">Edit</a>
+                    </div>
+                `);
                 for(let i=0; i<response.academicsubject.length; i++)
                 {
                     let academic = response.academicsubject[i];
@@ -148,10 +153,9 @@ $(function()
 
                     $("#academicdetail").append(`
                         <div class="according-text">
-                            <h5> ${academic.academicname} > ${academic.majorsubjectname} </h5>
-                            <a href="academicprofile1.php">Edit</a>
+                          <h5> ${academic.academicname} > ${academic.majorsubjectname} </h5>
                         </div>
-                        <div class="progress-bar">
+                        <div class="progress-bar mb-2">
                             <div class="progress-fill pboxwidth">Passing Year ${academic.passingyear}</div>
                             <div class="progress-fill pboxwidth">Result ${academic.resultname}</div>
                             <div class="progress-fill pboxwidth" title="CBSE">Awarding Body ${academic.awardingbodyname}</div>
@@ -185,25 +189,35 @@ $(function()
             }
             else
             {
+                $("#qualificationlevel").append(`
+                    <div class="text-end">
+                        <a href="qualificationprofile.php" class="edit-text">Edit</a>
+                    </div>
+                `)
                 //Loop through the qualifications and render it in the dashboard
                 for(let i=0; i<response.qualifications.length; i++)
                 {
                     let qualification = response.qualifications[i]; 
 
                     $("#qualificationlevel").append(`
-                        <div class="progress-bar">
+                        <div class="progress-bar mb-2">
                             <div class="progress-fill pboxwidth">${qualification.qualificationname}</div>
                         </div>
                     `)
                 }
 
+                $("#nextqualification").append(`
+                    <div class="text-end">
+                        <a href="qualificationprofile.php" class="edit-text">Edit</a>
+                    </div>
+                `);
                 //Loop through the qualification subs and render it in the dashboard
                 for(let i=0; i<response.qualificationsubs.length; i++)
                 {
                     let qualificationsub = response.qualificationsubs[i];
 
                     $("#nextqualification").append(`
-                        <div class="progress-bar">
+                        <div class="progress-bar mb-2">
                             <div class="progress-fill pboxwidth">${qualificationsub.qualificationsubname}</div>
                         </div>
                     `);
@@ -235,13 +249,18 @@ $(function()
             }
             else
             {
+                $("#testscores").append(`
+                    <div class="text-end">
+                        <a href="testscoreprofile.php" class="edit-text">Edit</a>
+                    </div>
+                `)
                 //Loop through all the test scores and render in the dashboard
                 for(let i=0; i<response.testtypetestscores.length; i++)
                 {
                     let testtypetestscore = response.testtypetestscores[i];
 
                     $("#testscores").append(`
-                        <div class="progress-bar">
+                        <div class="progress-bar mb-2">
                             <div class="progress-fill pboxwidth">${testtypetestscore.testname}<br>${testtypetestscore.testscore}</div>
                         </div>
                     `);

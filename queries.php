@@ -4,98 +4,105 @@ require_once "controllers/functions/globalfunctions.php";
 checksession();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!--fontawesome
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">-->
-
-    <!-- font-awesome css -->
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-
-    <!-- Elmentkit Icon CSS -->
-    <link rel="stylesheet" type="text/css" href="elementskit-icon-pack/assets/css/ekiticons.css">
-
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-
-
+    <title>Queries - My Study Offers</title>
+    <link rel="icon" href="images/logo-img.png" type="image/png" sizes="16x16" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="css/media.css" />
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
-
-    <title>Queries - MyStudyOffers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
     <?php
     require_once "partials/header.php";
     ?>
-
-    <div class="container">
-
-        <div class="content-section">
-            <?php
-            require_once "partials/sidebar.php";
-            ?>
-
-            <section class="main">
-                <section class="header-section">
+    <div class="main">
+        <div class="container">
+            <div class="mystudy-dashboard">
+                <div class="left-content">
                     <?php
-                    require_once "partials/headersection.php";
+                    require_once "partials/sidebar.php";
                     ?>
-                </section>
+                    <?php
+                    require_once "partials/sidebarextra.php";
+                    ?>
+                </div>
+                <div class="right-content">
+                    <div class="header-section mb-4">
+                        <?php
+                        require_once "partials/headernav.php";
+                        ?>
+                    </div>
 
-                <section class="add-question">
-                    <div class="container">
+                    <div class="add-question mb-4">
+                        <h3>Ask a Query</h3>
                         <div class="input-container mb-3">
                             <select id="querytype" name="querytype" class="form-select h-100">
-                                <option value="" disabled selected>Query Type</option>
+                                <option value="" disabled="" selected="">Query Type</option>
+                                <option value="1">General Question</option>
+                                <option value="2">Loan Inquiry</option>
+                                <option value="3">Admission Inquiry</option>
                             </select>
                             <input class="h-100" id="query" type="text" placeholder="Enter your query">
                             <button class="question-button h-100" id="askquery">Add Query</button>
                         </div>
                     </div>
-                </section>
-                <section class="query-list table-responsive">
-                    <table class="table table-bordered table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">Sr.</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">Query Type</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="querybody">
-                        </tbody>
-                    </table>
-                    <!-- <nav class="float-end mt-3">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#"><i class="fadeIn animated bx bx-caret-left"></i></a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#"><i class="fadeIn animated bx bx-caret-right"></i></a></li>
-                        </ul>
-                    </nav> -->
-                </section>
-        </div>
-    </div>
-    </section>
 
-    <?php
-    require_once "partials/footer.php";
-    ?>
-    <script src="js/query.js"></script>
-    <script src="js/custom.js"></script>
+                    <div class="query-list table-responsive mb-3">
+                        <h3 class="mt-2">Query List</h3>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Sr.</th>
+                                    <th scope="col">My Query</th>
+                                    <th scope="col">Query Type</th>
+                                    <th scope="col">Last Reply</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="querybody">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="detail">
+                                <div class="visa-application mb-3">
+                                    <img src="images/ms_imgs/visa-application-banner.jpg" class="img-fluid">
+                                    <div class="visa-content">
+                                        <h2>My Visa <span>Applications</span></h2>
+                                        <a href="">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="personal-detail">
+                                <div class="travel-bookcontainer mb-3 mt-0">
+                                    <img src="images/ms_imgs/travel-img.jpg" class="img-fluid">
+                                    <h2>Travel Booking</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php
+        require_once "partials/footer.php";
+        ?>
+
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/custom.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script src="js/query.js"></script>
 
 </body>
 

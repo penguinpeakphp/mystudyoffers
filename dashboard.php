@@ -44,20 +44,75 @@ if (isset($_SESSION["studentid"])) {
     <div class="main">
         <div class="container">
             <div class="mystudy-dashboard">
-                <?php
-                require_once "partials/sidebar.php";
-                ?>
+                <div class="left-content">
+                    <?php
+                    require_once "partials/sidebar.php";
+                    ?>
+                    <?php
+                    require_once "partials/sidebarextra.php";
+                    ?>
+                </div>
                 <div class="right-content">
                     <div class="header-section mb-4">
                         <?php
                         require_once "partials/headernav.php";
                         ?>
                     </div>
-                    <?php
-                    require_once "partials/bannersection.php";
-                    ?>
+                    <div class="banner-section mb-4">
+                        <div class="banner-content ">
+                            <h2>Welcome back, <?= $_SESSION['name'] ?>!</h2>
+                            <p>Always stay updated in your student portal</p>
+                            <h5>My Timeline</h5>
+                            <div class="progress-container">
+                                <div class="my-progress-bar">
+                                    <label class="step">
+                                        <input type="radio" name="progress" value="1">
+                                        <span class="circle">✔</span>
+                                        <span class="label">Text 1</span>
+                                    </label>
+                                    <label class="step">
+                                        <input type="radio" name="progress" value="2">
+                                        <span class="circle">✔</span>
+                                        <span class="label">Text 2</span>
+                                    </label>
+                                    <label class="step">
+                                        <input type="radio" name="progress" value="3">
+                                        <span class="circle">✔</span>
+                                        <span class="label">Text 3</span>
+                                    </label>
+                                    <label class="step">
+                                        <input type="radio" name="progress" value="4">
+                                        <span class="circle">✔</span>
+                                        <span class="label">Text 4</span>
+                                    </label>
+                                    <label class="step">
+                                        <input type="radio" name="progress" value="5">
+                                        <span class="circle">✔</span>
+                                        <span class="label">Text 5</span>
+                                    </label>
+                                    <label class="step">
+                                        <input type="radio" name="progress" value="6">
+                                        <span class="circle">✔</span>
+                                        <span class="label">Text 6</span>
+                                    </label>
+                                    <label class="step">
+                                        <input type="radio" name="progress" value="7">
+                                        <span class="circle">✔</span>
+                                        <span class="label">Text 7</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        </section>
+                    </div>
 
                     <div class="row">
+                        <div class="warning-banner mb-4">
+                            <div class="warning-info">
+                                <h4>Please Verify your Phone Number with OTP</h4>
+                                <a href="javascript:void(0)" id="sendotp" class="info-btn">Send OTP</a>
+                            </div>
+                        </div>
                         <div class="col-lg-8">
                             <div class="detail">
                                 <div class="course-suggestion-detail mb-3 d-none">
@@ -226,7 +281,7 @@ if (isset($_SESSION["studentid"])) {
                                     </div>
 
                                 </div>
-                                <div class="application-info mb-3">
+                                <div class="application-info mb-3 d-none">
                                     <h3>Application's</h3>
                                     <ul class="applications">
                                         <li>
@@ -338,16 +393,6 @@ if (isset($_SESSION["studentid"])) {
         <script src="js/bootstrap.min.js"></script>
         <script src="js/custom.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const mobileMenuToggle = document.getElementById("mobileMenuToggle");
-                const sideMenu = document.querySelector(".sidemenu");
-
-                mobileMenuToggle.addEventListener("click", function() {
-                    sideMenu.classList.toggle("active");
-                });
-            });
-        </script>
         <script>
             $(document).ready(function() {
                 // Ensure the first accordion item is open by default

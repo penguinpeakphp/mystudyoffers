@@ -24,9 +24,11 @@ checksession();
     <div class="main">
         <div class="container">
             <div class="mystudy-dashboard">
-                <?php
-                require_once "partials/sidebar.php";
-                ?>
+                <div class="left-content">
+                    <?php
+                    require_once "partials/sidebar.php";
+                    ?>
+                </div>
                 <div class="right-content">
                     <div class="header-section mb-4">
                         <?php
@@ -72,7 +74,6 @@ checksession();
                                         <button type="submit" class="register-btn">Update</button>
                                     </div>
                                 </div>
-
                             </div>
                         </form>
                     </div>
