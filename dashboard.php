@@ -248,19 +248,15 @@ if (isset($_SESSION["studentid"])) {
                                     <h3>My Information</h3>
                                     <div class="detail mb-2">
                                         <h6>Name:</h6>
-                                        <span class="name">Nilesh Soni</span>
+                                        <span class="name"></span>
                                     </div>
                                     <div class="detail mb-2">
                                         <h6>Email:</h6>
-                                        <span class="email">nileshsoni@gmail.com</span>
+                                        <span class="email"></span>
                                     </div>
                                     <div class="detail mb-2">
                                         <h6>Phone:</h6>
-                                        <span class="phone">99251814184</span>
-                                    </div>
-                                    <div class="detail mb-2">
-                                        <h6>Address:</h6>
-                                        <span></span>
+                                        <span class="phone"></span>
                                     </div>
                                 </div>
                                 <div class="destination-info mb-3">

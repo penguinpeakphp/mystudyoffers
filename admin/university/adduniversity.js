@@ -107,7 +107,6 @@ $(function()
         formData.append('maincampuspostcode', maincampuspostcode);
         formData.append('othercampus', JSON.stringify(othercampus));
 
-        console.log(universityid);
         getuniversitydatastatus().then(function()
         {
             if(universitydatastatus != null)
@@ -216,11 +215,15 @@ $(function()
 
             if(controller == "edituniversity.php")
             {
-                let i =0;
-                $(".viewfacilityimage").each(function()
+                let i = 0;
+                $("#facilityimageslist .viewfacilityimage").each(function()
                 {
-                    i++;
+                    if(!$(this).hasClass("d-none"))
+                    {
+                        i++;
+                    }
                 });
+                console.log(i);
                 formData.append("oldfacilityimagecount" , i);
                 
                 //Check if the href attribute is there or not

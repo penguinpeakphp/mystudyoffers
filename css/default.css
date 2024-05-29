@@ -5,10 +5,11 @@
   font-family: "Quicksand", sans-serif;
 }
 
-body {
-  background-color: #f2f1f138;
+html , body {
   height: 100%;
   font-weight: 400;
+  background: #fff;
+  font-family: 'Quicksand', sans-serif;
 }
 
 a:focus {
@@ -72,6 +73,7 @@ ul {
 }
 /* header start*/
 
+
 header {
   position: sticky;
   width: 100%;
@@ -82,9 +84,9 @@ header {
 }
 
 .logo-img img {
-  height: 90px;
+  height: 100px;
   width: auto;
-  margin: 0px 10px;
+  margin: 0px 35px;
 }
 
 .main_menu {
@@ -102,9 +104,9 @@ header {
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: #000;
-  font-size: 16px;
-  font-weight: 500;
+  color: #000 !important;
+  font-size: 17px;
+  font-weight: 600;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {

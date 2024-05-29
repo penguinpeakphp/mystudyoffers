@@ -83,6 +83,8 @@ $(function()
                                 {
                                     $("#viewuniversityimage").addClass("d-none");
                                     $("#deleteuniversityimage").addClass("d-none");
+
+                                    $("#viewuniversityimage").attr("href" , "javascript:void(0)");
                                 }
                             }
                             catch(error)
@@ -182,6 +184,8 @@ $(function()
                                     {
                                         $("#viewlogoimage").addClass("d-none");
                                         $("#deletelogoimage").addClass("d-none");
+
+                                        $("#viewlogoimage").attr("href" , "javascript:void(0)");
                                     }
                                 }
                                 catch(error)
@@ -223,6 +227,8 @@ $(function()
                                     {
                                         $("#viewmascotimage").addClass("d-none");
                                         $("#deletemascotimage").addClass("d-none");
+
+                                        $("#viewmascotimage").attr("href" , "javascript:void(0)");
                                     }
                                 }
                                 catch(error)
@@ -256,6 +262,42 @@ $(function()
                     lastFacilityImage.text("Image " + (index + 1));
                     lastFacilityImage.attr("href" , "../universitydata/" + university.universityid + "/" + facilityimage);
                     lastFacilityImage.attr("target" , "_blank");
+
+                    let lastFacilityImageDelete = $("#facilityimageslist .deletefacilityimage").last();
+                    lastFacilityImageDelete.removeClass("d-none");
+
+                    lastFacilityImageDelete.on("click" , function()
+                    {
+                        if(confirm("Are you sure you want to delete the image?") == false)
+                        {
+                            return;
+                        }
+
+                        let facilityimage = lastFacilityImage.attr("href").split("/").pop();
+                        $.get("../controllers/university/deleteuniversitydata.php" , {"facilityimage":facilityimage , "universityid":universityid} , function(data)
+                        {
+                            try
+                            {
+                                //Parse the data received from the server
+                                let response = JSON.parse(data);
+
+                                //If the response is not successful, then show the error in alert
+                                if(response.success == false)
+                                {
+                                    alert(response.error);
+                                }
+                                else
+                                {
+                                    lastFacilityImage.addClass("d-none");
+                                    lastFacilityImageDelete.addClass("d-none");
+                                }
+                            }
+                            catch(error)
+                            {
+                                alert("Error occurred while trying to read server response");
+                            }
+                        });
+                    });
                 });
 
                 //Get the list of accreditations and then set the selected accreditations

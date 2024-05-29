@@ -115,7 +115,35 @@ try
 
     if(isset($_GET["facilityimage"]))
     {
+        //Query the database to remove the entry of the facility image
+        $delete = $db->prepare("DELETE FROM universityfacilityimages WHERE universityid = ? AND image = ?");
+        if($delete == false)
+        {
+            failure($response , "Error while deleting the facility image name");
+            $db->rollback();
+            goto end;
+        }
+        else
+        {
+            //Bind the parameters
+            $delete->bind_param("ss" , $_GET["universityid"] , $_GET["facilityimage"]);
 
+            //Execute the query
+            if($delete->execute() == false)
+            {
+                failure($response , "Error while deleting the facility image name");
+                $db->rollback();
+                goto end;
+            }
+        }
+
+        //Delete the logo image
+        if(unlink("../../universitydata/".$_GET["universityid"]."/". $_GET["facilityimage"]) == false)
+        {
+            failure($response , "Error while deleting the facility image");
+            $db->rollback();
+            goto end;
+        }
     }
 
     end:;
