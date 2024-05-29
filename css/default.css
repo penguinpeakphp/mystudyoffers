@@ -482,6 +482,8 @@ input[type="color"] {
   margin: auto;
   overflow: hidden;
 }
+
+
 .mystudy-dashboard .left-content .education-loan {
   height: 140px;
   width: 250px;
@@ -491,30 +493,42 @@ input[type="color"] {
   border-radius: 10px;
   position: relative;
 }
-.mystudy-dashboard .left-content .education-loan img.bg-img {
+.mystudy-dashboard .left-content .education-loan  .bg-img {
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
 
-.mystudy-dashboard .left-content .education-loan h3 {
+.mystudy-dashboard .left-content .education-loan .shape {
   position: absolute;
-  bottom: 0;
-  width: 100%;
+  top: 45%;
+    width: 100%;
   background-color: #000843;
   color: #fff;
   margin: 0;
   text-align: center;
   box-sizing: border-box;
   font-size: 17px;
-  font-weight:500;
+  font-weight: 500;
   padding: 3px 0px;
+  transform-origin: top left;
+  transform: skewY(15deg);
+  height: 100%;
+}
+.mystudy-dashboard .left-content .education-loan h3{
+  font-size: 16px;
+  font-weight: 500;
+  text-align: start;
+  padding: 5px;
+  color: #fff;
+  transform-origin: center;
+  transform: skewY(346deg);
 }
 .mystudy-dashboard .left-content .education-loan h3 .icon {
   margin-right: 10px;
   height: 35px;
   width: auto;
- }
+ } 
  .mystudy-dashboard .left-content .accomodation-container {
   height: 200px;
     width: 250px;
