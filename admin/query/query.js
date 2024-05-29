@@ -179,7 +179,7 @@ $(function()
                         let query = response.queries[i];
                         
                         let tr = '';
-                        if(query.readbyadmin == 0)
+                        if(query.readbyadmin == 0 && query.adminid == null)
                         {
                             tr += '<tr style="--bs-table-bg:lightyellow !important;">';
                         }

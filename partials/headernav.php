@@ -8,7 +8,7 @@
     </nav>
 </div>
 <div class="flex-item flex-item-2">
-    <div class="notification-icon" onmouseover="showNotifications()" onmouseout="hideNotifications()">
+    <div class="notification-icon d-none" onmouseover="showNotifications()" onmouseout="hideNotifications()">
         <a href="#" class="notification_content"><img src="images/notifications-1.png" class="notifiction-img" /> <span>05</span></a>
         <div class="notification-dropdown" id="notificationDropdown">
             <div class="notification-item">

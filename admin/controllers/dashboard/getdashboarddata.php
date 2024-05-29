@@ -55,13 +55,20 @@
             failure($response , "Error fetching new conversations");
             goto end;
         }
-        $i = 0;
         while($row = $result->fetch_assoc())
         {
             array_push($response["chats"] , $row);
             $i++;
         }
-        $response["newchats"] = $i; 
+
+        $result = $db->query("SELECT count(message) AS num FROM queryconversation qc INNER JOIN student s ON s.studentid = qc.studentid WHERE qc.studentid IS NOT NULL AND readbyadmin = 0");
+        if($result == false)
+        {
+            failure($response , "Error fetching number of unread chats");
+            goto end;
+        }
+        $row = $result->fetch_assoc();
+        $response["newchats"] = $row["num"];
 
         end:;
     }
