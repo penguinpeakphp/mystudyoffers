@@ -61,7 +61,7 @@
         </div>
     </div>
 
-    <a href="#"><img src="images/user.png" alt /></a>
+    <a href="#"><img src="images/user.png" class="profilepic" alt /></a>
     <div class="d-flex flex-column">
         <h6 class="user-detail mb-0"><?= $_SESSION["name"] ?></h6>
     </div>

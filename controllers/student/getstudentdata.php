@@ -16,7 +16,7 @@
         $response["studentdata"] = [];
 
         //Query the database for fetching the basic student details
-        $select = $db->prepare("SELECT studentid , name , surname , phone , email , pincode , activationtoken , profilestatus , phoneverified FROM student WHERE studentid = ?");
+        $select = $db->prepare("SELECT studentid , name , surname , phone , email , pincode , activationtoken , profilestatus , phoneverified , profilepic FROM student WHERE studentid = ?");
         if($select == false)
         {
             failure($response , "Error while getting student details");
@@ -41,7 +41,7 @@
     }
     catch(Exception $e)
     {
-        failure($response , "Error Occurred while fetching student data - " . $e->getCode());
+        failure($response , "Error Occurred while fetching student data");
     }
 
     echo json_encode($response);

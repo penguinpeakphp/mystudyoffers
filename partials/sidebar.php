@@ -1,8 +1,8 @@
 <div class="sidemenu">
     <ul class="mst-logo">
-        <li style="background-color: #ffbf21">
+        <li>
             <div class="logo-imgcontainer">
-                <img src="images/logo.png" class="img-fluid">
+                <img src="images/avtar.png" class="img-fluid">
             </div>
         </li>
     </ul>
@@ -12,9 +12,9 @@
     </div>
     <ul class="mb-4 menu-list">
         <li>
-            <a href="#">
+            <a href="javascript:void(0)">
                 <i class="bx bx-user-circle"></i>
-                <span>MY Account</span>
+                <span>My Account</span>
             </a>
         </li>
         <li>

@@ -69,6 +69,12 @@ checksession();
                                         <input type="text" name="editpincode" id="editpincode">
                                     </div>
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="form-col">
+                                        <label for="editprofilepic">Upload Profile Picture</label>
+                                        <input type="file" class="form-control" name="editprofilepic" id="editprofilepic">
+                                    </div>
+                                </div>
                                 <div class="col-lg-12">
                                     <div class="form-col mt-4">
                                         <button type="submit" class="register-btn">Update</button>

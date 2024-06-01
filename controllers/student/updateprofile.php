@@ -28,13 +28,56 @@
         $pincode = $_POST["editpincode"];
         $surname = $_POST["editsurname"];
 
+        $db->begin_transaction();
+
         $update = $db->prepare("UPDATE student SET name = ?, email = ?, phone = ?, surname = ?, pincode = ? WHERE studentid = ?");
         $update->bind_param("sssssi", $name, $email, $phone, $surname, $pincode, $_SESSION["studentid"]);
 
         if($update->execute() == false)
         {
             failure($response , "Error Occurred while updating student data");
+            $db->rollback();
             goto end;
+        }
+
+        if($_FILES["editprofilepic"]["name"] != "")
+        {
+            //Check if directory exists and create if not exists
+            if(!is_dir("../../studentdata/" . $_SESSION["studentid"]))
+            {
+                if(mkdir("../../studentdata/" . $_SESSION["studentid"]) == false)
+                {
+                    failure($response , "Error in creating student data directory");
+                    $db->rollback();
+                    goto end;
+                }
+            }
+
+            //Extract the extension from the filename
+            $extension = pathinfo($_FILES["editprofilepic"]["name"] , PATHINFO_EXTENSION);
+            $filename = "profilepic." . $extension;
+
+            if(move_uploaded_file($_FILES["editprofilepic"]["tmp_name"] , "../../studentdata/" . $_SESSION["studentid"] . "/" . $filename) == false)
+            {
+                failure($response , "Error in uploading profile picture");
+                $db->rollback();
+                goto end;
+            }
+
+            //Query the database to edit profile pic name
+            $update = $db->prepare("UPDATE student SET profilepic = ? WHERE studentid = ?");
+            $update->bind_param("si" , $filename , $_SESSION["studentid"]);
+            if($update->execute() == false)
+            {
+                failure($response , "Error in updating profile picture name in database");
+                $db->rollback();
+                goto end;
+            }
+        }
+
+        if($response["success"] == true)
+        {
+            $db->commit();
         }
 
         $response["message"] = "Student data updated successfully";

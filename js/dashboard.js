@@ -103,6 +103,11 @@ $(function()
                 $(".email").text(student.email);
                 $(".phone").text(student.phone);
 
+                if(student.profilepic != "")
+                {
+                    $(".profilepic").attr("src" , "../../studentdata/" + student.studentid + "/" + student.profilepic);
+                }
+
                 $("#OTPmobile").text(student.phone);
 
                 //Remove the banner is phone is already verified

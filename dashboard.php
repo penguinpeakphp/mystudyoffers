@@ -19,8 +19,7 @@ if (isset($_SESSION["studentid"])) {
     if ($row["profilestatus"] == "countryinterest") {
         $url = "countryinterest.php";
     }
-    if($url != "")
-    {
+    if ($url != "") {
         header("Location: " . $url);
     }
 }
@@ -108,14 +107,14 @@ if (isset($_SESSION["studentid"])) {
                         </div>
                         </section>
                     </div>
+                    <div class="warning-banner mb-4">
+                        <div class="warning-info">
+                            <h4>Please Verify your Phone Number with OTP</h4>
+                            <a href="javascript:void(0)" id="sendotp" class="info-btn">Send OTP</a>
+                        </div>
+                    </div>
 
                     <div class="row">
-                        <div class="warning-banner mb-4">
-                            <div class="warning-info">
-                                <h4>Please Verify your Phone Number with OTP</h4>
-                                <a href="javascript:void(0)" id="sendotp" class="info-btn">Send OTP</a>
-                            </div>
-                        </div>
                         <div class="col-lg-8">
                             <div class="detail">
                                 <div class="course-suggestion-detail mb-3 d-none">
@@ -417,7 +416,6 @@ if (isset($_SESSION["studentid"])) {
             });
         </script>
         <script src="js/dashboard.js"></script>
-
 </body>
 
 </html>
