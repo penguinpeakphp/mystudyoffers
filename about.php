@@ -41,7 +41,7 @@ if(!isset($_SESSION)){session_start();}
                 <h1>About Us</h1>
                 <ul>
                   <li>
-                    <a href="index.html">Home</a>
+                    <a href="/">Home</a>
                   </li>
                   <li>About Us</li>
                 </ul>

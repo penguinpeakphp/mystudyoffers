@@ -54,6 +54,8 @@ checksession();
                                     </div>
                                 </div>
 
+                                <p>Note: Your password must be atleast characters with minimum 1 number, 1 uppercase and 1 special character.</p>
+
                                 <div class="col-lg-12">
                                     <div class="form-col mt-4">
                                         <button type="submit" class="register-btn">Update</button>

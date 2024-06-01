@@ -1,6 +1,7 @@
 <?php
     require_once "../../admin/database/db.php";
     require_once "../functions/globalfunctions.php";
+    require_once "../functions/validatepassword.php";
     require_once "../functions/mailfunction.php";
 
     try
@@ -17,6 +18,11 @@
         if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) == false) 
         {
             failure($response , "Please enter valid email address");
+            goto end;
+        }
+
+        if(validatePassword($response , $_POST["password"]) == false)
+        {
             goto end;
         }
 

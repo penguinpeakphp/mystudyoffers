@@ -19,7 +19,10 @@ if (isset($_SESSION["studentid"])) {
     if ($row["profilestatus"] == "countryinterest") {
         $url = "countryinterest.php";
     }
-    header("Location: " . $url);
+    if($url != "")
+    {
+        header("Location: " . $url);
+    }
 }
 
 ?>

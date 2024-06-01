@@ -1,6 +1,7 @@
 <?php
     require_once "../../admin/database/db.php";
     require_once "../functions/globalfunctions.php";
+    require_once "../functions/validatepassword.php";
 
     try
     {
@@ -22,6 +23,11 @@
         if($_POST["npassword"] != $_POST["cpassword"])
         {
             failure($response , "Passwords do not match");
+            goto end;
+        }
+
+        if(validatePassword($response , $_POST["npassword"]) == false)
+        {
             goto end;
         }
 

@@ -34,6 +34,11 @@ $(function()
                         showalert(response.message);
                         $("npassword").val("");
                         $("cpassword").val("");
+
+                        $("#alertModal").on("hidden.bs.modal" , function()
+                        {
+                            window.location.href = "dashboard.php";
+                        });
                     }
 
                 }

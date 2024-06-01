@@ -75,6 +75,11 @@ $(function()
                     else
                     {
                         showalert("Your Profile updated successfully");
+
+                        $("#alertModal").on("hidden.bs.modal" , function()
+                        {
+                            window.location.href = "dashboard.php";
+                        });
                     }                       
                 }
                 catch(error)

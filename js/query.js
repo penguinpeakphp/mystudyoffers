@@ -15,7 +15,7 @@ $(function()
                 //If the response is not successful, then show the error in alert
                 if(response.success == false)
                 {
-                    showalert(response.error)
+                    showalert(response.error);
                     if(response.login == true)
                     {
                         window.location.href = "login.php";
@@ -37,7 +37,7 @@ $(function()
 
                     if(response.queries.length == 0)
                     {
-                        $("#querybody").append('<tr><td colspan="5" class="text-center text-danger">No queries found</td></tr>');
+                        $("#querybody").append('<tr><td colspan="5" class="text-center text-danger">No query found</td></tr>');
                     }
                     //Loop through the queries and render the table rows
                     for(let i=0; i<response.queries.length; i++)
