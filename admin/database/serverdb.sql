@@ -247,7 +247,8 @@ create table student
     status boolean not null default false,
     registeredon date,
     studentOTP int,
-    phoneverified boolean not null default false
+    phoneverified boolean not null default false,
+    profilepic varchar(25) not null default ""
 );
 
 drop table if exists studentforgotpassword;

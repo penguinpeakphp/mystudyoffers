@@ -12,7 +12,7 @@
     </div>
     <ul class="mb-4 menu-list">
         <li>
-            <a href="javascript:void(0)">
+            <a>
                 <i class="bx bx-user-circle"></i>
                 <span>My Account</span>
             </a>
