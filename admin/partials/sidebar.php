@@ -39,6 +39,11 @@
         </a>
       </li>
       <li>
+        <a href="../avatars/avatars.php">
+          <i class="bi bi-circle"></i><span>Avatar</span>
+        </a>
+      </li>
+      <li>
         <a href="../state/state.php">
           <i class="bi bi-circle"></i><span>State</span>
         </a>
