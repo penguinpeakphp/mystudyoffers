@@ -1322,3 +1322,15 @@ h6 {
     height: 40px;
     width: 40px;
     object-fit: cover;}
+
+.avatarimg{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.avatarimg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

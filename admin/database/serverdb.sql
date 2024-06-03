@@ -259,7 +259,7 @@ create table student
     phoneverified boolean not null default false,
     profilepic varchar(25) not null default "",
     avatarid int,
-    foreign key (avatarid) references avatar(avatarid)
+    foreign key (avatarid) references avatar(avatarid) on delete set null
 );
 
 drop table if exists studentforgotpassword;

@@ -157,7 +157,7 @@ $(function()
                             <th scope="row">${avatar.avatarid}</th>
                             <td>${avatar.avatarname}</td>
                             <td>${avatar.avatargender}</td>
-                            <td><img src="../avatarimages/${avatar.avatarimage}"></td>
+                            <td><img class="avatarimg" src="../avatarimages/${avatar.avatarimage}"></td>
                         `;
     
                         //Render badge based on the status flag
