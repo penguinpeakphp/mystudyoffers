@@ -93,10 +93,7 @@ checksession();
                                                     <label for="editavatarname" class="form-label">Avatar Name</label>
                                                     <input type="text" class="form-control" id="editavatarname" name="editavatarname">
                                                 </div>
-                                                <div class="col-12">
-                                                    <label for="editavatarimage" class="form-label">Avatar Image</label>
-                                                    <input type="file" class="form-control" id="editavatarimage" name="editavatarimage">
-                                                </div>
+
                                                 <div class="col-12">
                                                     <fieldset class="row mb-3">
                                                         <legend class="col-form-label col-sm-2 pt-0">Avatar Gender</legend>
@@ -115,6 +112,10 @@ checksession();
                                                             </div>
                                                         </div>
                                                     </fieldset>
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="editavatarimage" class="form-label">Avatar Image</label>
+                                                    <input type="file" class="form-control" id="editavatarimage" name="editavatarimage">
                                                 </div>
                                                 <div class="row my-3 ">
                                                     <div class="col-sm-10">

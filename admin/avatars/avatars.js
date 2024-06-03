@@ -62,10 +62,67 @@ $(function()
         });
     });
 
+    $("#editform").on("submit" , function(e)
+    {
+        e.preventDefault(); 
+
+        let formdata = new FormData();
+
+        formdata.append("avatarid" , $("#editavatarid").val());
+        formdata.append("avatarimage" , $("#editavatarimage").prop("files")[0]);
+        formdata.append("avatarname" , $("#editavatarname").val());
+        formdata.append("avatargender" , $("[name=editavatargender]:checked").val());
+        formdata.append("avatarstatus" , $("#editavatarstatus").prop("checked") ? 1 : 0);
+
+        $.ajax
+        ({
+            url: "../controllers/avatars/editavatar.php",
+            type: "POST",
+            data: formdata,
+            contentType: false,
+            processData: false,
+            success: function(data)
+            {
+                console.log(data);
+                try
+                {
+                    //Parse the data received from the server
+                    let response = JSON.parse(data);
+
+                    //If the response is not successful, then show the error in alert
+                    if(response.success == false)
+                    {
+                        alert(response.error);
+
+                        //Redirect to login page if the user is required to be login again
+                        if(response.login == true)
+                        {
+                            window.location.href = "../login/login.php";
+                        }
+                    }
+                    else
+                    {
+                        //Alert the success message
+                        alert("Avatar updated successfully");
+
+                        //Repopulate the avatar list
+                        getavatarlist();
+
+                        //Close the modal
+                        $("#editmodal").modal("hide");
+                    }
+                }
+                catch(error)
+                {
+                    alert("Error occurred while trying to read server response");
+                }
+            }
+        });
+    });
+
     //Function for getting the list of avatars from the server and populating the table
     function getavatarlist()
     {
-        console.log("here");
         $.get("../controllers/avatars/getavatars.php" , {} , function(data)
         {
             try
@@ -116,7 +173,7 @@ $(function()
                         //Render buttons and have index in the data-index attribute to fetch the avatar details for editing
                         tr += `<td>
                             <button type="button" class="btn btn-warning edit" data-index="${i}" data-id="${avatar.avatarid}"><i class="bi-pencil-square"></i></button>
-                            <button type="button" class="btn btn-danger delete" data-id="${avatar.avatarid}"><i class="bi-trash"></i></button>
+                            <button type="button" class="btn btn-danger delete" data-id="${avatar.avatarid}" data-image="${avatar.avatarimage}"><i class="bi-trash"></i></button>
                         </td>`;
     
                         tr += "</tr>";
@@ -133,22 +190,24 @@ $(function()
 
                         //Fetch and fill the details from the response that we have got with the help of the index
                         let index = $(this).attr("data-index");
-                        $("#editcountryid").val(response.countries[index].countryid);
-                        $("#editcountryname").val(response.countries[index].countryname);
-                        $("#editstatus").prop("checked" , response.countries[index].status == "1" ? true : false);
+                        $("#editavatarid").val(response.avatars[index].avatarid);
+                        $("#editavatarname").val(response.avatars[index].avatarname);
+                        $("[name=editavatargender][value=" + response.avatars[index].avatargender + "]").prop("checked" , true);
+                        $("#editavatarstatus").prop("checked" , response.avatars[index].avatarstatus == "1" ? true : false);
                     });
 
                     //Event for making deleting request to the server on click
                     $(".delete").on("click" , function()
                     {
-                        //Get the confirmation from the user for deleting the country and return if user denied
-                        if(confirm("Are you sure you want to delete this country?") == false)
+                        //Get the confirmation from the user for deleting the avatar and return if user denied
+                        if(confirm("Are you sure you want to delete this avatar?") == false)
                         {
                             return;
                         }
 
-                        let countryid = $(this).attr("data-id");
-                        $.post("../controllers/country/deletecountry.php" , {"countryid":countryid} , function(data)
+                        let avatarid = $(this).attr("data-id");
+                        let avatarimage = $(this).attr("data-image");
+                        $.post("../controllers/avatars/deleteavatar.php" , {"avatarid":avatarid , "avatarimage":avatarimage} , function(data)
                         {
                             try
                             {
@@ -169,10 +228,10 @@ $(function()
                                 else
                                 {
                                     //Alert the success message
-                                    alert("Country deleted successfully");
+                                    alert("Avatar deleted successfully");
 
-                                    //Repopulate the country list
-                                    getcountrylist();
+                                    //Repopulate the avatar list
+                                    getavatarlist();
                                 }
                             }
                             catch(error)
