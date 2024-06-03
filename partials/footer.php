@@ -331,7 +331,8 @@
             const mobileMenuToggle = document.getElementById("mobileMenuToggle");
             const sideMenu = document.querySelector(".sidemenu");
 
-            mobileMenuToggle.addEventListener("click", function() {
+            mobileMenuToggle.addEventListener("click", function() 
+            {
                 sideMenu.classList.toggle("active");
             });
         });

@@ -128,8 +128,8 @@ if(md==5 && document.getElementById('chkquali'+md).checked==true){
 } 
 }
 
-//const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-//if (isMobile) {
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+if (isMobile) {
 document.addEventListener('DOMContentLoaded', function () {
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const sideMenu = document.querySelector('.sidemenu');
@@ -140,4 +140,4 @@ mobileMenuToggle.addEventListener('click', function () {
   qMenu.classList.toggle('active');
 });
 });
-//} 
+} 
