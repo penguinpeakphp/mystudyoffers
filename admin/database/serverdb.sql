@@ -236,7 +236,7 @@ create table avatar
 (
 	avatarid int not null primary key auto_increment,
 	avatarname varchar(50) not null,
-    avatarfile varchar(150) not null,
+    avatarimage varchar(150) not null,
     avatarstatus boolean not null default true
 );
 

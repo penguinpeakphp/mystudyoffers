@@ -10,63 +10,63 @@ $(function()
     {
         e.preventDefault();
 
-        //Fetch the city name , countryid , stateid and the status
-        let cityname = $("#addcityname").val();
-        let citystatus = $("#addcitystatus").prop("checked") ? 1 : 0;
-        let stateid = $("#addstate").find(":selected").val();
-        let countryid = $("#addcountry").find(":selected").val();
+        let formdata = new FormData();
 
-        //Send the post request for adding the new state
-        $.post("../controllers/city/addcity.php" , {"cityname":cityname , "citystatus":citystatus , "stateid":stateid , "countryid":countryid} , function(data)
-        {
-            try
+        formdata.append("avatarimage" , $("#addavatarimage").prop("files")[0]);
+        formdata.append("avatarname" , $("#addavatarname").val());
+        formdata.append("avatargender" , $("[name=addavatargender]:checked").val());
+        formdata.append("avatarstatus" , $("#addavatarstatus").prop("checked") ? 1 : 0);
+
+        $.ajax
+        ({
+            url: "../controllers/avatars/addavatar.php",
+            type: "POST",
+            data: formdata,
+            contentType: false,
+            processData: false,
+            success: function(data)
             {
-                //Parse the data received from the server
-                let response = JSON.parse(data);
-
-                //If the response is not successful, then show the error in alert
-                if(response.success == false)
+                try
                 {
-                    alert(response.error);
+                    //Parse the data received from the server
+                    let response = JSON.parse(data);
 
-                    //Redirect to login page if the user is required to be login again
-                    if(response.login == true)
+                    //If the response is not successful, then show the error in alert
+                    if(response.success == false)
                     {
-                        window.location.href = "../login/login.php";
+                        alert(response.error);
+
+                        //Redirect to login page if the user is required to be login again
+                        if(response.login == true)
+                        {
+                            window.location.href = "../login/login.php";
+                        }
+                    }
+                    else
+                    {
+                        //Alert the success message
+                        alert("Avatar inserted successfully");
+
+                        //Repopulate the country list
+                        getavatarlist();
+
+                        //Close the modal
+                        $("#addmodal").modal("hide");
                     }
                 }
-                else
+                catch(error)
                 {
-                    //Alert the success message
-                    alert("City inserted successfully");
-
-                    //Repopulate the state list
-                    getcitylist();
-
-                    //Close the modal
-                    $("#addmodal").modal("hide");
+                    alert("Error occurred while trying to read server response");
                 }
-            }
-            catch(error)
-            {
-                alert("Error occurred while trying to read server response");
             }
         });
     });
 
-    $("#editform").on("submit" , function(e)
+    //Function for getting the list of avatars from the server and populating the table
+    function getavatarlist()
     {
-        e.preventDefault();
-
-        //Fetch the cityid , city name, city status, countryid and stateid
-        let cityid = $("#editcityid").val();
-        let cityname = $("#editcityname").val();
-        let citystatus = $("#editcitystatus").prop("checked") ? 1 : 0;
-        let countryid = $("#editcountry").find(":selected").val();
-        let stateid = $("#editstate").find(":selected").val();
-
-        //Send the post request for updating the country
-        $.post("../controllers/city/editcity.php" , {"cityid":cityid , "cityname":cityname , "citystatus":citystatus , "countryid":countryid , "stateid":stateid} , function(data)
+        console.log("here");
+        $.get("../controllers/avatars/getavatars.php" , {} , function(data)
         {
             try
             {
@@ -86,96 +86,46 @@ $(function()
                 }
                 else
                 {
-                    //Alert the success message
-                    alert("City updated successfully");
-
-                    //Repopulate the city list
-                    getcitylist();
-
-                    //Close the modal
-                    $("#editmodal").modal("hide");
-                }
-            }
-            catch(error)
-            {
-                alert("Error occurred while trying to read server response");
-            }
-        });
-    });
-
-    //Function for getting the list of cities from the server and populating the table
-    function getcitylist()
-    {
-        $.get("../controllers/city/getcities.php" , {} , function(data)
-        {
-            try
-            {
-                //Parse the data received from the server
-                let response = JSON.parse(data);
-
-                //If the response is not successful, then show the error in alert
-                if(response.success == false)
-                {
-                    alert(response.error);
-
-                    //Redirect to login page if the user is required to be login again
-                    if(response.login == true)
-                    {
-                        window.location.href = "../login/login.php";
-                    }
-                }
-                else
-                {
-                    //Assign country and state list to global variable for further use on this page
-                    countries = response.countries;
-                    states = response.states;
-
-                    //Populate the select options in add and edit select
-                    populatecountries("#addcountry");
-                    populatecountries("#editcountry");
-                    populatestates("#addstate");
-                    populatestates("#editstate");
-
                     //Reset the table body for repopulating the table
-                    $("#citybody").html("");
+                    $("#avatarbody").html("");
 
-                    //Loop through the city array and populate the table
-                    for(let i=0; i<response.cities.length; i++)
+                    //Loop through the avatars array and populate the table
+                    for(let i=0; i<response.avatars.length; i++)
                     {
-                        let city = response.cities[i];
+                        let avatar = response.avatars[i];
 
                         //Build the table row and its content
                         let tr = `
                         <tr>
-                            <th scope="row">${city.cityid}</th>
-                            <td>${city.cityname}</td>
-                            <td>${city.statename}</td>
-                            <td>${city.countryname}</td>
+                            <th scope="row">${avatar.avatarid}</th>
+                            <td>${avatar.avatarname}</td>
+                            <td>${avatar.avatargender}</td>
+                            <td><img src="../avatarimages/${avatar.avatarimage}"></td>
                         `;
     
                         //Render badge based on the status flag
-                        if(city.citystatus == 1)
+                        if(avatar.avatarstatus == 1)
                         {
                             tr += `<td><span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> Active</span></td>`;
                         }
-                        if(city.citystatus == 0)
+                        if(avatar.avatarstatus == 0)
                         {
                             tr += `<td><span class="badge bg-danger"><i class="bi bi-exclamation-octagon me-1"></i> Inactive</span></td>`;
                         }
     
-                        //Render buttons and have index in the data-index attribute to fetch the city details for editing
+                        //Render buttons and have index in the data-index attribute to fetch the avatar details for editing
                         tr += `<td>
-                            <button type="button" class="btn btn-warning edit" data-index="${i}" data-id="${city.cityid}"><i class="bi-pencil-square"></i></button>
-                            <button type="button" class="btn btn-danger delete" data-id="${city.cityid}"><i class="bi-trash"></i></button>
+                            <button type="button" class="btn btn-warning edit" data-index="${i}" data-id="${avatar.avatarid}"><i class="bi-pencil-square"></i></button>
+                            <button type="button" class="btn btn-danger delete" data-id="${avatar.avatarid}"><i class="bi-trash"></i></button>
                         </td>`;
     
-                        tr += "</td>";
+                        tr += "</tr>";
     
                         //Append the table row in the table body
-                        $("#citybody").append(tr);
+                        $("#avatarbody").append(tr);
                     }
 
-                    //Event for opening the edit modal on clicking the edit buttonht
+                    //Event for opening the edit modal on clicking the edit button
                     $(".edit").on("click" , function()
                     {
                         //Open the modal
@@ -183,24 +133,22 @@ $(function()
 
                         //Fetch and fill the details from the response that we have got with the help of the index
                         let index = $(this).attr("data-index");
-                        $("#editcityid").val(response.cities[index].cityid);
-                        $("#editcityname").val(response.cities[index].cityname);
-                        $("#editcitystatus").prop("checked" , response.cities[index].citystatus == "1" ? true : false);
-                        $(`#editcountry option[value='${response.cities[index].countryid}']`).prop("selected" , true);
-                        $(`#editstate option[value='${response.cities[index].stateid}']`).prop("selected" , true);
+                        $("#editcountryid").val(response.countries[index].countryid);
+                        $("#editcountryname").val(response.countries[index].countryname);
+                        $("#editstatus").prop("checked" , response.countries[index].status == "1" ? true : false);
                     });
 
                     //Event for making deleting request to the server on click
                     $(".delete").on("click" , function()
                     {
-                        //Get the confirmation from the user for deleting the city and return if user denied
-                        if(confirm("Are you sure you want to delete this city?") == false)
+                        //Get the confirmation from the user for deleting the country and return if user denied
+                        if(confirm("Are you sure you want to delete this country?") == false)
                         {
                             return;
                         }
 
-                        let cityid = $(this).attr("data-id");
-                        $.post("../controllers/city/deletecity.php" , {"cityid":cityid} , function(data)
+                        let countryid = $(this).attr("data-id");
+                        $.post("../controllers/country/deletecountry.php" , {"countryid":countryid} , function(data)
                         {
                             try
                             {
@@ -221,10 +169,10 @@ $(function()
                                 else
                                 {
                                     //Alert the success message
-                                    alert("City deleted successfully");
+                                    alert("Country deleted successfully");
 
-                                    //Repopulate the city list
-                                    getcitylist();
+                                    //Repopulate the country list
+                                    getcountrylist();
                                 }
                             }
                             catch(error)
@@ -242,5 +190,6 @@ $(function()
         });
     }
 
-    getcitylist();
+    //Populate the table for the first time
+    getavatarlist();
 });

@@ -55,7 +55,7 @@ checksession();
 
         <section class="section">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-12">
 
                     <div class="card">
                         <div class="card-body">
@@ -68,8 +68,9 @@ checksession();
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Image</th>
+                                        <th scope="col">Avatar Name</th>
+                                        <th scope="col">Avatar Gender</th>
+                                        <th scope="col">Avatar Image</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -96,10 +97,29 @@ checksession();
                                                     <label for="editavatarimage" class="form-label">Avatar Image</label>
                                                     <input type="file" class="form-control" id="editavatarimage" name="editavatarimage">
                                                 </div>
+                                                <div class="col-12">
+                                                    <fieldset class="row mb-3">
+                                                        <legend class="col-form-label col-sm-2 pt-0">Avatar Gender</legend>
+                                                        <div class="col-sm-10">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="editavatargender" id="maleavatar" value="male">
+                                                                <label class="form-check-label" for="maleavatar">
+                                                                    Male Avatar
+                                                                </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="editavatargender" id="femaleavatar" value="female">
+                                                                <label class="form-check-label" for="femaleavatar">
+                                                                    Female Avatar
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
                                                 <div class="row my-3 ">
                                                     <div class="col-sm-10">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="editavatarstatus" name="editavatarstatus">
+                                                            <input class="form-check-input" type="checkbox" id="editavatarstatus" name="editavatarstatus" accept="image/png, image.jpg, image.jpeg">
                                                             <label class="form-check-label" for="editavatarstatus">
                                                                 Active
                                                             </label>
@@ -130,8 +150,27 @@ checksession();
                                                     <input type="text" class="form-control" id="addavatarname" name="addavatarname">
                                                 </div>
                                                 <div class="col-12">
+                                                    <fieldset class="row mb-3">
+                                                        <legend class="col-form-label col-sm-2 pt-0">Avatar Gender</legend>
+                                                        <div class="col-sm-10">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="addavatargender" id="maleavatar" value="male">
+                                                                <label class="form-check-label" for="maleavatar">
+                                                                    Male Avatar
+                                                                </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="addavatargender" id="femaleavatar" value="female">
+                                                                <label class="form-check-label" for="femaleavatar">
+                                                                    Female Avatar
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-12">
                                                     <label for="addavatarimage" class="form-label">Avatar Image</label>
-                                                    <input type="file" class="form-control" id="addavatarimage" name="addavatarimage">
+                                                    <input type="file" class="form-control" id="addavatarimage" name="addavatarimage" accept="image/png, image.jpg, image.jpeg">
                                                 </div>
                                                 <div class="row my-3 ">
                                                     <div class="col-sm-10">
@@ -154,7 +193,6 @@ checksession();
                             </div><!-- End Basic Modal-->
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
