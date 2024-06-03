@@ -237,6 +237,7 @@ create table avatar
 	avatarid int not null primary key auto_increment,
 	avatarname varchar(50) not null,
     avatarimage varchar(150) not null,
+    avatargender varchar(10) not null,
     avatarstatus boolean not null default true
 );
 
@@ -256,7 +257,9 @@ create table student
     registeredon date,
     studentOTP int,
     phoneverified boolean not null default false,
-    profilepic varchar(25) not null default ""
+    profilepic varchar(25) not null default "",
+    avatarid int,
+    foreign key (avatarid) references avatar(avatarid)
 );
 
 drop table if exists studentforgotpassword;

@@ -79,50 +79,6 @@ $(function()
         });
     });
 
-    $.get("controllers/student/getstudentdata.php" , {} , function(data)
-    {
-        try
-        {
-            //Parse the data received from the server
-            let response = JSON.parse(data);
-
-            //If the response is not successful, then show the error in alert
-            if(response.success == false)
-            {
-                showalert(response.error)
-                if(response.login == true)
-                {
-                    window.location.href = "login.php";
-                }
-            }
-            else
-            {
-                let student = response.studentdata;
-
-                $(".name").text(student.name);
-                $(".email").text(student.email);
-                $(".phone").text(student.phone);
-
-                if(student.profilepic != "")
-                {
-                    $(".profilepic").attr("src" , "../../studentdata/" + student.studentid + "/" + student.profilepic);
-                }
-
-                $("#OTPmobile").text(student.phone);
-
-                //Remove the banner is phone is already verified
-                if(student.phoneverified == 1)
-                {
-                    $(".warning-banner").remove();
-                }
-            }
-        }
-        catch(error)
-        {
-            alert("Error occurred while trying to read server response");
-        }
-    });
-
     //Get the academic and major subject
     $.get("controllers/academic/getrestacademicmaster.php" , {} , function(data)
     {

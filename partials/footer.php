@@ -277,84 +277,26 @@
                     <label class="fw-bold">Gender :</label>
                     <div class="d-flex gap-1">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
+                            <input class="form-check-input avatargender" type="radio" name="avatargender" id="maleavatar" value="male">
+                            <label class="form-check-label" for="maleavatar">
                                 Male
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                            <label class="form-check-label" for="flexRadioDefault2">
+                            <input class="form-check-input avatargender" type="radio" name="avatargender" id="femaleavatar" value="female">
+                            <label class="form-check-label" for="femaleavatar">
                                 Female
                             </label>
                         </div>
                     </div>
                 </div>
 
-                <div class="avatar-selection d-flex gap-4 align-items-center flex-wrap justify-content-center">
-                    <label class="avatar-item">
-                        <input type="radio" name="avatar" class="avatar-radio">
-                        <img src="images/avtar/img-1.png">
-                        <div class="tick-mark">✔</div>
-                    </label>
-                    <label class="avatar-item">
-                        <input type="radio" name="avatar" class="avatar-radio">
-                        <img src="images/avtar/img-2.png">
-                        <div class="tick-mark">✔</div>
-                    </label>
-                    <label class="avatar-item">
-                        <input type="radio" name="avatar" class="avatar-radio">
-                        <img src="images/avtar/img-3.png">
-                        <div class="tick-mark">✔</div>
-                    </label>
-                    <label class="avatar-item">
-                        <input type="radio" name="avatar" class="avatar-radio">
-                        <img src="images/avtar/img-4.png">
-                        <div class="tick-mark">✔</div>
-                    </label>
-                    <label class="avatar-item">
-                        <input type="radio" name="avatar" class="avatar-radio">
-                        <img src="images/avtar/img-5.png">
-                        <div class="tick-mark">✔</div>
-                    </label>
-                    <label class="avatar-item">
-                        <input type="radio" name="avatar" class="avatar-radio">
-                        <img src="images/avtar/img-6.png">
-                        <div class="tick-mark">✔</div>
-                    </label>
-                    <label class="avatar-item">
-                        <input type="radio" name="avatar" class="avatar-radio">
-                        <img src="images/avtar/img-7.png">
-                        <div class="tick-mark">✔</div>
-                    </label>
-                    <label class="avatar-item">
-                        <input type="radio" name="avatar" class="avatar-radio">
-                        <img src="images/avtar/img-8.png">
-                        <div class="tick-mark">✔</div>
-                    </label>
-                    <label class="avatar-item">
-                        <input type="radio" name="avatar" class="avatar-radio">
-                        <img src="images/avtar/img-1.png">
-                        <div class="tick-mark">✔</div>
-                    </label>
-                    <label class="avatar-item">
-                        <input type="radio" name="avatar" class="avatar-radio">
-                        <img src="images/avtar/img-2.png">
-                        <div class="tick-mark">✔</div>
-                    </label>
-                    <label class="avatar-item">
-                        <input type="radio" name="avatar" class="avatar-radio">
-                        <img src="images/avtar/img-3.png">
-                        <div class="tick-mark">✔</div>
-                    </label>
-                    <label class="avatar-item">
-                        <input type="radio" name="avatar" class="avatar-radio">
-                        <img src="images/avtar/img-4.png">
-                        <div class="tick-mark">✔</div>
-                    </label>
+                <div class="avatar-selection d-flex gap-4 align-items-center flex-wrap justify-content-center" id="avatarlist">
+                    
                 </div>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="save">Save</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
@@ -420,6 +362,130 @@
 
         mobileMenuToggle.addEventListener("click", function() {
             sideMenu.classList.toggle("active");
+        });
+    });
+
+    $.get("controllers/student/getstudentdata.php" , {} , function(data)
+    {
+        try
+        {
+            //Parse the data received from the server
+            let response = JSON.parse(data);
+
+            //If the response is not successful, then show the error in alert
+            if(response.success == false)
+            {
+                showalert(response.error)
+                if(response.login == true)
+                {
+                    window.location.href = "login.php";
+                }
+            }
+            else
+            {
+                let student = response.studentdata;
+
+                $(".name").text(student.name);
+                $(".email").text(student.email);
+                $(".phone").text(student.phone);
+
+                if(student.profilepic != "")
+                {
+                    $(".profilepic").attr("src" , "../../studentdata/" + student.studentid + "/" + student.profilepic);
+                }
+
+                if(student.avatarimage != "")
+                {
+                    $("#avatar").attr("src" , "admin/avatarimages/" + student.avatarimage);
+                }
+
+                $("#OTPmobile").text(student.phone);
+
+                //Remove the banner is phone is already verified
+                if(student.phoneverified == 1)
+                {
+                    $(".warning-banner").remove();
+                }
+            }
+        }
+        catch(error)
+        {
+            alert("Error occurred while trying to read server response");
+        }
+    });
+
+    $("#avatar").on("click" , function()
+    {
+        $("#avatarmodal").modal("show");
+    });
+
+    $(".avatargender").on("click" , function()
+    {
+        let avatargender = $(this).val(); 
+
+        $.get("controllers/student/getavatars.php" , {"avatargender":avatargender} , function(data)
+        {
+            //Parse the data received from the server
+            let response = JSON.parse(data);
+            
+            //If the response is not successful, then show the error in alert
+            if(response.success == false)
+            {
+                showalert(response.error);
+                if(response.login == true)
+                {
+                    window.location.href = "login.php";
+                }
+            }
+            else
+            {
+                $("#avatarlist").html("");
+                for(let i=0; i<response.avatars.length; i++)
+                {
+                    let avatar = response.avatars[i];
+
+                    $("#avatarlist").append(`
+                        <label class="avatar-item">
+                            <input type="radio" name="avatar" class="avatar-radio" value="${avatar.avatarid}" data-image="${avatar.avatarimage}">
+                            <img src="admin/avatarimages/${avatar.avatarimage}">
+                            <div class="tick-mark">✔</div>
+                        </label>
+                    `); 
+                }
+            }
+        });
+    });
+
+    $("#save").on("click" , function()
+    {
+        let avatarid = $("[name='avatar']:checked").val();
+
+        $.post("controllers/student/saveavatar.php" , {"avatarid":avatarid} , function(data)
+        {
+            try
+            {
+                //Parse the data received from the server
+                let response = JSON.parse(data);
+
+                //If the response is not successful, then show the error in alert
+                if(response.success == false)
+                {
+                    showalert(response.error);
+                    if(response.login == true)
+                    {
+                        window.location.href = "login.php";
+                    }
+                }
+                else
+                {
+                    $("#avatarmodal").modal("hide");
+                    $("#avatar").attr("src" , "admin/avatarimages/" + $("[name='avatar']:checked").attr("data-image"));
+                }
+            }
+            catch(error)
+            {
+                alert("Error occurred while trying to read server response");
+            }
         });
     });
 </script>

@@ -2,7 +2,7 @@
     <ul class="mst-logo">
         <li>
             <div class="logo-imgcontainer">
-                <img src="images/avtar.png" class="img-fluid">
+                <img id="avatar" src="images/avtar.png" class="img-fluid">
             </div>
         </li>
     </ul>

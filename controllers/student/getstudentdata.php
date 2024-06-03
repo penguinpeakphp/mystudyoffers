@@ -37,6 +37,25 @@
             $response["studentdata"] = $row;
         }
 
+        $select = $db->prepare("SELECT avatarimage FROM student s INNER JOIN avatar a ON s.avatarid = a.avatarid WHERE studentid = ?");
+        if($select == false)
+        {
+            failure($response , "Error while getting student avatar");
+            goto end;
+        }
+        else
+        {
+            $select->bind_param("i" , $_SESSION["studentid"]);
+            if($select->execute() == false)
+            {
+                failure($response , "Error while getting student avatar");
+                goto end;
+            }
+            $result = $select->get_result();
+            $row = $result->fetch_assoc();
+            $response["studentdata"]["avatarimage"] = $row["avatarimage"];
+        }
+
         end:;
     }
     catch(Exception $e)
