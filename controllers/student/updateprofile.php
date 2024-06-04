@@ -40,6 +40,16 @@
             goto end;
         }
 
+        if($_POST["oldprofilepic"] != "user.png")
+        {
+            if(unlink("../../studentdata/" . $_SESSION["studentid"] . "/" . $_POST["oldprofilepic"]) == false)
+            {
+                failure($response , "Error in deleting old profile picture");
+                $db->rollback();
+                goto end;
+            }
+        }
+
         if($_FILES["editprofilepic"]["name"] != "")
         {
             //Check if directory exists and create if not exists

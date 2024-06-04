@@ -416,6 +416,10 @@
                     else
                     {
                         $("#avatarlist").html("");
+                        if(response.avatars.length == 0)
+                        {
+                            alert("No avatars found in this category");
+                        }
                         for(let i=0; i<response.avatars.length; i++)
                         {
                             let avatar = response.avatars[i];

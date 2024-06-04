@@ -1,17 +1,18 @@
 <div class="sidemenu">
-    <ul class="mst-logo">
-        <li>
-            <div class="logo-imgcontainer">
-                <img id="avatar" src="images/avtar.png" class="img-fluid">
-            </div>
-        </li>
-    </ul>
+
     <div class="mobile-menu-toggle d-lg-none d-sm-block" id="mobileMenuToggle">
         <i class="bx bx-menu"></i>
         <span>My Accounts-list</span>
     </div>
     <ul class="mb-4 menu-list">
-        <li>
+        <li class="mst-logo">
+
+            <div class="logo-imgcontainer">
+                <img id="avatar" src="images/avtar.png" class="img-fluid">
+            </div>
+
+        </li>
+        <li class="mst-logo">
             <a>
                 <i class="bx bx-user-circle"></i>
                 <span>My Account</span>

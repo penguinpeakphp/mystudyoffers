@@ -43,7 +43,7 @@ checksession();
                                     <div class="form-col text-center">
                                         <label for="editprofilepic">Edit Profile Picture</label>
                                         <label class="profile-img edit-profile-img"> 
-                                            <img src="images/user.png">
+                                            <img src="images/user.png" class="profilepic">
                                             <input type="file" name="editprofilepic" id="editprofilepic">
                                         </label>
                                     </div>

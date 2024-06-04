@@ -50,6 +50,7 @@ $(function()
         e.preventDefault();
 
         let formdata = new FormData(this);
+        formdata.append("oldprofilepic" , $(".profilepic").get(0).src.split("/").pop());
         $.ajax({
             type: "POST",
             url: "controllers/student/updateprofile.php",
