@@ -62,19 +62,19 @@ checksession();
                             <!-- Default Tabs -->
                             <ul class="nav nav-tabs d-flex" id="myTabjustified" role="tablist">
                                 <li class="nav-item flex-fill" role="presentation">
-                                    <button class="nav-link w-100 active" id="tab1" data-bs-toggle="tab" data-bs-target="#section1" type="button" role="tab" aria-controls="section1" aria-selected="false" tabindex="-1">University Information</button>
+                                    <button class="nav-link w-100 active tabbtn" id="tab1" data-bs-toggle="tab" data-bs-target="#section1" type="button" role="tab" aria-controls="section1" aria-selected="false" tabindex="-1">University Information</button>
                                 </li>
                                 <li class="nav-item flex-fill" role="presentation">
-                                    <button class="nav-link w-100" id="tab2" data-bs-toggle="tab" data-bs-target="#section2" type="button" role="tab" aria-controls="section2" aria-selected="false" tabindex="-1">University Intellectual Assets</button>
+                                    <button disabled class="nav-link w-100 tabbtn" id="tab2" data-bs-toggle="tab" data-bs-target="#section2" type="button" role="tab" aria-controls="section2" aria-selected="false" tabindex="-1">University Intellectual Assets</button>
                                 </li>
                                 <li class="nav-item flex-fill" role="presentation">
-                                    <button class="nav-link w-100" id="tab3" data-bs-toggle="tab" data-bs-target="#section3" type="button" role="tab" aria-controls="section3" aria-selected="false" tabindex="-1">University Rankings</button>
+                                    <button disabled class="nav-link w-100 tabbtn" id="tab3" data-bs-toggle="tab" data-bs-target="#section3" type="button" role="tab" aria-controls="section3" aria-selected="false" tabindex="-1">University Rankings</button>
                                 </li>
                                 <li class="nav-item flex-fill" role="presentation">
-                                    <button class="nav-link w-100" id="tab4" data-bs-toggle="tab" data-bs-target="#section4" type="button" role="tab" aria-controls="section4" aria-selected="true">University Statistics</button>
+                                    <button disabled class="nav-link w-100 tabbtn" id="tab4" data-bs-toggle="tab" data-bs-target="#section4" type="button" role="tab" aria-controls="section4" aria-selected="true">University Statistics</button>
                                 </li>
                                 <li class="nav-item flex-fill" role="presentation">
-                                    <button class="nav-link w-100" id="tab5" data-bs-toggle="tab" data-bs-target="#section5" type="button" role="tab" aria-controls="section5" aria-selected="false" tabindex="-1">Tuition and Fees</button>
+                                    <button disabled class="nav-link w-100 tabbtn" id="tab5" data-bs-toggle="tab" data-bs-target="#section5" type="button" role="tab" aria-controls="section5" aria-selected="false" tabindex="-1">Tuition and Fees</button>
                                 </li>
                             </ul>
                             <div class="tab-content pt-2" id="myTabjustifiedContent">

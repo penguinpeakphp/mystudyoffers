@@ -25,7 +25,7 @@ img {
 }
 
 p {
-  margin: 0 0 15px;
+  margin: 0 0 15px;.right-content .detail .education-detail .accordions .accordion-item .accordion-content .progress-bar
   color: #626262;
   line-height: 24px;
 }
@@ -542,13 +542,12 @@ input[type="color"] {
  .mystudy-dashboard .left-content .accomodation-container {
   height: 200px;
     width: 250px;
-    border: 1px solid #000;
-    border-radius: 10px;
-    position: relative;
+       position: relative;
 }
 .mystudy-dashboard .left-content .accomodation-container img {
   height: 100%;
   width: 100%;
+   border-radius: 10px;
   object-fit: cover;
 }
 .mystudy-dashboard .left-content .need-help-container {
@@ -556,7 +555,7 @@ input[type="color"] {
   height: 200px;
   overflow: hidden;
   margin: 30px 0px;
-  border: 1px solid #000;
+ 
   border-radius: 10px;
   position: relative;
 }
@@ -923,7 +922,7 @@ input[type="color"] {
   transition: all 0.4s;
   background: #fff;
   position: relative;
-  border-radius: 10px 10px 0 0;
+
   border-bottom: 1px solid #80808040;
 }
 
@@ -991,13 +990,14 @@ input[type="color"] {
 }
 .right-content .detail .education-detail .accordions .accordion-item .accordion-content .progress-bar {
   width: 100%;
-  height: 50px;
-  border-radius: 650px;
-  overflow: hidden;
-  background-color: #fffbf3;
+  height: auto;
+  border-radius: 20px;
+gap:10px;
+  background-color: #fff;
   flex-direction: row;
-  justify-content: space-between;
+      justify-content: flex-start;
   display: flex;
+      flex-wrap: wrap;
 }
 .right-content .detail .education-detail .accordions .accordion-item .accordion-content .progress-bar .progress-fill {
   padding: 10px;
@@ -1006,7 +1006,7 @@ input[type="color"] {
   align-items: center;  
   justify-content: center;
   background-color: #ffbf21;
-  border-radius: 650px;
+  border-radius: 20px;
   font-size: 15px;
   font-weight: 600;
   line-height: 19.5px;
@@ -1204,7 +1204,7 @@ justify-content: space-between;
 
 .right-content .personal-detail .travel-bookcontainer img {
   width: 100%;
-  height: 215px;
+  height: 200px;
   display: block;
   border-radius: 8px;
 }
@@ -1350,6 +1350,7 @@ justify-content: space-between;
   display: flex;
   align-items: center;
   justify-content: space-between;
+      flex-wrap: wrap;
 }
 .warning-banner .warning-info h4 {
   font-size: 17px;
@@ -1452,6 +1453,48 @@ justify-content: space-between;
   color: #6b7280;
   background: #fff;
 }
+.mst-logo:hover{
+  background:transparent !important;
+  color:#fff !important;
+}
+.mystudy-dashboard .left-content .sidemenu ul li.mst-logo:hover a {
+ color:#fff !important;
+}
+.register_form 
+ .profile-img.edit-profile-img {
+    position: relative;
+}
+.register_form  .profile-img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin: auto;
+    overflow: hidden;
+    cursor: pointer;
+}
+.register_form  .profile-img.edit-profile-img:before {
+    content: "";
+    background:#00000061;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.5;
+}
+.register_form  .profile-img img {
+    width: 100%;
+    height: 100%;
+}
+.register_form  .profile-img input[type="file"] {
+    display: none;
+}
+.right-content .edit-profile-section .register_form label.profile-img{
+    width:auto !important;
+}
+
+
+/* Avtar Modal css*/
 
 .set-avtar-pos .chk-gender {
   display: flex;
@@ -1505,36 +1548,6 @@ justify-content: space-between;
 .set-avtar-pos .avatar-item input[type="radio"]:checked + img + .tick-mark {
   display: block;
 }
-
-
-.profile-img.edit-profile-img {
-  position: relative;
-}
-.profile-img {
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
-  margin: auto;
-  overflow: hidden;
-  cursor: pointer;
-}
-.profile-img.edit-profile-img:before {
-  content: "";
-  background: #000;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0.5;
-}
-.profile-img img {
-  width: 100%;
-  height: 100%;
-}
-.profile-img input[type="file"] {
-  display: none;
-}
-.right-content .edit-profile-section .register_form label.profile-img{
-  width:auto !important;
+.sidebarextra-mobile {
+    display: none;
 }

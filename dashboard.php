@@ -47,12 +47,10 @@ if (isset($_SESSION["studentid"])) {
         <div class="container">
             <div class="mystudy-dashboard">
                 <div class="left-content">
-                    <?php
-                    require_once "partials/sidebar.php";
-                    ?>
-                    <?php
-                    require_once "partials/sidebarextra.php";
-                    ?>
+                    <?php require_once "partials/sidebar.php"; ?>
+                    <div class="sidebarextra-web">
+                        <?php require "partials/sidebarextra.php"; ?>
+                    </div>
                 </div>
                 <div class="right-content">
                     <div class="header-section mb-4">
@@ -113,7 +111,6 @@ if (isset($_SESSION["studentid"])) {
                             <a href="javascript:void(0)" id="sendotp" class="info-btn">Send OTP</a>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="detail">
@@ -209,6 +206,8 @@ if (isset($_SESSION["studentid"])) {
                                                 <h2>My Test Scores<i class='bx bx-chevron-down'></i></h2>
                                             </div>
                                             <div class="accordion-content " id="testscores" style="display: none;">
+                                                <div class="progress-bar mb-2">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="accordion-item">
@@ -377,6 +376,13 @@ if (isset($_SESSION["studentid"])) {
                                     <img src="images/ms_imgs/travel-img.jpg" class="img-fluid">
                                     <h2>Travel Booking</h2>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sidebarextra-mobile">
+                        <div class="mystudy-dashboard">
+                            <div class="left-content">
+                                <?php require "partials/sidebarextra.php"; ?>   
                             </div>
                         </div>
                     </div>

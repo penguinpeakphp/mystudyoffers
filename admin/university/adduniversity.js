@@ -154,7 +154,8 @@ $(function()
                             alert("University data added successfully");
                             if(isedit != "edit")
                             {
-                                $("#universityinformationform *").prop("disabled" , true);   
+                                $("#universityinformationform *").prop("disabled" , true);
+                                $(".tabbtn").prop("disabled" , false);   
                             }
                         }
                     }

@@ -210,7 +210,7 @@ $(function()
             }
             else
             {
-                $("#testscores").append(`
+                $("#testscores").prepend(`
                     <div class="text-end">
                         <a href="testscoreprofile.php" class="edit-text">Edit</a>
                     </div>
@@ -220,10 +220,8 @@ $(function()
                 {
                     let testtypetestscore = response.testtypetestscores[i];
 
-                    $("#testscores").append(`
-                        <div class="progress-bar mb-2">
-                            <div class="progress-fill pboxwidth">${testtypetestscore.testname}<br>${testtypetestscore.testscore}</div>
-                        </div>
+                    $("#testscores .progress-bar").append(`
+                        <div class="progress-fill pboxwidth">${testtypetestscore.testname}<br>${testtypetestscore.testscore}</div>
                     `);
                 }
                 $("#workexperience").text(response.workexperiencename);

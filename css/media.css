@@ -14,7 +14,7 @@
     font-size: 28px;
     line-height: 0;
     background-color: transparent;
-    border: 2px solid #000;
+    border: 2px solid #fff;
     border-radius: 0px;
     transition: none;
     box-shadow: none !important;
@@ -34,7 +34,7 @@
     padding-bottom: 15px;
     width: 300px;
     height: 100%;
-    background: #41034c;
+    background: #060a27;
     z-index: 999;
   }
 
@@ -53,7 +53,7 @@
   }
 
   .navbar-light .navbar-nav .nav-item {
-    border-bottom: #530561 1px solid;
+    border-bottom: #fff 1px solid;
   }
 
   .navbar-light .navbar-nav a.nav-link.donate-btn {
@@ -67,7 +67,7 @@
 
   .navbar-light .navbar-nav .nav-link {
     font-size: 14px;
-    color: #fff;
+    color: #fff !important;
   }
 
   .navbar-light .navbar-nav .info-text {
@@ -103,6 +103,17 @@
 @media only screen and (max-width: 767px) {
   .footer-bottom ul {
     display: inline-block;
+  }
+  .right-content .detail .education-detail .accordions .accordion-item .accordion-content .progress-bar .progress-fill {
+            width: 100%;
+        height: auto;
+        max-width: 200px;
+        text-wrap: balance;
+     
+  }
+  .right-content .detail .education-detail .accordions .accordion-item .accordion-content .progress-bar {
+      height:100%;
+      border-radius:20px;
   }
 }
 
@@ -145,6 +156,8 @@
 }
 
 @media only screen and (max-width: 991px) {
+   
+  
   .mystudy-dashboard .sidemenu .mobile-menu-toggle {
     font-size: 40px;
     width: 100%;
@@ -171,30 +184,43 @@
     background-color: #fff;
     width: initial;
   }
-  .mystudy-dashboard .sidemenu .mst-logo {
-    display: none;
-  }
+
   .mystudy-dashboard .sidemenu.active ul.menu-list {
     display: block;
     min-width: 350px;
   }
-  .mystudy-dashboard .right-content {
-   max-width: 350px;
-}
-.right-content .detail  .visa-application img  {
-  height: 100px;
-}
-.mystudy-dashboard .left-content{
-  margin:0 auto;
-}
+ 
+
+
 }
 @media (max-width: 767px) {
+
+  .mystudy-dashboard .right-content{
+     order:1;
+ }
+    .right-content .detail  .visa-application img  {
+  height: 100px;
+}
+      .mystudy-dashboard .sidemenu .mst-logo {
+margin:0 !important;
+text-align:center;
+  }
+  .mystudy-dashboard .left-content .mst-logo .logo-imgcontainer{
+      margin:0 !important;
+  }
+     .mystudy-dashboard .right-content {
+   max-width: 350px;
+}
+    .mystudy-dashboard .left-content{
+  margin:0 auto;
+   padding-bottom:0px;
+}
   .mystudy-dashboard .right-content .header-section .flex-item-2 {
     display: none;
   }
   .mystudy-dashboard {
     flex-wrap: wrap !important;
-    margin: 30px 0px;
+    margin: 30px;
   }
   .mystudy-dashboard .right-content .banner-section {
     height: auto;
@@ -206,7 +232,7 @@
   }
   .mystudy-dashboard .right-content .banner-section .banner-content h2 {
     font-size: 28px;
-    line-height: 45px;
+    line-height: 35px;
   }
   .mystudy-dashboard .right-content .banner-section .banner-content p {
     font-size: 18px;
@@ -215,6 +241,7 @@
   }
   .progress-container {
     width: 100%;
+        justify-content: flex-start;
   }
   .right-content .detail .visa-application h2  {
     font-size: 21px;
@@ -226,15 +253,15 @@
     padding: 8px 16px;
   }
   .progress-container .my-progress-bar .label {
-    font-size: 12px;
+    font-size: 15px;
+        text-align: start;
+    position: relative;
+    transform: translate(43px, -29px);
   }
   .mystudy-dashboard .right-content .banner-section::before{
     background-image: none !important;
   }
-  .right-content .detail .education-detail .accordions .accordion-item .accordion-content .progress-bar {
-       width: 230px; 
-      display: table-row !important;
-        }
+
   .right-content .add-question .input-container {
     flex-wrap: wrap !important;
 }
@@ -256,7 +283,7 @@
 
 @media (max-width: 480px) {
   .right-content .detail .visa-application h2  {
-    font-size: 21px;
+    font-size: 17px;
     margin-bottom: 2px;
   }
 
@@ -267,4 +294,37 @@
   .travel-bookcontainer h2 {
     font-size: 30px;
   }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .mystudy-dashboard {
+   display:block !important;
+  }
+    .mystudy-dashboard .left-content {
+        margin: 0 auto;
+        padding-bottom: 35px !important;
+    }
+}
+@media (max-width: 767px) { 
+    .progress-container .my-progress-bar {
+        flex-direction:column;
+                width: auto;
+    }
+    .progress-container .my-progress-bar::before {
+        content: "";
+    position: absolute;
+    top: 5px;
+    bottom: 0;
+    left: 49%;
+    right: 20px;
+    height: 90%;
+    width:9px;
+    background-color: #040042;
+    }
+    .sidebarextra-mobile {
+    display: block;
+}
+.sidebarextra-web {
+    display:none;
+}
 }
