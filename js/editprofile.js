@@ -44,6 +44,21 @@ $(function()
     }
 
     getstudentdata();
+
+    $('#editprofilepic').change(function(event) 
+    {
+        let input = event.target;
+        let reader = new FileReader();
+        reader.onload = function() 
+        {
+            let dataURL = reader.result;
+            $('#viewprofilepic').attr('src', dataURL);
+        };
+        if (input.files && input.files[0]) 
+        {
+            reader.readAsDataURL(input.files[0]);
+        }
+    });
     
     $("#editprofile").on("submit", function(e)
     {

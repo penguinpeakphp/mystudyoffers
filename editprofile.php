@@ -39,11 +39,11 @@ checksession();
                         <h3>Edit Profile</h3>
                         <form class="register_form" id="editprofile">
                             <div class="row">
-                                  <div class="col-lg-12">
+                                <div class="col-lg-12">
                                     <div class="form-col text-center">
                                         <label for="editprofilepic">Edit Profile Picture</label>
-                                        <label class="profile-img edit-profile-img"> 
-                                            <img src="images/user.png" class="profilepic">
+                                        <label class="profile-img edit-profile-img">
+                                            <img src="images/user.png" class="profilepic" id="viewprofilepic">
                                             <input type="file" name="editprofilepic" id="editprofilepic">
                                         </label>
                                     </div>
@@ -78,7 +78,7 @@ checksession();
                                         <input type="text" name="editpincode" id="editpincode">
                                     </div>
                                 </div>
-                              
+
                                 <div class="col-lg-12">
                                     <div class="form-col mt-4">
                                         <button type="submit" class="register-btn">Update</button>
