@@ -116,12 +116,13 @@ if (isset($_SESSION["studentid"])) {
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="detail">
-                                <div class="course-suggestion-detail mb-3 d-none">
+                                <div class="course-suggestion-detail mb-3">
                                     <div class="course-title">
                                         <h5>Course Suggestions</h5>
-                                        <a href="">Edit</a>
+                                        <a href="" class="d-none">Edit</a>
                                     </div>
-                                    <div class="row">
+                                    <p>Coming Soon</p>
+                                    <div class="row d-none">
                                         <div class="col-lg-6 mb-4">
                                             <div class="course-info">
                                                 <div class="course-imgconatainer">
@@ -200,7 +201,7 @@ if (isset($_SESSION["studentid"])) {
                                         </div>
                                         <div class="accordion-item">
                                             <div class="accordion-title" data-tab="nextqualification">
-                                                <h2>My Next Qualification<i class='bx bx-chevron-down'></i></h2>
+                                                <h2>My Future Plan<i class='bx bx-chevron-down'></i></h2>
                                             </div>
                                             <div class="accordion-content " id="nextqualification" style="display: none;">
                                                 <div class="progress-bar mb-2">
@@ -226,17 +227,6 @@ if (isset($_SESSION["studentid"])) {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="accordion-item">
-                                            <div class="accordion-title" data-tab="item4">
-                                                <h2>My Future Plan<i class='bx bx-chevron-down'></i></h2>
-                                            </div>
-                                            <div class="accordion-content " id="item4" style="display: none;">
-                                                <div class="according-text">
-                                                    <h5> Coming Soon </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                     </div>
                                 </div>
                                 <div class="visa-application mb-3">
@@ -284,7 +274,7 @@ if (isset($_SESSION["studentid"])) {
                                     </div>
 
                                 </div>
-                                <div class="application-info mb-3 d-none">
+                                <div class="application-info mb-3">
                                     <h3>Application's</h3>
                                     <ul class="applications">
                                         <li>

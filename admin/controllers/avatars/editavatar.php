@@ -13,7 +13,7 @@
         }
 
         //Check if all the fields are set and have some value
-        if(!isset($_POST["avatarid"]) || !isset($_POST["avatarname"]) || !isset($_POST["avatarstatus"]) || !isset($_POST["avatargender"]) || $_POST["avatarname"] == "" || $_POST["avatarstatus"] == "" || $_POST["avatarid"] == "" || $_POST["avatargender"] == "" )
+        if(!isset($_POST["avatarid"]) || !isset($_POST["avatarname"]) || !isset($_POST["avatarstatus"]) || $_POST["avatarname"] == "" || $_POST["avatarstatus"] == "" || $_POST["avatarid"] == "")
         {
             failure($response , "Please fill all the fields");
             goto end;
@@ -83,16 +83,16 @@
             }
 
             //Query the database to update the existing avatar based on the avatar id
-            $update = $db->prepare("UPDATE avatar SET avatarname = ? , avatargender = ? , avatarimage = ? , avatarstatus = ? WHERE avatarid = ?");
+            $update = $db->prepare("UPDATE avatar SET avatarname = ? , avatarimage = ? , avatarstatus = ? WHERE avatarid = ?");
             //Bind the data with the query
-            $update->bind_param("sssii" , $_POST["avatarname"] , $_POST["avatargender"] , $filename , $_POST["avatarstatus"] , $_POST["avatarid"]);
+            $update->bind_param("ssii" , $_POST["avatarname"] , $filename , $_POST["avatarstatus"] , $_POST["avatarid"]);
         }
         else
         {
             //Query the database to update the existing avatar based on the avatar id
-            $update = $db->prepare("UPDATE avatar SET avatarname = ? , avatargender = ? , avatarstatus = ? WHERE avatarid = ?");
+            $update = $db->prepare("UPDATE avatar SET avatarname = ? , avatarstatus = ? WHERE avatarid = ?");
             //Bind the data with the query
-            $update->bind_param("ssii" , $_POST["avatarname"] , $_POST["avatargender"] , $_POST["avatarstatus"] , $_POST["avatarid"]);
+            $update->bind_param("sii" , $_POST["avatarname"] , $_POST["avatarstatus"] , $_POST["avatarid"]);
         }
         
         if($update->execute() == false)

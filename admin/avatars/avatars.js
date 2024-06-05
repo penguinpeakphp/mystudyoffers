@@ -14,7 +14,6 @@ $(function()
 
         formdata.append("avatarimage" , $("#addavatarimage").prop("files")[0]);
         formdata.append("avatarname" , $("#addavatarname").val());
-        formdata.append("avatargender" , $("[name=addavatargender]:checked").val());
         formdata.append("avatarstatus" , $("#addavatarstatus").prop("checked") ? 1 : 0);
 
         $.ajax
@@ -71,7 +70,6 @@ $(function()
         formdata.append("avatarid" , $("#editavatarid").val());
         formdata.append("avatarimage" , $("#editavatarimage").prop("files")[0]);
         formdata.append("avatarname" , $("#editavatarname").val());
-        formdata.append("avatargender" , $("[name=editavatargender]:checked").val());
         formdata.append("avatarstatus" , $("#editavatarstatus").prop("checked") ? 1 : 0);
 
         $.ajax
@@ -156,7 +154,6 @@ $(function()
                         <tr>
                             <th scope="row">${avatar.avatarid}</th>
                             <td>${avatar.avatarname}</td>
-                            <td>${avatar.avatargender}</td>
                             <td><img class="avatarimg" src="../avatarimages/${avatar.avatarimage}"></td>
                         `;
     
@@ -192,7 +189,6 @@ $(function()
                         let index = $(this).attr("data-index");
                         $("#editavatarid").val(response.avatars[index].avatarid);
                         $("#editavatarname").val(response.avatars[index].avatarname);
-                        $("[name=editavatargender][value=" + response.avatars[index].avatargender + "]").prop("checked" , true);
                         $("#editavatarstatus").prop("checked" , response.avatars[index].avatarstatus == "1" ? true : false);
                     });
 

@@ -93,6 +93,10 @@ checksession();
                                                         <input type="text" class="form-control" id="editcountryname" name="editcountryname">
                                                     </div>
                                                 </div>
+                                                <div class="col-12 mb-3">
+                                                    <label for="editflagimage" class="form-label">Flag Image</label>
+                                                    <input type="file" class="form-control" id="editflagimage" name="editflagimage">
+                                                </div>
                                                 <div class="row mb-3">
                                                     <div class="col-sm-10">
                                                         <div class="form-check">
@@ -127,6 +131,10 @@ checksession();
                                                         <label for="addcountryname" class="form-label">Country Name</label>
                                                         <input type="text" class="form-control" id="addcountryname" name="addcountryname">
                                                     </div>
+                                                </div>
+                                                <div class="col-12 mb-3">
+                                                    <label for="addflagimage" class="form-label">Flag Image</label>
+                                                    <input type="file" class="form-control" id="addflagimage" name="addflagimage">
                                                 </div>
                                                 <div class="row mb-3">
                                                     <div class="col-sm-10">

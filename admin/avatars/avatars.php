@@ -69,7 +69,6 @@ checksession();
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Avatar Name</th>
-                                        <th scope="col">Avatar Gender</th>
                                         <th scope="col">Avatar Image</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
@@ -94,25 +93,6 @@ checksession();
                                                     <input type="text" class="form-control" id="editavatarname" name="editavatarname">
                                                 </div>
 
-                                                <div class="col-12">
-                                                    <fieldset class="row mb-3">
-                                                        <legend class="col-form-label col-sm-2 pt-0">Avatar Gender</legend>
-                                                        <div class="col-sm-10">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" name="editavatargender" id="maleavatar" value="male">
-                                                                <label class="form-check-label" for="maleavatar">
-                                                                    Male Avatar
-                                                                </label>
-                                                                </div>
-                                                                <div class="form-check">
-                                                                <input class="form-check-input" type="radio" name="editavatargender" id="femaleavatar" value="female">
-                                                                <label class="form-check-label" for="femaleavatar">
-                                                                    Female Avatar
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </fieldset>
-                                                </div>
                                                 <div class="col-12">
                                                     <label for="editavatarimage" class="form-label">Avatar Image</label>
                                                     <input type="file" class="form-control" id="editavatarimage" name="editavatarimage">
@@ -149,25 +129,6 @@ checksession();
                                                 <div class="col-12">
                                                     <label for="addavatarname" class="form-label">Avatar Name</label>
                                                     <input type="text" class="form-control" id="addavatarname" name="addavatarname">
-                                                </div>
-                                                <div class="col-12">
-                                                    <fieldset class="row mb-3">
-                                                        <legend class="col-form-label col-sm-2 pt-0">Avatar Gender</legend>
-                                                        <div class="col-sm-10">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" name="addavatargender" id="maleavatar" value="male">
-                                                                <label class="form-check-label" for="maleavatar">
-                                                                    Male Avatar
-                                                                </label>
-                                                                </div>
-                                                                <div class="form-check">
-                                                                <input class="form-check-input" type="radio" name="addavatargender" id="femaleavatar" value="female">
-                                                                <label class="form-check-label" for="femaleavatar">
-                                                                    Female Avatar
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </fieldset>
                                                 </div>
                                                 <div class="col-12">
                                                     <label for="addavatarimage" class="form-label">Avatar Image</label>

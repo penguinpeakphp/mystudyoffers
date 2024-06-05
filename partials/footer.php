@@ -273,24 +273,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body set-avtar-pos">
-                <div class="chk-gender mb-4">
-                    <label class="fw-bold">Gender :</label>
-                    <div class="d-flex gap-1">
-                        <div class="form-check">
-                            <input class="form-check-input avatargender" type="radio" name="avatargender" id="maleavatar" value="male">
-                            <label class="form-check-label" for="maleavatar">
-                                Male
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input avatargender" type="radio" name="avatargender" id="femaleavatar" value="female">
-                            <label class="form-check-label" for="femaleavatar">
-                                Female
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="avatar-selection d-flex gap-4 align-items-center flex-wrap justify-content-center" id="avatarlist">
                     
                 </div>
@@ -393,13 +375,8 @@
             $("#avatar").on("click" , function()
             {
                 $("#avatarmodal").modal("show");
-            });
 
-            $(".avatargender").on("click" , function()
-            {
-                let avatargender = $(this).val(); 
-
-                $.get("controllers/student/getavatars.php" , {"avatargender":avatargender} , function(data)
+                $.get("controllers/student/getavatars.php" , {} , function(data)
                 {
                     //Parse the data received from the server
                     let response = JSON.parse(data);

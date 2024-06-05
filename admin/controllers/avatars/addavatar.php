@@ -13,7 +13,7 @@
         }
 
         //Check if all the fields are set and have some value
-        if(!isset($_POST["avatarname"]) || !isset($_POST["avatarstatus"]) || !isset($_POST["avatargender"]) || $_POST["avatargender"] == "" || $_POST["avatarname"] == "" || $_POST["avatarstatus"] == "" || $_FILES["avatarimage"]["name"] == "")
+        if(!isset($_POST["avatarname"]) || !isset($_POST["avatarstatus"]) || $_POST["avatarname"] == "" || $_POST["avatarstatus"] == "" || $_FILES["avatarimage"]["name"] == "")
         {
             failure($response , "Please fill all the fields");
             goto end;
@@ -48,7 +48,7 @@
         }
 
         //Query the database for inserting avatar into the database
-        $insert = $db->prepare("INSERT INTO avatar(avatarname , avatargender , avatarimage , avatarstatus) VALUES(? , ? , ? , ?)");
+        $insert = $db->prepare("INSERT INTO avatar(avatarname , avatarimage , avatarstatus) VALUES(? , ? , ?)");
         if($insert == false)
         {
             failure($response , "Error while adding the avatar");
@@ -58,7 +58,7 @@
         else
         {
             //Bind the country name and status
-            $insert->bind_param("sssi" , $_POST["avatarname"] , $_POST["avatargender"] , $filename , $_POST["avatarstatus"]);
+            $insert->bind_param("ssi" , $_POST["avatarname"], $filename , $_POST["avatarstatus"]);
             if($insert->execute() == false)
             {
                 failure($response , "Error while adding the avatar");

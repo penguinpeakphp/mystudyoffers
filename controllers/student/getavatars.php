@@ -16,7 +16,7 @@
         $response["avatars"] = [];
 
         //Query the database for selecting all the avatar data from the avatar table
-        $select = $db->query("SELECT * FROM avatar WHERE avatargender = '{$_GET["avatargender"]}' AND avatarstatus = 1");
+        $select = $db->query("SELECT * FROM avatar WHERE avatarstatus = 1");
         if($select == false)
         {
             failure($response , "Error while fetching avatar list");
