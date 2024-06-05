@@ -48,7 +48,7 @@
     transition: left 0.3s ease-in-out;
   }
 
-  .navbar-toggler.collapsed ~ .navbar-collapse {
+  .navbar-toggler.collapsed~.navbar-collapse {
     transition: left 0.5s ease-in-out;
   }
 
@@ -75,6 +75,7 @@
     color: #fff;
     margin-top: 20px;
   }
+
   .header-info {
     display: none;
   }
@@ -92,6 +93,7 @@
     height: 130px;
     padding: 23px 5px;
   }
+
   .footer-top img {
     margin-bottom: 30px;
   }
@@ -100,20 +102,21 @@
     margin-bottom: 30px;
   }
 }
+
 @media only screen and (max-width: 767px) {
   .footer-bottom ul {
     display: inline-block;
   }
+
   .right-content .detail .education-detail .accordions .accordion-item .accordion-content .progress-bar .progress-fill {
-            width: 100%;
-        height: auto;
-        max-width: 200px;
-        text-wrap: balance;
-     
+    width: 100%;
+    height: auto;
+    text-wrap: balance;
   }
+
   .right-content .detail .education-detail .accordions .accordion-item .accordion-content .progress-bar {
-      height:100%;
-      border-radius:20px;
+    height: 100%;
+    border-radius: 20px;
   }
 }
 
@@ -126,6 +129,7 @@
     width: calc(100% - 60px);
   }
 }
+
 @media only screen and (max-width: 380px) {
   .navbar-collapse {
     width: 280px;
@@ -156,13 +160,14 @@
 }
 
 @media only screen and (max-width: 991px) {
-   
-  
+
+
   .mystudy-dashboard .sidemenu .mobile-menu-toggle {
     font-size: 40px;
     width: 100%;
     background-color: #fff;
   }
+
   .mystudy-dashboard .sidemenu .mobile-menu-toggle span {
     font-size: 25px;
     margin: auto;
@@ -170,14 +175,17 @@
     position: relative;
     bottom: 10px;
   }
+
   .mystudy-dashboard .sidemenu {
     max-width: 100%;
     height: auto !important;
     padding-right: 0;
   }
+
   .mystudy-dashboard .sidemenu ul {
     display: none;
   }
+
   .mystudy-dashboard .sidemenu ul li.active {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -189,61 +197,75 @@
     display: block;
     min-width: 350px;
   }
- 
+
 
 
 }
+
 @media (max-width: 767px) {
 
-  .mystudy-dashboard .right-content{
-     order:1;
- }
-    .right-content .detail  .visa-application img  {
-  height: 100px;
-}
-      .mystudy-dashboard .sidemenu .mst-logo {
-margin:0 !important;
-text-align:center;
+  .mystudy-dashboard .right-content {
+    order: 1;
   }
-  .mystudy-dashboard .left-content .mst-logo .logo-imgcontainer{
-      margin:0 !important;
+
+  .right-content .detail .visa-application img {
+    height: 100px;
   }
-     .mystudy-dashboard .right-content {
-   max-width: 350px;
-}
-    .mystudy-dashboard .left-content{
-  margin:0 auto;
-   padding-bottom:0px;
-}
-  .mystudy-dashboard .right-content .header-section .flex-item-2 {
-    display: none;
+
+  .mystudy-dashboard .sidemenu .mst-logo {
+    margin: 0 !important;
+    text-align: center;
   }
+
+  .mystudy-dashboard .left-content .mst-logo .logo-imgcontainer {
+    margin: 0 !important;
+  }
+
+  .mystudy-dashboard .right-content {
+    max-width: 350px;
+  }
+
+  .mystudy-dashboard .left-content {
+    margin: 0 auto;
+    padding-bottom: 0px;
+  }
+
   .mystudy-dashboard {
     flex-wrap: wrap !important;
     margin: 30px;
   }
+
   .mystudy-dashboard .right-content .banner-section {
     height: auto;
     flex-direction: column;
     background-image: none !important;
   }
+
   .mystudy-dashboard .right-content .banner-section .banner-content {
     padding: 15px;
   }
+
   .mystudy-dashboard .right-content .banner-section .banner-content h2 {
-    font-size: 28px;
+    font-size: 25px;
     line-height: 35px;
   }
+
   .mystudy-dashboard .right-content .banner-section .banner-content p {
     font-size: 18px;
     line-height: 23px;
     margin-bottom: 10px;
   }
+
   .progress-container {
     width: 100%;
-        justify-content: flex-start;
+    justify-content: flex-start;
+    display: none;
+
+    text-align: start;
+    width: max-content;
   }
-  .right-content .detail .visa-application h2  {
+
+  .right-content .detail .visa-application h2 {
     font-size: 21px;
     margin-bottom: 2px;
   }
@@ -252,37 +274,42 @@ text-align:center;
     font-size: 0.9em;
     padding: 8px 16px;
   }
+
   .progress-container .my-progress-bar .label {
     font-size: 15px;
-        text-align: start;
+    text-align: start;
     position: relative;
     transform: translate(43px, -29px);
   }
-  .mystudy-dashboard .right-content .banner-section::before{
+
+  .mystudy-dashboard .right-content .banner-section::before {
     background-image: none !important;
   }
 
   .right-content .add-question .input-container {
     flex-wrap: wrap !important;
-}
-.right-content .add-question input[type="text"] {
-  width: 100% !important;
-}
-.right-content .add-question .question-button {
-  margin-top: 20px;
-  width: 100%;
-  position: relative;
-}
-.right-content .query-list .table-responsive {
-  overflow-x: auto;
-  white-space: nowrap;
-  width: 100%;
-  max-width: 400px;
-}
+  }
+
+  .right-content .add-question input[type="text"] {
+    width: 100% !important;
+  }
+
+  .right-content .add-question .question-button {
+    margin-top: 20px;
+    width: 100%;
+    position: relative;
+  }
+
+  .right-content .query-list .table-responsive {
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+    max-width: 400px;
+  }
 }
 
 @media (max-width: 480px) {
-  .right-content .detail .visa-application h2  {
+  .right-content .detail .visa-application h2 {
     font-size: 17px;
     margin-bottom: 2px;
   }
@@ -291,40 +318,89 @@ text-align:center;
     font-size: 0.8em;
     padding: 6px 12px;
   }
+
   .travel-bookcontainer h2 {
     font-size: 30px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-    .mystudy-dashboard {
-   display:block !important;
+  .mystudy-dashboard {
+    display: block !important;
   }
-    .mystudy-dashboard .left-content {
-        margin: 0 auto;
-        padding-bottom: 35px !important;
-    }
+
+  .mystudy-dashboard .left-content {
+    margin: 0 auto;
+    padding-bottom: 35px !important;
+  }
 }
-@media (max-width: 767px) { 
-    .progress-container .my-progress-bar {
-        flex-direction:column;
-                width: auto;
-    }
-    .progress-container .my-progress-bar::before {
-        content: "";
+
+@media (max-width: 767px) {
+  .progress-container .my-progress-bar {
+    flex-direction: column;
+    width: auto;
+  }
+
+  .progress-container .my-progress-bar::before {
+    content: "";
     position: absolute;
     top: 5px;
     bottom: 0;
-    left: 49%;
+    left: 42%;
     right: 20px;
     height: 90%;
-    width:9px;
+    width: 9px;
     background-color: #040042;
-    }
-    .sidebarextra-mobile {
+  }
+
+  .sidebarextra-mobile {
     display: block;
+  }
+
+  .sidebarextra-web {
+    display: none;
+  }
+
+  .banner-content .collapsible {
+    color: white;
+    cursor: pointer;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    border: 1px solid #040042;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+
+  .banner-content .collapsible:after {
+    content: '\002B';
+    color: #040042;
+    font-weight: bold;
+    float: left;
+    font-size: 30px;
+    margin-right: 20px;
+  }
+
+  .banner-content .collapsible.active:after {
+    content: "\2212";
+  }
+
+  .warning-banner .warning-info .info-btn {
+    margin: auto;
+    text-align: center;
+  }
 }
-.sidebarextra-web {
-    display:none;
-}
+@media(min-width:768px) and (max-width:1024px){
+
+      .sidebarextra-mobile {
+    display: block;
+            justify-content: center;
+        display: flex;
+  }
+
+  .sidebarextra-web {
+    display: none;
+  }
 }

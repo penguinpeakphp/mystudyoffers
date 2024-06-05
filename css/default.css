@@ -922,10 +922,14 @@ input[type="color"] {
   transition: all 0.4s;
   background: #fff;
   position: relative;
-
+border-radius: 10px 10px 0 0;
   border-bottom: 1px solid #80808040;
 }
-
+.right-content .detail .education-detail .accordions .accordion-item{
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+   
+}
 .right-content .detail .education-detail .accordions .accordion-item .accordion-title i {
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -933,6 +937,7 @@ input[type="color"] {
 
 .right-content .detail .education-detail .accordions .accordion-item .accordion-title.active-title {
   background-color: #040042;
+  border-radius: 10px 10px 0 0;
 }
 
 .right-content .detail .education-detail .accordions .accordion-item .accordion-title.active-title h2 {
@@ -1490,7 +1495,10 @@ justify-content: space-between;
     display: none;
 }
 .right-content .edit-profile-section .register_form label.profile-img{
-    width:auto !important;
+    width:100px !important;
+     -webkit-width:auto !important;
+  -moz-width:auto !important;
+  -ms-width:auto !important;
 }
 
 
