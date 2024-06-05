@@ -117,9 +117,9 @@ $(function()
                           <h5> ${academic.academicname} > ${academic.majorsubjectname} </h5>
                         </div>
                         <div class="progress-bar mb-2">
-                            <div class="progress-fill pboxwidth">Passing Year ${academic.passingyear}</div>
-                            <div class="progress-fill pboxwidth">Result ${academic.resultname}</div>
-                            <div class="progress-fill pboxwidth" title="CBSE">Awarding Body ${academic.awardingbodyname}</div>
+                            <div class="progress-fill pboxwidth">Passing Year<br />${academic.passingyear}</div>
+                            <div class="progress-fill pboxwidth">Result<br />${academic.resultname}</div>
+                            <div class="progress-fill pboxwidth" title="CBSE">Awarding Body<br />${academic.awardingbodyname}</div>
                         </div>
                     `)
                 }
@@ -150,7 +150,7 @@ $(function()
             }
             else
             {
-                $("#qualificationlevel").append(`
+                $("#qualificationlevel").prepend(`
                     <div class="text-end">
                         <a href="qualificationprofile.php" class="edit-text">Edit</a>
                     </div>
@@ -160,14 +160,12 @@ $(function()
                 {
                     let qualification = response.qualifications[i]; 
 
-                    $("#qualificationlevel").append(`
-                        <div class="progress-bar mb-2">
-                            <div class="progress-fill pboxwidth">${qualification.qualificationname}</div>
-                        </div>
+                    $("#qualificationlevel .progress-bar").append(`
+                        <div class="progress-fill pboxwidth">${qualification.qualificationname}</div>
                     `)
                 }
 
-                $("#nextqualification").append(`
+                $("#nextqualification").prepend(`
                     <div class="text-end">
                         <a href="qualificationprofile.php" class="edit-text">Edit</a>
                     </div>
@@ -177,10 +175,8 @@ $(function()
                 {
                     let qualificationsub = response.qualificationsubs[i];
 
-                    $("#nextqualification").append(`
-                        <div class="progress-bar mb-2">
-                            <div class="progress-fill pboxwidth">${qualificationsub.qualificationsubname}</div>
-                        </div>
+                    $("#nextqualification .progress-bar").append(`
+                        <div class="progress-fill pboxwidth">${qualificationsub.qualificationsubname}</div>
                     `);
                 }
             }

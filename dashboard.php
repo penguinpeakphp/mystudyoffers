@@ -60,10 +60,12 @@ if (isset($_SESSION["studentid"])) {
                     </div>
                     <div class="banner-section mb-4">
                         <div class="banner-content ">
-                            <h2>Welcome back, <?= $_SESSION['name'] ?>!</h2>
+                            <h2>Welcome back,
+                                <?= $_SESSION['name'] ?>!
+                            </h2>
                             <p>Always stay updated in your student portal</p>
-                            <h5>My Timeline</h5>
-                            <div class="progress-container">
+                            <h5 class="collapsible">My Timeline</h5>
+                            <div class="progress-container content">
                                 <div class="my-progress-bar">
                                     <label class="step">
                                         <input type="radio" name="progress" value="1">
@@ -192,6 +194,8 @@ if (isset($_SESSION["studentid"])) {
                                                 <h2>My Qualification<i class='bx bx-chevron-down'></i></h2>
                                             </div>
                                             <div class="accordion-content " id="qualificationlevel" style="display: none;">
+                                                <div class="progress-bar mb-2">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="accordion-item">
@@ -199,6 +203,8 @@ if (isset($_SESSION["studentid"])) {
                                                 <h2>My Next Qualification<i class='bx bx-chevron-down'></i></h2>
                                             </div>
                                             <div class="accordion-content " id="nextqualification" style="display: none;">
+                                                <div class="progress-bar mb-2">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="accordion-item">
@@ -382,7 +388,7 @@ if (isset($_SESSION["studentid"])) {
                     <div class="sidebarextra-mobile">
                         <div class="mystudy-dashboard">
                             <div class="left-content">
-                                <?php require "partials/sidebarextra.php"; ?>   
+                                <?php require "partials/sidebarextra.php"; ?>
                             </div>
                         </div>
                     </div>
@@ -393,7 +399,7 @@ if (isset($_SESSION["studentid"])) {
         <?php
         require_once "partials/footer.php";
         ?>
-        
+
         <script src="js/custom.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script>

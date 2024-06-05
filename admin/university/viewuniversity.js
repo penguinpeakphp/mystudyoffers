@@ -11,14 +11,13 @@ $(function()
         $("button[type=submit]").remove();   
     }
 
+    //Get the university data from the server
     $.get("../controllers/university/getuniversitydata.php" , {"universityid" : universityid} , function(data)
     {
         try
         {
             //Parse the data received from the server
             let response = JSON.parse(data);
-
-            console.log(response);
 
             //If the response is not successful, then show the error in alert
             if(response.success == false)
@@ -55,18 +54,22 @@ $(function()
                 //If the file was uploaded, then display the view image link
                 if(university.universityimage != "")
                 {
+                    //Display the link that can allow the user to view the image
                     $("#viewuniversityimage").removeClass("d-none");
                     $("#viewuniversityimage").attr("href" , "../universitydata/" + university.universityid + "/" + university.universityimage);
                     $("#viewuniversityimage").attr("target" , "_blank");
 
+                    //Display the delete button that can allow the user to delete the image
                     $("#deleteuniversityimage").removeClass("d-none");
                     $("#deleteuniversityimage").on("click" , function()
                     {
+                        //Ask for the confirmation before deleting
                         if(confirm("Are you sure you want to delete the image?") == false)
                         {
                             return;
                         }
 
+                        //Make the request to delete the university image
                         $.get("../controllers/university/deleteuniversitydata.php" , {"universityimage":university.universityimage , "universityid":universityid} , function(data)
                         {
                             try
@@ -81,9 +84,11 @@ $(function()
                                 }
                                 else
                                 {
+                                    //Hide the view and delete university image
                                     $("#viewuniversityimage").addClass("d-none");
                                     $("#deleteuniversityimage").addClass("d-none");
 
+                                    //Remove the link that allows the user to view the image
                                     $("#viewuniversityimage").attr("href" , "javascript:void(0)");
                                 }
                             }
@@ -98,12 +103,14 @@ $(function()
                 //Get the level of courses and check the selected courses
                 getlevelofcourses().then(function()
                 {
+                    //Tick the university level of courses
                     universitylevelofcourses.forEach(function(data)
                     {
                         $(`.courselevelsoffered input[type=checkbox][value=${data}]`).prop("checked" , true);
                     }); 
                 });
 
+                //Set thje rest of the data
                 $("#keycontactname").val(university.keycontactname);
                 $("#keycontactemail").val(university.keycontactemail);
                 $("#keycontactdesignation").val(university.keycontactdesignation);
@@ -140,11 +147,14 @@ $(function()
 
                     //Populate the other campus details and fill in the data
                     othercampusaddresses.forEach(function(othercampusaddress)
-                    {                        
+                    {               
+                        //Click the add other campus button         
                         $("#addothercampus").click();
 
+                        //Get the last other campus division
                         let lastOtherCampus = $("#othercampusdetails .othercampus").last();
 
+                        //Fill in the details of the other campus
                         lastOtherCampus.find("input[name=othercampusstreetaddress]").val(othercampusaddress.othercampusstreetaddress);
                         lastOtherCampus.find("input[name=othercampuspostcode]").val(othercampusaddress.othercampuspostcode);
                         lastOtherCampus.find(`select[name=othercampuscity] [value=${othercampusaddress.othercampuscityid}]`).prop("selected" , true);
@@ -156,18 +166,22 @@ $(function()
                     //If the file was uploaded, then display the view image link
                     if(universityassets.logoimage != "")
                     {
+                        //Display the view image link
                         $("#viewlogoimage").removeClass("d-none");
                         $("#viewlogoimage").attr("href" , "../universitydata/" + university.universityid + "/" + universityassets.logoimage);
                         $("#viewlogoimage").attr("target" , "_blank");
 
+                        //Display the delete image link
                         $("#deletelogoimage").removeClass("d-none");
                         $("#deletelogoimage").on("click" , function()
                         {
+                            //Confirm the user wants to delete the image
                             if(confirm("Are you sure you want to delete the image?") == false)
                             {
                                 return;
                             }
 
+                            //Delete the image by requesting to the server
                             $.get("../controllers/university/deleteuniversitydata.php" , {"logoimage":universityassets.logoimage , "universityid":universityid} , function(data)
                             {
                                 try
@@ -182,9 +196,11 @@ $(function()
                                     }
                                     else
                                     {
+                                        //Remove the view image link
                                         $("#viewlogoimage").addClass("d-none");
                                         $("#deletelogoimage").addClass("d-none");
 
+                                        //Reset the image
                                         $("#viewlogoimage").attr("href" , "javascript:void(0)");
                                     }
                                 }
@@ -199,18 +215,22 @@ $(function()
                     //If the file was uploaded, then display the view image link
                     if(universityassets.mascotimage != "")
                     {
+                        //Display the view image link
                         $("#viewmascotimage").removeClass("d-none");
                         $("#viewmascotimage").attr("href" , "../universitydata/" + university.universityid + "/" + universityassets.mascotimage);
                         $("#viewmascotimage").attr("target" , "_blank");
 
+                        //Display the delete image link
                         $("#deletemascotimage").removeClass("d-none");
                         $("#deletemascotimage").on("click" , function()
                         {
+                            //Confirm the user wants to delete the image
                             if(confirm("Are you sure you want to delete the image?") == false)
                             {
                                 return;
                             }
 
+                            //Delete the image by requesting to the server
                             $.get("../controllers/university/deleteuniversitydata.php" , {"mascotimage":universityassets.mascotimage , "universityid":universityid} , function(data)
                             {
                                 try
@@ -225,9 +245,11 @@ $(function()
                                     }
                                     else
                                     {
+                                        //Remove the view image link
                                         $("#viewmascotimage").addClass("d-none");
                                         $("#deletemascotimage").addClass("d-none");
 
+                                        //Reset the image
                                         $("#viewmascotimage").attr("href" , "javascript:void(0)");
                                     }
                                 }
@@ -243,15 +265,20 @@ $(function()
                 //Loop through all the clubs and teams and display them
                 clubsandteams.forEach(function(clubandteam)
                 {
+                    //Add another club and team
                     $("#addteamsandclubs").click();
 
+                    //Get the last club and team
                     let lastClubAndTeam = $("#otherteamsandclubslist .otherteamsandclubs").last();
+
+                    //Set the club and team
                     lastClubAndTeam.val(clubandteam);
                 });
 
                 //Loop through all the facility images and display them
                 facilityimages.forEach(function(facilityimage , index)
                 {
+                    
                     $("#addfacilityimages").click();
                     $("#facilityimageslist .facilityimages").remove();
                     $("#facilityimageslist .removefacilityimages").addClass("d-none");
