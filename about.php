@@ -59,7 +59,7 @@ if(!isset($_SESSION)){session_start();}
                             <div class="pattern-overlay overlay-circle"></div>
                             <img src="images/news-img1.png" alt="">
                         </figure>
-                        <div class="mission-and-aim-inside">
+                        <div class="about-content">
                             <div class="about-mission-content">
                                 <div class="section-head">
                                     <span class="section-sub-title ">INTRODUCTION</span>

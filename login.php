@@ -14,7 +14,7 @@ if (isset($_SESSION["email"]) && isset($_SESSION["name"])) {
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -76,14 +76,13 @@ if (isset($_SESSION["email"]) && isset($_SESSION["name"])) {
                             <input type="password" name="password" placeholder="Password" required="required">
 
                             <button type="submit" class="readon btn">Login</button>
+                            <div class="pt-3"><a class="link-opacity-100 forgot-pwd" id="forgotPassword">Forgot Password ?</a></div>
+                            <div class="pt-3">
 
-                            <div class="last-password">
-
-                                <p>Not registered? <a href="javascript:void(0)" onclick='$("#exampleModal").modal("show");' title="Student Registration"><b>Create an account</b></a></p>
+                                <p class="text-center">Not registered? <a href="javascript:void(0)" onclick='$("#exampleModal").modal("show");' title="Student Registration" class="forgot-pwd">Create an account</a></p>
 
                             </div>
 
-                            <a class="link-opacity-100" id="forgotPassword">Forgot Password</a>
 
                         </form>
 
