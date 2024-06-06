@@ -248,7 +248,7 @@ $(function()
             }
             else
             {
-                let len = (response.selectedcountrynamesflags.length >= 3) ? 3 : response.selectedcountrynamesflags.length;
+                let len = Math.min(3, response.selectedcountrynamesflags.length);
                 
                 for(let i=0; i< len; i++)
                 {
