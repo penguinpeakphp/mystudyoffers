@@ -248,7 +248,9 @@ $(function()
             }
             else
             {
-                for(let i=0; i<response.selectedcountrynamesflags.length; i++)
+                let len = (response.selectedcountrynamesflags.length >= 3) ? 3 : response.selectedcountrynamesflags.length;
+                
+                for(let i=0; i< len; i++)
                 {
                     let country = response.selectedcountrynamesflags[i];
                     $(".coutry-info").append(`
