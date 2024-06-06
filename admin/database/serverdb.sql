@@ -17,6 +17,7 @@ create table country
 (
 	countryid int not null primary key auto_increment,
     countryname varchar(100) not null,
+    flagimage varchar(50) not null default "",
     status boolean not null default true
 );
 

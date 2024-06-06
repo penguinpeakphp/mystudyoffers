@@ -13,14 +13,32 @@
         }
 
         //Check if all the fields are set and have some value
-        if(!isset($_POST["countryname"]) || !isset($_POST["status"]) || $_POST["countryname"] == "" || $_POST["status"] == "")
+        if(!isset($_POST["countryname"]) || !isset($_POST["status"]) || !isset($_FILES["flagimage"]) || $_POST["countryname"] == "" || $_POST["status"] == "")
         {
             failure($response , "Please fill all the fields");
             goto end;
         }
 
+        $filename = "";
+
+        if(isset($_FILES["flagimage"]) && $_FILES["flagimage"]["name"] != "")
+        {
+            //Get the extension of image
+            $extension = pathinfo($_FILES["flagimage"]["name"] , PATHINFO_EXTENSION);
+
+            //Set the unique filename for the image
+            $filename = uniqid() . "." . $extension;
+
+            //Move the files to the directory
+            if(move_uploaded_file($_FILES["flagimage"]["tmp_name"] , "flagimages/" . $filename) == false)
+            {
+                failure($response , "Error while uploading the flag image");
+                goto end;
+            }
+        }
+
         //Query the database for inserting country into the database
-        $insert = $db->prepare("INSERT INTO country(countryname , status) VALUES(? , ?)");
+        $insert = $db->prepare("INSERT INTO country(countryname , flagimage , status) VALUES(? , ? , ?)");
         if($insert == false)
         {
             failure($response , "Error while adding the country");
@@ -29,14 +47,13 @@
         else
         {
             //Bind the country name and status
-            $insert->bind_param("si" , $_POST["countryname"] , $_POST["status"]);
+            $insert->bind_param("ssi" , $_POST["countryname"] , $filename , $_POST["status"]);
             if($insert->execute() == false)
             {
                 failure($response , "Error while adding the country");
                 goto end;
             }
         }
-
 
         end:;
     }

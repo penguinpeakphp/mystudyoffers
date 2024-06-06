@@ -10,44 +10,52 @@ $(function()
     {
         e.preventDefault();
 
-        //Fetch the country name and the status
-        let countryname = $("#addcountryname").val();
-        let status = $("#addstatus").prop("checked") ? 1 : 0;
+        let formdata = new FormData();
 
-        //Send the post request for adding the new country
-        $.post("../controllers/country/addcountry.php" , {"countryname":countryname , "status":status} , function(data)
-        {
-            try
+        formdata.append("countryname" , $("#addcountryname").val());
+        formdata.append("status" , $("#addstatus").prop("checked") ? 1 : 0);
+        formdata.append("flagimage" , $("#addflagimage")[0].files[0]);
+
+        $.ajax({
+            url: "../controllers/country/addcountry.php",
+            type: "POST",
+            data: formdata,
+            processData: false,
+            contentType: false,
+            success: function(data)
             {
-                //Parse the data received from the server
-                let response = JSON.parse(data);
-
-                //If the response is not successful, then show the error in alert
-                if(response.success == false)
+                try
                 {
-                    alert(response.error);
+                    //Parse the data received from the server
+                    let response = JSON.parse(data);
 
-                    //Redirect to login page if the user is required to be login again
-                    if(response.login == true)
+                    //If the response is not successful, then show the error in alert
+                    if(response.success == false)
                     {
-                        window.location.href = "../login/login.php";
+                        alert(response.error);
+
+                        //Redirect to login page if the user is required to be login again
+                        if(response.login == true)
+                        {
+                            window.location.href = "../login/login.php";
+                        }
+                    }
+                    else
+                    {
+                        //Alert the success message
+                        alert("Country inserted successfully");
+
+                        //Repopulate the country list
+                        getcountrylist();
+
+                        //Close the modal
+                        $("#addmodal").modal("hide");
                     }
                 }
-                else
+                catch(error)
                 {
-                    //Alert the success message
-                    alert("Country inserted successfully");
-
-                    //Repopulate the country list
-                    getcountrylist();
-
-                    //Close the modal
-                    $("#addmodal").modal("hide");
+                    alert("Error occurred while trying to read server response");
                 }
-            }
-            catch(error)
-            {
-                alert("Error occurred while trying to read server response");
             }
         });
     });
@@ -56,45 +64,52 @@ $(function()
     {
         e.preventDefault();
 
-        //Fetch the countryid , country name and the status
-        let countryid = $("#editcountryid").val();
-        let countryname = $("#editcountryname").val();
-        let status = $("#editstatus").prop("checked") ? 1 : 0;
+        let formdata = new FormData();
+        formdata.append("countryid" , $("#editcountryid").val());
+        formdata.append("countryname" , $("#editcountryname").val());
+        formdata.append("status" , $("#editstatus").prop("checked") ? 1 : 0);
+        formdata.append("flagimage" , $("#editflagimage")[0].files[0]);
 
-        //Send the post request for updating the country
-        $.post("../controllers/country/editcountry.php" , {"countryid":countryid , "countryname":countryname , "status":status} , function(data)
-        {
-            try
+        $.ajax({
+            url: "../controllers/country/editcountry.php",
+            type: "POST",
+            data: formdata,
+            processData: false,
+            contentType: false,
+            success: function(data)
             {
-                //Parse the data received from the server
-                let response = JSON.parse(data);
-
-                //If the response is not successful, then show the error in alert
-                if(response.success == false)
+                try
                 {
-                    alert(response.error);
+                    //Parse the data received from the server
+                    let response = JSON.parse(data);
 
-                    //Redirect to login page if the user is required to be login again
-                    if(response.login == true)
+                    //If the response is not successful, then show the error in alert
+                    if(response.success == false)
                     {
-                        window.location.href = "../login/login.php";
+                        alert(response.error);
+
+                        //Redirect to login page if the user is required to be login again
+                        if(response.login == true)
+                        {
+                            window.location.href = "../login/login.php";
+                        }
+                    }
+                    else
+                    {
+                        //Alert the success message
+                        alert("Country updated successfully");
+
+                        //Repopulate the country list
+                        getcountrylist();
+
+                        //Close the modal
+                        $("#editmodal").modal("hide");
                     }
                 }
-                else
+                catch(error)
                 {
-                    //Alert the success message
-                    alert("Country updated successfully");
-
-                    //Repopulate the country list
-                    getcountrylist();
-
-                    //Close the modal
-                    $("#editmodal").modal("hide");
+                    alert("Error occurred while trying to read server response");
                 }
-            }
-            catch(error)
-            {
-                alert("Error occurred while trying to read server response");
             }
         });
     });
@@ -135,6 +150,7 @@ $(function()
                         <tr>
                             <th scope="row">${country.countryid}</th>
                             <td>${country.countryname}</td>
+                            <td><img height="32" width="48" src="../controllers/country/flagimages/${country.flagimage}" /></td>
                         `;
     
                         //Render badge based on the status flag

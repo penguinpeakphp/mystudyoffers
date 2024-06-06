@@ -69,6 +69,7 @@ checksession();
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Country Name</th>
+                                        <th scope="col">Flag Image</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>

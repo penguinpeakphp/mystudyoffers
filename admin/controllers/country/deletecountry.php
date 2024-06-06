@@ -19,6 +19,41 @@
             goto end;
         }
 
+        //Query the database to fetch the existing filename
+        $select = $db->prepare("SELECT flagimage FROM country WHERE countryid = ?");
+        if($select == false)
+        {
+            failure($response , "Error while fetching the country flag image");
+            goto end;
+        }
+        else
+        {
+            //Bind the country id
+            $select->bind_param("i" , $_POST["countryid"]);
+
+            //Execute the query
+            if($select->execute() == false)
+            {
+                failure($response , "Error while fetching the country flag image");
+                goto end;
+            }
+
+            //Get the result
+            $result = $select->get_result();
+            $row = $result->fetch_assoc();
+
+            $oldfilename = $row["flagimage"];
+
+            if($oldfilename != "")
+            {
+                if(unlink("flagimages/" . $oldfilename) == false)
+                {
+                    failure($response , "Error while deleting the old flag image");
+                    goto end;
+                }
+            }
+        }
+
         //Query the database for deleting the country with the help of countryid
         $delete = $db->prepare("DELETE FROM country WHERE countryid = ?");
         if($delete == false)
