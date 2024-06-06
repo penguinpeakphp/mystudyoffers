@@ -448,16 +448,19 @@
         }
     });
 
-    function showalert(message) {
+    function showalert(message) 
+    {
         $("#alertModal .modal-body").text(message);
         $("#alertModal").modal("show");
     }
 
-    $(document).ajaxStart(function() {
+    $(document).ajaxStart(function() 
+    {
         $('.loader').show(); /* Show loader when AJAX starts */
     });
 
-    $(document).ajaxStop(function() {
+    $(document).ajaxStop(function() 
+    {
         $('.loader').hide(); /* Hide loader when AJAX completes */
     });
 </script>

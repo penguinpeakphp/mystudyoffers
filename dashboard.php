@@ -259,18 +259,7 @@ if (isset($_SESSION["studentid"])) {
                                 <div class="destination-info mb-3">
                                     <h3>Destination</h3>
                                     <div class="coutry-info">
-                                        <div class="country-name">
-                                            <img src="images/ms_imgs/india.jpg" class="img-fluid">
-                                            <h5>In</h5>
-                                        </div>
-                                        <div class="country-name">
-                                            <img src="images/ms_imgs/canada.jpg" class="img-fluid">
-                                            <h5>can</h5>
-                                        </div>
-                                        <div class="country-name">
-                                            <img src="images/ms_imgs/australia.jpg" class="img-fluid">
-                                            <h5>Aus</h5>
-                                        </div>
+                                        
                                     </div>
 
                                 </div>

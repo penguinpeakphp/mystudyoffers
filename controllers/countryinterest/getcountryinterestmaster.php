@@ -30,10 +30,10 @@
 
         //Declare an array to store the selected countries of the student
         $response["selectedcountries"] = [];
-        $response["selectedcountrynames"] = [];
+        $response["selectedcountrynamesflags"] = [];
 
         //Query the database to select countries selected by student
-        $select = $db->prepare("SELECT s.countryid , countryname FROM studentcountry s INNER JOIN country c ON s.countryid = c.countryid WHERE studentid = ?");
+        $select = $db->prepare("SELECT s.countryid , countryname , flagimage FROM studentcountry s INNER JOIN country c ON s.countryid = c.countryid WHERE studentid = ?");
         if($select == false)
         {
             failure($response , "Error while fetching selected countries");
@@ -57,7 +57,11 @@
             while($row = $result->fetch_assoc())
             {
                 array_push($response["selectedcountries"] , $row["countryid"]);
-                array_push($response["selectedcountrynames"] , $row["countryname"]);
+
+                $countryobj = [];
+                $countryobj["countryname"] = $row["countryname"];
+                $countryobj["flagimage"] = $row["flagimage"];
+                array_push($response["selectedcountrynamesflags"] , $countryobj);
             }
             
         }

@@ -248,11 +248,14 @@ $(function()
             }
             else
             {
-                for(let i=0; i<response.selectedcountrynames.length; i++)
+                for(let i=0; i<response.selectedcountrynamesflags.length; i++)
                 {
-                    let country = response.selectedcountrynames[i];
-                    $("#countrylist").append(`
-                        <span># ${country}</span>
+                    let country = response.selectedcountrynamesflags[i];
+                    $(".coutry-info").append(`
+                        <div class="country-name">
+                            <img src="admin/controllers/country/flagimages/${country.flagimage}" class="img-fluid">
+                            <h5>${country.countryname}</h5>
+                        </div>
                     `);
                 }
             }
