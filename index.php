@@ -18,6 +18,7 @@ if(!isset($_SESSION)){session_start();}
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 
     <title>Mystudyoffers.com</title>
 </head>
@@ -178,7 +179,7 @@ if(!isset($_SESSION)){session_start();}
                         <span>
                             <h3>Book a Discovery Session with Our Expert Mentors</h3>
                             <p>Our mentors will guide you through a complex journey of securing admission in to top higher education destinations globally, be it at UG level or PG level. MyStudyOffers mentors are internationally qualified and experienced from the prestigious universities globally.</p>
-                            <a class="main-btn">Book a Session</a>
+                            <a class="main-btn" href="#" id="booksession">Book a Session</a>
                         </span>
                     </div>
                     <div class="col-12 col-md-6">
@@ -512,12 +513,28 @@ if(!isset($_SESSION)){session_start();}
         </div>
     </section>
 
+
+
     <?php
         require_once "partials/footer.php";
     ?>
-
+   <script src="https://assets.calendly.com/assets/external/widget.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#booksession').on('click', function(e)
+            {
+                e.preventDefault();
+                Calendly.initPopupWidget({ url: 'https://calendly.com/mystudyoffers/booksession' });
+                return false;
+            });
+        });
+        
+</script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/index.js"></script>
+ 
+
+    </script>
 </body>
 
 </html>

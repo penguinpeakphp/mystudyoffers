@@ -427,7 +427,7 @@ span.save {
   text-align: center;
   border-radius: 50%;
   padding: 33px 10px;
-  z-index: ;
+  z-index: 1;
 }
 
 .slider-img-sec h3 {

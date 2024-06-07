@@ -923,7 +923,7 @@ INSERT INTO `testtype` (`testid`, `testname`, `teststatus`) VALUES
 -- Dumping data for table `workexperience`
 --
 
-INSERT INTO `workexperience` (`workexperienceid`, `workexperiencename`, `workexperiencestatus`) VALUES
+INSERT INTO `workexperience` (`workexperienceid`, `workexperiencename`, `workexperiencestatus`) VALUES 
 (1, 'No Work Experience', 1),
 (2, '1 to 3 Years Relevant to Studies', 1),
 (3, '4 Years or above Relevant to Studies', 1),

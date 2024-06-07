@@ -70,37 +70,37 @@ if (isset($_SESSION["studentid"])) {
                                     <label class="step">
                                         <input type="radio" name="progress" value="1">
                                         <span class="circle">✔</span>
-                                        <span class="label">Text 1</span>
+                                        <span class="label">Discover Courses</span>
                                     </label>
                                     <label class="step">
                                         <input type="radio" name="progress" value="2">
                                         <span class="circle">✔</span>
-                                        <span class="label">Text 2</span>
+                                        <span class="label">Apply Admissions</span>
                                     </label>
                                     <label class="step">
                                         <input type="radio" name="progress" value="3">
                                         <span class="circle">✔</span>
-                                        <span class="label">Text 3</span>
+                                        <span class="label">Meet Conditions</span>
                                     </label>
                                     <label class="step">
                                         <input type="radio" name="progress" value="4">
                                         <span class="circle">✔</span>
-                                        <span class="label">Text 4</span>
+                                        <span class="label">Prepare Finances</span>
                                     </label>
                                     <label class="step">
                                         <input type="radio" name="progress" value="5">
                                         <span class="circle">✔</span>
-                                        <span class="label">Text 5</span>
+                                        <span class="label">Accept Admission Offer</span>
                                     </label>
                                     <label class="step">
                                         <input type="radio" name="progress" value="6">
                                         <span class="circle">✔</span>
-                                        <span class="label">Text 6</span>
+                                        <span class="label">Apply Visa</span>
                                     </label>
                                     <label class="step">
                                         <input type="radio" name="progress" value="7">
                                         <span class="circle">✔</span>
-                                        <span class="label">Text 7</span>
+                                        <span class="label">Fly & Enroll</span>
                                     </label>
                                 </div>
                             </div>
@@ -201,7 +201,7 @@ if (isset($_SESSION["studentid"])) {
                                         </div>
                                         <div class="accordion-item">
                                             <div class="accordion-title" data-tab="nextqualification">
-                                                <h2>My Future Plan<i class='bx bx-chevron-down'></i></h2>
+                                                <h2>My Future Plans<i class='bx bx-chevron-down'></i></h2>
                                             </div>
                                             <div class="accordion-content " id="nextqualification" style="display: none;">
                                                 <div class="progress-bar mb-2">
@@ -219,7 +219,7 @@ if (isset($_SESSION["studentid"])) {
                                         </div>
                                         <div class="accordion-item">
                                             <div class="accordion-title" data-tab="item3">
-                                                <h2>My Document<i class='bx bx-chevron-down'></i></h2>
+                                                <h2>My Documents<i class='bx bx-chevron-down'></i></h2>
                                             </div>
                                             <div class="accordion-content " id="item3" style="display: none;">
                                                 <div class="according-text">

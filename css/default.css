@@ -1574,3 +1574,8 @@ tr:first-child td:last-child{
 tr:last-child td:last-child{
   border-bottom-right-radius: 10px;
 }
+
+.calendly-overlay{
+  overflow:hidden;
+  z-index: 9999 !important;
+}
