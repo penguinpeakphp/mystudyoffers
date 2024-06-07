@@ -33,6 +33,12 @@ $(function()
                         $("#editphone").val(response.studentdata.phone);
                         $("#editpincode").val(response.studentdata.pincode);
                         $("#editsurname").val(response.studentdata.surname);
+                        $("#editparentname").val(response.studentdata.parentname);
+                        $("#editparentemail").val(response.studentdata.parentemail);
+                        $("#editparentphone").val(response.studentdata.parentphone);
+                        $("#editaddress").val(response.studentdata.address);
+                        $("#editbirthdate").val(response.studentdata.birthdate);
+                        $("#editgender option[value='" + response.studentdata.gender + "']").prop("selected", true);
                     }
                 }
                 catch(error)

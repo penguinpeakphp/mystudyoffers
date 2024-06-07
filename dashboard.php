@@ -264,8 +264,9 @@ if (isset($_SESSION["studentid"])) {
 
                                 </div>
                                 <div class="application-info mb-3">
-                                    <h3>Application's</h3>
-                                    <ul class="applications">
+                                    <h3>Application Updates</h3>
+                                    <p>Coming Soon</p>
+                                    <ul class="applications d-none">
                                         <li>
                                             <div class="application-name">
                                                 <div class="d-flex flex-column">

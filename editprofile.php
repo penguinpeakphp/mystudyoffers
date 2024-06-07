@@ -72,6 +72,46 @@ checksession();
                                         <input type="email" name="editemail" id="editemail">
                                     </div>
                                 </div>
+                                <div class="col-lg-12">
+                                    <div class="form-col">
+                                        <label for="editaddress">Address</label>
+                                        <textarea type="text" rows="2" name="editaddress" id="editaddress"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="editgender" class="form-label">Gender</label>
+                                    <select id="editgender" name="editgender" class="form-select">
+                                        <option selected="" value="" hidden disabled="">Choose Gender...</option> 
+                                        <option value="Male" >Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-col">
+                                        <label for="editbirthdate">Birth Date</label>
+                                        <input type="date" name="editbirthdate" id="editbirthdate">
+                                    </div>
+                                </div>
+                                <!-- Parennt Name -->
+                                <div class="col-lg-6">
+                                    <div class="form-col">
+                                        <label for="editparentname">Parent Name</label>
+                                        <input type="text" name="editparentname" id="editparentname">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-col">
+                                        <label for="editparentemail">Parent Email</label>
+                                        <input type="email" name="editparentemail" id="editparentemail">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-col">
+                                        <label for="editparentphone">Parent Phone</label>
+                                        <input type="text" name="editparentphone" id="editparentphone">
+                                    </div>
+                                </div>
                                 <div class="col-lg-6">
                                     <div class="form-col">
                                         <label for="editpincode">Pincode</label>

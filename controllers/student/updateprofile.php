@@ -30,8 +30,8 @@
 
         $db->begin_transaction();
 
-        $update = $db->prepare("UPDATE student SET name = ?, email = ?, phone = ?, surname = ?, pincode = ? WHERE studentid = ?");
-        $update->bind_param("sssssi", $name, $email, $phone, $surname, $pincode, $_SESSION["studentid"]);
+        $update = $db->prepare("UPDATE student SET name = ?, email = ?, phone = ?, surname = ?, pincode = ?, address = ?, gender = ?, birthdate = ?, parentname = ?, parentemail = ?, parentphone = ? WHERE studentid = ?");
+        $update->bind_param("sssssssssssi", $name, $email, $phone, $surname, $pincode, $_POST["editaddress"], $_POST["editgender"], $_POST["editbirthdate"], $_POST["editparentname"], $_POST["editparentemail"], $_POST["editparentphone"], $_SESSION["studentid"]);
 
         if($update->execute() == false)
         {

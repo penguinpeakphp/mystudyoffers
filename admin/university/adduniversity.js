@@ -17,6 +17,7 @@ $(function()
     if(isedit == "edit")
     {
         $("button[type=submit]").text("Edit");   
+        $(".tabbtn").prop("disabled" , false);
     }
 
     let controller;

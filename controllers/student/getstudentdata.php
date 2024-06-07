@@ -16,7 +16,7 @@
         $response["studentdata"] = [];
 
         //Query the database for fetching the basic student details
-        $select = $db->prepare("SELECT studentid , name , surname , phone , email , pincode , activationtoken , profilestatus , phoneverified , profilepic FROM student WHERE studentid = ?");
+        $select = $db->prepare("SELECT studentid , name , surname , phone , email , pincode , activationtoken , profilestatus , phoneverified , profilepic, address, parentname, parentemail, parentphone, gender, birthdate FROM student WHERE studentid = ?");
         if($select == false)
         {
             failure($response , "Error while getting student details");

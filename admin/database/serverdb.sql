@@ -259,6 +259,13 @@ create table student
     phoneverified boolean not null default false,
     profilepic varchar(25) not null default "",
     avatarid int,
+
+    address varchar(500) default "",
+    gender varchar(25) default "",
+    birthdate date,
+    parentname varchar(100) default "",
+    parentemail varchar(200) default "",
+    parentphone varchar(20) default "",
     foreign key (avatarid) references avatar(avatarid) on delete set null
 );
 
