@@ -15,7 +15,9 @@
         //Check if all the necessary data is provided
         if(
             !isset($_POST["editname"]) || !isset($_POST["editemail"]) || !isset($_POST["editphone"]) || !isset($_POST["editpincode"]) || !isset($_POST["editsurname"]) ||
-            empty($_POST["editname"]) || empty($_POST["editemail"]) || empty($_POST["editphone"]) || empty($_POST["editpincode"] || empty($_POST["editsurname"]))
+            !isset($_POST["editcountry"]) || !isset($_POST["editstate"]) || !isset($_POST["editcity"]) || 
+            empty($_POST["editname"]) || empty($_POST["editemail"]) || empty($_POST["editphone"]) || empty($_POST["editpincode"] || empty($_POST["editsurname"])) ||
+            empty($_POST["editcountry"]) || empty($_POST["editstate"]) || empty($_POST["editcity"])
         )
         {
             failure($response , "Please fill all the required fields");
@@ -30,8 +32,8 @@
 
         $db->begin_transaction();
 
-        $update = $db->prepare("UPDATE student SET name = ?, email = ?, phone = ?, surname = ?, pincode = ?, address = ?, gender = ?, birthdate = ?, parentname = ?, parentemail = ?, parentphone = ? WHERE studentid = ?");
-        $update->bind_param("sssssssssssi", $name, $email, $phone, $surname, $pincode, $_POST["editaddress"], $_POST["editgender"], $_POST["editbirthdate"], $_POST["editparentname"], $_POST["editparentemail"], $_POST["editparentphone"], $_SESSION["studentid"]);
+        $update = $db->prepare("UPDATE student SET name = ?, email = ?, phone = ?, surname = ?, pincode = ?, address = ?, gender = ?, birthdate = ?, parentname = ?, parentemail = ?, parentphone = ?, staticcountryid = ?, staticstateid = ?, staticcityid = ? WHERE studentid = ?");
+        $update->bind_param("sssssssssssiiii", $name, $email, $phone, $surname, $pincode, $_POST["editaddress"], $_POST["editgender"], $_POST["editbirthdate"], $_POST["editparentname"], $_POST["editparentemail"], $_POST["editparentphone"], $_POST["editcountry"], $_POST["editstate"], $_POST["editcity"], $_SESSION["studentid"]);
 
         if($update->execute() == false)
         {
@@ -40,18 +42,19 @@
             goto end;
         }
 
-        if($_POST["oldprofilepic"] != "user.png")
-        {
-            if(unlink("../../studentdata/" . $_SESSION["studentid"] . "/" . $_POST["oldprofilepic"]) == false)
-            {
-                failure($response , "Error in deleting old profile picture");
-                $db->rollback();
-                goto end;
-            }
-        }
-
+        
         if($_FILES["editprofilepic"]["name"] != "")
         {
+            if($_POST["oldprofilepic"] != "user.png")
+            {
+                if(unlink("../../studentdata/" . $_SESSION["studentid"] . "/" . $_POST["oldprofilepic"]) == false)
+                {
+                    failure($response , "Error in deleting old profile picture");
+                    $db->rollback();
+                    goto end;
+                }
+            }
+            
             //Check if directory exists and create if not exists
             if(!is_dir("../../studentdata/" . $_SESSION["studentid"]))
             {

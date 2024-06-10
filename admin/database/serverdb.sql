@@ -266,6 +266,9 @@ create table student
     parentname varchar(100) default "",
     parentemail varchar(200) default "",
     parentphone varchar(20) default "",
+    staticcountryid int,
+    staticstateid int,
+    staticcityid int,
     foreign key (avatarid) references avatar(avatarid) on delete set null
 );
 
@@ -703,15 +706,15 @@ INSERT INTO `businessnature` (`businessid`, `businessname`, `businessstatus`) VA
 -- Dumping data for table `country`
 --
 
-INSERT INTO `country` (`countryid`, `countryname`, `status`) VALUES
-(1, 'United Kingdom', 1),
-(2, 'Canada', 1),
-(3, 'USA', 1),
-(4, 'Australia', 1),
-(5, 'Europe', 1),
-(6, 'Other', 1),
-(7, 'New Zealand', 1),
-(8, 'Asia', 1);
+INSERT INTO `country` (`countryid`, `countryname`, `flagimage` , `status`) VALUES
+(1, 'United Kingdom', 'uk.png' , 1),
+(2, 'Canada', 'canada.png', 1),
+(3, 'USA', 'usa.png', 1),
+(4, 'Australia', 'aus.png' , 1),
+(5, 'Europe', 'europe.png', 1),
+(6, 'Other', '',  1),
+(7, 'New Zealand', 'nz.png', 1),
+(8, 'Asia', '', 1);
 
 --
 -- Dumping data for table `state`

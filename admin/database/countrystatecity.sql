@@ -1,3 +1,4 @@
+use mystudyoffers;
 drop table if exists allcountries;
 create table allcountries
 (

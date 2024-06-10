@@ -15,6 +15,26 @@ checksession();
     <link rel="stylesheet" href="css/media.css" />
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+        hr {
+            border: none;
+            border-top: 3px double #333;
+            color: #333;
+            overflow: visible;
+            text-align: center;
+            height: 5px;
+            margin-top: 20px !important;
+        }
+
+        hr::after {
+            background: #fff;
+            content: 'Parent Info';
+            padding: 0 4px;
+            position: relative;
+            top: -13px;
+        }
+    </style>
 </head>
 
 <body>
@@ -93,20 +113,49 @@ checksession();
                                         <input type="date" name="editbirthdate" id="editbirthdate">
                                     </div>
                                 </div>
+
+                                <!-- Locality -->
+                                <div class="col-lg-4">
+                                    <div class="form-col">
+                                        <label class="form-label" for="editcountry">Country</label>
+                                        <select name="editcountry" id="editcountry">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-col">
+                                        <label class="form-label" for="editstate">State</label>
+                                        <select name="editstate" id="editstate">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-col">
+                                        <label class="form-label" for="editcity">City</label>
+                                        <select name="editcity" id="editcity">
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <hr />
+
                                 <!-- Parennt Name -->
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <div class="form-col">
                                         <label for="editparentname">Parent Name</label>
                                         <input type="text" name="editparentname" id="editparentname">
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <div class="form-col">
                                         <label for="editparentemail">Parent Email</label>
                                         <input type="email" name="editparentemail" id="editparentemail">
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <div class="form-col">
                                         <label for="editparentphone">Parent Phone</label>
                                         <input type="text" name="editparentphone" id="editparentphone">
