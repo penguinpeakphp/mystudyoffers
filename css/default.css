@@ -485,10 +485,11 @@ input[type="color"] {
   height: 100%;
   width: 100%;
   object-fit: cover;
+  border-radius: 50%;
 }
 .mystudy-dashboard .left-content .mst-logo .logo-imgcontainer {
-  height: 90px;
-  width: 93px;
+  height: 110px;
+  width: 110px;
   margin: auto;
   overflow: hidden;
 }
@@ -1525,6 +1526,7 @@ justify-content: space-between;
 .set-avtar-pos .avatar-item {
   position: relative;
   cursor: pointer;
+  width: 20%;
 }
 
 .set-avtar-pos .avatar-item input[type="radio"] {

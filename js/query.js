@@ -53,19 +53,19 @@ $(function()
                             tr += '<tr>';
                         }
 
-                        tr += `<td>${i+1}</td>
+                        tr += `<td class="text-center">${i+1}</td>
                         `;
 
                         //If the admin has replied last
                         if(query.studentid == null && query.adminid != null)
                         {
-                            tr += `<td>MSO - ${query.lastdate}</td>`;
+                            tr += `<td class="text-center">MSO - ${query.lastdate}</td>`;
                         }
 
                         //If the student has replied last
                         if(query.adminid == null && query.studentid != null)
                         {
-                            tr += `<td>Yourself - ${query.lastdate}</td>`;
+                            tr += `<td class="text-center">Yourself - ${query.lastdate}</td>`;
                         }
 
                         //Format the last message if the length is greater than max length
@@ -75,12 +75,12 @@ $(function()
                         }
 
                         tr += `
-                            <td>${query.lastmessage}</td>
-                            <td>${query.querytypename}</td>
+                            <td class="text-center">${query.lastmessage}</td>
+                            <td class="text-center">${query.querytypename}</td>
                         `;
 
                         tr += `
-                                <td><a href="conversation.php?queryid=${query.qi}" class="btn btn-reply">View/Replies</a></td>
+                                <td class="text-center"><a href="conversation.php?queryid=${query.qi}" class="btn btn-reply">View/Replies</a></td>
                             </tr>
                         `;
 

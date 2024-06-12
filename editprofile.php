@@ -98,6 +98,40 @@ checksession();
                                         <textarea type="text" rows="2" name="editaddress" id="editaddress"></textarea>
                                     </div>
                                 </div>
+
+                                <!-- Locality -->
+                                <div class="col-lg-6">
+                                    <div class="form-col">
+                                        <label class="form-label" for="editcountry">Country</label>
+                                        <select name="editcountry" id="editcountry">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-col">
+                                        <label class="form-label" for="editstate">State</label>
+                                        <select name="editstate" id="editstate">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-col">
+                                        <label class="form-label" for="editcity">City</label>
+                                        <select name="editcity" id="editcity">
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-col">
+                                        <label for="editpincode">Pincode</label>
+                                        <input type="text" name="editpincode" id="editpincode">
+                                    </div>
+                                </div>
+
                                 <div class="col-lg-6">
                                     <label for="editgender" class="form-label">Gender</label>
                                     <select id="editgender" name="editgender" class="form-select">
@@ -107,6 +141,7 @@ checksession();
                                         <option value="Other">Other</option>
                                     </select>
                                 </div>
+
                                 <div class="col-lg-6">
                                     <div class="form-col">
                                         <label for="editbirthdate">Birth Date</label>
@@ -114,60 +149,29 @@ checksession();
                                     </div>
                                 </div>
 
-                                <!-- Locality -->
-                                <div class="col-lg-4">
-                                    <div class="form-col">
-                                        <label class="form-label" for="editcountry">Country</label>
-                                        <select name="editcountry" id="editcountry">
-
-                                        </select>
-                                    </div>
+                                <div class="col-12 mt-4">
+                                    <h3 class="card-title text-decoration-underline">Parent Info</h3>
                                 </div>
-                                <div class="col-lg-4">
-                                    <div class="form-col">
-                                        <label class="form-label" for="editstate">State</label>
-                                        <select name="editstate" id="editstate">
-
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-col">
-                                        <label class="form-label" for="editcity">City</label>
-                                        <select name="editcity" id="editcity">
-
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <hr />
-
                                 <!-- Parennt Name -->
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-col">
                                         <label for="editparentname">Parent Name</label>
                                         <input type="text" name="editparentname" id="editparentname">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-col">
                                         <label for="editparentemail">Parent Email</label>
                                         <input type="email" name="editparentemail" id="editparentemail">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-col">
                                         <label for="editparentphone">Parent Phone</label>
                                         <input type="text" name="editparentphone" id="editparentphone">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-col">
-                                        <label for="editpincode">Pincode</label>
-                                        <input type="text" name="editpincode" id="editpincode">
-                                    </div>
-                                </div>
-
+                                
                                 <div class="col-lg-12">
                                     <div class="form-col mt-4">
                                         <button type="submit" class="register-btn">Update</button>
