@@ -25,7 +25,7 @@ img {
 }
 
 p {
-  margin: 0 0 15px;.right-content .detail .education-detail .accordions .accordion-item .accordion-content .progress-bar
+  margin: 0 0 15px;
   color: #626262;
   line-height: 24px;
 }
@@ -756,7 +756,7 @@ input[type="color"] {
   top: 10px;
   right: 2%;
   bottom: 10px;
-  width: 30%;
+  width: 25%;
   background-image: url(../images/ms_imgs/banner.png);
   background-repeat: no-repeat;
   background-position: center;
@@ -822,6 +822,7 @@ input[type="color"] {
   align-items: center;
   position: relative;
   z-index: 1;
+  width: 30px;
 }
 
 .progress-container .my-progress-bar .step input[type="radio"] {
@@ -849,7 +850,11 @@ input[type="color"] {
 
 .progress-container .my-progress-bar .label {
   color: #040042;
-  font-weight: bold;
+  color: #040042;
+    font-size: 14px;
+    text-align: center;
+    padding-left: 21px;
+ 
 }
 .right-content .detail  .course-suggestion-detail{
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);

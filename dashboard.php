@@ -192,7 +192,7 @@ if (isset($_SESSION["studentid"])) {
                                         </div>
                                         <div class="accordion-item">
                                             <div class="accordion-title" data-tab="qualificationlevel">
-                                                <h2>My Qualification<i class='bx bx-chevron-down'></i></h2>
+                                                <h2>My Future Plans<i class='bx bx-chevron-down'></i></h2>
                                             </div>
                                             <div class="accordion-content " id="qualificationlevel" style="display: none;">
                                                 <div class="progress-bar mb-2">
@@ -201,7 +201,7 @@ if (isset($_SESSION["studentid"])) {
                                         </div>
                                         <div class="accordion-item">
                                             <div class="accordion-title" data-tab="nextqualification">
-                                                <h2>My Future Plans<i class='bx bx-chevron-down'></i></h2>
+                                                <h2>My Career Domains<i class='bx bx-chevron-down'></i></h2>
                                             </div>
                                             <div class="accordion-content " id="nextqualification" style="display: none;">
                                                 <div class="progress-bar mb-2">
