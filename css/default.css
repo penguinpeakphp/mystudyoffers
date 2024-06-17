@@ -740,8 +740,8 @@ input[type="color"] {
 
 
 .mystudy-dashboard .right-content .banner-section{
-  background-color: #ffbf21;
-  height: 285px; /* Adjust the height as needed */
+  background: linear-gradient(to right, #F6F7F9, #e3e1e1);
+  height: 285px; 
   position: relative;
   transition: 0.5s;
   display: flex;
@@ -774,7 +774,7 @@ input[type="color"] {
 .mystudy-dashboard .right-content .banner-section .banner-content h2 {
   font-size: 36px;
   font-weight: 700;
-  color: #fff;
+  color: #000843;
   line-height: 40px;
 }
 .mystudy-dashboard .right-content .banner-section .banner-content p {
@@ -1585,4 +1585,42 @@ tr:last-child td:last-child{
 .calendly-overlay{
   overflow:hidden;
   z-index: 9999 !important;
+}
+
+.diy-banner{
+  height:150px;
+  width: 250px;
+  border: 2px solid #191E4A;
+  margin: 30px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.diy-banner .sub-text{
+  border: 2px solid #191E4A;
+  border-radius: 100px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  padding: 10px 6px;
+  font-size: 19px;
+  font-weight:600;
+  line-height: 29.45px;
+  letter-spacing: 3px;
+  color: #191E4A;
+}
+.diy-banner .title-text{
+  color: #191E4A;
+  margin-bottom: 2px;
+  text-transform: capitalize;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 23.75px;
+}
+.diy-banner .tag-text{
+  color: #191E4A;
+  margin-bottom: 0px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
 }

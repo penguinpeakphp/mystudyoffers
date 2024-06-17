@@ -358,10 +358,23 @@ if (isset($_SESSION["studentid"])) {
                                     </ul>
 
                                 </div>
-                                <div class="travel-bookcontainer mb-3">
+
+
+                                
+                                <div class="diy-banner mx-auto">
+                                    <img src="icons/book-banner.png" class="img-fluid mb-2">
+                                    <h1 class="title-text">Book a Session</h1>
+                                    <p class="tag-text">GET PERSIONALIZE SUPPORT</p>
+                                </div>
+                                <div class="diy-banner mx-auto">
+                                    <img src="icons/mysto-buddi-banner.png" class="img-fluid mb-2">
+                                    <h1 class="title-text">Mysto Buddies</h1>
+                                    <p class="tag-text">MAKE LIKE MINDED CONNECTIONS</p>
+                                </div>
+                                <!-- <div class="travel-bookcontainer mb-3">
                                     <img src="images/ms_imgs/travel-img.jpg" class="img-fluid">
                                     <h2>Travel Booking</h2>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
