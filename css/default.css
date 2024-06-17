@@ -1531,9 +1531,14 @@ justify-content: space-between;
 .set-avtar-pos .avatar-item {
   position: relative;
   cursor: pointer;
-  width: 20%;
+  width: 12%;
 }
 
+@media (max-width: 767px) {
+  .set-avtar-pos .avatar-item {
+    width: 26%;
+  }
+}
 .set-avtar-pos .avatar-item input[type="radio"] {
   display: none;
 }
