@@ -259,7 +259,7 @@ if (isset($_SESSION["studentid"])) {
                                 <div class="destination-info mb-3">
                                     <h3>Destination</h3>
                                     <div class="coutry-info">
-                                        
+
                                     </div>
 
                                 </div>
@@ -360,7 +360,7 @@ if (isset($_SESSION["studentid"])) {
                                 </div>
 
 
-                                
+
                                 <div class="diy-banner mx-auto">
                                     <img src="icons/book-banner.png" class="img-fluid mb-2">
                                     <h1 class="title-text">Book a Session</h1>
