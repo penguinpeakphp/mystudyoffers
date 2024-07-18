@@ -8,6 +8,8 @@
     {
         $response["success"] = true;
 
+        $google_signin = isset($_POST['google_signin']) && $_POST['google_signin'] === 'true';
+
         //Check if all the fields are filled and received on the server
         if(!isset($_POST["name"]) || !isset($_POST["surname"]) || !isset($_POST["phone"]) || !isset($_POST["email"]) || !isset($_POST["pincode"]) || !isset($_POST["password"]) || $_POST["name"] == "" || $_POST["surname"] == "" || $_POST["phone"] == "" || $_POST["email"] == "" || $_POST["pincode"] == "" || $_POST["password"] == "")
         {
@@ -58,6 +60,18 @@
 
         //Get the last auto incremented ID in the table
         $id = $db->insert_id;
+
+        if($google_signin)
+        {
+            // Update student table with google id
+            $update = $db->prepare("UPDATE student SET google_id = ? WHERE studentid = ?");
+            $update->bind_param("si" , $_POST['google_id'] , $id);
+            if($update->execute() == false) {
+                failure($response , "Error while updating google id");
+                $db->rollback();
+                goto end;
+            }
+        }
 
         //Send the activation email to the user
         if(sendactivationmail($_POST["email"] , "Verify your email - MyStudyOffers.com" , $activationtoken , $id) == false)

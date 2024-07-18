@@ -1,3 +1,6 @@
+<!-- Continue with google -->
+<!-- START -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <footer>
     <div class="footer-top">
         <div class="container">
@@ -165,6 +168,7 @@
                             <p>Enter your Details to get connected with Expert Mentors.</p>
                             <p id="registermsg"></p>
                             <form id="studentregister">
+                                <input type="hidden" name="google_signin" id="google_signin" value="false">
                                 <div class="form-col">
                                     <label for="name">Name</label>
                                     <input type="text" name="name" id="name" placeholder="Enter your name" required>
@@ -182,7 +186,7 @@
                                     <input type="email" name="email" id="email" placeholder="Enter your valid email" required>
                                 </div>
                                 <div class="form-col">
-                                    <label for="email">Password</label>
+                                    <label for="password">Password</label>
                                     <input type="password" name="password" id="password" placeholder="Enter your password" required>
                                 </div>
                                 <div class="form-col">
@@ -191,7 +195,7 @@
                                 </div>
                                 <div class="form-col register">
                                     <input type="checkbox" value="Terms" name="chkterms" id="chkterms">
-                                    <label for="chkterms">Terms &amp; Conditions</label>
+                                    <label for="chkterms">Terms & Conditions</label>
                                 </div>
                                 <div style="visibility:hidden; color:red" id="agree_chk_error">
                                     Can't proceed as you didn't agree to the terms!
@@ -200,6 +204,110 @@
                                     <button type="submit" id="register" class="register-btn">REGISTER</button>
                                 </div>
                             </form>
+
+                            <div id="g_id_onload" data-client_id="670817371755-pomo5q87gsc1ebaajdf2dd06ha3prv5q.apps.googleusercontent.com" data-context="signin" data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="false">
+                            </div>
+
+                            <div class="g_id_signin d-none" data-type="standard" data-shape="rectangular" data-theme="outline" data-text="continue_with" data-logo_alignment="left"></div>
+
+                            <div tabindex="0" role="button" aria-labelledby="button-label" id="google-register" class="nsm7Bb-HzV7m-LgbsSe mt-3 hJDwNd-SxQuSe i5vt6e-Ia7Qfc uaxL4e-RbRzK">
+                                <div class="nsm7Bb-HzV7m-LgbsSe-MJoBVe"></div>
+                                <div class="nsm7Bb-HzV7m-LgbsSe-bN97Pc-sM5MNb">
+                                    <div class="nsm7Bb-HzV7m-LgbsSe-Bz112c">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="LgbsSe-Bz112c">
+                                            <g>
+                                                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+                                                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+                                                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+                                                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+                                                <path fill="none" d="M0 0h48v48H0z"></path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <span class="nsm7Bb-HzV7m-LgbsSe-BPrWId">Continue with Google</span>
+                                    <span class="L6cTce" id="button-label">Continue with Google</span>
+                                </div>
+                            </div>
+                            <!-- <button type="button"  onclick="initGoogleSignIn()">Sign in with Google</button> -->
+
+                            <script>
+                                let mode = 'register';
+
+                                const googleBtn = document.getElementById('google-register');
+                                googleBtn.addEventListener('click', () => {
+                                    mode = 'register';
+                                    document.querySelector('.g_id_signin div[role=button]').click();
+                                });
+
+                                const googleLogin = document.getElementById("google-login");
+                                googleLogin.addEventListener('click', () => {
+                                    mode = 'login';
+                                    document.querySelector('.g_id_signin div[role=button]').click();
+                                });
+
+                                function handleCredentialResponse(response) {
+                                    const id_token = response.credential;
+
+                                    // Send ID token to the server via Ajax
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/controllers/register/verify_google_token.php',
+                                        data: {
+                                            idtoken: id_token
+                                        },
+                                        success: function(data) {
+                                            const result = JSON.parse(data);
+                                            if (result.success) {
+                                                if (result.existing_user) {
+                                                    const formdata = new FormData();
+                                                    formdata.append("google_id", result.google_id);
+                                                    formdata.append("email", result.email);
+                                                    $.ajax({
+                                                        url: "/controllers/login/loginstudent.php",
+                                                        type: "POST",
+                                                        data: formdata,
+                                                        processData: false,
+                                                        contentType: false,
+                                                        success: function(data) {
+                                                            try {
+                                                                // Parse the data received from the server
+                                                                let response = JSON.parse(data);
+
+                                                                // If the response is not successful, show the error in alert
+                                                                if (!response.success) {
+                                                                    showalert(response.error);
+                                                                } else {
+                                                                    window.location.href = response.url;
+                                                                }
+                                                            } catch (error) {
+                                                                alert("Error occurred while trying to read server response");
+                                                            }
+                                                        },
+                                                        error: function(jqXHR, textStatus, errorThrown) {
+                                                            alert("An error occurred during login: " + textStatus);
+                                                        }
+                                                    });
+                                                } else {
+                                                    if (mode == 'login') {
+                                                        showalert("User not found. Please register first.");
+                                                    } else {
+                                                        // Fill in the registration form with the user's details
+                                                        $('#google_signin').val('true');
+                                                        $('#name').val(result.first_name);
+                                                        $('#surname').val(result.last_name);
+                                                        $('#email').val(result.email);
+                                                        $('#password').prop('required', false); // You may want to handle passwords differently
+                                                        $('#studentregister').append(`<input type="hidden" name="google_id" value="${result.google_id}">`); // Add google_id to form
+                                                    }
+                                                }
+                                            } else {
+                                                alert('Failed to verify Google token.');
+                                            }
+                                        }
+                                    });
+                                }
+                            </script>
+                            <div id="user-details"></div>
                         </div>
                     </div>
                     <div class="col-md-6 d-md-block d-none ">
@@ -274,7 +382,7 @@
             </div>
             <div class="modal-body set-avtar-pos">
                 <div class="avatar-selection d-flex gap-4 align-items-center flex-wrap justify-content-center" id="avatarlist">
-                    
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -301,8 +409,7 @@
             currentFilename == "queries.php" ||
             currentFilename == "conversation.php" ||
             currentFilename == "editprofile.php" ||
-            currentFilename == "changepassword.php") 
-        {
+            currentFilename == "changepassword.php") {
             $.get("controllers/query/getconversation.php", {
                 "nums": "nums"
             }, function(data) {
@@ -323,82 +430,63 @@
                 }
             });
 
-            $.get("controllers/student/getstudentdata.php" , {} , function(data)
-            {
-                try
-                {
+            $.get("controllers/student/getstudentdata.php", {}, function(data) {
+                try {
                     //Parse the data received from the server
                     let response = JSON.parse(data);
 
                     //If the response is not successful, then show the error in alert
-                    if(response.success == false)
-                    {
+                    if (response.success == false) {
                         showalert(response.error)
-                        if(response.login == true)
-                        {
+                        if (response.login == true) {
                             window.location.href = "login.php";
                         }
-                    }
-                    else
-                    {
+                    } else {
                         let student = response.studentdata;
 
                         $(".name").text(student.name);
                         $(".email").text(student.email);
                         $(".phone").text(student.phone);
 
-                        if(student.profilepic != "")
-                        {
-                            $(".profilepic").attr("src" , "../../studentdata/" + student.studentid + "/" + student.profilepic);
+                        if (student.profilepic != "") {
+                            $(".profilepic").attr("src", "../../studentdata/" + student.studentid + "/" + student.profilepic);
                         }
 
-                        if(student.avatarimage != null)
-                        {
-                            $("#avatar").attr("src" , "admin/avatarimages/" + student.avatarimage);
+                        if (student.avatarimage != null) {
+                            $("#avatar").attr("src", "admin/avatarimages/" + student.avatarimage);
                         }
 
                         $("#OTPmobile").text(student.phone);
 
                         //Remove the banner is phone is already verified
-                        if(student.phoneverified == 1)
-                        {
+                        if (student.phoneverified == 1) {
                             $(".warning-banner").remove();
                         }
                     }
-                }
-                catch(error)
-                {
+                } catch (error) {
                     alert("Error occurred while trying to read server response");
                 }
             });
 
-            $("#avatar").on("click" , function()
-            {
+            $("#avatar").on("click", function() {
                 $("#avatarmodal").modal("show");
 
-                $.get("controllers/student/getavatars.php" , {} , function(data)
-                {
+                $.get("controllers/student/getavatars.php", {}, function(data) {
                     //Parse the data received from the server
                     let response = JSON.parse(data);
-                    
+
                     //If the response is not successful, then show the error in alert
-                    if(response.success == false)
-                    {
+                    if (response.success == false) {
                         showalert(response.error);
-                        if(response.login == true)
-                        {
+                        if (response.login == true) {
                             window.location.href = "login.php";
                         }
-                    }
-                    else
-                    {
+                    } else {
                         $("#avatarlist").html("");
-                        if(response.avatars.length == 0)
-                        {
+                        if (response.avatars.length == 0) {
                             alert("No avatars found in this category");
                         }
-                        for(let i=0; i<response.avatars.length; i++)
-                        {
+                        for (let i = 0; i < response.avatars.length; i++) {
                             let avatar = response.avatars[i];
 
                             $("#avatarlist").append(`
@@ -407,40 +495,33 @@
                                     <img src="admin/avatarimages/${avatar.avatarimage}">
                                     <div class="tick-mark">✔</div>
                                 </label>
-                            `); 
+                            `);
                         }
                     }
                 });
             });
 
-            $("#save").on("click" , function()
-            {
+            $("#save").on("click", function() {
                 let avatarid = $("[name='avatar']:checked").val();
 
-                $.post("controllers/student/saveavatar.php" , {"avatarid":avatarid} , function(data)
-                {
-                    try
-                    {
+                $.post("controllers/student/saveavatar.php", {
+                    "avatarid": avatarid
+                }, function(data) {
+                    try {
                         //Parse the data received from the server
                         let response = JSON.parse(data);
 
                         //If the response is not successful, then show the error in alert
-                        if(response.success == false)
-                        {
+                        if (response.success == false) {
                             showalert(response.error);
-                            if(response.login == true)
-                            {
+                            if (response.login == true) {
                                 window.location.href = "login.php";
                             }
-                        }
-                        else
-                        {
+                        } else {
                             $("#avatarmodal").modal("hide");
-                            $("#avatar").attr("src" , "admin/avatarimages/" + $("[name='avatar']:checked").attr("data-image"));
+                            $("#avatar").attr("src", "admin/avatarimages/" + $("[name='avatar']:checked").attr("data-image"));
                         }
-                    }
-                    catch(error)
-                    {
+                    } catch (error) {
                         alert("Error occurred while trying to read server response");
                     }
                 });
@@ -448,19 +529,16 @@
         }
     });
 
-    function showalert(message) 
-    {
+    function showalert(message) {
         $("#alertModal .modal-body").text(message);
         $("#alertModal").modal("show");
     }
 
-    $(document).ajaxStart(function() 
-    {
+    $(document).ajaxStart(function() {
         $('.loader').show(); /* Show loader when AJAX starts */
     });
 
-    $(document).ajaxStop(function() 
-    {
+    $(document).ajaxStop(function() {
         $('.loader').hide(); /* Hide loader when AJAX completes */
     });
 </script>

@@ -35,9 +35,13 @@
             }
         }
 
+        $IHaveGoogleId = false;
+        if(isset($_POST["google_id"]) && ($_POST["google_id"] != "") && isset($_POST["email"]) && ($_POST["email"] != "")){
+            $IHaveGoogleId = true;
+        }
+
         //Check if email and password has been supplied
-        if(!isset($_POST["email"]) || !isset($_POST["password"]) || $_POST["email"] == "" || $_POST["password"] == "")
-        {
+        if((!isset($_POST["email"]) || !isset($_POST["password"]) || $_POST["email"] == "" || $_POST["password"] == "" ) && !$IHaveGoogleId) {
             failure($response , "Please fill in all the information");
             goto end;
         }
@@ -78,7 +82,7 @@
             //Fetch a single row
             $row = $result->fetch_assoc();
 
-            if(!isset($_GET["admin-login"]) && $admincheck == false)
+            if(!isset($_GET["admin-login"]) && $admincheck == false && $IHaveGoogleId == false)
             {
                 //Check if the password matches with the original one after hashing the supplied one
                 if($row["password"] != hash("sha512" , $_POST["password"]))

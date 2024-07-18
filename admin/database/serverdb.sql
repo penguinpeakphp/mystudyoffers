@@ -939,3 +939,5 @@ INSERT INTO `student` (`studentid`, `name`, `surname`, `phone`, `email`, `passwo
 (20, 'Rahil', 'Khatri', '6666', 'php@penguinpeak.com', '33275a8aa48ea918bd53a9181aa975f15ab0d0645398f5918a006d08675c1cb27d5c645dbd084eee56e675e25ba4019f2ecea37ca9e2995b49fcb12c096a032e', '1111', '66473dea2e5f5', 'academic', 1, '2024-05-17'),
 (21, 't', 'p', '0000000000', 'tarang@getwayimmigration.com', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', '380009', '6647439a76b31', 'academic', 1, '2024-05-17'),
 (22, 'Nilesh', 'Soni', '09925181484', 'nileshsoni@gmail.com', '62670d1e1eea06b6c975e12bc8a16131b278f6d7bcbe017b65f854c58476baba86c2082b259fd0c1310935b365dc40f609971b6810b065e528b0b60119e69f61', '380015', '664861d4b5080', 'academic', 1, '2024-05-18');
+
+ALTER TABLE `student` ADD `google_id` TEXT DEFAULT NULL AFTER `registeredon`;
