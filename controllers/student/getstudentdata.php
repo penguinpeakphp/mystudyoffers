@@ -53,7 +53,7 @@
             }
             $result = $select->get_result();
             $row = $result->fetch_assoc();
-            $response["studentdata"]["avatarimage"] = $row["avatarimage"];
+            $response["studentdata"]["avatarimage"] = $row["avatarimage"] ?? null;
         }
 
         end:;
