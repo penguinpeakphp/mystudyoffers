@@ -169,6 +169,7 @@
                             <p id="registermsg"></p>
                             <form id="studentregister">
                                 <input type="hidden" name="google_signin" id="google_signin" value="false">
+                                <input type="hidden" name="facebook_signin" id="facebook_signin" value="false">
                                 <div class="form-col">
                                     <label for="name">Name</label>
                                     <input type="text" name="name" id="name" placeholder="Enter your name" required>
@@ -205,6 +206,7 @@
                                 </div>
                             </form>
 
+                            <!-- For Google -->
                             <div id="g_id_onload" data-client_id="670817371755-pomo5q87gsc1ebaajdf2dd06ha3prv5q.apps.googleusercontent.com" data-context="signin" data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="false">
                             </div>
 
@@ -297,7 +299,9 @@
                                                         $('#surname').val(result.last_name);
                                                         $('#email').val(result.email);
                                                         $('#password').prop('required', false); // You may want to handle passwords differently
-                                                        $('#studentregister').append(`<input type="hidden" name="google_id" value="${result.google_id}">`); // Add google_id to form
+                                                        $('#studentregister').find('#facebook_id').remove();
+                                                        $('#studentregister').find('#google_id').remove();
+                                                        $('#studentregister').append(`<input type="hidden" id="google_id" name="google_id" value="${result.google_id}">`); // Add google_id to form
                                                     }
                                                 }
                                             } else {
@@ -307,10 +311,163 @@
                                     });
                                 }
                             </script>
-                            <div id="user-details"></div>
+
+                            <!-- For Facebook -->
+
+                            <div id="fb-root"></div>
+
+                            <style>
+                                .Facebook {
+                                    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+                                    border-radius: 4px;
+                                    margin-top: 5px;
+                                    background-color: #3A559F;
+                                    border: none;
+                                    color: white !important;
+                                    text-decoration: none;
+                                    display: flex;
+                                    width: 100%;
+                                    padding-left: 10px;
+                                    display: flex;
+                                    align-items: center;
+                                    font-family: "Google Sans", arial, sans-serif;
+                                    font-size: 14px;
+                                    height: 40px;
+                                    justify-content: center;
+                                }
+
+                                .fa-facebook-square {
+                                    color: white;
+                                    font-size: 4vh;
+                                }
+                            </style>
+
+                            <button class="button Facebook" onclick="setRegister()">
+                                <i class="fab fa-facebook-square"></i>
+                                <span class="mx-auto">Continue with Facebook &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            </button>
+
+                            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+                            <script>
+                                let fbMode = 'register';
+
+                                const setRegister = () => {
+                                    fbMode = 'register';
+                                    // $(".fb-login-button").click();
+                                    // console.log($(".fb-login-button button").html());
+                                    FB.login(checkLoginState, {
+                                        scope: 'public_profile,email',
+                                        return_scopes: true,
+                                    });
+                                };
+
+                                const setLogin = () => {
+                                    fbMode = 'login';
+                                    // $(".fb-login-button").click();
+                                    FB.login(checkLoginState, {
+                                        scope: 'public_profile,email',
+                                        return_scopes: true,
+                                    });
+                                };
+
+                                window.fbAsyncInit = function() {
+                                    FB.init({
+                                        // mine
+                                        appId: '376526152127361',
+                                        // sir
+                                        // appId: '1213234336344178',
+                                        cookie: true,
+                                        xfbml: true,
+                                        version: 'v20.0'
+                                    });
+
+                                    FB.AppEvents.logPageView();
+                                };
+
+                                (function(d, s, id) {
+                                    var js, fjs = d.getElementsByTagName(s)[0];
+                                    if (d.getElementById(id)) {
+                                        return;
+                                    }
+                                    js = d.createElement(s);
+                                    js.id = id;
+                                    js.src = "https://connect.facebook.net/en_US/sdk.js";
+                                    fjs.parentNode.insertBefore(js, fjs);
+                                }(document, 'script', 'facebook-jssdk'));
+
+                                function checkLoginState() {
+                                    FB.getLoginStatus(function(response) {
+                                        statusChangeCallback(response);
+                                    });
+                                }
+
+                                function statusChangeCallback(response) {
+                                    if (response.status === 'connected') {
+                                        var access_token = response.authResponse.accessToken;
+
+                                        // Send the access token to the server via Ajax
+                                        fetch('/controllers/register/verify_facebook_token.php', {
+                                                method: 'POST',
+                                                headers: {
+                                                    'Content-Type': 'application/json'
+                                                },
+                                                body: JSON.stringify({
+                                                    access_token: access_token
+                                                })
+                                            })
+                                            .then(response => response.json())
+                                            .then(result => {
+                                                if (result.success) {
+                                                    if (result.existing_user) {
+                                                        const formdata = new FormData();
+                                                        formdata.append("facebook_id", result.facebook_id);
+                                                        formdata.append("email", result.email);
+                                                        fetch("/controllers/login/loginstudent.php", {
+                                                                method: "POST",
+                                                                body: formdata
+                                                            })
+                                                            .then(response => response.json())
+                                                            .then(response => {
+                                                                if (!response.success) {
+                                                                    alert(response.error);
+                                                                } else {
+                                                                    console.log(response);
+                                                                    window.location.href = response.url;
+                                                                }
+                                                            })
+                                                            .catch(error => {
+                                                                alert("An error occurred during login: " + error.message);
+                                                            });
+                                                    } else {
+                                                        if (fbMode == 'login') {
+                                                            alert("User not found. Please register first.");
+                                                        } else {
+                                                            // Fill in the registration form with the user's details
+                                                            $('#facebook_signin').val('true');
+                                                            $('#name').val(result.first_name);
+                                                            $('#surname').val(result.last_name);
+                                                            $('#email').val(result.email);
+                                                            $('#password').prop('required', false); // You may want to handle passwords differently
+                                                            $('#studentregister').find('#facebook_id').remove();
+                                                            $('#studentregister').find('#google_id').remove();
+                                                            $('#studentregister').append(`<input type="hidden" id="facebook_id" name="facebook_id" value="${result.facebook_id}">`); // Add facebook_id to form
+                                                        }
+                                                    }
+                                                } else {
+                                                    alert('Failed to verify Facebook token.');
+                                                }
+                                            })
+                                            .catch(error => {
+                                                alert('Fetch error: ' + error.message);
+                                            });
+                                    } else {
+                                        console.log('User cancelled login or did not fully authorize.');
+                                    }
+                                }
+                            </script>
                         </div>
                     </div>
-                    <div class="col-md-6 d-md-block d-none ">
+                    <div class="col-md-6 d-md-block d-none">
                         <img src="images/popup-img.png" alt="">
                     </div>
                 </div>
@@ -464,7 +621,7 @@
                         }
                     }
                 } catch (error) {
-                    alert("Error occurred while trying to read server response");
+                    alert("Error occurred while trying to read server response 23");
                 }
             });
 

@@ -40,8 +40,13 @@
             $IHaveGoogleId = true;
         }
 
+        $IHaveFacebookId = false;
+        if(isset($_POST["facebook_id"]) && ($_POST["facebook_id"] != "") && isset($_POST["email"]) && ($_POST["email"] != "")){
+            $IHaveFacebookId = true;
+        }
+
         //Check if email and password has been supplied
-        if((!isset($_POST["email"]) || !isset($_POST["password"]) || $_POST["email"] == "" || $_POST["password"] == "" ) && !$IHaveGoogleId) {
+        if((!isset($_POST["email"]) || !isset($_POST["password"]) || $_POST["email"] == "" || $_POST["password"] == "" ) && !$IHaveGoogleId && !$IHaveFacebookId) {
             failure($response , "Please fill in all the information");
             goto end;
         }
@@ -82,7 +87,7 @@
             //Fetch a single row
             $row = $result->fetch_assoc();
 
-            if(!isset($_GET["admin-login"]) && $admincheck == false && $IHaveGoogleId == false)
+            if(!isset($_GET["admin-login"]) && $admincheck == false && $IHaveGoogleId == false && $IHaveFacebookId == false)
             {
                 //Check if the password matches with the original one after hashing the supplied one
                 if($row["password"] != hash("sha512" , $_POST["password"]))

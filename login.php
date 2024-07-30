@@ -95,6 +95,10 @@ if (isset($_SESSION["email"]) && isset($_SESSION["name"])) {
                                     <span class="L6cTce" id="button-label">Continue with Google</span>
                                 </div>
                             </div>
+                            <button class="button Facebook" onclick="setLogin()">
+                                <i class="fab fa-facebook-square"></i>
+                                <span class="mx-auto" style="color: white !important">Continue with Facebook &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            </button>
                             <div class="pt-3"><a class="link-opacity-100 forgot-pwd" id="forgotPassword">Forgot Password ?</a></div>
                             <div class="pt-3">
 

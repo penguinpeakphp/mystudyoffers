@@ -941,3 +941,5 @@ INSERT INTO `student` (`studentid`, `name`, `surname`, `phone`, `email`, `passwo
 (22, 'Nilesh', 'Soni', '09925181484', 'nileshsoni@gmail.com', '62670d1e1eea06b6c975e12bc8a16131b278f6d7bcbe017b65f854c58476baba86c2082b259fd0c1310935b365dc40f609971b6810b065e528b0b60119e69f61', '380015', '664861d4b5080', 'academic', 1, '2024-05-18');
 
 ALTER TABLE `student` ADD `google_id` TEXT DEFAULT NULL AFTER `registeredon`;
+
+ALTER TABLE `student` ADD `facebook_id` TEXT DEFAULT NULL AFTER `google_id`;

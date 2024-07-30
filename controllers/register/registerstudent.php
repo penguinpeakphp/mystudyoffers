@@ -9,6 +9,7 @@
         $response["success"] = true;
 
         $google_signin = isset($_POST['google_signin']) && $_POST['google_signin'] === 'true';
+        $facebook_signin = isset($_POST['facebook_signin']) && $_POST['facebook_signin'] === 'true';
 
         //Check if all the fields are filled and received on the server
         if(!isset($_POST["name"]) || !isset($_POST["surname"]) || !isset($_POST["phone"]) || !isset($_POST["email"]) || !isset($_POST["pincode"]) || !isset($_POST["password"]) || $_POST["name"] == "" || $_POST["surname"] == "" || $_POST["phone"] == "" || $_POST["email"] == "" || $_POST["pincode"] == "" || $_POST["password"] == "")
@@ -68,6 +69,18 @@
             $update->bind_param("si" , $_POST['google_id'] , $id);
             if($update->execute() == false) {
                 failure($response , "Error while updating google id");
+                $db->rollback();
+                goto end;
+            }
+        }
+
+        if($facebook_signin)
+        {
+            // Update student table with facebook id
+            $update = $db->prepare("UPDATE student SET facebook_id = ? WHERE studentid = ?");
+            $update->bind_param("si" , $_POST['facebook_id'] , $id);
+            if($update->execute() == false) {
+                failure($response , "Error while updating facebook id");
                 $db->rollback();
                 goto end;
             }
