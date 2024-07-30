@@ -239,12 +239,20 @@ $(function()
             {
                 allFilled = false;
                 // Optionally add a highlight or some indication on the invalid campus
-                $(this).css("border", "1px solid red");
+                $(this).css({
+                    "border": "1px solid red",
+                    "border-radius": "5px",
+                    "padding": "15px"
+                });
             } 
             else 
             {
                 // Reset border if the section is valid
-                $(this).css("border", "none");
+                $(this).css({
+                    "border": "none",
+                    "border-radius": "0px",
+                    "padding": "0px"
+                });
             }
         });
         
@@ -302,12 +310,20 @@ $(function()
             {
                 allFilled = false;
                 // Optionally add a highlight or some indication on the invalid campus
-                $(this).css("border", "1px solid red");
+                $(this).css({
+                    "border": "1px solid red",
+                    "border-radius": "5px",
+                    "padding": "15px"
+                })
             } 
             else 
             {
                 // Reset border if the section is valid
-                $(this).css("border", "none");
+                $(this).css({
+                    "border": "none",
+                    "border-radius": "0px",
+                    "padding": "0px"
+                });
             }
         });
 

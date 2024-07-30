@@ -84,7 +84,7 @@ checksession();
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" id="universitystatus" name="universitystatus">
                                                 <label class="form-check-label" for="universitystatus">
-                                                Active
+                                                    Active
                                                 </label>
                                             </div>
                                         </div>
@@ -157,7 +157,15 @@ checksession();
                                         <div id="othercampustemplate" class="othercampus d-none">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <label class="form-label">Street Address</label>
+                                                    <div class="row align-items-center justify-content-between">
+
+                                                        <label class="form-label col-auto">
+                                                            Street Address
+                                                        </label>
+                                                        <button type="button" class="btn me-3 mb-2 col-auto ms-auto btn-danger btn-sm removeothercampus">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </div>
                                                     <input name="othercampusstreetaddress" type="text" class="form-control othercampusstreetaddress">
                                                 </div>
                                                 <div class="col-6">
@@ -170,9 +178,6 @@ checksession();
                                                     <label class="form-label">Post Code</label>
                                                     <input type="text" class="form-control othercampuspostcode" name="othercampuspostcode">
                                                 </div>
-                                                <div class="col-12 text-right">
-                                                    <button type="button" class="btn btn-danger removeothercampus">Remove</button>
-                                                </div>
                                             </div>
                                             <hr>
                                         </div>
@@ -183,7 +188,7 @@ checksession();
                                     </form>
                                 </div>
                                 <div class="tab-pane fade" id="section2" role="tabpanel" aria-labelledby="section2">
-                                    <form class="row g-3" id="universityintellectualassets">    
+                                    <form class="row g-3" id="universityintellectualassets">
                                         <div class="col-6">
                                             <label for="logoimage" class="form-label">Logo Image</label>
                                             <a href="javascript:void(0)" id="viewlogoimage" class="d-none">View File</a>
@@ -202,12 +207,14 @@ checksession();
                                         <div class="col-4 mt-3">
                                             <button type="button" class="btn btn-primary" id="addteamsandclubs">Add Teams and Clubs</button>
                                         </div>
-                                        <div id="otherteamsandclubstemplate" class="d-none">
-                                            <div class="col-12">
+                                        <div id="otherteamsandclubstemplate" class="d-none row mb-2">
+                                            <div class="col-11">
                                                 <input type="text" class="form-control otherteamsandclubs" name="otherteamsandclubs">
                                             </div>
-                                            <div class="col-4 mt-3">
-                                                <button type="button" class="btn btn-danger removeteamsandclubs">Remove Team/Club</button>
+                                            <div class="col-1">
+                                                <button type="button" class="btn btn-danger btn-sm removeteamsandclubs">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
                                             </div>
                                         </div>
                                         <div id="facilityimageslist">
@@ -216,14 +223,16 @@ checksession();
                                         <div class="col-4 mt-3">
                                             <button type="button" class="btn btn-primary" id="addfacilityimages">Add Facility Image</button>
                                         </div>
-                                        <div id="facilityimagestemplate" class="d-none">
-                                            <div class="col-6">
-                                                <a href="javascript:void(0)"  class="d-none viewfacilityimage"></a>
+                                        <div id="facilityimagestemplate" class="d-none row mb-2">
+                                            <div class="col-11">
+                                                <a href="javascript:void(0)" class="d-none viewfacilityimage"></a>
                                                 <a href="javascript:void(0)" class="d-none deletefacilityimage">Delete File</a>
                                                 <input type="file" class="form-control facilityimages" name="facilityimages" accept="image/jpeg, image/png">
                                             </div>
-                                            <div class="col-4 mt-3">
-                                                <button type="button" class="btn btn-danger removefacilityimages">Remove Facility Image</button>
+                                            <div class="col-1">
+                                                <button type="button" class="btn btn-danger btn-sm removefacilityimages">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
                                             </div>
                                         </div>
                                         <div class="text-center">
@@ -251,27 +260,31 @@ checksession();
                                             <p><b>Rankings</b></p>
                                         </div>
                                         <div class="row d-none otherrankings" id="otherrankingstemplate">
-                                            <div class="col-4">
-                                                <label for="nameofranking" class="form-label">Name of Ranking</label>
+                                            <div class="col-12">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <div class="col-auto">
+                                                        <label for="nameofranking" class="form-label">Name of Ranking</label>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <button type="button" class="btn btn-danger btn-sm mb-3 removeotherranking">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                                 <input type="text" class="form-control" name="nameofranking">
                                             </div>
-                                            <div class="col-4">
+                                            <div class="col-6 my-2">
                                                 <label for="rankawardingbody" class="form-label">Rank Awarding Body</label>
-                                                <div class="col-sm-12">
-                                                    <select class="form-select rankawardingbodylist" aria-label="Default select" name="rankawardingbodies">
-                                                    </select>
-                                                </div>
+                                                <select class="form-select rankawardingbodylist" aria-label="Default select" name="rankawardingbodies">
+                                                </select>
                                             </div>
-                                            <div class="col-4">
+                                            <div class="col-6 my-2">
                                                 <label for="yearofranking" class="form-label">Year of Ranking</label>
                                                 <input type="text" class="form-control" name="yearofranking">
                                             </div>
                                             <div class="col-12 my-2">
                                                 <label for="description" class="form-label mb-3">Description</label>
                                                 <textarea class="form-control" name="description"></textarea>
-                                            </div>
-                                            <div class="col-4 my-3">
-                                                <button type="button" class="btn btn-danger removeotherranking">Remove Ranking</button>
                                             </div>
                                         </div>
                                         <div class="col-4 mt-3">
@@ -360,25 +373,20 @@ checksession();
 <script src="../assets/js/utils.js"></script>
 <script src="university.js"></script>
 <?php
-    if(isset($_GET["edit"]) && isset($_GET["view"]))
-    {
+if (isset($_GET["edit"]) && isset($_GET["view"])) {
 ?>
-        <script src="viewuniversity.js"></script>
-        <script src="adduniversity.js"></script>
+    <script src="viewuniversity.js"></script>
+    <script src="adduniversity.js"></script>
 <?php
-    }
-    else if(isset($_GET["view"]))
-    {
+} else if (isset($_GET["view"])) {
 ?>
-        <script src="viewuniversity.js"></script>
+    <script src="viewuniversity.js"></script>
 <?php
-    }
-    else
-    {
+} else {
 ?>
-        <script src="adduniversity.js"></script>
+    <script src="adduniversity.js"></script>
 <?php
-    }
+}
 ?>
 
 </html>
