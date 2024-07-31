@@ -6,11 +6,11 @@
     {
         $response["success"] = true;
 
-        //Check session and go to end if session verification is failed
-        if(checksession($response) == false)
-        {
-            goto end;
-        }
+        // Check session and go to end if session verification is failed
+        // if(checksession($response) == false)
+        // {
+        //     goto end;
+        // }
 
         //Declare countries array for storing the data of different countries
         $response["countries"] = [];
